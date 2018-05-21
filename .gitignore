@@ -40,3 +40,6 @@ nosetests.xml
 
 # Backups
 *.bak
+
+# Animations
+*.mp4
