@@ -16,16 +16,25 @@ number_of_snapshots = 200   # actually includes snap_000
 
 file = '../outputs/snap_{:03d}'
 
-lim = 100
+lim = 50
 
 
 # First set up the figure, the axis, and the plot element we want to animate
 fig, (ax_1, ax_2, ax_3) = plt.subplots(1, 3, figsize = (13.0, 6.0))
-points_1, = ax_1.plot([], [], 'bo', ms = 0.05)
-points_2, = ax_2.plot([], [], 'bo', ms = 0.05)
-points_3, = ax_3.plot([], [], 'bo', ms = 0.05)
 
-points = [points_1, points_2, points_3]
+points_gas_1, = ax_1.plot([], [], 'bo', ms = 0.01)
+points_gas_2, = ax_2.plot([], [], 'bo', ms = 0.01)
+points_gas_3, = ax_3.plot([], [], 'bo', ms = 0.01)
+
+points_stars_1, = ax_1.plot([], [], 'ro', ms = 0.01)
+points_stars_2, = ax_2.plot([], [], 'ro', ms = 0.01)
+points_stars_3, = ax_3.plot([], [], 'ro', ms = 0.01)
+
+gas = [points_gas_1, points_gas_2, points_gas_3]
+stars = [points_stars_1, points_stars_2, points_stars_3]
+
+points = [gas, stars]
+
 
 # Function called to create the base frame upon which the animation takes place.
 def init():
@@ -36,10 +45,9 @@ def init():
 		axes.set_ylim(-lim, lim)
 		axes.grid(True)
 
-	points[0].set_data([], [])
-	points[1].set_data([], [])
-	points[2].set_data([], [])	
+	for particles in gas + stars:
 
+		particles.set_data([], [])
 
 
 	return points,
@@ -60,7 +68,8 @@ def animate(i):
 	gas_pos = snap['POS '][0]
 	stars_pos = snap['POS '][4]
 
-	add_to_plot(points, gas_pos)
+	add_to_plot(gas, gas_pos)
+	add_to_plot(stars, stars_pos)
 
 	print(i)
 
@@ -71,10 +80,12 @@ anim = animation.FuncAnimation(fig, animate, init_func = init, frames = number_o
 
 #save the animation using ffmpeg
 dpi = 200
-writer = animation.writers['ffmpeg'](fps=12)
-anim.save('demo_alt.mp4',writer=writer,dpi=dpi)
+fps = 12
 
-#anim.save('demo_full_2.mp4', fps=12, extra_args=['-vcodec', 'libx264'], dpi = dpi)
+writer = animation.writers['ffmpeg'](fps=fps)
+#anim.save('demo_alt.mp4',writer=writer,dpi=dpi)
+
+anim.save('demo_full_2.mp4', fps=fps, extra_args=['-vcodec', 'libx264'], dpi = dpi)
 
 plt.show()
 
