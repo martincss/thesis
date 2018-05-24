@@ -11,6 +11,9 @@ from matplotlib import animation
 from iccpy.gadget import load_snapshot
 from iccpy.gadget.labels import cecilia_labels
 
+import datetime
+
+timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
 number_of_snapshots = 200   # actually includes snap_000
 
@@ -80,12 +83,12 @@ anim = animation.FuncAnimation(fig, animate, init_func = init, frames = number_o
 
 #save the animation using ffmpeg
 dpi = 200
-fps = 12
+fps = 24
 
 writer = animation.writers['ffmpeg'](fps=fps)
 #anim.save('demo_alt.mp4',writer=writer,dpi=dpi)
 
-anim.save('demo_full_2.mp4', fps=fps, extra_args=['-vcodec', 'libx264'], dpi = dpi)
+anim.save('demo_' + timestamp + '.mp4', fps=fps, extra_args=['-vcodec', 'libx264'], dpi = dpi)
 
 plt.show()
 
