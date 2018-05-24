@@ -9,6 +9,7 @@ ordered frames.
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+plt.ion()
 
 from iccpy.gadget import load_snapshot
 from iccpy.gadget.labels import cecilia_labels
@@ -17,13 +18,13 @@ from iccpy.gadget.labels import cecilia_labels
 
 number_of_snapshots = 200   # actually includes snap_000
 
-file = '/home/martin/Documents/Tesis/outputs/snap_{:03d}'
+file = '../outputs/snap_{:03d}'
 
 
 fig = plt.figure(figsize=(13.0, 6.0)) # in inches!
 ax3 = Axes3D(fig)
 
-for i in range(153, number_of_snapshots + 1):
+for i in range(200, number_of_snapshots + 1):
 
 	snap = load_snapshot(file.format(i), label_table = cecilia_labels)
 	gas_pos = snap['POS '][0]
@@ -48,7 +49,7 @@ for i in range(153, number_of_snapshots + 1):
 	plt.pause(0.001)
 
 
-	ax3.clear()
+	#ax3.clear()
 
 
 

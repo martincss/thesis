@@ -9,7 +9,7 @@ from iccpy.gadget.labels import cecilia_labels
 #f = load_snapshot('/Users/cecilia/data/Aquarius/halo_C09/snap_C09_200_converted_128', label_table=cecilia_labels)
 
 #f = load_snapshot('/home/cscannapieco/data/isolated_random/single_explosion/outputs/snap_200', label_table=cecilia_labels)
-f = load_snapshot('/home/martin/Documents/Tesis/outputs/snap_200', label_table=cecilia_labels)
+f = load_snapshot('../outputs/snap_200', label_table=cecilia_labels)
 list(f)
 
 
