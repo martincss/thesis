@@ -83,7 +83,7 @@ anim = animation.FuncAnimation(fig, animate, init_func = init, frames = number_o
 
 #save the animation using ffmpeg
 dpi = 200
-fps = 24
+fps = 12
 
 writer = animation.writers['ffmpeg'](fps=fps)
 #anim.save('demo_alt.mp4',writer=writer,dpi=dpi)
