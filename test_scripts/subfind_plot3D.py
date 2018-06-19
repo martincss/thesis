@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Test script to try out subfind and plotting for each subhalo.
-Isolates and plots in different colors particles for each subhalo.
+Test script to try out subfind and plotting
+for each subhalo.
+
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 plt.ion()
 from iccpy.gadget import load_snapshot
 from iccpy.gadget.labels import cecilia_labels
@@ -43,13 +45,14 @@ def plotxy_subhalo(subhalo, num_species):
 	subhalo_positions = snap['POS '][num_species][indexes]
 	x, y, z = np.split(subhalo_positions, 3, axis = 1)
 
-	ax.scatter(x,y, s = 0.01)
+	ax3.scatter(x,y,z, s = 0.001)
 
 
-fig, ax = plt.subplots()
+fig = plt.figure()
+ax3 = Axes3D(fig)
 
 # Define number of subhaloes to plot (if -1, plot all of them)
-number_of_subhaloes = 20
+number_of_subhaloes = 2
 
 for subhalo in cat.subhalo[:number_of_subhaloes]:
 
