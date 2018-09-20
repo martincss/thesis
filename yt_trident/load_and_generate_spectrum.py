@@ -1,12 +1,12 @@
 import yt
 import trident
 from iccpy.gadget import load_snapshot
-from gadget_test_one_metal.labels import cecilia_labels
+from iccpy_labels_new_metal import cecilia_labels
 import numpy as np
 HUBBLE = 0.7
 
-file = 'snapdir_135/snap_LG_WMAP5_2048_135.0'
-snap_dir = '.'
+file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
+snap_dir = '../../2Mpc_LG_convert'
 
 snap = load_snapshot(directory = snap_dir, snapnum = 135, label_table = cecilia_labels)
 

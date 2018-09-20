@@ -43,3 +43,7 @@ nosetests.xml
 
 # Animations
 *.mp4
+
+# Data files
+*.txt
+*.h5
