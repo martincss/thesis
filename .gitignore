@@ -45,5 +45,5 @@ nosetests.xml
 *.mp4
 
 # Data files
-*.txt
+#*.txt
 *.h5
