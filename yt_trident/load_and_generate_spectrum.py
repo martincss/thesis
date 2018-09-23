@@ -37,13 +37,13 @@ unit_base = {'length'   :  (1.0, 'kpccm/h'),
 ds = yt.frontends.gadget.GadgetDataset(filename=file, unit_base= unit_base, field_spec=my_field_def)
 
 # from Table 1 in Richter, Nuza, et al (2017)
-line_list = ['C II', 'C IV', 'Si III', 'Si II'] 
+line_list = ['C II', 'C IV', 'Si III', 'Si II']
 
 
 # ~~~~~~~~~~~~~~~~~~~~ ACTIONS ~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def make_projection():
+def select_edges():
     density = ds.r[("Gas","density")]
     wdens = np.where(density == np.max(density))
     coordinates = ds.r[("Gas","Coordinates")]
@@ -54,9 +54,14 @@ def make_projection():
     left_edge = center - new_box_size/2
     right_edge = center + new_box_size/2
 
+    return center, right_edge, left_edge, new_box_size
+
+def make_projection():
+
+
     px = yt.ProjectionPlot(ds, 'x', ('gas', 'density'), center=center, width=new_box_size)
     px.show()
-    px.save('load_projection_trans.png', mpl_kwargs = {'transparent':True})
+    px.save('load_projection.png', mpl_kwargs = {'transparent':True})
 
     return px
 
@@ -73,7 +78,7 @@ def make_ray():
 
 def plot_ray_in_projection():
     px.annotate_ray(ray, arrow=True)
-    px.save('load_projection_ray_trans.png', mpl_kwargs = {'transparent':True})
+    px.save('load_projection_ray.png', mpl_kwargs = {'transparent':True})
 
 def make_spectrum():
     sg = trident.SpectrumGenerator('COS-G130M')
@@ -91,6 +96,7 @@ def make_spectrum():
 # ~~~~~~~~~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-px = make_projection()
+center, right_edge, left_edge, new_box_size = select_edges()
+#px = make_projection()
 ray = make_ray()
 make_spectrum()
