@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
+"""
+Script to recieve absorption spectrum, find lines and plot each one as a
+function of velocity
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 plt.ion()
+from scipy.signal import find_peaks
 
 fname = 'spec_raw.txt'
 
@@ -16,3 +22,13 @@ def plot_all():
     plt.xlabel('Wavelength [A]')
     plt.ylabel('Relative flux')
     plt.grid(True)
+
+def plot_peaks():
+
+    plt.scatter(wavelength[peak_indices], flux[peak_indices], c='red')
+
+peak_indices, _ = find_peaks(flux, height=(None, 0), distance=50, threshold=0.1)
+
+
+plot_all()
+plot_peaks()
