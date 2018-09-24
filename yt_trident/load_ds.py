@@ -43,7 +43,3 @@ new_box_size = ds.quan(2000,'kpccm/h')
 
 left_edge = center - new_box_size/2
 right_edge = center + new_box_size/2
-
-px = yt.ProjectionPlot(ds, 'x', ('gas', 'density'), center=center, width=new_box_size)
-px.show()
-px.save('prueba_projection.png')
