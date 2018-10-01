@@ -1,0 +1,480 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language american
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Informe parcial de Tesis de licenciatura
+\end_layout
+
+\begin_layout Section
+Datos personales
+\end_layout
+
+\begin_layout Standard
+Nombre: Martín Carusso
+\begin_inset Newline newline
+\end_inset
+
+e-mail: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{martincarusso@gmail.com}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Fecha de inscripción en la materia: Abril de 2018
+\begin_inset Newline newline
+\end_inset
+
+Lugar de trabajo del alumno: Departamento de física, FCEN
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Tema del plan de tesis: 
+\emph on
+Estudio de la distribución de gas en el Grupo Local
+\emph default
+ 
+\begin_inset Newline newline
+\end_inset
+
+Directora: Cecilia Scannapieco
+\begin_inset Newline newline
+\end_inset
+
+e-mail: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{cscannapieco@df.uba.ar}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Codirector: Sebastián Nuza
+\begin_inset Newline newline
+\end_inset
+
+e-mail: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{snuza@iafe.uba.ar}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Materias correlativas pendientes
+\end_layout
+
+\begin_layout Standard
+El alumno debe únicamente el final de la materia Cálculo numérico.
+\end_layout
+
+\begin_layout Section
+Estado de avance
+\end_layout
+
+\begin_layout Standard
+El uso de simulaciones numéricas de formación galáctica en un marco cosmológico
+ es de suma relevancia para el estudio de la componente gaseosa del denominado
+ 
+\emph on
+Grupo local, 
+\emph default
+el cual integran la Vía Láctea (nuestra galaxia), y su vecina M31 (Andrómeda).
+ Estas simulaciones del Grupo Local permiten identificar estructuras en
+ la distribución del gas y poder estudiar su origen y evolución.
+ En aras de guiar e interpretar mejor las observaciones, la comparación
+ entre éstas y las simulaciones es fundamental.
+ Esta comparación no es trivial; se debe tener en cuenta qué resultados
+ se obtienen de las observaciones, y cómo pueden ser construidos a partir
+ de las simulaciones.
+ 
+\end_layout
+
+\begin_layout Standard
+En particular, los 
+\emph on
+outputs 
+\emph default
+de las simulaciones consisten en un estado o 
+\emph on
+snapshot
+\emph default
+ de las partículas de gas (unidades dentro de la descripción lagrangiana
+ de fluido utilizada por el código), para cada tiempo de registro.
+ Este estado contiene, para cada una de las partículas: un identificador
+ único (
+\emph on
+ID
+\emph default
+), la posición y velocidad, las propiedades termodinámicas como energía
+ interna, temperatura y densidad; y las masas de los distintos elementos
+ químicos dentro de la partícula.
+ A partir de estas masas se puede calcular la 
+\emph on
+metalicidad 
+\emph default
+(fracción de la masa en elementos posteriores a H y He con respecto a la
+ masa total)
+\emph on
+ 
+\emph default
+de la partícula.
+ Por otro lado, en las observaciones, se cuentan con espectros de absorción,
+ tomados para una serie de direcciones en el cielo (
+\emph on
+lineas de la visual)
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+El objetivo principal de la presente tesis es la creación de una muestra
+ sintética de espectros de absorción en distintas líneas de la visual, a
+ partir de simulaciones cosmológicas del grupo local.
+ Para la síntesis de espectros y líneas de absorción, es importante un modelado
+ de los procesos físicos relevantes y su posterior implementación dentro
+ del código.
+ La realización del objetivo tiene asociada los siguientes pasos:
+\end_layout
+
+\begin_layout Itemize
+Lectura de los 
+\emph on
+outputs
+\emph default
+ de las simulaciones y almacenamiento dentro de una estructura de datos
+ conveniente para el acceso y trabajo con los mismos.
+\end_layout
+
+\begin_layout Itemize
+Identificación de los objetos galácticos dentro de las simulaciones.
+ En particular, identificar y aislar a las partículas que pertenecen a cada
+ objeto, facilitando su posterior seguimiento.
+\end_layout
+
+\begin_layout Itemize
+Familiarización y prueba de módulos ya desarrollados (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{YT, TRIDENT}
+\end_layout
+
+\end_inset
+
+) para la síntesis de espectros en base a las simulaciones.
+\end_layout
+
+\begin_layout Itemize
+Emplear estos módulos para la generación sistemática de espectros sintéticos,
+ y posterior comparación con las observaciones.
+\end_layout
+
+\begin_layout Standard
+Los primeros tres puntos están ya completos, se está trabajando sobre el
+ último.
+ Detallamos los adelantos realizados en estos puntos.
+\end_layout
+
+\begin_layout Standard
+Para la lectura de los datos, empleamos y adaptamos un módulo ya desarrollado
+ en Python, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{iccpy}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ver 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{https://github.com/Lowingbn/iccpy}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{https://github.com/martincss/iccpy}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Este contiene rutinas que reciben los archivos de 
+\emph on
+snapshot
+\emph default
+ e introducen sus datos dentro de un objeto, facilitando el acceso individualiza
+do a cada una de las propiedades de las partículas.
+ 
+\end_layout
+
+\begin_layout Standard
+A la par de las simulaciones, se corre también un algoritmo denominado SUBFIND,
+ que permite la identificación de objetos galácticos, denominados 
+\emph on
+subhalos.
+ 
+\emph default
+Para acceder a los resultados de este algoritmo,
+\emph on
+ 
+\emph default
+se empleó el mismo módulo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{iccpy}
+\end_layout
+
+\end_inset
+
+ que permite la lectura de sus 
+\emph on
+outputs
+\emph default
+.
+ De esa forma, se tiene disponible una lista con los subhalos y las partículas
+ que integran a cada uno; esto nos permitó identificarlas unívocamente para
+ su seguimiento a lo largo de las instancias temporales.
+ En el caso de las simulaciones del grupo local, los dos principales subhalos
+ corresponden a candidatos para la Vía Láctea y M31; pudimos obtener las
+ posiciones de sus centros como mínimos locales del potencial.
+ 
+\end_layout
+
+\begin_layout Standard
+Para la generación de espectros, fue necesario familiarizarse con los módulos
+ de Python 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{YT}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{https://yt-project.org/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{TRIDENT}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{http://trident-project.org/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ El primero nos permite transformar los datos en términos de partículas
+ de fluido lagrangianas a una deposición de las mismas sobre una grilla.
+ Esto resulta útil para realizar visualizar proyecciones espaciales de las
+ propiedades del sistema, tales como la densidad y temperatura.
+ El segundo módulo utiliza esta deposición sobre una grilla para calcular
+ y los espectros sintéticos.
+  
+\end_layout
+
+\end_body
+\end_document
