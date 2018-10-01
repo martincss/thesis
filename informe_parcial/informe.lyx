@@ -357,12 +357,17 @@ do a cada una de las propiedades de las partículas.
 \end_layout
 
 \begin_layout Standard
-A la par de las simulaciones, se corre también un algoritmo denominado La
- identificación de objetos galácticos, denominados 
+A la par de las simulaciones, se corre también un algoritmo denominado SUBFIND,
+ que permite la identificación de objetos galácticos, denominados 
 \emph on
-subhalos, 
+subhalos.
+ 
 \emph default
-se empleando el mismo módulo 
+Para acceder a los resultados de este algoritmo,
+\emph on
+ 
+\emph default
+se empleó el mismo módulo 
 \begin_inset ERT
 status open
 
@@ -375,7 +380,99 @@ texttt{iccpy}
 
 \end_inset
 
- para la lectura 
+ que permite la lectura de sus 
+\emph on
+outputs
+\emph default
+.
+ De esa forma, se tiene disponible una lista con los subhalos y las partículas
+ que integran a cada uno; esto nos permitó identificarlas unívocamente para
+ su seguimiento a lo largo de las instancias temporales.
+ En el caso de las simulaciones del grupo local, los dos principales subhalos
+ corresponden a candidatos para la Vía Láctea y M31; pudimos obtener las
+ posiciones de sus centros como mínimos locales del potencial.
+ 
+\end_layout
+
+\begin_layout Standard
+Para la generación de espectros, fue necesario familiarizarse con los módulos
+ de Python 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{YT}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{https://yt-project.org/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{TRIDENT}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{http://trident-project.org/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ El primero nos permite transformar los datos en términos de partículas
+ de fluido lagrangianas a una deposición de las mismas sobre una grilla.
+ Esto resulta útil para realizar visualizar proyecciones espaciales de las
+ propiedades del sistema, tales como la densidad y temperatura.
+ El segundo módulo utiliza esta deposición sobre una grilla para calcular
+ los espectros sintéticos.
 \end_layout
 
 \end_body

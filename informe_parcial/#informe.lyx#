@@ -471,9 +471,7 @@ texttt{http://trident-project.org/}
  de fluido lagrangianas a una deposición de las mismas sobre una grilla.
  Esto resulta útil para realizar visualizar proyecciones espaciales de las
  propiedades del sistema, tales como la densidad y temperatura.
- El segundo módulo utiliza esta deposición sobre una grilla para calcular
- y los espectros sintéticos.
-  
+ El segundo módulo utiliza esta deposición sobre una grilla para  
 \end_layout
 
 \end_body

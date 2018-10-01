@@ -297,7 +297,56 @@ Los primeros tres puntos están ya completos, se está trabajando sobre el
 
 \begin_layout Standard
 Para la lectura de los datos, empleamos y adaptamos un módulo ya desarrollado
- en Python.
+ en Python, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{iccpy}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ver 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{https://github.com/Lowingbn/iccpy}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{https://github.com/martincss/iccpy}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
  Este contiene rutinas que reciben los archivos de 
 \emph on
 snapshot
@@ -305,6 +354,28 @@ snapshot
  e introducen sus datos dentro de un objeto, facilitando el acceso individualiza
 do a cada una de las propiedades de las partículas.
  
+\end_layout
+
+\begin_layout Standard
+A la par de las simulaciones, se corre también un algoritmo denominado La
+ identificación de objetos galácticos, denominados 
+\emph on
+subhalos, 
+\emph default
+se empleando el mismo módulo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{iccpy}
+\end_layout
+
+\end_inset
+
+ para la lectura 
 \end_layout
 
 \end_body
