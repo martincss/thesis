@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -7,11 +7,27 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
+\begin_local_layout
+InsetLayout Flex:Code
+    LyxType               charstyle
+    LabelString           code
+    LatexType             command
+    LatexName             code
+    Font
+      Family              Typewriter
+    EndFont
+    Preamble
+    \newcommand{\code}[1]{\texttt{#1}}
+    EndPreamble
+    InToc                 true
+    HTMLTag               code
+End
+\end_local_layout
 \language american
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
+\font_roman "utopia" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -21,6 +37,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -50,6 +68,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -62,7 +81,10 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -77,6 +99,22 @@
 
 \begin_layout Title
 Informe parcial de Tesis de licenciatura
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -203,8 +241,8 @@ Grupo local,
 el cual integran la Vía Láctea (nuestra galaxia), y su vecina M31 (Andrómeda).
  Estas simulaciones del Grupo Local permiten identificar estructuras en
  la distribución del gas y poder estudiar su origen y evolución.
- En aras de guiar e interpretar mejor las observaciones, la comparación
- entre éstas y las simulaciones es fundamental.
+ En aras de guiar e interpretar mejor las observaciones, su comparación
+ con las simulaciones es fundamental.
  Esta comparación no es trivial; se debe tener en cuenta qué resultados
  se obtienen de las observaciones, y cómo pueden ser construidos a partir
  de las simulaciones.
@@ -227,7 +265,7 @@ snapshot
 \emph on
 ID
 \emph default
-), la posición y velocidad, las propiedades termodinámicas como energía
+), la posición y velocidad, las propiedades termodinámicas tales como energía
  interna, temperatura y densidad; y las masas de los distintos elementos
  químicos dentro de la partícula.
  A partir de estas masas se puede calcular la 
@@ -239,7 +277,7 @@ metalicidad
 \emph on
  
 \emph default
-de la partícula.
+correspondiente a la partícula.
  Por otro lado, en las observaciones, se cuentan con espectros de absorción,
  tomados para una serie de direcciones en el cielo (
 \emph on
@@ -323,27 +361,21 @@ status open
 
 \begin_layout Plain Layout
 Ver 
-\begin_inset ERT
+\begin_inset Flex Code
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-texttt{https://github.com/Lowingbn/iccpy}
+https://github.com/Lowingbn/iccpy
 \end_layout
 
 \end_inset
 
  y 
-\begin_inset ERT
+\begin_inset Flex Code
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-texttt{https://github.com/martincss/iccpy}
+https://github.com/martincss/iccpy
 \end_layout
 
 \end_inset
@@ -476,10 +508,70 @@ texttt{http://trident-project.org/}
 .
  El primero nos permite transformar los datos en términos de partículas
  de fluido lagrangianas a una deposición de las mismas sobre una grilla.
- Esto resulta útil para realizar visualizar proyecciones espaciales de las
- propiedades del sistema, tales como la densidad y temperatura.
+ Esto resulta útil para visualizar proyecciones espaciales de las propiedades
+ del sistema, tales como la densidad y temperatura, como vemos en la Figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dens"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
  El segundo módulo utiliza esta deposición sobre una grilla para calcular
  los espectros sintéticos.
+ Sobre esta grilla, se definen los campos de densidad, temperatura y otras
+ propiedades en base a un suavizado de las propiedades localizadas espacialmente
+ en las partículas.
+ 
+\end_layout
+
+\begin_layout Standard
+Para tomar un espectro sintético, debemos defininir una dirección como 
+\emph on
+linea de la visual
+\emph default
+ y una lista de elementos para los cuales calcular las líneas de absorción.
+ En base a la densidad, temperatura y metalicidad sobre las celdas de la
+ grilla interceptadas por esta línea, el programa calcula las abundancias
+ relativas de estos elementos y posteriormente sus líneas de absorción utilizand
+o un modelo de equilibrio iónico; dando un resultado como se ve en la Figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:espectro"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Una de las principales dificultades hasta el momento fue la necesidad de
+ adaptar las 
+\emph on
+snapshots
+\emph default
+ al formato necesario para la interacción con estos módulos.
+ Esto requirió varias pruebas, entendimiento de los detalles de funcionamiento
+ de estos módulos y una inspección rigurosa a su código fuente.
+\end_layout
+
+\begin_layout Standard
+Por último, deseamos tomar una muestra de espectros sintéticos para una
+ variedad de líneas de la visual, siendo éste el trabajo actualmente en
+ curso.
+ En base a esa muestra, podemos analizar propiedades estadísticas de los
+ espectros y realizar una comparación directa con las observaciones de esta
+ misma naturaleza.
+ De ese modo, podremos caracterizar las propiedades generales del gas en
+ el halo de las galaxias y el medio circundante.
 \end_layout
 
 \begin_layout Standard
@@ -490,6 +582,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dens"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename load_projection_ray_trans.png
 	lyxscale 25
@@ -504,15 +603,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-proyeccion
+Proyección bidimensional de la densidad, junto con la 
+\emph on
+linea de la visual
+\emph default
+ sobre la cual se toma el espectro de absorción.
+ 
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -552,6 +652,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:espectro"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename spec_C_Si_raw.png
 	lyxscale 25
@@ -570,7 +677,8 @@ status open
 \begin_layout Plain Layout
 
 \lang english
-espectro
+Espectro de absorbancia relativa con las líneas de absorción para los elementos
+ C y Si.
 \end_layout
 
 \end_inset
@@ -605,6 +713,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:C"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename C_II.png
 	lyxscale 25
@@ -623,7 +738,8 @@ status open
 \begin_layout Plain Layout
 
 \lang english
-otro espectro
+Detalle del espectro de absorción para una línea de absorción del C, en
+ función de la velocidad del gas.
 \end_layout
 
 \end_inset
