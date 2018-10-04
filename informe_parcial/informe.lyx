@@ -217,7 +217,8 @@ Materias correlativas pendientes
 \end_layout
 
 \begin_layout Standard
-El alumno debe únicamente el final de la materia Cálculo numérico.
+El alumno tiene aprobadas con final las materias correlativas necesarias:
+ Laboratorios 6 y 7 y Físicas teóricas 1, 2 y 3.
 \end_layout
 
 \begin_layout Standard
@@ -281,7 +282,7 @@ correspondiente a la partícula.
  Por otro lado, en las observaciones, se cuentan con espectros de absorción,
  tomados para una serie de direcciones en el cielo (
 \emph on
-lineas de la visual)
+líneas de la visual)
 \emph default
 .
  
@@ -510,16 +511,29 @@ texttt{http://trident-project.org/}
  de fluido lagrangianas a una deposición de las mismas sobre una grilla.
  Esto resulta útil para visualizar proyecciones espaciales de las propiedades
  del sistema, tales como la densidad y temperatura, como vemos en la Figura
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:dens"
-plural "false"
-caps "false"
-noprefix "false"
+ 1
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{fig:dens}
+\end_layout
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+.
  El segundo módulo utiliza esta deposición sobre una grilla para calcular
  los espectros sintéticos.
  Sobre esta grilla, se definen los campos de densidad, temperatura y otras
@@ -531,20 +545,32 @@ noprefix "false"
 \begin_layout Standard
 Para tomar un espectro sintético, debemos defininir una dirección como 
 \emph on
-linea de la visual
+línea de la visual
 \emph default
  y una lista de elementos para los cuales calcular las líneas de absorción.
  En base a la densidad, temperatura y metalicidad sobre las celdas de la
  grilla interceptadas por esta línea, el programa calcula las abundancias
  relativas de estos elementos y posteriormente sus líneas de absorción utilizand
 o un modelo de equilibrio iónico; dando un resultado como se ve en la Figura
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:espectro"
-plural "false"
-caps "false"
-noprefix "false"
+ 2
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{fig:espectro}
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -572,6 +598,8 @@ Por último, deseamos tomar una muestra de espectros sintéticos para una
  misma naturaleza.
  De ese modo, podremos caracterizar las propiedades generales del gas en
  el halo de las galaxias y el medio circundante.
+ En la Figura 3 podemos ver el detalle de una línea de absorción, graficada
+ en funcíon de la velocidad del gas; como se encuentra en la literatura.
 \end_layout
 
 \begin_layout Standard
@@ -582,9 +610,15 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:dens"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{fig:dens}
+\end_layout
 
 \end_inset
 
@@ -605,7 +639,7 @@ name "fig:dens"
 \begin_layout Plain Layout
 Proyección bidimensional de la densidad, junto con la 
 \emph on
-linea de la visual
+línea de la visual
 \emph default
  sobre la cual se toma el espectro de absorción.
  
@@ -738,8 +772,8 @@ name "fig:C"
 \begin_layout Plain Layout
 
 \lang english
-Detalle del espectro de absorción para una línea de absorción del C, en
- función de la velocidad del gas.
+Detalle del espectro para una línea de absorción del C, en función de la
+ velocidad del gas.
 \end_layout
 
 \end_inset

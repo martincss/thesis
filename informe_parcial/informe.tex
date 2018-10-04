@@ -1,4 +1,4 @@
-%% LyX 2.3.0 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.3.1 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[english,american]{article}
 \usepackage{utopia}
@@ -6,6 +6,7 @@
 \usepackage[latin9]{inputenc}
 \usepackage{geometry}
 \geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\usepackage{verbatim}
 \usepackage{graphicx}
 
 \makeatletter
@@ -16,7 +17,6 @@
 
 \usepackage{babel}
 \begin{document}
-
 \title{Informe parcial de Tesis de licenciatura}
 
 \maketitle
@@ -40,7 +40,8 @@ e-mail: \texttt{snuza@iafe.uba.ar}\\
 
 \section{Materias correlativas pendientes}
 
-El alumno debe únicamente el final de la materia Cálculo numérico.
+El alumno tiene aprobadas con final las materias correlativas necesarias:
+Laboratorios 6 y 7 y Físicas teóricas 1, 2 y 3.
 
 \pagebreak{}
 
@@ -68,7 +69,7 @@ dentro de la partícula. A partir de estas masas se puede calcular
 la \emph{metalicidad }(fracción de la masa en elementos posteriores
 a H y He con respecto a la masa total)\emph{ }correspondiente a la
 partícula. Por otro lado, en las observaciones, se cuentan con espectros
-de absorción, tomados para una serie de direcciones en el cielo (\emph{lineas
+de absorción, tomados para una serie de direcciones en el cielo (\emph{líneas
 de la visual)}. 
 
 El objetivo principal de la presente tesis es la creación de una muestra
@@ -118,20 +119,26 @@ El primero nos permite transformar los datos en términos de partículas
 de fluido lagrangianas a una deposición de las mismas sobre una grilla.
 Esto resulta útil para visualizar proyecciones espaciales de las propiedades
 del sistema, tales como la densidad y temperatura, como vemos en la
-Figura \ref{fig:dens} El segundo módulo utiliza esta deposición sobre
-una grilla para calcular los espectros sintéticos. Sobre esta grilla,
-se definen los campos de densidad, temperatura y otras propiedades
-en base a un suavizado de las propiedades localizadas espacialmente
-en las partículas. 
+Figura 1%
+\begin{comment}
+\ref{fig:dens}
+\end{comment}
+. El segundo módulo utiliza esta deposición sobre una grilla para
+calcular los espectros sintéticos. Sobre esta grilla, se definen los
+campos de densidad, temperatura y otras propiedades en base a un suavizado
+de las propiedades localizadas espacialmente en las partículas. 
 
 Para tomar un espectro sintético, debemos defininir una dirección
-como \emph{linea de la visual} y una lista de elementos para los cuales
+como \emph{línea de la visual} y una lista de elementos para los cuales
 calcular las líneas de absorción. En base a la densidad, temperatura
 y metalicidad sobre las celdas de la grilla interceptadas por esta
 línea, el programa calcula las abundancias relativas de estos elementos
 y posteriormente sus líneas de absorción utilizando un modelo de equilibrio
-iónico; dando un resultado como se ve en la Figura \ref{fig:espectro}.
-\\
+iónico; dando un resultado como se ve en la Figura 2%
+\begin{comment}
+\ref{fig:espectro}
+\end{comment}
+. \\
 Una de las principales dificultades hasta el momento fue la necesidad
 de adaptar las \emph{snapshots} al formato necesario para la interacción
 con estos módulos. Esto requirió varias pruebas, entendimiento de
@@ -144,15 +151,16 @@ en curso. En base a esa muestra, podemos analizar propiedades estadísticas
 de los espectros y realizar una comparación directa con las observaciones
 de esta misma naturaleza. De ese modo, podremos caracterizar las propiedades
 generales del gas en el halo de las galaxias y el medio circundante.
+En la Figura 3 podemos ver el detalle de una línea de absorción, graficada
+en funcíon de la velocidad del gas; como se encuentra en la literatura.
 
 \begin{figure}
 \begin{centering}
 \label{fig:dens}\includegraphics[scale=0.3]{load_projection_ray_trans}
 \par\end{centering}
-\caption{Proyección bidimensional de la densidad, junto con la \emph{linea
+\caption{Proyección bidimensional de la densidad, junto con la \emph{línea
 de la visual} sobre la cual se toma el espectro de absorción. }
 \end{figure}
-
 \selectlanguage{english}%
 \begin{figure}
 \begin{minipage}[c][1\totalheight][t]{0.45\textwidth}%
@@ -171,8 +179,8 @@ los elementos C y Si.}
 \label{fig:C}\includegraphics[scale=0.3]{C_II}
 \par\end{center}
 \selectlanguage{english}%
-\caption{Detalle del espectro de absorción para una línea de absorción del
-C, en función de la velocidad del gas.}
+\caption{Detalle del espectro para una línea de absorción del C, en función
+de la velocidad del gas.}
 %
 \end{minipage}
 \end{figure}
