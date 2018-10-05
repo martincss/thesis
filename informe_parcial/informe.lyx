@@ -430,8 +430,8 @@ outputs
 \emph default
 .
  De esa forma, se tiene disponible una lista con los subhalos y las partículas
- que integran a cada uno; esto nos permitó identificarlas unívocamente para
- su seguimiento a lo largo de las instancias temporales.
+ que integran a cada uno; esto nos permitió identificarlas unívocamente
+ para su seguimiento a lo largo de las instancias temporales.
  En el caso de las simulaciones del grupo local, los dos principales subhalos
  corresponden a candidatos para la Vía Láctea y M31; pudimos obtener las
  posiciones de sus centros como mínimos locales del potencial.
@@ -453,7 +453,7 @@ texttt{YT}
 
 \end_inset
 
- 
+
 \begin_inset Foot
 status open
 
@@ -475,7 +475,7 @@ texttt{https://yt-project.org/}
 
 \end_inset
 
-y 
+ y 
 \begin_inset ERT
 status open
 
