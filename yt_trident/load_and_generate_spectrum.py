@@ -99,4 +99,4 @@ def make_spectrum():
 center, right_edge, left_edge, new_box_size = select_edges()
 #px = make_projection()
 ray = make_ray()
-make_spectrum()
+#make_spectrum()
