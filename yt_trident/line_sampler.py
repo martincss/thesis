@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import yt
 import trident
 
-from tools import my_field_def, unit_base, subhalo_center, ray_end_from_sph
+from tools import my_field_def, unit_base, subhalo_center, ray_end_from_sph, make_projection
 
 
 # ~~~~~~~~~~~~~~~~~~~~ SETUP ~~~~~~~~~~~~~~~~~~~~
@@ -26,6 +26,9 @@ mw_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
 #mw_center = ds.arr(mw_center, 'code_length')
 
 
+# ~~~~~~~~~~~~~~~~~~~~ ACTIONS ~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 def make_ray_from_mw(spherical_coords, ray_filename):
 
     ray_end = ray_end_from_sph(mw_center, spherical_coords)
@@ -40,4 +43,18 @@ def make_ray_from_mw(spherical_coords, ray_filename):
 
     return ray
 
-ray_from_mw = make_ray_from_mw((1000, 0, 0), './rays_2Mpc_LG/ray_1000_0_0.h5')
+def make_ray_sample(r_interval, theta_interval, phi_interval):
+
+    for r, theta, phi in zip(r_interval, theta_interval, phi_interval):
+
+        ray_filename = './rays_2Mpc_LG/ray_{:.0f}_{:.0f}_{:.0f}.h5'.format(r, theta, phi)
+
+        make_ray_from_mw(*(r, theta, phi), ray_filename=ray_filename=)
+
+
+
+
+
+
+
+#ray_from_mw = make_ray_from_mw((1000, 0, 0), './rays_2Mpc_LG/ray_1000_0_0.h5')

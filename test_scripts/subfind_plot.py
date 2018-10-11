@@ -49,7 +49,7 @@ def plotxy_subhalo(subhalo, num_species):
 fig, ax = plt.subplots()
 
 # Define number of subhaloes to plot (if -1, plot all of them)
-number_of_subhaloes = 20
+number_of_subhaloes = 2
 
 for subhalo in cat.subhalo[:number_of_subhaloes]:
 

@@ -28,6 +28,10 @@ unit_base = {'length'   :  (1.0, 'kpccm/h'),
              'velocity' :      (1.0, 'km/s')}
 
 def subhalo_center(subfind_path, snap_num, subhalo_number):
+    """
+    Finds and returns subhalo center by locating its minimum of potential, for
+    the specified subhalo_number.
+    """
 
     cat = SubfindCatalogue(subfind_path, snap_num)
     center = cat.subhalo[subhalo_number].pot_min
@@ -48,3 +52,25 @@ def ray_end_from_sph(ray_start, trajectory):
             np.sin(phi) * np.sin(theta), np.cos(theta)])
 
     return ray_end
+
+
+def make_projection(ds, center, side):
+
+    center = ds.arr(center, 'code_length')
+    new_box_size = ds.quan(side,'kpccm/h')
+
+    px = yt.ProjectionPlot(ds, 'x', ('gas', 'density'), center=center,
+        width=new_box_size)
+
+    return px
+
+def plot_ray_in_projection(px):
+
+    px.annotate_ray(ray, arrow=True)
+
+
+def ray_mean_density(ray, field):
+
+    density = np.asarray(ray.r['index', field])
+
+    return np.mean(density)
