@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import numpy as np
 import matplotlib.pyplot as plt
 import yt
@@ -33,13 +34,20 @@ def make_ray_from_mw(spherical_coords, ray_filename):
 
     ray_end = ray_end_from_sph(mw_center, spherical_coords)
 
+    print('el ray_end antes es ', ray_end)
+    # for some reason, make_simple_ray overwrites start_position and end_position
+    # actually are passed as pointers and changes them to cgs; this can be prevented
+    # by passing them as ray_start.copy()
     ray = trident.make_simple_ray(ds,
-                                  start_position=mw_center,
-                                  end_position=ray_end,
+                                  start_position=mw_center.copy(),
+                                  end_position=ray_end.copy(),
 #                                  trajectory=spherical_coords,
                                   data_filename=ray_filename,
                                   lines=line_list,
                                   ftype='Gas')
+
+    print('los mw_center y ray_end después son ', mw_center, ray_end)
+
 
     return ray
 
@@ -49,12 +57,12 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
 
         ray_filename = './rays_2Mpc_LG/ray_{:.0f}_{:.0f}_{:.0f}.h5'.format(r, theta, phi)
 
-        make_ray_from_mw(*(r, theta, phi), ray_filename=ray_filename=)
+        make_ray_from_mw(*(r, theta, phi), ray_filename=ray_filename)
 
 
 
 
 
 
-
+#ray_test = make_ray_from_mw((1000, 0, 0), './rays_2Mpc_LG/ray_test.h5')
 #ray_from_mw = make_ray_from_mw((1000, 0, 0), './rays_2Mpc_LG/ray_1000_0_0.h5')

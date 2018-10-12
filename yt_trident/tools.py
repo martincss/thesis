@@ -56,6 +56,8 @@ def ray_end_from_sph(ray_start, trajectory):
 
 def make_projection(ds, center, side):
 
+    # for this to work fine and prevent colorbar to linear scale, center and 
+    # box_size must be passed with these units
     center = ds.arr(center, 'code_length')
     new_box_size = ds.quan(side,'kpccm/h')
 
