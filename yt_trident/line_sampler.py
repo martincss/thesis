@@ -77,7 +77,7 @@ r_array = np.array([1000])
 theta_array = np.linspace(0, pi, 10)
 phi_array = np.linspace(0, 2*pi, 10)
 
-make_ray_sample(r_array, theta_array, phi_array)
+#make_ray_sample(r_array, theta_array, phi_array)
 
 
 #ray_test = make_ray_from_mw((1000, 0, 0), './rays_2Mpc_LG/ray_test.h5')

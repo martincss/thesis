@@ -56,7 +56,7 @@ def ray_end_from_sph(ray_start, trajectory):
 
 def make_projection(ds, center, side):
 
-    # for this to work fine and prevent colorbar to linear scale, center and 
+    # for this to work fine and prevent colorbar to linear scale, center and
     # box_size must be passed with these units
     center = ds.arr(center, 'code_length')
     new_box_size = ds.quan(side,'kpccm/h')
@@ -66,13 +66,13 @@ def make_projection(ds, center, side):
 
     return px
 
-def plot_ray_in_projection(px):
+def plot_ray_in_projection(px, ray):
 
     px.annotate_ray(ray, arrow=True)
 
 
 def ray_mean_density(ray, field):
 
-    density = np.asarray(ray.r['index', field])
+    density = np.asarray(ray.r['gas', field])
 
     return np.mean(density)
