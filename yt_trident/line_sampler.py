@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 plt.ion()
 import yt
 import trident
+import gc
 
 from tools import my_field_def, unit_base, subhalo_center, ray_end_from_sph, make_projection
 
@@ -34,9 +35,9 @@ mw_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
 
 def make_ray_from_mw(spherical_coords, ray_filename):
 
-#    ray_end = ray_end_from_sph(mw_center, spherical_coords)
+    ray_end = ray_end_from_sph(mw_center, spherical_coords)
 
-    print('el ray_end antes es ', ray_end)
+#    print('el ray_end antes es ', ray_end)
     # for some reason, make_simple_ray overwrites start_position and end_position
     # actually are passed as pointers and changes them to cgs; this can be prevented
     # by passing them as ray_start.copy()
@@ -63,8 +64,10 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
 
                 print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~ \n'.format(r, theta, phi))
 
-                ray_filename = './rays_2Mpc_LG/ray_{:.0f}_{:.1f}_{:.1f}.h5'.format(r, theta, phi)
-                ray_from_mw = make_ray_from_mw((r, theta, phi), ray_filename=ray_filename)
+                ray_filename = './rays_2Mpc_LG/ray_{:.0f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
+                make_ray_from_mw((r, theta, phi), ray_filename=ray_filename)
+
+                gc.collect()
 
 
 # ~~~~~~~~~~~~~~~~ RAY SAMPLING ~~~~~~~~~~~~~~~~~~
