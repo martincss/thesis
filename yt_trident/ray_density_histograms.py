@@ -35,9 +35,16 @@ def get_single_densities():
 
         ray = yt.load(handle)
 
-        singular_densities.append(np.asarray(ray.r['gas','C_p1_number_density']))
+        singular_densities.append(np.asarray(ray.r['gas','C_p1_number_density'])[:])
 
-    return np.array(singular_densities)
+
+    all_singular_densities = singular_densities[0]
+
+    for array in singular_densities[1:]:
+        all_singular_densities = np.concatenate(all_singular_densities, array)
+
+
+    return all_singular_densities
 
 
 mean_densities = get_mean_densities()
@@ -47,4 +54,4 @@ plt.figure()
 plt.hist(mean_densities, bins=20, color = 'red', edgecolor='black', linewidth=1.2)
 
 #plt.figure()
-#plt.hist(mean_densities, bins=20, color = 'red', edgecolor='black', linewidth=1.2)
+#plt.hist(singular_densities, bins=20, color = 'red', edgecolor='black', linewidth=1.2)
