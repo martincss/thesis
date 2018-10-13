@@ -5,7 +5,6 @@ import glob
 import matplotlib.pyplot as plt
 plt.ion()
 import yt
-import trident
 from tools import ray_mean_density
 
 
@@ -16,6 +15,9 @@ phi_array = np.linspace(0, 2*pi, 10)
 
 
 def get_mean_densities():
+    """
+    Returns mean density of each ray in an array.
+    """
 
     mean_densities = []
 
@@ -28,6 +30,9 @@ def get_mean_densities():
     return np.array(mean_densities)
 
 def get_single_densities():
+    """
+    Returns array of all densities for each cell in each ray.
+    """
 
     singular_densities = []
 
@@ -37,21 +42,17 @@ def get_single_densities():
 
         singular_densities.append(np.asarray(ray.r['gas','C_p1_number_density'])[:])
 
-
-    all_singular_densities = singular_densities[0]
-
-    for array in singular_densities[1:]:
-        all_singular_densities = np.concatenate(all_singular_densities, array)
-
-
-    return all_singular_densities
-
+    return np.hstack(singular_densities)
 
 mean_densities = get_mean_densities()
 singular_densities = get_single_densities()
 
 plt.figure()
 plt.hist(mean_densities, bins=20, color = 'red', edgecolor='black', linewidth=1.2)
+plt.xlabel('C_p1_number_density (cm^-3)', fontsize = 15)
+plt.ylabel('Counts', fontsize = 15)
+plt.title('Mean line number densities', fontsize = 15)
+
 
 #plt.figure()
-#plt.hist(singular_densities, bins=20, color = 'red', edgecolor='black', linewidth=1.2)
+#plt.hist(singular_densities, bins=200, color = 'red', edgecolor='black', linewidth=1.2, log=True)
