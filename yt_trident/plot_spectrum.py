@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 plt.ion()
 from scipy.signal import find_peaks
 
-fname = 'spec_raw.txt'
+fname = './spectra_C_Si_2Mpc_LG/spec_1000_0.0_1.4.txt'
 
 wavelength, tau, flux, flux_error = np.loadtxt(fname=fname, delimiter=' ',
                                     skiprows=1, unpack=True)

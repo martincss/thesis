@@ -4,6 +4,7 @@ from iccpy.gadget import load_snapshot
 from iccpy.gadget.subfind import SubfindCatalogue
 import numpy as np
 import matplotlib.pyplot as plt
+import pdb
 
 LIGHTSPEED = 299792 # in km/s
 
@@ -95,6 +96,7 @@ def get_line(line, wavelength, flux, wavelength_interval):
     """
 
     lambda_0 = line_table[line]
+
     # quedó re cabeza ese indexeado en la salida del where, ver como se arregla
     try:
         central_index = np.where(wavelength == lambda_0)[0][0]
@@ -105,6 +107,7 @@ def get_line(line, wavelength, flux, wavelength_interval):
         delta_lambda = wavelength_section - lambda_0
         flux_section = flux[left_index:right_index]
         velocity = LIGHTSPEED * delta_lambda/lambda_0
+        pdb.set_trace()
 
     except:
         velocity = np.array([])
