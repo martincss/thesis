@@ -107,7 +107,7 @@ def get_line(line, wavelength, flux, wavelength_interval):
         delta_lambda = wavelength_section - lambda_0
         flux_section = flux[left_index:right_index]
         velocity = LIGHTSPEED * delta_lambda/lambda_0
-        pdb.set_trace()
+        #pdb.set_trace()
 
     except:
         velocity = np.array([])
