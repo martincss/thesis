@@ -56,11 +56,11 @@ def make_ray_from_mw(spherical_coords, ray_filename):
 
 def make_ray_sample(r_interval, theta_interval, phi_interval):
 
-    for r in r_array:
+    for r in r_interval:
 
-        for theta in theta_array:
+        for theta in theta_interval:
 
-            for phi in phi_array:
+            for phi in phi_interval:
 
                 print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~ \n'.format(r, theta, phi))
 
@@ -68,6 +68,19 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
                 make_ray_from_mw((r, theta, phi), ray_filename=ray_filename)
 
                 gc.collect()
+
+
+def sample_m31_and_away(r_interval):
+
+    theta_m31 = pi/9
+    phi_m31 = 6*(2*pi)/9
+
+    make_ray_sample(r_interval, theta_m31, phi_m31)
+
+    theta_away = pi/2 - theta_m31
+    phi_away = phi_m31
+
+    make_ray_sample(r_interval, theta_away, phi_away)
 
 
 # ~~~~~~~~~~~~~~~~ RAY SAMPLING ~~~~~~~~~~~~~~~~~~
@@ -79,6 +92,10 @@ phi_array = np.linspace(0, 2*pi, 10)
 
 #make_ray_sample(r_array, theta_array, phi_array)
 
+# ~~~~~~~~~~~~~~ RAY SAMPLING M31 ~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#ray_test = make_ray_from_mw((1000, 0, 0), './rays_2Mpc_LG/ray_test.h5')
-#ray_from_mw = make_ray_from_mw((1000, 0, 0), './rays_2Mpc_LG/ray_1000_0_0.h5')
+
+distances = np.linspace(0, 1000, 100)
+
+sample_m31_and_away(distances)
