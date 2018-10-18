@@ -60,14 +60,14 @@ def ray_end_from_sph(ray_start, trajectory):
     return ray_end
 
 
-def make_projection(ds, center, side):
+def make_projection(ds, center, side, axis):
 
     # for this to work fine and prevent colorbar to linear scale, center and
     # box_size must be passed with these units
     center = ds.arr(center, 'code_length')
     new_box_size = ds.quan(side,'kpccm/h')
 
-    px = yt.ProjectionPlot(ds, 'x', ('gas', 'density'), center=center,
+    px = yt.ProjectionPlot(ds, axis, ('gas', 'density'), center=center,
         width=new_box_size)
 
     return px
