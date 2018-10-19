@@ -72,13 +72,13 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
 
 def sample_m31_and_away(r_interval):
 
-    theta_m31 = pi/9
+    theta_m31 = 2*pi/9
     phi_m31 = 6*(2*pi)/9
 
     make_ray_sample(r_interval, theta_m31, phi_m31)
 
-    theta_away = pi/2 - theta_m31
-    phi_away = phi_m31
+    theta_away = 3*pi/9
+    phi_away = 2*(2*pi)/9
 
     make_ray_sample(r_interval, theta_away, phi_away)
 
