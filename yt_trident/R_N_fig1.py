@@ -82,16 +82,18 @@ def plot_labels(sightlines_list, axarr):
     #fig.suptitle('Absorption lines along sightlines', fontsize = 15)
 
 
-fig, axarr = plt.subplots(len(line_table), len(sightlines_list))
+if __name__ = __main__:
 
-for col_number, ray_filename in enumerate(sightlines_list):
+    fig, axarr = plt.subplots(len(line_table), len(sightlines_list))
 
-    ray = yt.load(rays_directory + ray_filename)
+    for col_number, ray_filename in enumerate(sightlines_list):
 
-    wavelength, flux = load_or_make_spectrum(ray, ray_filename)
+        ray = yt.load(rays_directory + ray_filename)
 
-    for row_number, line in enumerate(line_table.keys()):
+        wavelength, flux = load_or_make_spectrum(ray, ray_filename)
 
-        plot_line(axarr[row_number, col_number], line, wavelength, flux)
+        for row_number, line in enumerate(line_table.keys()):
 
-plot_labels(sightlines_list, axarr)
+            plot_line(axarr[row_number, col_number], line, wavelength, flux)
+
+    plot_labels(sightlines_list, axarr)

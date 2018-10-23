@@ -97,5 +97,7 @@ phi_array = np.linspace(0, 2*pi, 10)
 
 
 distances = np.linspace(0, 1000, 100)
+distances_detail = np.linspace(0, 10, 50)
+distances_more_detail = np.linspace(0, 1, 50)
 
-sample_m31_and_away(distances)
+sample_m31_and_away(distances_more_detail)

@@ -16,6 +16,8 @@ spectra_directory = './spectra_C_Si_2Mpc_LG/'
 figs_directory = './R_N_Fig1_by_distance_2MpcLG/'
 
 distances = np.linspace(0, 1000, 100)
+distances_detail = np.linspace(0, 10, 50)
+distances_more_detail = np.linspace(0, 1, 50)
 
 def sightlines_filenames(distance):
     """
@@ -73,7 +75,7 @@ def make_figure(sightlines_list, distance):
 # ~~~~~~~~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-for r in distances:
+for r in distances_detail:
 
     sightlines_list = sightlines_filenames(r)
 
