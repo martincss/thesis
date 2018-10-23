@@ -82,7 +82,7 @@ def plot_labels(sightlines_list, axarr):
     #fig.suptitle('Absorption lines along sightlines', fontsize = 15)
 
 
-if __name__ = __main__:
+if __name__ == '__main__':
 
     fig, axarr = plt.subplots(len(line_table), len(sightlines_list))
 

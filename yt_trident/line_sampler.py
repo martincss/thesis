@@ -64,7 +64,7 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
 
                 print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~ \n'.format(r, theta, phi))
 
-                ray_filename = './rays_2Mpc_LG/ray_{:.0f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
+                ray_filename = './rays_2Mpc_LG/ray_{:.3f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
                 make_ray_from_mw((r, theta, phi), ray_filename=ray_filename)
 
                 gc.collect()

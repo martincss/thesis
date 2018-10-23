@@ -75,7 +75,7 @@ def make_figure(sightlines_list, distance):
 # ~~~~~~~~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-for r in distances_detail:
+for r in distances_more_detail:
 
     sightlines_list = sightlines_filenames(r)
 
