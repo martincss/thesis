@@ -66,7 +66,7 @@ def make_figure(sightlines_list, distance):
     #manager.window.showMaximized()
 
     fig.set_tight_layout(0.4)
-    fig.savefig(figs_directory + 'r_{:.2f}.png'.format(distance))
+    fig.savefig(figs_directory + 'r_{:07.2F}.png'.format(distance))
     plt.close(fig)
 
 
