@@ -67,7 +67,7 @@ def plot_line(ax, line, wavelength, flux):
     ax.legend()
     ax.grid(True)
 
-def plot_labels():
+def plot_labels(sightlines_list, axarr):
 
     for axes in axarr[-1,:]:
 
@@ -94,4 +94,4 @@ for col_number, ray_filename in enumerate(sightlines_list):
 
         plot_line(axarr[row_number, col_number], line, wavelength, flux)
 
-plot_labels()
+plot_labels(sightlines_list, axarr)
