@@ -8,5 +8,73 @@ import trident
 from tools import get_line, line_table
 from R_N_fig1 import load_or_make_spectrum, plot_line
 
+line_list = ['C II', 'C IV', 'Si III', 'Si II']
+bandwidth = 4
+
+rays_directory = './rays_2Mpc_LG/'
+spectra_directory = './spectra_C_Si_2Mpc_LG/'
+figs_directory = './R_N_Fig1_by_distance_2MpcLG/'
 
 distances = np.linspace(0, 1000, 100)
+
+def sightlines_filenames(distance):
+    """
+    Return filenames of ray to m31 and away for the corresponding distance
+    (hard coded af, it can maybe be changed)
+    """
+
+    ray_to_m31_filename = 'ray_{:.0f}_0.70_4.19.h5'.format(distance)
+
+    ray_away_filename = 'ray_{:.0f}_1.05_1.40.h5'.format(distance)
+
+    return [ray_to_m31_filename, ray_away_filename]
+
+# for some reason won't work well when imported, maybe fix later
+def plot_labels(axarr, distance):
+
+    for axes in axarr[-1,:]:
+
+        axes.set_xlabel('Velocity [km/s]', fontsize = 15)
+
+    axarr[2,0].set_ylabel('Relative Flux', fontsize = 15)
+
+    column_titles = ['Ray to M31, r={:.2f}'.format(distance), 'Ray away, r={:.2f}'.format(distance)]
+    for i, axes in enumerate(axarr[0,:]):
+
+        axes.set_title('{} \n {}'.format(column_titles[i], 'Si III'), fontsize = 15)
+
+
+def make_figure(sightlines_list, distance):
+
+    # figsize here for a big display, maybe adjust it to any computer?
+    fig, axarr = plt.subplots(len(line_table), len(sightlines_list), figsize=(18,10.5))
+
+    for col_number, ray_filename in enumerate(sightlines_list):
+
+        ray = yt.load(rays_directory + ray_filename)
+
+        wavelength, flux = load_or_make_spectrum(ray, ray_filename)
+
+        for row_number, line in enumerate(line_table.keys()):
+
+            plot_line(axarr[row_number, col_number], line, wavelength, flux)
+
+    plot_labels(axarr, distance)
+
+    # to maximize figure, then tight_layout and save
+    #manager = plt.get_current_fig_manager()
+    #manager.window.showMaximized()
+
+    fig.set_tight_layout(0.4)
+    fig.savefig(figs_directory + 'r_{:.2f}.png'.format(distance))
+    plt.close(fig)
+
+
+# ~~~~~~~~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+for r in distances:
+
+    sightlines_list = sightlines_filenames(r)
+
+    make_figure(sightlines_list, r)
