@@ -4,6 +4,7 @@ import os
 import matplotlib.pyplot as plt
 plt.ion()
 import yt
+yt.enable_parallelism()
 import trident
 from tools import get_line, line_table
 import pandas as pd

@@ -4,6 +4,7 @@ import os
 import matplotlib.pyplot as plt
 plt.ion()
 import yt
+yt.enable_parallelism()
 import trident
 from tools import get_line, line_table
 from R_N_fig1 import load_or_make_spectrum, plot_line
@@ -18,16 +19,28 @@ figs_directory = './R_N_Fig1_by_distance_2MpcLG/'
 distances = np.linspace(0, 1000, 100)
 distances_detail = np.linspace(0, 10, 50)
 distances_more_detail = np.linspace(0, 1, 50)
+close_up_050 = np.linspace(0.36, 0.51, 20)
 
 def sightlines_filenames(distance):
     """
     Return filenames of ray to m31 and away for the corresponding distance
     (hard coded af, it can maybe be changed)
     """
+    # WARNING: CHECK FILENAME FOR DECIMAL PLACES IN FORMAT, NOT ALL SAMPLES EQUAL
 
-    ray_to_m31_filename = 'ray_{:.0f}_0.70_4.19.h5'.format(distance)
+    # when using distances_detail or others
 
-    ray_away_filename = 'ray_{:.0f}_1.05_1.40.h5'.format(distance)
+
+
+    ray_to_m31_filename = 'ray_{:.3f}_0.70_4.19.h5'.format(distance)
+
+    ray_away_filename = 'ray_{:.3f}_1.05_1.40.h5'.format(distance)
+
+    # when using 'distances'
+    #ray_to_m31_filename = 'ray_{:.0f}_0.70_4.19.h5'.format(distance)
+
+    #ray_away_filename = 'ray_{:.0f}_1.05_1.40.h5'.format(distance)
+
 
     return [ray_to_m31_filename, ray_away_filename]
 
@@ -40,7 +53,7 @@ def plot_labels(axarr, distance):
 
     axarr[2,0].set_ylabel('Relative Flux', fontsize = 15)
 
-    column_titles = ['Ray to M31, r={:.2f}'.format(distance), 'Ray away, r={:.2f}'.format(distance)]
+    column_titles = ['Ray to M31, r={:.3f}'.format(distance), 'Ray away, r={:.3f}'.format(distance)]
     for i, axes in enumerate(axarr[0,:]):
 
         axes.set_title('{} \n {}'.format(column_titles[i], 'Si III'), fontsize = 15)
@@ -68,7 +81,7 @@ def make_figure(sightlines_list, distance):
     #manager.window.showMaximized()
 
     fig.set_tight_layout(0.4)
-    fig.savefig(figs_directory + 'r_{:07.2F}.png'.format(distance))
+    fig.savefig(figs_directory + 'r_{:09.2F}.png'.format(distance))
     plt.close(fig)
 
 
