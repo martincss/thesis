@@ -19,7 +19,7 @@ figs_directory = './R_N_Fig1_by_distance_2MpcLG/'
 distances = np.linspace(0, 1000, 100)
 distances_detail = np.linspace(0, 10, 50)
 distances_more_detail = np.linspace(0, 1, 50)
-close_up_050 = np.linspace(0.36, 0.51, 20)
+close_up_050 = np.linspace(0.36, 0.51, 50)
 
 def sightlines_filenames(distance):
     """
@@ -88,7 +88,7 @@ def make_figure(sightlines_list, distance):
 # ~~~~~~~~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-for r in distances_more_detail:
+for r in close_up_050:
 
     sightlines_list = sightlines_filenames(r)
 
