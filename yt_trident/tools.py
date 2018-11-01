@@ -50,7 +50,12 @@ def ray_end_from_sph(ray_start, trajectory):
     Since supplying 'trajectory' argument to make_simple_ray does not seem to be
     working because some issue with yt units; am now reproducing the function
     here.
+
+    Given a starting position, and the spherical coordinates for an end point
+    (using such starting position as the origin), returns ray end point as array.
     """
+    
+    ray_start = np.asarray(ray_start)
 
     r, theta, phi = trajectory
 

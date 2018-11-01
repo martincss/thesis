@@ -18,6 +18,8 @@ snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
 snap_num = 135
 subfind_path = '../../2Mpc_LG'
 
+rays_directory = './rays_2Mpc_LG/'
+
 
 ds = yt.frontends.gadget.GadgetDataset(filename=snap_file, unit_base= unit_base,
     field_spec=my_field_def)
@@ -35,25 +37,28 @@ mw_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def make_ray_from_mw(spherical_coords, ray_filename):
+    """
+    Creates ray with center of MW as starting point, and end point passed by
+    its spherical coordinates from MW center.
+
+    Spherical coordinates of end point to be passed as iterable.
+    """
 
     ray_end = ray_end_from_sph(mw_center, spherical_coords)
 
-#    print('el ray_end antes es ', ray_end)
     # for some reason, make_simple_ray overwrites start_position and end_position
     # actually are passed as pointers and changes them to cgs; this can be prevented
     # by passing them as ray_start.copy()
     ray = trident.make_simple_ray(ds,
                                   start_position=mw_center.copy(),
                                   end_position=ray_end.copy(),
-#                                  trajectory=spherical_coords,
                                   data_filename=ray_filename,
                                   lines=line_list,
                                   ftype='Gas')
 
-#    print('los mw_center y ray_end después son ', mw_center, ray_end)
-
-
     return ray
+
+
 
 def make_ray_sample(r_interval, theta_interval, phi_interval):
 
@@ -65,7 +70,7 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
 
                 print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~ \n'.format(r, theta, phi))
 
-                ray_filename = './rays_2Mpc_LG/ray_{:.3f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
+                ray_filename = rays_directory + 'ray_{:.3f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
                 make_ray_from_mw((r, theta, phi), ray_filename=ray_filename)
 
                 gc.collect()
