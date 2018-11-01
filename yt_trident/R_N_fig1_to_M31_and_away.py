@@ -12,8 +12,8 @@ from R_N_fig1 import load_or_make_spectrum, plot_line
 line_list = ['C II', 'C IV', 'Si III', 'Si II']
 bandwidth = 4
 
-rays_directory = './rays_2Mpc_LG/'
-spectra_directory = './spectra_C_Si_2Mpc_LG/'
+rays_directory = './rays_2Mpc_LG_from_mw/'
+spectra_directory = './spectra_C_Si_2Mpc_LG_from_mw/'
 figs_directory = './R_N_Fig1_by_distance_2MpcLG/'
 
 distances = np.linspace(0, 1000, 100)

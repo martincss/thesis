@@ -77,6 +77,10 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
 
 
 def sample_m31_and_away(r_interval):
+    """
+    Samples rays on fixed directions to m31 and away from m31, varying distance
+    to endpoints.
+    """
 
     theta_m31 = 2*pi/9
     phi_m31 = 6*(2*pi)/9

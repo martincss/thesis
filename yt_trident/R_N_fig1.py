@@ -20,8 +20,8 @@ sightlines_list = ['ray_1000_1.0_5.6.h5', 'ray_1000_0.3_2.8.h5', 'ray_1000_1.7_1
 line_list = ['C II', 'C IV', 'Si III', 'Si II']
 bandwidth = 4
 
-rays_directory = './rays_2Mpc_LG/'
-spectra_directory = './spectra_C_Si_2Mpc_LG/'
+rays_directory = './rays_2Mpc_LG_from_mw/'
+spectra_directory = './spectra_C_Si_2Mpc_LG_from_mw/'
 
 def make_spectrum(ray, filename):
 
