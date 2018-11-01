@@ -12,14 +12,16 @@ from R_N_fig1 import load_or_make_spectrum, plot_line
 line_list = ['C II', 'C IV', 'Si III', 'Si II']
 bandwidth = 4
 
-rays_directory = './rays_2Mpc_LG_from_mw/'
-spectra_directory = './spectra_C_Si_2Mpc_LG_from_mw/'
-figs_directory = './R_N_Fig1_by_distance_2MpcLG/'
+rays_directory = './rays_2Mpc_LG_from_outside_mw/'
+spectra_directory = './spectra_C_Si_2Mpc_LG_from_outside_mw/'
+figs_directory = './R_N_Fig1_by_distance_2MpcLG_outside_mw/'
 
 distances = np.linspace(0, 1000, 100)
 distances_detail = np.linspace(0, 10, 50)
 distances_more_detail = np.linspace(0, 1, 50)
 close_up_050 = np.linspace(0.36, 0.51, 50)
+
+all_distances = np.concatenate((distances_more_detail, distances_detail, distances))
 
 def sightlines_filenames(distance):
     """
@@ -88,7 +90,7 @@ def make_figure(sightlines_list, distance):
 # ~~~~~~~~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-for r in close_up_050:
+for r in all_distances[1:]:
 
     sightlines_list = sightlines_filenames(r)
 
