@@ -32,7 +32,7 @@ def make_spectrum(ray, filename):
     sg.save_spectrum(filename + '.txt')
     sg.plot_spectrum(filename + '.png')
 
-def load_or_make_spectrum(ray, ray_filename):
+def load_or_make_spectrum(ray, ray_filename, spectra_directory):
 
     # this parses the ray_filename extracting the ray and .h5
     # eg. ray_1000_2.33_4.55.h5 ---> _1000_2.33_4.55
@@ -49,7 +49,7 @@ def load_or_make_spectrum(ray, ray_filename):
     return wavelength, flux
 
 
-def plot_line(ax, line, wavelength, flux):
+def plot_line(ax, line, wavelength, flux, bandwidth):
     """
     Given a line from line_table (i.e. 'C II'), plots the relative flux as a
     function of LSR velocity.
@@ -95,6 +95,6 @@ if __name__ == '__main__':
 
         for row_number, line in enumerate(line_table.keys()):
 
-            plot_line(axarr[row_number, col_number], line, wavelength, flux)
+            plot_line(axarr[row_number, col_number], line, wavelength, flux, bandwidth)
 
     plot_labels(sightlines_list, axarr)

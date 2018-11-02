@@ -10,14 +10,14 @@ from tools import get_line, line_table
 from R_N_fig1 import load_or_make_spectrum, plot_line
 
 line_list = ['C II', 'C IV', 'Si III', 'Si II']
-bandwidth = 4
+bandwidth = 6
 
 rays_directory = './rays_2Mpc_LG_from_outside_mw/'
 spectra_directory = './spectra_C_Si_2Mpc_LG_from_outside_mw/'
 figs_directory = './R_N_Fig1_by_distance_2MpcLG_outside_mw/'
 
-distances = np.linspace(0, 1000, 100)
-distances_detail = np.linspace(0, 10, 50)
+distances = np.linspace(10, 700, 100)
+distances_detail = np.linspace(1, 10, 50)
 distances_more_detail = np.linspace(0, 1, 50)
 close_up_050 = np.linspace(0.36, 0.51, 50)
 
@@ -70,11 +70,12 @@ def make_figure(sightlines_list, distance):
 
         ray = yt.load(rays_directory + ray_filename)
 
-        wavelength, flux = load_or_make_spectrum(ray, ray_filename)
+        wavelength, flux = load_or_make_spectrum(ray, ray_filename, spectra_directory)
 
         for row_number, line in enumerate(line_table.keys()):
 
-            plot_line(axarr[row_number, col_number], line, wavelength, flux)
+            plot_line(axarr[row_number, col_number], line, wavelength, flux, bandwidth)
+            axarr[row_number, col_number].set_xlim(-600,600) # hardcoded af, to be changed...
 
     plot_labels(axarr, distance)
 
