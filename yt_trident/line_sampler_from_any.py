@@ -18,7 +18,7 @@ snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
 snap_num = 135
 subfind_path = '../../2Mpc_LG'
 
-rays_directory = './rays_2Mpc_LG_from_outside_mw/'
+rays_directory = './falopa/'
 
 
 ds = yt.frontends.gadget.GadgetDataset(filename=snap_file, unit_base= unit_base,
@@ -44,7 +44,7 @@ def make_ray_from_any(ray_start, spherical_coords_end, ray_filename):
     Spherical coordinates of end point to be passed as iterable.
     """
 
-    ray_end = ray_end_from_sph(ray_start, spherical_coords)
+    ray_end = ray_end_from_sph(ray_start, spherical_coords_end)
 
     # for some reason, make_simple_ray overwrites start_position and end_position
     # actually are passed as pointers and changes them to cgs; this can be prevented
@@ -110,4 +110,4 @@ distances_more_detail = np.linspace(0, 1, 50)
 
 all_distances = np.concatenate((distances_more_detail, distances_detail, distances))
 
-sample_m31_and_away(all_distances)
+sample_m31_and_away(all_distances[1:])
