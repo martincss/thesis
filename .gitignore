@@ -42,7 +42,7 @@ nosetests.xml
 *.bak
 
 # Animations
-*.mp4
+#*.mp4
 
 # Data files
 #*.txt
