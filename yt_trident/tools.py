@@ -43,7 +43,8 @@ def subhalo_center(subfind_path, snap_num, subhalo_number):
     """
 
     cat = SubfindCatalogue(subfind_path, snap_num)
-    center = cat.subhalo[subhalo_number].com
+    center = cat.subhalo[subhalo_number].pot_min
+    #center = cat.subhalo[subhalo_number].com
 
     return center
 
