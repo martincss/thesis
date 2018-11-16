@@ -8,6 +8,8 @@ import yt
 from tools import ray_mean_density
 import pandas as pd
 
+rays_directory = './rays_2Mpc_LG_from_mw/'
+
 theta_array = np.linspace(0, pi, 10)
 phi_array = np.linspace(0, 2*pi, 10)
 
@@ -21,7 +23,7 @@ def get_mean_densities():
 
     mean_densities = []
 
-    for handle in glob.glob('./rays_2Mpc_LG/ray_1000_*_*'):
+    for handle in glob.glob(rays_directory + 'ray_1000_*_*'):
 
         ray = yt.load(handle)
 
@@ -36,7 +38,7 @@ def get_single_densities():
 
     singular_densities = []
 
-    for handle in glob.glob('./rays_2Mpc_LG/ray_1000*'):
+    for handle in glob.glob(rays_directory + 'ray_1000*'):
 
         ray = yt.load(handle)
 
@@ -45,7 +47,7 @@ def get_single_densities():
     return np.hstack(singular_densities)
 
 mean_densities = get_mean_densities()
-singular_densities = get_single_densities()
+#singular_densities = get_single_densities()
 
 
 
@@ -56,5 +58,5 @@ plt.ylabel('Counts', fontsize = 15)
 plt.title('Mean line number densities', fontsize = 15)
 
 
-#plt.figure()
-#plt.hist(singular_densities, bins=200, color = 'red', edgecolor='black', linewidth=1.2, log=True)
+plt.figure()
+plt.hist(singular_densities, bins=200, color = 'red', edgecolor='black', linewidth=1.2, log=True)

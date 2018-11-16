@@ -15,7 +15,7 @@ my_field_def = ( "Coordinates",
             ("InternalEnergy", "Gas"),
             ("Density", "Gas"),
             ("ElectronAbundance", "Gas"),
-            ("NeutralHydrogenAbundance", "Gas"),
+#            ("NeutralHydrogenAbundance", "Gas"),
             ("Temperature", "Gas"),
             ("SmoothingLength", "Gas"),
             #("StarFormationRate", "Gas"),
@@ -33,6 +33,9 @@ unit_base = {'length'   :  (1.0, 'kpccm/h'),
 line_table = {'Si III':1206, 'Si IIa':1190, 'Si IIb':1260, 'C II': 1334,
               'C IV':1548}
 
+sg = trident.SpectrumGenerator(lambda_min = 1150, lambda_max = 1600,
+    dlambda = 0.01)
+
 def subhalo_center(subfind_path, snap_num, subhalo_number):
     """
     Finds and returns subhalo center by locating its minimum of potential, for
@@ -41,6 +44,7 @@ def subhalo_center(subfind_path, snap_num, subhalo_number):
 
     cat = SubfindCatalogue(subfind_path, snap_num)
     center = cat.subhalo[subhalo_number].pot_min
+    #center = cat.subhalo[subhalo_number].com
 
     return center
 
@@ -54,7 +58,7 @@ def ray_end_from_sph(ray_start, trajectory):
     Given a starting position, and the spherical coordinates for an end point
     (using such starting position as the origin), returns ray end point as array.
     """
-    
+
     ray_start = np.asarray(ray_start)
 
     r, theta, phi = trajectory

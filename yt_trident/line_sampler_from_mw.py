@@ -111,5 +111,5 @@ distances_detail = np.linspace(0, 10, 50)
 distances_more_detail = np.linspace(0, 1, 50)
 close_up_050 = np.linspace(0.36, 0.51, 50)
 
-
-sample_m31_and_away(close_up_050)
+if __name__ == '__main__':
+    sample_m31_and_away(close_up_050)
