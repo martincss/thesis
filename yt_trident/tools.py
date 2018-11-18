@@ -8,6 +8,10 @@ import pdb
 
 LIGHTSPEED = 299792 # in km/s
 
+# do not comment any further fields to load in dataset; for some reason,
+# (seemingly an YT bug), gas density is not smoothed correctly if fewer fields
+# than these are present
+
 my_field_def = ( "Coordinates",
             "Velocities",
             "ParticleIDs",
@@ -15,10 +19,10 @@ my_field_def = ( "Coordinates",
             ("InternalEnergy", "Gas"),
             ("Density", "Gas"),
             ("ElectronAbundance", "Gas"),
-#            ("NeutralHydrogenAbundance", "Gas"),
+            ("NeutralHydrogenAbundance", "Gas"),
             ("Temperature", "Gas"),
             ("SmoothingLength", "Gas"),
-            #("StarFormationRate", "Gas"),
+#            ("StarFormationRate", "Gas"),
             ("Age", "Stars"),
             ("Metallicity", "Gas"),
 #            ("Metallicity", "Stars"),
@@ -43,8 +47,8 @@ def subhalo_center(subfind_path, snap_num, subhalo_number):
     """
 
     cat = SubfindCatalogue(subfind_path, snap_num)
-    center = cat.subhalo[subhalo_number].pot_min
-    #center = cat.subhalo[subhalo_number].com
+    #center = cat.subhalo[subhalo_number].pot_min
+    center = cat.subhalo[subhalo_number].com
 
     return center
 
@@ -84,6 +88,21 @@ def make_projection(ds, center, side, axis):
 def plot_ray_in_projection(px, ray):
 
     px.annotate_ray(ray, arrow=True)
+
+
+def make_slice(ds, center, side, axis):
+
+    center = ds.arr(center, 'code_length')
+    new_box_size = ds.quan(side,'kpccm/h')
+
+    slc = yt.SlicePlot(ds, axis, ('gas', 'density'), center = center,
+        width = new_box_size)
+
+    return slc
+
+def plot_ray_in_slice(slc, ray):
+
+    slc.annotate_ray(ray, arrow=True)
 
 
 def ray_mean_density(ray, field):
