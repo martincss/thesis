@@ -32,7 +32,7 @@ def write_headers(handle):
                 x [kpccm/h]\t y [kpccm/h]\t z [kpccm/h]\t v_x [km/s]\t v_y [km/s]\t \
                 v_z [km/s]\t\n'
 
-    header_short = 'Line,z_cosmo,tz_dopp,z_eff,lambda,delta lamdba,N,thermal_b,EW,v_los,T,dl,cell_volume,x,y,z,vx,vy,vz\n'
+    header_short = 'Line,z_cosmo,z_dopp,z_eff,lambda,delta lamdba,N,thermal_b,EW,v_los,T,dl,cell_volume,x,y,z,vx,vy,vz\n'
 
     handle.write(header_long)
     handle.write(header_short)
@@ -40,7 +40,7 @@ def write_headers(handle):
 
 def write_line(handle, cell_number, spectral_line, data_array):
 
-    line = '{:14s}' + 3*',{:e}' + 2*',{:.6f}' + 13*',{:e}'+'\n'
+    line = '{:s}' + 3*',{:e}' + 2*',{:.6f}' + 13*',{:e}'+'\n'
 
     handle.write(line.format(spectral_line, *data_array[cell_number,:]))
 
@@ -50,7 +50,7 @@ def generate_absorbers_file(ray_filename):
 
     """
 
-    absorber_filename = 'abs_' + ray_filename[4:-3]
+    absorber_filename = 'abs_' + ray_filename[4:-3] + '.txt'
 
     ray = yt.load(rays_directory + ray_filename)
 
