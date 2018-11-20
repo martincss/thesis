@@ -7,13 +7,8 @@ import yt
 yt.enable_parallelism()
 import trident
 from tools import make_SpectrumGenerator, get_line_observables_dict
+from get_arrays_from_ray import 
 import pandas as pd
 
 
-
-
-def get_lines(line_observables_dict):
-
-    lines = sorted(list(line_observables_dict.keys()))
-
-    return lines
+ray.r['velocity_x'].in_units('km/s')
