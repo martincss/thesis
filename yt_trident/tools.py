@@ -54,10 +54,10 @@ def get_line_observables_dict(ray, sg, line_list):
     from an SpectrumGenerator object.
     """
 
-    sg.make_spectrum(ray, lines = line_list, store_obervables = True)
+    sg.make_spectrum(ray, lines = line_list, store_observables = True)
 
     return sg.line_observables_dict
-    
+
 
 
 def subhalo_center(subfind_path, snap_num, subhalo_number):

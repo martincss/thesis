@@ -6,14 +6,6 @@ line_observables_dict.
 import numpy as np
 import gc
 
-
-def get_lines(line_observables_dict):
-
-    lines = sorted(list(line_observables_dict.keys()))
-
-    return lines
-
-
 def get_z_cosmo(ray):
 
     z_cosmo = np.array(ray.r['redshift'])
@@ -40,15 +32,16 @@ def get_lambda_obs_angstrom(line_observables_dict):
 
 def get_delta_lambda_angstrom(line_observables_dict):
 
-    delta_lambda = np.array(line_observables_dict[])
+    delta_lambda = np.array(line_observables_dict['delta_lambda'])
 
     return delta_lambda
 
 def get_column_density_cm2(line_observables_dict):
 
-    column_desity = np.array(line_observables_dict['column_desity'])
+    column_density = np.array(line_observables_dict['column_density'])
 
-    return column_desity
+    return column_density
+
 
 def get_thermal_broadening_kms(line_observables_dict):
 
@@ -62,7 +55,7 @@ def get_equivalent_width_angstrom(line_observables_dict):
     I'm copying that same value for each cell.
     """
 
-    size = np.len(line_observables_dict['column_desity'])
+    size = len(line_observables_dict['column_density'])
     EW = float(line_observables_dict['EW']) * np.ones(size)
 
     return EW
@@ -116,13 +109,13 @@ def get_vx_kmccmh(ray):
 
     return vx
 
-def get_y_kmccmh(ray):
+def get_vy_kmccmh(ray):
 
     vy = np.array(ray.r['velocity_y'].in_units('km/s'))
 
     return vy
 
-def get_z_kmccmh(ray):
+def get_vz_kmccmh(ray):
 
     vz = np.array(ray.r['velocity_z'].in_units('km/s'))
 
@@ -130,3 +123,28 @@ def get_z_kmccmh(ray):
 
 
 def get_data_array(ray, line_observables_dict):
+
+    z_cosmo = get_z_cosmo(ray)
+    z_dopp = get_z_dopp(ray)
+    z_eff = get_z_eff(ray)
+    lambda_obs = get_lambda_obs_angstrom(line_observables_dict)
+    delta_lambda = get_delta_lambda_angstrom(line_observables_dict)
+    column_density = get_column_density_cm2(line_observables_dict)
+    thermal_b = get_thermal_broadening_kms(line_observables_dict)
+    EW = get_equivalent_width_angstrom(line_observables_dict)
+    v_los = get_velocity_los_kms(ray)
+    temp = get_temperature(ray)
+    dl = get_dl_kmccmh(ray)
+    cell_volume = get_cell_volume_kpccmh3(ray)
+    x = get_x_kmccmh(ray)
+    y = get_y_kmccmh(ray)
+    z = get_z_kmccmh(ray)
+    vx = get_vx_kmccmh(ray)
+    vy = get_vy_kmccmh(ray)
+    vz = get_vz_kmccmh(ray)
+
+    array_tuple = (z_cosmo, z_dopp, z_eff, lambda_obs, delta_lambda,
+                column_density, thermal_b, EW, v_los, temp, dl, cell_volume,
+                x, y, z, vx, vy, vz)
+
+    return np.column_stack(array_tuple)
