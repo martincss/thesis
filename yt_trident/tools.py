@@ -37,8 +37,28 @@ unit_base = {'length'   :  (1.0, 'kpccm/h'),
 line_table = {'Si III':1206, 'Si IIa':1190, 'Si IIb':1260, 'C II': 1334,
               'C IV':1548}
 
-sg = trident.SpectrumGenerator(lambda_min = 1150, lambda_max = 1600,
-    dlambda = 0.01)
+def make_SpectrumGenerator():
+    """
+    Convenience function to generate a SpectrumGenerator instance with preset
+    wavelength range.
+    """
+
+    sg = trident.SpectrumGenerator(lambda_min = 1150, lambda_max = 1600,
+        dlambda = 0.01)
+
+    return sg
+
+def get_line_observables_dict(ray, sg, line_list):
+    """
+    Convenience function to make and retrive line_observables_dict dictionary
+    from an SpectrumGenerator object.
+    """
+
+    sg.make_spectrum(ray, lines = line_list, store_obervables = True)
+
+    return sg.line_observables_dict
+    
+
 
 def subhalo_center(subfind_path, snap_num, subhalo_number):
     """
