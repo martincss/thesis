@@ -162,4 +162,5 @@ def get_line(line, wavelength, flux, wavelength_interval):
         flux_section = np.array([])
         print('Wavelength not in spectrum')
 
-    return velocity, flux_section
+    #return velocity, flux_section
+    return wavelength_section, flux_section
