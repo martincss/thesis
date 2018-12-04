@@ -34,7 +34,7 @@ unit_base = {'length'   :  (1.0, 'kpccm/h'),
              'mass'     :   (1.0e10, 'Msun'),
              'velocity' :      (1.0, 'km/s')}
 
-line_table = {'Si III':1206, 'Si IIa':1190, 'Si IIb':1260, 'C II': 1334,
+line_table = {'Si III':1206, 'Si IIa':1190, 'Si IIb':1260, 'C II': 1334.532,
               'C IV':1548}
 
 def make_SpectrumGenerator():
@@ -132,24 +132,22 @@ def ray_mean_density(ray, field):
     return np.mean(density)
 
 
-def get_line(line, wavelength, flux, wavelength_interval):
+def get_line(lambda_0, wavelength, flux, wavelength_interval):
 
     """
-    Given a line from line_table (i.e. 'C II') and a wavelength bandwidth,
-    isolates the line's wavelengths and flux, and converts wavelength to
+    Given a central wavelength lambda_0 and a wavelength bandwidth,
+    isolates wavelengths and flux in that interval, and converts wavelength to
     velocity in LSR
     Return velocity and flux arrays for the selected line
 
-    wavelength_interval in angstroms
+    lambda_0 and wavelength_interval in angstroms
     """
 
-    lambda_0 = line_table[line]
 
-    # quedó re cabeza ese indexeado en la salida del where, ver como se arregla
     try:
-        central_index = np.where(wavelength == lambda_0)[0][0]
-        right_index = np.where(wavelength == int(lambda_0 + wavelength_interval/2))[0][0]
-        left_index = np.where(wavelength == int(lambda_0 - wavelength_interval/2))[0][0]
+        central_index = np.argmin(wavelength == lambda_0)
+        right_index = np.argmin(wavelength == int(lambda_0 + wavelength_interval/2))
+        left_index = np.argmin(wavelength == int(lambda_0 - wavelength_interval/2))
 
         wavelength_section = wavelength[left_index:right_index]
         delta_lambda = wavelength_section - lambda_0
@@ -162,5 +160,5 @@ def get_line(line, wavelength, flux, wavelength_interval):
         flux_section = np.array([])
         print('Wavelength not in spectrum')
 
-    #return velocity, flux_section
-    return wavelength_section, flux_section
+    return velocity, flux_section
+    #return wavelength_section, flux_section
