@@ -4,6 +4,7 @@ from iccpy.gadget import load_snapshot
 from iccpy.gadget.subfind import SubfindCatalogue
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 import pdb
 
 LIGHTSPEED = 299792 # in km/s
@@ -194,5 +195,23 @@ def get_absorber_chars(ray, line_key, line_list):
     position = (np.array(ray.r['x'].in_units('kpccm/h'))[index_absorber],
                 np.array(ray.r['y'].in_units('kpccm/h'))[index_absorber],
                 np.array(ray.r['z'].in_units('kpccm/h'))[index_absorber])
+
+    return lambda_obs, N, T, position
+
+
+def get_absorber_chars_from_file(absorber_filename, line_key):
+
+    df = pd.read_csv(absorber_filename, skiprows=1)
+    line_df = (df[df['Line']== line_key])
+
+    N = line_df['N'].max()
+    T = line_df['T'].median()
+
+    index_absorber = np.argmax(line_df['N'])
+
+    lambda_obs = line_df['lambda'][index_absorber]
+
+    position = (line_df['x'][index_absorber], line_df['y'][index_absorber],
+                line_df['z'][index_absorber])
 
     return lambda_obs, N, T, position

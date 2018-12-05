@@ -6,7 +6,7 @@ plt.ion()
 import yt
 yt.enable_parallelism()
 import trident
-from tools import get_line, get_absorber_chars
+from tools import get_line, get_absorber_chars, get_absorber_chars_from_file
 import pandas as pd
 
 # np.mean(mean_denisities) = 2.528e-6
@@ -23,6 +23,8 @@ bandwidth = 4
 
 rays_directory = './rays_2Mpc_LG_from_mw/'
 spectra_directory = './spectra_C_Si_2Mpc_LG_from_mw/'
+absorbers_directory = './absorbers_2Mpc_LG_from_mw/'
+
 
 def make_spectrum(ray, filename):
 
@@ -56,7 +58,19 @@ def plot_line(ax, line, wavelength, flux, bandwidth, ray):
     function of LSR velocity.
     """
 
-    lambda_0, N, T, absorber_position = get_absorber_chars(ray, line, line_list)
+    ray_filename = str(ray)
+    abs_filename = 'abs_' + ray_filename[4:-3] + '.txt'
+
+    if not os.path.exists(absorbers_directory + abs_filename):
+
+        lambda_0, N, T, absorber_position = get_absorber_chars(ray, line,
+                                                               line_list)
+
+    else:
+
+        lambda_0, N, T, absorber_position = get_absorber_chars_from_file(
+                                            absorbers_directory + abs_filename,
+                                            line)
 
     velocity, flux = get_line(lambda_0, wavelength=wavelength, flux=flux,
                     wavelength_interval=bandwidth)
