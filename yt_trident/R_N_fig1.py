@@ -6,7 +6,7 @@ plt.ion()
 import yt
 yt.enable_parallelism()
 import trident
-from tools import get_line, line_table
+from tools import get_line, get_absorber_chars
 import pandas as pd
 
 # np.mean(mean_denisities) = 2.528e-6
@@ -18,6 +18,7 @@ import pandas as pd
 sightlines_list = ['ray_1000_1.0_5.6.h5', 'ray_1000_0.3_2.8.h5', 'ray_1000_1.7_1.4.h5']
 
 line_list = ['C II', 'C IV', 'Si III', 'Si II']
+line_keys = ['Si III 1206', 'Si II 1190', 'Si II 1260','C II 1335', 'C IV 1548']
 bandwidth = 4
 
 rays_directory = './rays_2Mpc_LG_from_mw/'
@@ -49,23 +50,25 @@ def load_or_make_spectrum(ray, ray_filename, spectra_directory):
     return wavelength, flux
 
 
-def plot_line(ax, line, wavelength, flux, bandwidth):
+def plot_line(ax, line, wavelength, flux, bandwidth, ray):
     """
     Given a line from line_table (i.e. 'C II'), plots the relative flux as a
     function of LSR velocity.
     """
 
-    velocity, flux = get_line(line, wavelength=wavelength, flux=flux,
+    lambda_0, N, T, absorber_position = get_absorber_chars(ray, line, line_list)
+
+    velocity, flux = get_line(lambda_0, wavelength=wavelength, flux=flux,
                     wavelength_interval=bandwidth)
 
-    ax.plot(velocity, flux, label = '$\\lambda = ${}'.format(line_table[line]))
+    ax.plot(velocity, flux, label = 'N = {:.2e}\nT = {:.2e}'.format(N, T))
 
     #ax.set_xlabel('Velocity [km/s]', fontsize = 15)
     #ax.set_ylabel('Relative Flux', fontsize = 15)
     ax.set_title('{}'.format(line), fontsize = 15)
     ax.set_xlim(-430,430)
     ax.set_ylim(0,1.1)
-    ax.legend()
+    ax.legend(loc='best')
     ax.grid(True)
 
 def plot_labels(sightlines_list, axarr):
@@ -78,23 +81,24 @@ def plot_labels(sightlines_list, axarr):
 
     for i, axes in enumerate(axarr[0,:]):
 
-        axes.set_title('{} \n {}'.format(sightlines_list[i], 'Si III'), fontsize = 15)
+        axes.set_title('{} \n {}'.format(sightlines_list[i], 'Si III 1206'), fontsize = 15)
 
     #fig.suptitle('Absorption lines along sightlines', fontsize = 15)
 
 
 if __name__ == '__main__':
 
-    fig, axarr = plt.subplots(len(line_table), len(sightlines_list))
+    fig, axarr = plt.subplots(len(line_keys), len(sightlines_list))
 
     for col_number, ray_filename in enumerate(sightlines_list):
 
         ray = yt.load(rays_directory + ray_filename)
 
-        wavelength, flux = load_or_make_spectrum(ray, ray_filename)
+        wavelength, flux = load_or_make_spectrum(ray, ray_filename, spectra_directory)
 
-        for row_number, line in enumerate(line_table.keys()):
+        for row_number, line in enumerate(line_keys):
 
-            plot_line(axarr[row_number, col_number], line, wavelength, flux, bandwidth)
+            plot_line(axarr[row_number, col_number], line,
+                      wavelength, flux, bandwidth, ray)
 
     plot_labels(sightlines_list, axarr)
