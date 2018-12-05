@@ -37,6 +37,14 @@ unit_base = {'length'   :  (1.0, 'kpccm/h'),
 line_table = {'Si III':1206, 'Si IIa':1190, 'Si IIb':1260, 'C II': 1334.532,
               'C IV':1548}
 
+all_line_keys = ['C II* 1336', 'C II 1335', 'C II* 1037', 'C II 1036',
+                 'C II 904', 'C IV 1551', 'C IV 1548', 'Si III 1206',
+                 'Si II* 1817', 'Si II 1808', 'Si II* 1309', 'Si II 1304',
+                 'Si II* 1265', 'Si II 1260', 'Si II* 1197', 'Si II* 1194',
+                 'Si II 1193', 'Si II 1190', 'Si II* 1024', 'Si II 1021',
+                 'Si II* 993', 'Si II 990']
+
+
 def make_SpectrumGenerator():
     """
     Convenience function to generate a SpectrumGenerator instance with preset
@@ -145,9 +153,9 @@ def get_line(lambda_0, wavelength, flux, wavelength_interval):
 
 
     try:
-        central_index = np.argmin(wavelength == lambda_0)
-        right_index = np.argmin(wavelength == int(lambda_0 + wavelength_interval/2))
-        left_index = np.argmin(wavelength == int(lambda_0 - wavelength_interval/2))
+        central_index = np.argmin(np.abs(wavelength - lambda_0))
+        right_index = np.argmin(np.abs(wavelength - lambda_0 - wavelength_interval/2))
+        left_index = np.argmin(np.abs(wavelength - lambda_0 + wavelength_interval/2))
 
         wavelength_section = wavelength[left_index:right_index]
         delta_lambda = wavelength_section - lambda_0
@@ -162,3 +170,29 @@ def get_line(lambda_0, wavelength, flux, wavelength_interval):
 
     return velocity, flux_section
     #return wavelength_section, flux_section
+
+
+def get_absorber_chars(ray, line_key, line_list):
+    """
+    Given a ray and a line_key to the line_observables_dict (e.g. 'C II 1335'),
+    returns wavelength at cell with max column_density, such column_density,
+    temperature median along the ray and position of max column_density.
+
+    line_list must be supplied.
+    """
+
+    sg = make_SpectrumGenerator()
+    observables_dict = get_line_observables_dict(ray, sg, line_list)
+
+    N = np.array(observables_dict[line_key]['column_density']).max()
+    T = np.median(np.array(ray.r['temperature']))
+
+    index_absorber = np.argmax(np.array(observables_dict[line_key]['column_density']))
+
+    lambda_obs = np.array(observables_dict[line_key]['lambda_obs'])[index_absorber]
+
+    position = (np.array(ray.r['x'].in_units('kpccm/h'))[index_absorber],
+                np.array(ray.r['y'].in_units('kpccm/h'))[index_absorber],
+                np.array(ray.r['z'].in_units('kpccm/h'))[index_absorber])
+
+    return lambda_obs, N, T, position
