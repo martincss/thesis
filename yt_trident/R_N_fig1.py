@@ -6,7 +6,7 @@ plt.ion()
 import yt
 yt.enable_parallelism()
 import trident
-from tools import get_line, get_absorber_chars, get_absorber_chars_from_file
+from tools import get_line, get_absorber_chars, get_absorber_chars_from_file, absorber_region_2Mpc_LG
 import pandas as pd
 
 # np.mean(mean_denisities) = 2.528e-6
@@ -72,10 +72,13 @@ def plot_line(ax, line, wavelength, flux, bandwidth, ray):
                                             absorbers_directory + abs_filename,
                                             line)
 
+    absorber_region = absorber_region_2Mpc_LG(absorber_position)
+
     velocity, flux = get_line(lambda_0, wavelength=wavelength, flux=flux,
                     wavelength_interval=bandwidth)
 
-    ax.plot(velocity, flux, label = 'N = {:.2e}\nT = {:.2e}'.format(N, T))
+    ax.plot(velocity, flux, label = 'N = {:.2e}\nT = {:.2e}\n{}'.format(N, T,
+                                                               absorber_region))
 
     #ax.set_xlabel('Velocity [km/s]', fontsize = 15)
     #ax.set_ylabel('Relative Flux', fontsize = 15)

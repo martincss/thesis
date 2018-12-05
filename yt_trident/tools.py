@@ -3,6 +3,7 @@ import trident
 from iccpy.gadget import load_snapshot
 from iccpy.gadget.subfind import SubfindCatalogue
 import numpy as np
+from numpy.linalg import norm
 import matplotlib.pyplot as plt
 import pandas as pd
 import pdb
@@ -215,3 +216,41 @@ def get_absorber_chars_from_file(absorber_filename, line_key):
                 line_df['z'][index_absorber])
 
     return lambda_obs, N, T, position
+
+
+def absorber_region_2Mpc_LG(absorber_position):
+
+    mw_center = subhalo_center(subfind_path='../../2Mpc_LG', snap_num=135,
+                subhalo_number = 1)
+
+    m31_center = subhalo_center(subfind_path='../../2Mpc_LG', snap_num=135,
+                subhalo_number = 0)
+
+    R_vir_mw = 222.2
+    R_vir_m31 = 244.9
+
+    # R_vir_mw = 100
+    # R_vir_m31 = 100
+
+    R_gg = m31_center - mw_center
+
+    r_mw_abs = np.array(absorber_position) - mw_center
+
+    r_disc_abs = r_mw_abs - (r_mw_abs @ R_gg) * R_gg / norm(R_gg)**2
+
+    if norm(np.array(absorber_position) - mw_center) <= R_vir_mw:
+
+        return 'MW halo'
+
+    elif norm(np.array(absorber_position) - m31_center) <= R_vir_m31:
+
+        return 'M31 halo'
+
+    elif norm(r_disc_abs) <= max((R_vir_mw, R_vir_m31)) and \
+         norm(r_mw_abs) < norm (R_gg):
+
+         return 'bridge'
+
+    else:
+
+        return 'IGM'
