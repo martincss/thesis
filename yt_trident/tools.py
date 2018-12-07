@@ -9,6 +9,7 @@ import pandas as pd
 import pdb
 
 LIGHTSPEED = 299792 # in km/s
+HUBBLE_2Mpc_LG = 0.7
 
 # do not comment any further fields to load in dataset; for some reason,
 # (seemingly an YT bug), gas density is not smoothed correctly if fewer fields
@@ -226,8 +227,8 @@ def absorber_region_2Mpc_LG(absorber_position):
     m31_center = subhalo_center(subfind_path='../../2Mpc_LG', snap_num=135,
                 subhalo_number = 0)
 
-    R_vir_mw = 222.2
-    R_vir_m31 = 244.9
+    R_vir_mw = 222.2 * HUBBLE_2Mpc_LG
+    R_vir_m31 = 244.9 * HUBBLE_2Mpc_LG
 
     # R_vir_mw = 100
     # R_vir_m31 = 100
