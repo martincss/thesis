@@ -45,7 +45,7 @@ def write_line(handle, cell_number, spectral_line, data_array):
     handle.write(line.format(spectral_line, *data_array[cell_number,:]))
 
 
-def generate_absorbers_file(ray_filename):
+def generate_absorbers_file(ray_filename, absorbers_directory):
     """
 
     """
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     ray_filename = 'ray_990_0.70_4.19.h5'
 
-    generate_absorbers_file(ray_filename)
+    generate_absorbers_file(ray_filename, absorbers_directory)
 
 #
 # ray_filename = 'rays_2Mpc_LG_from_mw/ray_990_0.70_4.19.h5'

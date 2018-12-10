@@ -9,15 +9,15 @@ import matplotlib.pyplot as plt
 plt.ion()
 LIGHTSPEED = 299792 # in km/s
 
-fname = 'spec_C_Si_raw.txt'
+fname = 'spectra_C_Si_2Mpc_LG_from_mw/spec_990_0.70_4.19.txt'
 
 wavelength, tau, flux, flux_error = np.loadtxt(fname=fname, delimiter=' ',
                                     skiprows=1, unpack=True)
 
-line_table = {'Si III':1206, 'Si IIa':1190, 'Si IIb':1260, 'C II': 1334,
+line_table = {'Si III':1206, 'Si IIa':1190, 'Si IIb':1260, 'C II': 1334.53,
               'C IV':1548}
 
-bandwidth = 4
+bandwidth = 16
 
 def get_line(line, wavelength_interval):
     """
