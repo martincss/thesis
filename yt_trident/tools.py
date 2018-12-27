@@ -3,8 +3,10 @@ import trident
 from iccpy.gadget import load_snapshot
 from iccpy.gadget.subfind import SubfindCatalogue
 import numpy as np
+from numpy import pi
 from numpy.linalg import norm
 import matplotlib.pyplot as plt
+import math
 import pandas as pd
 import pdb
 
@@ -81,6 +83,22 @@ def subhalo_center(subfind_path, snap_num, subhalo_number):
     center = cat.subhalo[subhalo_number].com
 
     return center
+
+
+def sphere_uniform_grid(number_of_points):
+    """
+    Given a number of points, generates two arrays containing the theta and phi
+    coordinates of a uniform distribution of points on the sphere.
+
+    Taken from https://stackoverflow.com/a/44164075
+    """
+
+    indices = np.arange(0, number_of_points, dtype=float) + 0.5
+
+    theta = np.arccos(1 - 2*indices/number_of_points)
+    phi = pi * (1 + 5**0.5) * indices
+
+    return theta, phi
 
 
 def ray_end_from_sph(ray_start, trajectory):
