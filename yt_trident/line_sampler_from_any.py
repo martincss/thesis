@@ -8,7 +8,7 @@ yt.enable_parallelism()
 import trident
 import gc
 
-from tools import my_field_def, unit_base, subhalo_center, ray_end_from_sph, make_projection
+from tools import my_field_def, unit_base, subhalo_center, ray_start_from_sph, make_projection
 
 
 # ~~~~~~~~~~~~~~~~~~~~ SETUP ~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +36,7 @@ mw_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
 # ~~~~~~~~~~~~~~~~~~~~ ACTIONS ~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def make_ray_from_any(ray_start, spherical_coords_end, ray_filename):
+def make_ray_from_any(ray_end, spherical_coords_start, ray_filename):
     """
     Creates ray with center of MW as starting point, and end point passed by
     its spherical coordinates from MW center.
@@ -44,7 +44,7 @@ def make_ray_from_any(ray_start, spherical_coords_end, ray_filename):
     Spherical coordinates of end point to be passed as iterable.
     """
 
-    ray_end = ray_end_from_sph(ray_start, spherical_coords_end)
+    ray_start = ray_start_from_sph(ray_end, spherical_coords_start)
 
     # for some reason, make_simple_ray overwrites start_position and end_position
     # actually are passed as pointers and changes them to cgs; this can be prevented
@@ -87,13 +87,13 @@ def sample_m31_and_away(r_interval):
 
     theta_m31 = 2*pi/9
     phi_m31 = 6*(2*pi)/9
-    ray_start_to_m31 = ray_end_from_sph(mw_center, (300, theta_m31, phi_m31))
+    ray_end_to_m31 = ray_start_from_sph(mw_center, (300, theta_m31, phi_m31))
 
     make_ray_sample(r_interval, [theta_m31], [phi_m31], ray_start_to_m31)
 
     theta_away = 3*pi/9
     phi_away = 2*(2*pi)/9
-    ray_start_away = ray_end_from_sph(mw_center, (300, theta_m31, phi_m31))
+    ray_end_away = ray_start_from_sph(mw_center, (300, theta_m31, phi_m31))
 
     make_ray_sample(r_interval, [theta_away], [phi_away], ray_start_away)
 

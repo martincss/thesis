@@ -101,24 +101,24 @@ def sphere_uniform_grid(number_of_points):
     return theta, phi
 
 
-def ray_end_from_sph(ray_start, trajectory):
+def ray_start_from_sph(ray_end, trajectory):
     """
     Since supplying 'trajectory' argument to make_simple_ray does not seem to be
     working because some issue with yt units; am now reproducing the function
     here.
 
-    Given a starting position, and the spherical coordinates for an end point
-    (using such starting position as the origin), returns ray end point as array.
+    Given an ending position, and the spherical coordinates for a starting point
+    (using such ending position as the origin), returns ray start point as array.
     """
 
-    ray_start = np.asarray(ray_start)
+    ray_end = np.asarray(ray_end)
 
     r, theta, phi = trajectory
 
-    ray_end = ray_start +  r * np.array([np.cos(phi) * np.sin(theta),
+    ray_start = ray_start +  r * np.array([np.cos(phi) * np.sin(theta),
             np.sin(phi) * np.sin(theta), np.cos(theta)])
 
-    return ray_end
+    return ray_start
 
 
 def make_projection(ds, center, side, axis):

@@ -8,7 +8,7 @@ yt.enable_parallelism()
 import trident
 import gc
 
-from tools import my_field_def, unit_base, subhalo_center, ray_end_from_sph, make_projection
+from tools import my_field_def, unit_base, subhalo_center, ray_start_from_sph, make_projection
 
 
 # ~~~~~~~~~~~~~~~~~~~~ SETUP ~~~~~~~~~~~~~~~~~~~~
@@ -38,20 +38,20 @@ mw_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
 
 def make_ray_from_mw(spherical_coords, ray_filename):
     """
-    Creates ray with center of MW as starting point, and end point passed by
-    its spherical coordinates from MW center.
+    Creates ray with center of MW as ending point (where the observer is),
+    and starting point passed by its spherical coordinates from MW center.
 
-    Spherical coordinates of end point to be passed as iterable.
+    Spherical coordinates of starting point to be passed as iterable.
     """
 
-    ray_end = ray_end_from_sph(mw_center, spherical_coords)
+    ray_start = ray_start_from_sph(mw_center, spherical_coords)
 
     # for some reason, make_simple_ray overwrites start_position and end_position
     # actually are passed as pointers and changes them to cgs; this can be prevented
     # by passing them as ray_start.copy()
     ray = trident.make_simple_ray(ds,
-                                  start_position=mw_center.copy(),
-                                  end_position=ray_end.copy(),
+                                  start_position=ray_start.copy(),
+                                  end_position=mw_center.copy(),
                                   data_filename=ray_filename,
                                   lines=line_list,
                                   ftype='Gas')

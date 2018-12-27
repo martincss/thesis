@@ -7,7 +7,7 @@ plt.ion()
 import yt
 yt.toggle_interactivity()
 yt.enable_parallelism()
-from tools import my_field_def, unit_base, subhalo_center, ray_end_from_sph, make_projection, make_slice, plot_ray_in_projection, plot_ray_in_slice
+from tools import my_field_def, unit_base, subhalo_center, ray_start_from_sph, make_projection, make_slice, plot_ray_in_projection, plot_ray_in_slice
 
 snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
 snap_num = 135
