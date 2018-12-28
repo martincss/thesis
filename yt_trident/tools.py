@@ -96,10 +96,10 @@ def sphere_uniform_grid(number_of_points):
 
     indices = np.arange(0, number_of_points, dtype=float) + 0.5
 
-    theta = np.arccos(1 - 2*indices/number_of_points)
-    phi = pi * (1 + 5**0.5) * indices
+    theta_array = np.arccos(1 - 2*indices/number_of_points)
+    phi_array = pi * (1 + 5**0.5) * indices
 
-    return theta, phi
+    return theta_array, phi_array
 
 
 def ray_start_from_sph(ray_end, trajectory):

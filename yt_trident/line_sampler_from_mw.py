@@ -8,7 +8,8 @@ yt.enable_parallelism()
 import trident
 import gc
 
-from tools import my_field_def, unit_base, subhalo_center, ray_start_from_sph, make_projection
+from tools import my_field_def, unit_base, subhalo_center, ray_start_from_sph, \
+    make_projection, sphere_uniform_grid
 
 
 # ~~~~~~~~~~~~~~~~~~~~ SETUP ~~~~~~~~~~~~~~~~~~~~
@@ -59,8 +60,24 @@ def make_ray_from_mw(spherical_coords, ray_filename):
     return ray
 
 
+def sample_single_sightline(r, theta, phi):
+    """
+    Samples ray along the sightline given by the sperical coordinates of
+    starting point to mw center as endpoint.
+    """
+
+    print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~ \n'.format(r, theta, phi))
+
+    ray_filename = rays_directory + 'ray_{:.3f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
+    make_ray_from_mw((r, theta, phi), ray_filename=ray_filename)
+
+
 
 def make_ray_sample(r_interval, theta_interval, phi_interval):
+    """
+    Given intervals for r, theta and phi, samples rays for each value in such
+    intervals (as iterables).
+    """
 
     for r in r_interval:
 
@@ -68,12 +85,15 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
 
             for phi in phi_interval:
 
-                print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~ \n'.format(r, theta, phi))
-
-                ray_filename = rays_directory + 'ray_{:.3f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
-                make_ray_from_mw((r, theta, phi), ray_filename=ray_filename)
+                sample_single_sightline(r, theta, phi)
 
                 gc.collect()
+
+def make_ray_sample_uniform(r_interval, number_of_sighlines):
+
+    theta_interval, phi_interval = sphere_uniform_grid(number_of_sighlines)
+
+    make_ray_sample(r_interval, theta_interval, phi_interval)
 
 
 def sample_m31_and_away(r_interval):

@@ -9,7 +9,11 @@ import matplotlib.pyplot as plt
 plt.ion()
 from scipy.signal import find_peaks
 
+<<<<<<< Updated upstream
 fname = './spectra_C_Si_2Mpc_LG/spec_990_0.70_4.19.txt'
+=======
+fname = './spec_990_0.70_4.19.txt'
+>>>>>>> Stashed changes
 
 wavelength, tau, flux, flux_error = np.loadtxt(fname=fname, delimiter=' ',
                                     skiprows=1, unpack=True)
