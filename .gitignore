@@ -47,6 +47,7 @@ nosetests.xml
 # Data files
 #*.txt
 #*.h5
+./yt_trident/spectra_C_Si_2Mpc_LG_from_mw/
 
 # Jupyter notebook checkpoints
 .ipynb_checkpoints/

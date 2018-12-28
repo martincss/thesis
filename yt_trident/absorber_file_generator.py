@@ -13,8 +13,8 @@ import pandas as pd
 line_list = ['C II', 'C IV', 'Si III', 'Si II']
 
 rays_directory = './rays_2Mpc_LG_from_mw/'
-#absorbers_directory = './absorbers_2Mpc_LG_from_mw/'
-absorbers_directory = './'
+absorbers_directory = './absorbers_2Mpc_LG_from_mw/'
+#absorbers_directory = './'
 
 
 def get_lines(line_observables_dict):
@@ -45,7 +45,7 @@ def write_line(handle, cell_number, spectral_line, data_array):
     handle.write(line.format(spectral_line, *data_array[cell_number,:]))
 
 
-def generate_absorbers_file(ray_filename):
+def generate_absorbers_file(ray_filename, absorbers_directory):
     """
 
     """
@@ -75,9 +75,11 @@ def generate_absorbers_file(ray_filename):
 
 if __name__ == '__main__':
 
-    ray_filename = 'ray_990_0.70_4.19.h5'
+    rays_list = ['ray_1000_0.70_4.19.h5', 'ray_1000_1.05_1.40.h5', 'ray_1000_2.8_2.1.h5']
 
-    generate_absorbers_file(ray_filename)
+    for ray_filename in rays_list:
+
+        generate_absorbers_file(ray_filename, absorbers_directory)
 
 #
 # ray_filename = 'rays_2Mpc_LG_from_mw/ray_990_0.70_4.19.h5'

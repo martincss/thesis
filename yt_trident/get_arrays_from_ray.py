@@ -36,6 +36,12 @@ def get_delta_lambda_angstrom(line_observables_dict):
 
     return delta_lambda
 
+def get_tau_ray(line_observables_dict):
+
+    tau_ray = np.array(line_observables_dict['tau_ray'])
+
+    return tau_ray
+
 def get_column_density_cm2(line_observables_dict):
 
     column_density = np.array(line_observables_dict['column_density'])
@@ -129,6 +135,7 @@ def get_data_array(ray, line_observables_dict):
     z_eff = get_z_eff(ray)
     lambda_obs = get_lambda_obs_angstrom(line_observables_dict)
     delta_lambda = get_delta_lambda_angstrom(line_observables_dict)
+    tau_ray = get_tau_ray(line_observables_dict)
     column_density = get_column_density_cm2(line_observables_dict)
     thermal_b = get_thermal_broadening_kms(line_observables_dict)
     EW = get_equivalent_width_angstrom(line_observables_dict)
@@ -143,7 +150,7 @@ def get_data_array(ray, line_observables_dict):
     vy = get_vy_kmccmh(ray)
     vz = get_vz_kmccmh(ray)
 
-    array_tuple = (z_cosmo, z_dopp, z_eff, lambda_obs, delta_lambda,
+    array_tuple = (z_cosmo, z_dopp, z_eff, lambda_obs, delta_lambda, tau_ray,
                 column_density, thermal_b, EW, v_los, temp, dl, cell_volume,
                 x, y, z, vx, vy, vz)
 

@@ -15,7 +15,8 @@ import pandas as pd
 # ray_1000_1.7_1.4.h5 has mean_density of 4.80e-6
 
 
-sightlines_list = ['ray_1000_1.0_5.6.h5', 'ray_1000_0.3_2.8.h5', 'ray_1000_1.7_1.4.h5']
+#sightlines_list = ['ray_1000_1.0_5.6.h5', 'ray_1000_0.3_2.8.h5', 'ray_1000_1.7_1.4.h5']
+sightlines_list = ['ray_1000_0.70_4.19.h5', 'ray_1000_1.05_1.40.h5', 'ray_1000_2.8_2.1.h5']
 
 line_list = ['C II', 'C IV', 'Si III', 'Si II']
 line_keys = ['Si III 1206', 'Si II 1190', 'Si II 1260','C II 1335', 'C IV 1548']
