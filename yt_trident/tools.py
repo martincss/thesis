@@ -116,7 +116,7 @@ def ray_start_from_sph(ray_end, trajectory):
 
     r, theta, phi = trajectory
 
-    ray_start = ray_start +  r * np.array([np.cos(phi) * np.sin(theta),
+    ray_start = ray_end +  r * np.array([np.cos(phi) * np.sin(theta),
             np.sin(phi) * np.sin(theta), np.cos(theta)])
 
     return ray_start
