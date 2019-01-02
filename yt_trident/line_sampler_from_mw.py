@@ -9,7 +9,7 @@ import trident
 import gc
 
 from tools import my_field_def, unit_base, subhalo_center, ray_start_from_sph, \
-    make_projection, sphere_uniform_grid
+    make_projection, sphere_uniform_grid, _pressure
 
 
 # ~~~~~~~~~~~~~~~~~~~~ SETUP ~~~~~~~~~~~~~~~~~~~~
@@ -24,6 +24,7 @@ subhalo_rays_directory = './rays_2Mpc_LG_from_subhalos/'
 
 ds = yt.frontends.gadget.GadgetDataset(filename=snap_file, unit_base= unit_base,
     field_spec=my_field_def)
+ds.add_field(("gas", "pressure"), function=_pressure, units="dyne/cm**2")
 
 # from Table 1 in Richter, Nuza, et al (2017)
 line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H I']
@@ -47,13 +48,14 @@ def make_ray_from_mw(spherical_coords, ray_filename):
 
     ray_start = ray_start_from_sph(mw_center, spherical_coords)
 
-    # for some reason, make_simple_ray overwrites start_position and end_position
-    # actually are passed as pointers and changes them to cgs; this can be prevented
-    # by passing them as ray_start.copy()
+    # for some reason, make_simple_ray overwrites start_position & end_position
+    # actually are passed as pointers and changes them to cgs; this can be
+    # prevented by passing them as ray_start.copy()
     ray = trident.make_simple_ray(ds,
                                   start_position=ray_start.copy(),
                                   end_position=mw_center.copy(),
                                   data_filename=ray_filename,
+                                  fields=['thermal_energy','density'],
                                   lines=line_list,
                                   ftype='Gas')
 
@@ -68,7 +70,8 @@ def sample_single_sightline(r, theta, phi):
 
     print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~ \n'.format(r, theta, phi))
 
-    ray_filename = rays_directory + 'ray_{:.3f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
+    ray_filename = rays_directory + \
+                   'ray_{:.3f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
     make_ray_from_mw((r, theta, phi), ray_filename=ray_filename)
 
 
@@ -132,6 +135,7 @@ def ray_to_subhalo(subhalo_idx):
                                   start_position=subhalo_position.copy(),
                                   end_position=mw_center.copy(),
                                   data_filename=ray_filename,
+                                  fields=['thermal_energy','density'],
                                   lines=line_list,
                                   ftype='Gas')
 

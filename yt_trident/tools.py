@@ -1,4 +1,5 @@
 import yt
+from yt import derived_field
 import trident
 from iccpy.gadget import load_snapshot
 from iccpy.gadget.subfind import SubfindCatalogue
@@ -48,6 +49,12 @@ all_line_keys = ['C II* 1336', 'C II 1335', 'C II* 1037', 'C II 1036',
                  'Si II* 1265', 'Si II 1260', 'Si II* 1197', 'Si II* 1194',
                  'Si II 1193', 'Si II 1190', 'Si II* 1024', 'Si II 1021',
                  'Si II* 993', 'Si II 990']
+
+
+@derived_field(name="pressure", units="dyne/cm**2")
+def _pressure(field, data):
+    return data["density"] * data["thermal_energy"]
+
 
 
 def make_SpectrumGenerator():

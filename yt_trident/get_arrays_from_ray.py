@@ -78,6 +78,18 @@ def get_temperature(ray):
 
     return temp
 
+def get_density_gcm3(ray):
+
+    dens = ray.r['gas', 'density']
+
+    return dens
+
+def get_pressure_dynecm2(ray):
+
+    pres = ray.r['gas', 'density']*ray.r['gas','thermal_energy']
+
+    return pres
+
 def get_dl_kmccmh(ray):
 
     dl = np.array(ray.r['dl'].in_units('kpccm/h'))
@@ -141,6 +153,8 @@ def get_data_array(ray, line_observables_dict):
     EW = get_equivalent_width_angstrom(line_observables_dict)
     v_los = get_velocity_los_kms(ray)
     temp = get_temperature(ray)
+    dens = get_density_gcm3(ray)
+    pres = get_pressure_dynecm2(ray)
     dl = get_dl_kmccmh(ray)
     cell_volume = get_cell_volume_kpccmh3(ray)
     x = get_x_kmccmh(ray)
@@ -151,7 +165,7 @@ def get_data_array(ray, line_observables_dict):
     vz = get_vz_kmccmh(ray)
 
     array_tuple = (z_cosmo, z_dopp, z_eff, lambda_obs, delta_lambda, tau_ray,
-                column_density, thermal_b, EW, v_los, temp, dl, cell_volume,
-                x, y, z, vx, vy, vz)
+                column_density, thermal_b, EW, v_los, temp, dens, pres, dl,
+                cell_volume, x, y, z, vx, vy, vz)
 
     return np.column_stack(array_tuple)
