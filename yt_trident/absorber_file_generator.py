@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-import os
+import glob
 import matplotlib.pyplot as plt
 plt.ion()
 import yt
@@ -12,18 +12,42 @@ import pandas as pd
 
 line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H I']
 
-rays_directory = './rays_2Mpc_LG_from_mw/'
-absorbers_directory = './absorbers_2Mpc_LG_from_mw/'
+rays_directory = './rays_2Mpc_LG_to_mw_2000/'
+absorbers_directory = './absorbers_2Mpc_LG_to_mw_2000/'
 #absorbers_directory = './'
 
 
 def get_lines(line_observables_dict):
+    """
+    Retrieves absorption line names (e.g. 'C II 1036') from a spectrum
+    line_observables_dict, as its keys.
+
+    Parameters
+    ----------
+    line_observables_dict: dictionary attribute from SpectrumGenerator
+
+    Returns
+    -------
+    lines: list containing keys to line_observables_dict, sorted by name
+    """
+
 
     lines = sorted(list(line_observables_dict.keys()))
 
     return lines
 
 def write_headers(handle):
+    """
+    Writes long header (containing complete physical quantity names and units,
+    to be skipped while opening) and short header (containing column names to
+    be used in dataframe) to absorber data file.
+
+    Parameters
+    ----------
+    handle: handle to open file object
+
+    """
+
 
     header_long = ('Line\t z_cosmo\t z_doppler\t z_effective\t wavelength [A]\t'
                 'delta wavelength [A]\t optical depth\t'
@@ -42,6 +66,21 @@ def write_headers(handle):
 
 
 def write_line(handle, cell_number, spectral_line, data_array):
+    """
+    Retrieves absorber attribute (e.g. N) orderded by radial distance along
+    sightline, for a given absorber dataframe (df) and absorption line (line)
+
+    Parameters
+    ----------
+    df: absorber dataframe
+    line: line string (e.g. 'C II 1036')
+
+    Returns
+    -------
+    r: radial distances from ray_end
+    att: selected attribute from dataframe
+    """
+
 
     line = '{:s}' + 3*',{:e}' + 2*',{:.6f}' + 16*',{:e}'+'\n'
 
@@ -50,7 +89,12 @@ def write_line(handle, cell_number, spectral_line, data_array):
 
 def generate_absorbers_file(ray_filename, absorbers_directory):
     """
+    Generates absorber data file for a given ray/sightline.
 
+    Parameters
+    ----------
+    ray_filename: string containing filename, appended to rays_directory as path
+    absorbers_directory: path to directory in which store output files
     """
 
     absorber_filename = 'abs_' + ray_filename[4:-3] + '.txt'
@@ -78,18 +122,15 @@ def generate_absorbers_file(ray_filename, absorbers_directory):
 
 if __name__ == '__main__':
 
-    rays_list = ['ray_1000_0.70_4.19.h5', 'ray_1000_1.05_1.40.h5', 'ray_1000_2.8_2.1.h5']
+    #rays_list = ['ray_1000_0.70_4.19.h5', 'ray_1000_1.05_1.40.h5', 'ray_1000_2.8_2.1.h5']
 
-    for ray_filename in rays_list:
+    #for ray_filename in rays_list:
 
-        generate_absorbers_file(ray_filename, absorbers_directory)
+    #    generate_absorbers_file(ray_filename, absorbers_directory)
 
-#
-# ray_filename = 'rays_2Mpc_LG_from_mw/ray_990_0.70_4.19.h5'
-#
-#
-# line_list = ['C II', 'C IV', 'Si III', 'Si II']
-# ray = yt.load(ray_filename)
-# sg = make_SpectrumGenerator()
-# line_observables_dict = get_line_observables_dict(ray, sg, line_list)
-# dicc = line_observables_dict['C II 1335']
+    for i, handle in enumerate(glob.glob(rays_directory + 'ray*')):
+
+        print('\n Generating file for ray #{:2d} ~~~~~~~~~~~~\n'.format(i+1))
+
+# kind of hard-coded, ray_filename extracted from rays_directory + ray_filename
+        generate_absorbers_file(handle.split('/')[2], absorbers_directory)
