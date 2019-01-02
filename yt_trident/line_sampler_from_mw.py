@@ -19,14 +19,14 @@ snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
 snap_num = 135
 subfind_path = '../../2Mpc_LG'
 
-rays_directory = './rays_2Mpc_LG/'
-
+rays_directory = './rays_test/'
+subhalo_rays_directory = './rays_2Mpc_LG_from_subhalos/'
 
 ds = yt.frontends.gadget.GadgetDataset(filename=snap_file, unit_base= unit_base,
     field_spec=my_field_def)
 
 # from Table 1 in Richter, Nuza, et al (2017)
-line_list = ['C II', 'C IV', 'Si III', 'Si II']
+line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H I']
 
 mw_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
             subhalo_number = 1)
@@ -95,6 +95,7 @@ def make_ray_sample_uniform(r_interval, number_of_sighlines):
 
     make_ray_sample(r_interval, theta_interval, phi_interval)
 
+#################################################################
 
 def sample_m31_and_away(r_interval):
     """
@@ -111,6 +112,51 @@ def sample_m31_and_away(r_interval):
     phi_away = 2*(2*pi)/9
 
     make_ray_sample(r_interval, [theta_away], [phi_away])
+
+##################################################################
+
+def ray_to_subhalo(subhalo_idx):
+    """
+    Samples ray from subhalo center corresponding to subhalo index (subhalo_idx)
+    to mw_center.
+    """
+
+    subhalo_position = subhalo_center(subfind_path=subfind_path,
+                                      snap_num=snap_num,
+                                      subhalo_number = subhalo_idx)
+
+    ray_filename = subhalo_rays_directory + \
+                   'ray_subhalo_{:02d}.h5'.format(subhalo_idx)
+
+    ray = trident.make_simple_ray(ds,
+                                  start_position=subhalo_position.copy(),
+                                  end_position=mw_center.copy(),
+                                  data_filename=ray_filename,
+                                  lines=line_list,
+                                  ftype='Gas')
+
+    return ray
+
+
+def sample_subhalos(number_of_subhalos):
+    """
+    Generates rays from all subhalos up to number_of_subhalos, except for MW (
+    with index = 1).
+    """
+
+    for index in range(number_of_subhalos):
+
+        if index != 1:
+
+            print('\n NOW SAMPLING subhalo {:02d} ~~~~~~~~~~~~~~~~~~~ \n'.format(index))
+
+            ray_to_subhalo(index)
+
+
+
+
+
+
 
 
 # ~~~~~~~~~~~~~~~~ RAY SAMPLING ~~~~~~~~~~~~~~~~~~
@@ -132,4 +178,5 @@ distances_more_detail = np.linspace(0, 1, 50)
 close_up_050 = np.linspace(0.36, 0.51, 50)
 
 if __name__ == '__main__':
-    sample_m31_and_away(close_up_050)
+    #sample_m31_and_away(close_up_050)
+    pass
