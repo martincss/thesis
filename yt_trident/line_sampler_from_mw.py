@@ -19,7 +19,7 @@ snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
 snap_num = 135
 subfind_path = '../../2Mpc_LG'
 
-rays_directory = './rays_test/'
+rays_directory = './rays_2Mpc_LG_to_mw_2000/'
 subhalo_rays_directory = './rays_2Mpc_LG_from_subhalos/'
 
 ds = yt.frontends.gadget.GadgetDataset(filename=snap_file, unit_base= unit_base,
@@ -71,7 +71,7 @@ def sample_single_sightline(r, theta, phi):
     print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~ \n'.format(r, theta, phi))
 
     ray_filename = rays_directory + \
-                   'ray_{:.3f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
+                   'ray_{:.3f}_{:.3f}_{:.3f}.h5'.format(r, theta, phi)
     make_ray_from_mw((r, theta, phi), ray_filename=ray_filename)
 
 
@@ -92,11 +92,19 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
 
                 gc.collect()
 
-def make_ray_sample_uniform(r_interval, number_of_sighlines):
+def make_ray_sample_uniform(r_interval, number_of_sightlines):
 
-    theta_interval, phi_interval = sphere_uniform_grid(number_of_sighlines)
+    theta_interval, phi_interval = sphere_uniform_grid(number_of_sightlines)
 
-    make_ray_sample(r_interval, theta_interval, phi_interval)
+    for r in r_interval:
+
+        for i, (theta, phi) in enumerate(zip(theta_interval, phi_interval)):
+            
+            print('\n RAY NUMBER {:d}/{:d} ~~~~~~~~~~~~~~~~~~~ \n'.format(i, number_of_sightlines))
+
+            sample_single_sightline(r,theta, phi)
+
+            gc.collect()
 
 #################################################################
 
@@ -183,4 +191,5 @@ close_up_050 = np.linspace(0.36, 0.51, 50)
 
 if __name__ == '__main__':
     #sample_m31_and_away(close_up_050)
-    pass
+    make_ray_sample_uniform([2000], 500)
+    #pass
