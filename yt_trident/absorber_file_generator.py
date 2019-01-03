@@ -88,7 +88,7 @@ def write_line(handle, cell_number, spectral_line, data_array):
     handle.write(line.format(spectral_line, *data_array[cell_number,:]))
 
 
-def generate_absorbers_file(ray_filename, absorbers_directory):
+def generate_absorbers_file(rays_directory, ray_filename, absorbers_directory):
     """
     Generates absorber data file for a given ray/sightline.
 
@@ -139,4 +139,4 @@ if __name__ == '__main__':
             print('\n Generating file for ray #{:2d} ~~~~~~~~~~~~\n'.format(i+1))
 
 # kind of hard-coded, ray_filename extracted from rays_directory + ray_filename
-            generate_absorbers_file(ray_filename, absorbers_directory)
+            generate_absorbers_file(rays_directory, ray_filename, absorbers_directory)

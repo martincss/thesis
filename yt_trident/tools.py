@@ -43,12 +43,17 @@ unit_base = {'length'   :  (1.0, 'kpccm/h'),
 line_table = {'Si III':1206, 'Si IIa':1190, 'Si IIb':1260, 'C II': 1334.532,
               'C IV':1548}
 
-all_line_keys = ['C II* 1336', 'C II 1335', 'C II* 1037', 'C II 1036',
-                 'C II 904', 'C IV 1551', 'C IV 1548', 'Si III 1206',
-                 'Si II* 1817', 'Si II 1808', 'Si II* 1309', 'Si II 1304',
-                 'Si II* 1265', 'Si II 1260', 'Si II* 1197', 'Si II* 1194',
-                 'Si II 1193', 'Si II 1190', 'Si II* 1024', 'Si II 1021',
-                 'Si II* 993', 'Si II 990']
+all_line_keys=['C II 1036', 'C II 1335', 'C II 904', 'C II* 1037', 'C II* 1336',
+       'C IV 1548', 'C IV 1551', 'Ly 10', 'Ly 11', 'Ly 12', 'Ly 13',
+       'Ly 14', 'Ly 15', 'Ly 16', 'Ly 17', 'Ly 18', 'Ly 19', 'Ly 20',
+       'Ly 21', 'Ly 22', 'Ly 23', 'Ly 24', 'Ly 25', 'Ly 26', 'Ly 27',
+       'Ly 28', 'Ly 29', 'Ly 30', 'Ly 31', 'Ly 32', 'Ly 33', 'Ly 34',
+       'Ly 35', 'Ly 36', 'Ly 37', 'Ly 38', 'Ly 39', 'Ly 6', 'Ly 7',
+       'Ly 8', 'Ly 9', 'Ly a', 'Ly b', 'Ly c', 'Ly d', 'Ly e',
+       'Si II 1021', 'Si II 1190', 'Si II 1193', 'Si II 1260',
+       'Si II 1304', 'Si II 1808', 'Si II 990', 'Si II* 1024',
+       'Si II* 1194', 'Si II* 1197', 'Si II* 1265', 'Si II* 1309',
+       'Si II* 1817', 'Si II* 993', 'Si III 1206', 'Si IV 1403']
 
 
 @derived_field(name="pressure", units="dyne/cm**2")
