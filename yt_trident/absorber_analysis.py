@@ -122,32 +122,87 @@ def radial_profile(absorbers_directory, line, attribute, r_max, delta_r):
 
     return r_bins, profile/counts_per_bin
 
-def radial_profile_2k(line, attribute, delta_r):
+
+def weighted_radial_profile(absorbers_directory, line, attribute, r_max,
+                            delta_r):
+    """
+    Calculates density weighted radial profile of absorber attribute (e.g. N)
+    for a given absorption line
+
+    Parameters
+    ----------
+    absorbers_directory: string
+        path to directory
+    line: string
+        line string e.g. 'C II 1036'
+    attribute: string
+        column name from absorber datafile
+    r_max: float
+        maximum radial distance
+    delta_r: float
+        distance bin size
+
+
+    Returns
+    -------
+    r_bins: array
+        bin edges for radial distances
+    profile: array
+
+    """
+
+    r_bins = np.arange(0, r_max+delta_r, delta_r)
+    density_per_bin = np.zeros(len(r_bins)-1)
+    profile = np.zeros(len(r_bins)-1)
+
+    for handle in glob.glob(absorbers_directory + 'abs*'):
+
+        df = pd.read_csv(handle, skiprows=1)
+        r, att = get_attribute_by_distance(df, line, attribute)
+        _, dens = get_attribute_by_distance(df, line, 'rho')
+
+        density_per_bin += np.histogram(r, r_bins, weights=dens)[0]
+        profile += np.histogram(r, r_bins, weights=att*dens)[0]
+
+    return r_bins, profile/density_per_bin
+
+
+def radial_profile_2k(line, attribute, delta_r, weighted):
     """
     Radial profile wrapper for 2Mpc_LG to mw at 2000kpc
     """
 
-    return radial_profile(absorbers_directory='./absorbers_2Mpc_LG_to_mw_2000/',
-            line=line, attribute=attribute, r_max=2000, delta_r=delta_r)
+    if weighted:
 
-def column_density_profile_2k(line, delta_r):
+        return weighted_radial_profile(
+                        absorbers_directory='./absorbers_2Mpc_LG_to_mw_2000/',
+                        line=line, attribute=attribute, r_max=2000,
+                        delta_r=delta_r)
+    else:
 
-    return radial_profile_2k(line, 'N', delta_r)
+        return radial_profile(
+                        absorbers_directory='./absorbers_2Mpc_LG_to_mw_2000/',
+                        line=line, attribute=attribute, r_max=2000,
+                        delta_r=delta_r)
+
+def column_density_profile_2k(line, delta_r, weighted=False):
+
+    return radial_profile_2k(line, 'N', delta_r, weighted)
 
 
-def density_profile_2k(delta_r):
+def density_profile_2k(delta_r, weighted=False):
 
-    return radial_profile_2k('C II 1036', 'rho', delta_r)
-
-
-def pressure_profile_2k(delta_r):
-
-    return radial_profile_2k('C II 1036', 'p', delta_r)
+    return radial_profile_2k('C II 1036', 'rho', delta_r, weighted)
 
 
-def temperature_profile_2k(delta_r):
+def pressure_profile_2k(delta_r, weighted=False):
 
-    return radial_profile_2k('C II 1036', 'T', delta_r)
+    return radial_profile_2k('C II 1036', 'p', delta_r, weighted)
+
+
+def temperature_profile_2k(delta_r, weighted=False):
+
+    return radial_profile_2k('C II 1036', 'T', delta_r, weighted)
 
 
 
@@ -189,7 +244,8 @@ def covering_fraction(absorbers_directory, line, N_thresh, r_max, delta_r):
         r, N = get_attribute_by_distance(df, line, 'N')
 
         counts_per_bin += np.histogram(r, r_bins)[0]
-        absorbers_per_bin += np.histogram(r, r_bins, weights=np.asarray(N > N_thresh,dtype='int'))[0]
+        absorbers_per_bin += np.histogram(r, r_bins,
+                                weights=np.asarray(N > N_thresh,dtype='int'))[0]
 
     covf = absorbers_per_bin/counts_per_bin
 
@@ -269,7 +325,9 @@ if __name__=='__main__':
 
     plt.figure()
     r, T = temperature_profile_2k(20)
-    plt.semilogy(r[:-1], T, label = 'bin size = 20kpc')
+    _, Tw = temperature_profile_2k(20, weighted=True)
+    plt.semilogy(r[:-1], T, label = 'bin size = 20kpc', color = 'red')
+    plt.semilogy(r[:-1], Tw, label = 'denisty weighted', color = 'crimson', ls = '--')
     plt.xlabel('Distance [kpc]', fontsize = 15)
     plt.ylabel('Temperature [K]', fontsize = 15)
     plt.title('Temperature profile', fontsize = 20)
@@ -278,7 +336,9 @@ if __name__=='__main__':
 
     plt.figure()
     r, p = pressure_profile_2k(20)
+    _, pw = pressure_profile_2k(20, weighted=True)
     plt.semilogy(r[:-1], p, label = 'bin size = 20kpc', color = 'blue')
+    plt.semilogy(r[:-1], pw, label = 'density weighted', color = 'cyan')
     plt.xlabel('Distance [kpc]', fontsize = 15)
     plt.ylabel('pressure [dyne/cm^2]', fontsize = 15)
     plt.title('Pressure profile', fontsize = 20)
@@ -287,7 +347,9 @@ if __name__=='__main__':
 
     plt.figure()
     r, rho = density_profile_2k(20)
+    _, rhow = density_profile_2k(20, weighted=True)
     plt.semilogy(r[:-1], rho, label = 'bin size = 20kpc', color = 'magenta')
+    plt.semilogy(r[:-1], rhow, label = 'density weighted', color = 'purple')
     plt.xlabel('Distance [kpc]', fontsize = 15)
     plt.ylabel('density [g/cm^3]', fontsize = 15)
     plt.title('Mass density profile', fontsize = 20)
@@ -319,10 +381,14 @@ if __name__=='__main__':
 
 
     plt.figure()
-    r, NC = column_density_profile_2k('Si III 1206', 20)
-    r, NS = column_density_profile_2k('C II 1335', 20)
-    plt.semilogy(r[:-1], NS, label = 'bin size = 20kpc\n Si III 1206', color = 'purple')
-    plt.semilogy(r[:-1], NC, label = 'bin size = 20kpc\n C II 1335', color = 'red')
+    r, NS3 = column_density_profile_2k('Si III 1206', 50)
+    r, NS3w = column_density_profile_2k('Si III 1206', 50, weighted=True)
+    r, NS2 = column_density_profile_2k('Si II 1260', 50)
+    r, NS2w = column_density_profile_2k('Si II 1260', 50, weighted=True)
+    plt.semilogy(r[:-1], NS3, label = 'Si III 1206', color = 'purple')
+    plt.semilogy(r[:-1], NS3w, label = 'density weighted\n Si III 1206', color = 'violet', ls = '--')
+    plt.semilogy(r[:-1], NS2, label = 'Si II 1260', color = 'red')
+    plt.semilogy(r[:-1], NS2w, label = 'density weighted\n Si II 1260', color = 'coral', ls = '--')
     plt.xlabel('Distance [kpc]', fontsize = 15)
     plt.ylabel('$N$ [cm$^{-2}$]', fontsize = 15)
     plt.title('Column density profiles', fontsize = 20)
