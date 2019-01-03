@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
+import os
 import glob
 import matplotlib.pyplot as plt
 plt.ion()
@@ -130,7 +131,12 @@ if __name__ == '__main__':
 
     for i, handle in enumerate(glob.glob(rays_directory + 'ray*')):
 
-        print('\n Generating file for ray #{:2d} ~~~~~~~~~~~~\n'.format(i+1))
+        ray_filename = handle.split('/')[2]
+        absorber_filename = 'abs_' + ray_filename[4:-3] + '.txt'
+
+        if not os.path.exists(absorbers_directory + absorber_filename):
+
+            print('\n Generating file for ray #{:2d} ~~~~~~~~~~~~\n'.format(i+1))
 
 # kind of hard-coded, ray_filename extracted from rays_directory + ray_filename
-        generate_absorbers_file(handle.split('/')[2], absorbers_directory)
+            generate_absorbers_file(ray_filename, absorbers_directory)
