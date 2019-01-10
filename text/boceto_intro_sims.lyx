@@ -1,0 +1,387 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\labelenumi}{\alph{enumi})}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{enumitem}
+%\setenumerate{label=a)}
+%\setenumerate[2]{label=a)}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-15
+\fontencoding T1
+\font_roman "utopia" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notas para tesis
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\lcdm}{\Lambda\mathrm{CDM}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $\Lambda$
+\end_inset
+
+CDM
+\end_layout
+
+\begin_layout Subsection
+LG
+\end_layout
+
+\begin_layout Standard
+Nuestra galaxia, 
+\emph on
+la vía láctea (MW),
+\emph default
+ no se encuentra aislada sino que forma parte de un grupo, llamado el 
+\emph on
+grupo local (LG).
+ 
+\emph default
+Integra también este grupo la galaxia espiral vecina 
+\emph on
+Andrómeda (M31),
+\emph default
+ de una masa similar a MW y a una distancia menor a 
+\begin_inset Formula $1$
+\end_inset
+
+Mpc; junto con otras galaxias satélites de menor masa [citation-needed].
+ Galaxias espirales semejantes son prevalentes en el universo, lo cual respresen
+ta una prueba al modelo 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+CDM: que objetos tales como MW, M31 y el universo local no sean extremadamente
+ improbables 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "env15"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Estudios en las últimas décadas han acumulado evidencia a favor de que el
+ 
+\emph on
+environment
+\emph default
+ en donde se encuentren las galaxias influye en la determinación de sus
+ propiedades finales.
+ Por ejemplo, predicciones teóricas en el marco de 
+\begin_inset Formula $\lcdm$
+\end_inset
+
+ indican que la cantidad de 
+\emph on
+mergers
+\emph default
+ que sufren las galaxias incrementa con la densidad de su 
+\emph on
+environment.
+
+\emph default
+ En particular, en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "env15"
+literal "false"
+
+\end_inset
+
+, simulaciones computacionales sugieren que, para 
+\emph on
+environments
+\emph default
+ en forma de 
+\emph on
+loose groups
+\emph default
+ como el LG, la morfología de las galaxias integrantes no se ve afectada,
+ pero su SFR aumenta [vs no estar en el grupo??].
+\end_layout
+
+\begin_layout Subsubsection
+Distribución de gas
+\end_layout
+
+\begin_layout Standard
+La distribución de material gaseoso, tanto en las galaxias como en su 
+\emph on
+environment
+\emph default
+, se presenta como un aspecto clave para el entendimiento de la formación
+ galáctica y el estadio evolutivo reciente de las primeras.
+ Por ejemplo, 
+\emph on
+inflows
+\emph default
+ de gas frío en el presente pueden dar cuenta de una formación estelar activa
+ en el futuro próximo.
+ Como contracara, 
+\emph on
+outflows
+\emph default
+ de gas caliente pueden indicar que la formación estelar y 
+\emph on
+feedback
+\emph default
+ por supernovas han tenido lugar en el pasado reciente 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "N14"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Estudios teóricos y observacionales indican que una fracción sustancial
+ (y hasta dominante) del material gaseoso difuso en galaxias espirales se
+ encuentra por fuera del disco, en un halo extendido hasta su radio virial
+ 
+\begin_inset Formula $R_{\text{vir}}$
+\end_inset
+
+.
+ A esta componente de gas se la conoce como 
+\emph on
+medio circumgaláctico (CGM).
+
+\emph default
+ A la (gran) cantidad de gas que existe por fuera del radio virial se le
+ denomina genéricamente 
+\emph on
+medio intergaláctico (IGM)
+\emph default
+, el cual puede además estar gravitacionalmente ligado al grupo ó 
+\emph on
+cluster
+\emph default
+ de galaxias, llamado así 
+\emph on
+medio intragrupo/intracluster.
+
+\emph default
+ El ciclo de vida de este gas está determinado por la formación de estructura
+ cosmológica, flujos desde/hacia galaxias y eventos de 
+\emph on
+mergers; 
+\emph default
+de ese modo, sus condiciones físicas y abundancias químicas son bastante
+ variadas, y éste puede oficiar como un gran reservorio de bariones [cf.
+ 
+\emph on
+missing mass problem??
+\emph default
+]
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN17,N14"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En particular para el LG, en las últimas dos décadas se ha alcanzado un
+ avance significativo en la comprensión de la distribución y las propiedades
+ físicas del gas en el CGM e IGM.
+ Es posible estudiar los halos gaseosos extendidos de MW y M31 gracias a
+ las observaciones de 
+\begin_inset Formula $21$
+\end_inset
+
+cm de la línea hiperfina del hidrógeno neutro 
+\begin_inset Formula $\left(\text{H}_{\text{I}}\right),$
+\end_inset
+
+complementadas con espectros de absorción del gas neutro y ionizado en las
+ bandas ópticas y UV, contra fuentes extragalácticas.
+ Se entiende actualmente que el CGM de MW y M31 es de caracter multifásico:
+ coexisten una fase fría 
+\begin_inset Formula $\left(T<10^{4}\text{K}\right)$
+\end_inset
+
+ predominablemente neutra y densa, principalmente concentrada dentro de
+ sendos radios viriales; junto con una fase caliente 
+\begin_inset Formula $\left(T\gtrsim10^{5}\text{K}\right)$
+\end_inset
+
+ mayormente ionizada, extendida también sobre el IGM.
+ Es posible que esta fase caliente y tenue hospede a una gran fracción de
+ la materia bariónica en el LG [y acá más sobre missing mass??].
+\begin_inset CommandInset citation
+LatexCommand cite
+key "N14"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Según el modelo actual de formación galáctica, existen dos principales modos
+ de acreción en la providencia del gas frío posteriormente empleado en la
+ formación estelar.
+ Un modo 
+\begin_inset Quotes eld
+\end_inset
+
+caliente
+\begin_inset Quotes erd
+\end_inset
+
+ en el cual el gas de alta densidad que rodea a la galaxia se enfría radiativame
+nte y colapsa hacia el centro; y un modo 
+\begin_inset Quotes eld
+\end_inset
+
+frío
+\begin_inset Quotes erd
+\end_inset
+
+, conducido por filamentos de gas frío que ingresan dentro del radio virial
+ del halo.
+ Estudios recientes [citar??] indican que la acreción fría tiende a ocupar
+ las regiones centrales, mientras que la acreción de gas ionizado caliente
+ es dominante sobre un gran rango de distancias hasta el radio virial.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "N14"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De esa forma, estudios con el objetivo de caracterizar el CGM de MW y M31,
+ y su conexión con el gas en el IGM son claves en aras de profundizar nuestra
+ comprensión de la distribución y composición de la materia bariónica en
+ el universo local.
+\end_layout
+
+\begin_layout Section
+Simulaciones
+\end_layout
+
+\begin_layout Standard
+La formación de estructura a escala galáctica es un proceso altamente no
+ lineal, multiescala y libre de simetrías que lo simplifiquen.
+ Estas características 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "bibliography"
+options "bibtotoc,apalike"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
