@@ -27,7 +27,7 @@ ds = yt.frontends.gadget.GadgetDataset(filename=snap_file, unit_base= unit_base,
 ds.add_field(("gas", "pressure"), function=_pressure, units="dyne/cm**2")
 
 # from Table 1 in Richter, Nuza, et al (2017)
-line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H I']
+line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H']
 
 mw_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
             subhalo_number = 1)
@@ -38,7 +38,7 @@ mw_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
 # ~~~~~~~~~~~~~~~~~~~~ ACTIONS ~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def make_ray_from_mw(spherical_coords, ray_filename):
+def make_ray_to_mw(spherical_coords, ray_filename):
     """
     Creates ray with center of MW as ending point (where the observer is),
     and starting point passed by its spherical coordinates from MW center.
@@ -68,11 +68,12 @@ def sample_single_sightline(r, theta, phi):
     starting point to mw center as endpoint.
     """
 
-    print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~ \n'.format(r, theta, phi))
+    print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~'
+          ' \n'.format(r, theta, phi))
 
     ray_filename = rays_directory + \
                    'ray_{:.3f}_{:.3f}_{:.3f}.h5'.format(r, theta, phi)
-    make_ray_from_mw((r, theta, phi), ray_filename=ray_filename)
+    make_ray_to_mw((r, theta, phi), ray_filename=ray_filename)
 
 
 
@@ -99,8 +100,9 @@ def make_ray_sample_uniform(r_interval, number_of_sightlines):
     for r in r_interval:
 
         for i, (theta, phi) in enumerate(zip(theta_interval, phi_interval)):
-            
-            print('\n RAY NUMBER {:d}/{:d} ~~~~~~~~~~~~~~~~~~~ \n'.format(i, number_of_sightlines))
+
+            print('\n RAY NUMBER {:d}/{:d} ~~~~~~~~~~~~~~~~~~~'
+                  ' \n'.format(i, number_of_sightlines))
 
             sample_single_sightline(r,theta, phi)
 
@@ -160,7 +162,8 @@ def sample_subhalos(number_of_subhalos):
 
         if index != 1:
 
-            print('\n NOW SAMPLING subhalo {:02d} ~~~~~~~~~~~~~~~~~~~ \n'.format(index))
+            print('\n NOW SAMPLING subhalo {:02d} ~~~~~~~~~~~~~~~~~~~'
+                  ' \n'.format(index))
 
             ray_to_subhalo(index)
 
@@ -191,5 +194,5 @@ close_up_050 = np.linspace(0.36, 0.51, 50)
 
 if __name__ == '__main__':
     #sample_m31_and_away(close_up_050)
-    make_ray_sample_uniform([2000], 500)
-    #pass
+    #make_ray_sample_uniform([2000], 500)
+    pass

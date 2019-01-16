@@ -13,6 +13,7 @@ import pdb
 
 LIGHTSPEED = 299792 # in km/s
 HUBBLE_2Mpc_LG = 0.7
+K_BOLTZMANN = 1.38064852e-16 # erg/K
 
 # do not comment any further fields to load in dataset; for some reason,
 # (seemingly an YT bug), gas density is not smoothed correctly if fewer fields
