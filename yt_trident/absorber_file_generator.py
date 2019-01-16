@@ -136,7 +136,8 @@ if __name__ == '__main__':
 
         if not os.path.exists(absorbers_directory + absorber_filename):
 
-            print('\n Generating file for ray #{:2d} ~~~~~~~~~~~~\n'.format(i+1))
+            print('\n Generating file for ray #{:2d} ~~~~~~~~~~~\n'.format(i+1))
 
 # kind of hard-coded, ray_filename extracted from rays_directory + ray_filename
-            generate_absorbers_file(rays_directory, ray_filename, absorbers_directory)
+            generate_absorbers_file(rays_directory, ray_filename,
+                                    absorbers_directory)

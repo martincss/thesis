@@ -5,6 +5,8 @@ line_observables_dict.
 """
 import numpy as np
 import gc
+from tools import K_BOLTZMANN
+
 
 def get_z_cosmo(ray):
 
@@ -86,7 +88,15 @@ def get_density_gcm3(ray):
 
 def get_pressure_dynecm2(ray):
 
+    # dyne/cm^2 = erg/cm^3
     pres = ray.r['gas', 'density']*ray.r['gas','thermal_energy']
+
+    return pres
+
+def get_pressure_Kcm3(ray):
+
+    # [p/k] = erg/cm^3 / erg/K = K/cm^3
+    pres = ray.r['gas', 'density']*ray.r['gas','thermal_energy']/K_BOLTZMANN
 
     return pres
 

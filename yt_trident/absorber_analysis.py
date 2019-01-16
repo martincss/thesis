@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 plt.ion()
 import pandas as pd
 import glob
-from tools import HUBBLE_2Mpc_LG
+from tools import HUBBLE_2Mpc_LG, K_BOLTZMANN
 
 
 def get_distances(df, line):
@@ -170,7 +170,7 @@ def weighted_radial_profile(absorbers_directory, line, attribute, r_max,
 
 def radial_profile_2k(line, attribute, delta_r, weighted):
     """
-    Radial profile wrapper for 2Mpc_LG to mw at 2000kpc
+    Radial profile wrapper for 2Mpc_LG to mw at 2000kpc/h
     """
 
     if weighted:
@@ -255,7 +255,7 @@ def covering_fraction(absorbers_directory, line, N_thresh, r_max, delta_r):
 
 def covering_fraction_2k(line, N_thresh, delta_r):
     """
-    Covering_fraction wrapper for 2Mpc_LG to mw at 2000kpc
+    Covering_fraction wrapper for 2Mpc_LG to mw at 2000kpc/h
     """
 
     return covering_fraction('./absorbers_2Mpc_LG_to_mw_2000/', line=line,
@@ -338,10 +338,10 @@ if __name__=='__main__':
     plt.figure()
     r, p = pressure_profile_2k(20)
     _, pw = pressure_profile_2k(20, weighted=True)
-    plt.semilogy(r[:-1]/HUBBLE_2Mpc_LG, p, label = 'bin size = 20kpc', color = 'blue')
-    plt.semilogy(r[:-1]/HUBBLE_2Mpc_LG, pw, label = 'density weighted', color = 'cyan')
+    plt.semilogy(r[:-1]/HUBBLE_2Mpc_LG, p/K_BOLTZMANN, label = 'bin size = 20kpc', color = 'blue')
+    plt.semilogy(r[:-1]/HUBBLE_2Mpc_LG, pw/K_BOLTZMANN, label = 'density weighted', color = 'cyan')
     plt.xlabel('Distance [kpc]', fontsize = 15)
-    plt.ylabel('pressure [dyne/cm^2]', fontsize = 15)
+    plt.ylabel('pressure/k [K/cm^3]', fontsize = 15)
     plt.title('Pressure profile', fontsize = 20)
     plt.grid()
     plt.legend()
