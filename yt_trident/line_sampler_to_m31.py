@@ -8,31 +8,23 @@ yt.enable_parallelism()
 import trident
 import gc
 
-from tools import my_field_def, unit_base, subhalo_center, ray_start_from_sph, \
-    make_projection, sphere_uniform_grid, _pressure
+from tools import get_2Mpc_LG_dataset, get_m31_center_2Mpc_LG, \
+                  ray_start_from_sph, sphere_uniform_grid
 
 
 # ~~~~~~~~~~~~~~~~~~~~ SETUP ~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
-snap_num = 135
-subfind_path = '../../2Mpc_LG'
 
 rays_directory = './rays_2Mpc_LG_to_m31_210/'
-subhalo_rays_directory = './rays_2Mpc_LG_from_subhalos/'
 
-ds = yt.frontends.gadget.GadgetDataset(filename=snap_file, unit_base= unit_base,
-    field_spec=my_field_def)
-ds.add_field(("gas", "pressure"), function=_pressure, units="dyne/cm**2")
+ds = get_2Mpc_LG_dataset()
 
 # from Table 1 in Richter, Nuza, et al (2017)
 line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H']
 
-m31_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
-            subhalo_number = 0)
+m31_center = get_m31_center_2Mpc_LG()
 
-#mw_center = ds.arr(mw_center, 'code_length')
 
 
 # ~~~~~~~~~~~~~~~~~~~~ ACTIONS ~~~~~~~~~~~~~~~~~~~~
@@ -46,7 +38,7 @@ def make_ray_to_m31(spherical_coords, ray_filename):
     Spherical coordinates of starting point to be passed as iterable.
     """
 
-    ray_start = ray_start_from_sph(mw_center, spherical_coords)
+    ray_start = ray_start_from_sph(m31_center, spherical_coords)
 
     # for some reason, make_simple_ray overwrites start_position & end_position
     # actually are passed as pointers and changes them to cgs; this can be
@@ -112,5 +104,5 @@ def make_ray_sample_uniform(r_interval, number_of_sightlines):
 
 # ~~~~~~~~~~~~~~~~ RAY SAMPLING ~~~~~~~~~~~~~~~~~~
 if __name__ == '__main__':
-    #make_ray_sample_uniform([210], 500)
+    make_ray_sample_uniform([210], 500)
     pass

@@ -8,8 +8,8 @@ yt.enable_parallelism()
 import trident
 import gc
 
-from tools import my_field_def, unit_base, subhalo_center, ray_start_from_sph, \
-    make_projection, sphere_uniform_grid, _pressure
+from tools import get_2Mpc_LG_dataset, get_mw_center_2Mpc_LG, \
+                  ray_start_from_sph, sphere_uniform_grid
 
 
 # ~~~~~~~~~~~~~~~~~~~~ SETUP ~~~~~~~~~~~~~~~~~~~~
@@ -21,15 +21,12 @@ subfind_path = '../../2Mpc_LG'
 
 rays_directory = './rays_2Mpc_LG_to_mw_impact/'
 
-ds = yt.frontends.gadget.GadgetDataset(filename=snap_file, unit_base= unit_base,
-    field_spec=my_field_def)
-ds.add_field(("gas", "pressure"), function=_pressure, units="dyne/cm**2")
+ds = get_2Mpc_LG_dataset()
 
 # from Table 1 in Richter, Nuza, et al (2017)
 line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H']
 
-mw_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
-            subhalo_number = 1)
+mw_center = get_mw_center_2Mpc_LG()
 
 
 def make_ray_to_mw(spherical_coords, ray_filename):

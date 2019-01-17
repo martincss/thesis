@@ -62,6 +62,18 @@ def _pressure(field, data):
     return data["density"] * data["thermal_energy"]
 
 
+def get_2Mpc_LG_dataset():
+
+    snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
+
+    ds = yt.frontends.gadget.GadgetDataset(filename = snap_file,
+                                           unit_base = unit_base,
+                                           field_spec = my_field_def)
+    ds.add_field(("gas", "pressure"), function=_pressure, units="dyne/cm**2")
+
+    return ds
+
+
 
 def make_SpectrumGenerator():
     """
@@ -97,6 +109,37 @@ def subhalo_center(subfind_path, snap_num, subhalo_number):
     center = cat.subhalo[subhalo_number].com
 
     return center
+
+
+def get_mw_center_2Mpc_LG():
+    """
+    Convenience function to return mw subhalo center from 2Mpc_LG dataset
+
+    Returns
+    -------
+    mw_center: ndarray
+        Three dimensional array containing coordinates of mw subhalo center
+    """
+
+    mw_center = subhalo_center(subfind_path = '../../2Mpc_LG', snap_num = 135,
+                               subhalo_number = 1)
+
+    return mw_center
+
+def get_m31_center_2Mpc_LG():
+    """
+    Convenience function to return m31 subhalo center from 2Mpc_LG dataset
+
+    Returns
+    -------
+    mw_center: ndarray
+        Three dimensional array containing coordinates of m31 subhalo center
+    """
+
+    m31_center = subhalo_center(subfind_path = '../../2Mpc_LG', snap_num = 135,
+                               subhalo_number = 0)
+
+    return m31_center
 
 
 def sphere_uniform_grid(number_of_points):
