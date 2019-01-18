@@ -17,7 +17,7 @@ rays_directory = './rays_2Mpc_LG_to_mw_impact/'
 ds = get_2Mpc_LG_dataset()
 
 # from Table 1 in Richter, Nuza, et al (2017)
-line_list = ['C III', 'C IV', 'Si III', 'Si II', 'O VI']
+line_list = ['C II', 'C IV', 'Si III', 'Si II', 'O VI']
 
 mw_center = get_mw_center_2Mpc_LG()
 
