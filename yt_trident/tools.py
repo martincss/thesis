@@ -57,9 +57,9 @@ all_line_keys=['C II 1036', 'C II 1335', 'C II 904', 'C II* 1037', 'C II* 1336',
        'Si II* 1817', 'Si II* 993', 'Si III 1206', 'Si IV 1403']
 
 
-@derived_field(name="pressure", units="dyne/cm**2")
-def _pressure(field, data):
-    return data["density"] * data["thermal_energy"]
+# @derived_field(name="pressure", units="dyne/cm**2")
+# def _pressure(field, data):
+#     return data["density"] * data["thermal_energy"]
 
 
 def get_2Mpc_LG_dataset():
@@ -69,7 +69,7 @@ def get_2Mpc_LG_dataset():
     ds = yt.frontends.gadget.GadgetDataset(filename = snap_file,
                                            unit_base = unit_base,
                                            field_spec = my_field_def)
-    ds.add_field(("gas", "pressure"), function=_pressure, units="dyne/cm**2")
+    #ds.add_field(("gas", "pressure"), function=_pressure, units="dyne/cm**2")
 
     return ds
 
