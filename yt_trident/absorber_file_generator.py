@@ -11,10 +11,12 @@ from tools import make_SpectrumGenerator, get_line_observables_dict
 from get_arrays_from_ray import get_data_array
 import pandas as pd
 
-line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H I']
+#line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H I']
+line_list = ['C III', 'C IV', 'Si III', 'Si II', 'O VI']
 
-rays_directory = './rays_2Mpc_LG_to_mw_2000/'
-absorbers_directory = './absorbers_2Mpc_LG_to_mw_2000/'
+
+rays_directory = './rays_2Mpc_LG_to_mw_impact/'
+absorbers_directory = './absorbers_2Mpc_LG_to_mw_impact/'
 #absorbers_directory = './'
 
 
