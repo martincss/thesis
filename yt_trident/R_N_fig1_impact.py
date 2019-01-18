@@ -6,51 +6,28 @@ plt.ion()
 import yt
 yt.enable_parallelism()
 import trident
-from tools import get_line, get_absorber_chars, get_absorber_chars_from_file, absorber_region_2Mpc_LG
+from tools import get_line, get_absorber_chars, get_absorber_chars_from_file, \
+                  absorber_region_2Mpc_LG, HUBBLE_2Mpc_LG
+from R_N_fig1 import make_spectrum, load_or_make_spectrum
 import pandas as pd
 
-# np.mean(mean_denisities) = 2.528e-6
-# ray_1000_1.0_5.6.h5 has mean_density of 1.41e-6
-# ray_1000_0.3_2.8.h5 has mean_density of 2.54e-6
-# ray_1000_1.7_1.4.h5 has mean_density of 4.80e-6
 
+b_values_phys = np.array([20, 50, 100, 200, 500])
+b_values_code = b_values_phys * HUBBLE_2Mpc_LG
 
-#sightlines_list = ['ray_1000_1.0_5.6.h5', 'ray_1000_0.3_2.8.h5', 'ray_1000_1.7_1.4.h5']
-sightlines_list = ['ray_1000_0.70_4.19.h5', 'ray_1000_1.05_1.40.h5', 'ray_1000_2.8_2.1.h5']
+sightlines_list = ['ray_away_b_{:.2f}.h5'.format(b) for b in b_values_code]
 
-line_list = ['C II', 'C IV', 'Si III', 'Si II']
-line_keys = ['Si III 1206', 'Si II 1190', 'Si II 1260','C II 1335', 'C IV 1548']
-bandwidth = 4
+line_list = ['C II', 'C IV', 'Si III', 'Si II', 'O VI']
+line_keys = ['Si III 1206', 'Si II 1260', 'C II 1335', 'C IV 1548', 'O VI 1038']
 
-rays_directory = './rays_2Mpc_LG_from_mw/'
-spectra_directory = './spectra_C_Si_2Mpc_LG_from_mw/'
-absorbers_directory = './absorbers_2Mpc_LG_from_mw/'
+#line_list = ['C II', 'C IV', 'Si III', 'Si II']
+#line_keys = ['Si III 1206', 'Si II 1190', 'Si II 1260','C II 1335', 'C IV 1548']
+bandwidth = 8
 
+rays_directory = './rays_2Mpc_LG_to_mw_impact/'
+spectra_directory = './spectra_C_Si_2Mpc_LG_to_mw_impact/'
+absorbers_directory = './absorbers_2Mpc_LG_to_mw_impact/'
 
-def make_spectrum(ray, filename):
-
-    sg = trident.SpectrumGenerator(lambda_min = 1000, lambda_max = 1600,
-        dlambda = 0.01)
-
-    sg.make_spectrum(ray, lines=line_list)
-    sg.save_spectrum(filename + '.txt')
-    sg.plot_spectrum(filename + '.png')
-
-def load_or_make_spectrum(ray, ray_filename, spectra_directory):
-
-    # this parses the ray_filename extracting the ray and .h5
-    # eg. ray_1000_2.33_4.55.h5 ---> _1000_2.33_4.55
-    # a little brute, but I guess it can be polished
-    spec_filename = 'spec_' + ray_filename[4:-3]
-
-    if not os.path.exists(spectra_directory + spec_filename + '.txt'):
-
-        make_spectrum(ray, spectra_directory + spec_filename)
-
-    wavelength, _, flux, _ = np.loadtxt(fname=spectra_directory+spec_filename+'.txt',
-                            delimiter=' ', skiprows=1, unpack=True)
-
-    return wavelength, flux
 
 
 def plot_line(ax, line, wavelength, flux, bandwidth, ray):
@@ -89,6 +66,7 @@ def plot_line(ax, line, wavelength, flux, bandwidth, ray):
     ax.legend(loc='best')
     ax.grid(True)
 
+
 def plot_labels(sightlines_list, axarr):
 
     for axes in axarr[-1,:]:
@@ -99,7 +77,7 @@ def plot_labels(sightlines_list, axarr):
 
     for i, axes in enumerate(axarr[0,:]):
 
-        axes.set_title('{} \n {}'.format(sightlines_list[i], 'Si III 1206'), fontsize = 15)
+        axes.set_title('b = {} \n {}'.format(sightlines_list[i], 'Si III 1206'), fontsize = 15)
 
     #fig.suptitle('Absorption lines along sightlines', fontsize = 15)
 
@@ -119,4 +97,4 @@ if __name__ == '__main__':
             plot_line(axarr[row_number, col_number], line,
                       wavelength, flux, bandwidth, ray)
 
-    plot_labels(sightlines_list, axarr)
+    plot_labels(b_values_phys, axarr)
