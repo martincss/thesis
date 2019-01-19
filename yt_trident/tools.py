@@ -296,11 +296,9 @@ def get_absorber_chars_from_file(absorber_filename, line_key):
 
 def absorber_region_2Mpc_LG(absorber_position):
 
-    mw_center = subhalo_center(subfind_path='../../2Mpc_LG', snap_num=135,
-                subhalo_number = 1)
+    mw_center = get_mw_center_2Mpc_LG()
 
-    m31_center = subhalo_center(subfind_path='../../2Mpc_LG', snap_num=135,
-                subhalo_number = 0)
+    m31_center = get_m31_center_2Mpc_LG()
 
     R_vir_mw = 222.2 * HUBBLE_2Mpc_LG
     R_vir_m31 = 244.9 * HUBBLE_2Mpc_LG
