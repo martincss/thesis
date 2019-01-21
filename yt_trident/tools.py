@@ -179,17 +179,17 @@ def ray_start_from_sph(ray_end, trajectory):
     return ray_start
 
 
-def make_projection(ds, center, side, axis):
+def make_projection(ds, center, side, axis, field='density'):
 
     # for this to work fine and prevent colorbar to linear scale, center and
     # box_size must be passed with these units
     center = ds.arr(center, 'code_length')
     new_box_size = ds.quan(side,'kpccm/h')
 
-    px = yt.ProjectionPlot(ds, axis, ('gas', 'density'), center=center,
+    p = yt.ProjectionPlot(ds, axis, ('gas', field), center=center,
         width=new_box_size)
 
-    return px
+    return p
 
 def plot_ray_in_projection(px, ray):
 
@@ -278,12 +278,26 @@ def get_absorber_chars(ray, line_key, line_list):
 
 def get_absorber_chars_from_file(absorber_filename, line_key):
     """
-    Convenience function to return m31 subhalo center from 2Mpc_LG dataset
+    Returns absorber characteristics from an absorber file for a single
+    absorption line
+
+    Parameters
+    ----------
+    absorber_filename: string
+        full path to absorber file
+    line_key: string
+        full line name present in absorber file (e.g. 'C II 1335')
 
     Returns
     -------
-    mw_center: ndarray
-        Three dimensional array containing coordinates of m31 subhalo center
+    lambda_obs: float
+        central wavelength in absorption line
+    N: float
+        column density corresponding to the cell with lambda_obs
+    T: float
+        median temperature across all cells in ray
+    position: tuple of floats
+        absolute position of the cell with lambda_obs
     """
 
     df = pd.read_csv(absorber_filename, skiprows=1)
@@ -293,6 +307,7 @@ def get_absorber_chars_from_file(absorber_filename, line_key):
     T = line_df['T'].median()
 
     #index_absorber = np.argmax(line_df['N'])
+
     # identifies _the_ absorber by the maximum tau (absorbption) and its
     # wavelength as the central
     index_absorber = np.argmax(line_df['tau'])
