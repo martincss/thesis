@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-import matplotlib.pyplot as plt
-plt.ion()
 import pandas as pd
 import glob
 from tools import HUBBLE_2Mpc_LG, K_BOLTZMANN
@@ -122,6 +120,60 @@ def radial_profile(absorbers_directory, line, attribute, r_max, delta_r):
         profile += np.histogram(r, r_bins, weights=att)[0]
 
     return r_bins, profile/counts_per_bin
+
+def get_binned_attribute_all_rays(absorbers_directory, line, attribute, r_max,
+                                  delta_r):
+    """
+    Calculates radial binned array of absorber attribute (e.g. N) for a given
+    absorption line, for each absorber file (i.e. ray) and returns all of them
+    in a list
+
+    Parameters
+    ----------
+    absorbers_directory: string
+        path to directory
+    line: string
+        line string e.g. 'C II 1036'
+    attribute: string
+        column name from absorber datafile
+    r_max: float
+        maximum radial distance
+    delta_r: float
+        distance bin size
+
+
+    Returns
+    -------
+    r_bins: array
+        bin edges for radial distances
+    radial_attribute_list: list of arrays
+
+    """
+
+    r_bins = np.arange(0, r_max+delta_r, delta_r)
+    radial_attribute_list = []
+
+    for handle in glob.glob(absorbers_directory + 'abs*'):
+
+        df = pd.read_csv(handle, skiprows=1)
+        r, att = get_attribute_by_distance(df, line, attribute)
+
+        # get attribute array into binned radial array
+        att_binned = np.histogram(r, r_bins, weights=att)[0]
+
+        radial_attribute_list.append(att_binned)
+
+    return r_bins, radial_attribute_list
+
+def radial_profile_median(absorbers_directory, line, attribute, r_max,
+                                  delta_r):
+
+    r, values_binned = get_binned_attribute_all_rays(absorbers_directory, line,
+                                                     attribute, r_max, delta_r)
+
+    profile = np.median(np.vstack(values_binned), axis=0)
+
+    return r, profile
 
 
 
@@ -264,6 +316,46 @@ def weighted_radial_profile_various(absorbers_directory, line, attributes_list,
             profiles[att] += np.histogram(r, r_bins, weights=att_values*dens)[0]
 
     return r_bins, {att:profiles[att]/density_per_bin for att in attributes_list}
+
+
+def density_quotient_radial_profile(absorbers_directory, line, r_max, delta_r):
+    """
+    Calculates total gas density radial profile by dividing total mass in
+    spherical shell by total volume in shell
+
+    Parameters
+    ----------
+    absorbers_directory: string
+        path to directory
+    r_max: float
+        maximum radial distance
+    delta_r: float
+        distance bin size
+
+
+    Returns
+    -------
+    r_bins: array
+        bin edges for radial distances
+    density: array
+
+    """
+    # NOT YET FINISHED ########################################################
+
+    # r_bins = np.arange(0, r_max+delta_r, delta_r)
+    # counts_per_bin = np.zeros(len(r_bins)-1)
+    # profile = np.zeros(len(r_bins)-1)
+    #
+    # for handle in glob.glob(absorbers_directory + 'abs*'):
+    #
+    #     df = pd.read_csv(handle, skiprows=1)
+    #     r, att = get_attribute_by_distance(df, line, attribute)
+    #
+    #     counts_per_bin += np.histogram(r, r_bins)[0]
+    #     profile += np.histogram(r, r_bins, weights=att)[0]
+    #
+    # return r_bins, profile/counts_per_bin
+    pass
 
 
 def covering_fraction(absorbers_directory, line, N_thresh, r_max, delta_r):
