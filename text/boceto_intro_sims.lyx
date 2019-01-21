@@ -109,7 +109,122 @@ Introducción
 \begin_inset Formula $\Lambda$
 \end_inset
 
-CDM
+CDM [tesis de cecilia]
+\end_layout
+
+\begin_layout Standard
+El modelo cosmológico más aceptado para la descripción del universo en que
+ vivimos es el denominado 
+\begin_inset Formula $\lcdm$
+\end_inset
+
+ (
+\emph on
+cosmological constant 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ with Cold Dark Matter
+\emph default
+).
+ Este supone un universo descripto por las ecuaciones de campo de Einstein
+ incluyendo la constante cosmológica 
+\begin_inset Formula $\left(\Lambda\right)$
+\end_inset
+
+; con una cosmología isótropa y homogénea dada por la solución de Friedmann-Robe
+rtson-Walker.
+ Estas suposiciones predicen un universo en expansión (de forma acelerada
+ gracias a la inclusión de 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+), en concordancia con las observaciones realizadas hasta el presente.
+\end_layout
+
+\begin_layout Standard
+De acuerdo con el modelo, aproximadamente sólo un 
+\begin_inset Formula $30\%$
+\end_inset
+
+ del universo está formado por materia, y el restante 
+\begin_inset Formula $70\%$
+\end_inset
+
+ por 
+\emph on
+energía oscura, 
+\emph default
+el nombre que recibe la densidad de energía correspondiente a la inclusión
+ de 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+.
+ Del total de materia, un 
+\begin_inset Formula $90\%$
+\end_inset
+
+ está formado por la llamada 
+\emph on
+materia oscura 
+\emph default
+que no parece interactuar electromagnéticamente, de esa forma evitando su
+ observación mediante emisión u absorción de radiación; es por esto que
+ sólo se aprecian sus efectos gravitacionales.
+ El modelo 
+\begin_inset Formula $\lcdm$
+\end_inset
+
+ supone que la materia oscura está formada por partículas de baja velocidad
+ térmica 
+\emph on
+-frías-.
+\end_layout
+
+\begin_layout Standard
+El restante 
+\begin_inset Formula $10\%$
+\end_inset
+
+ de la materia en el universo es conocida como 
+\emph on
+materia bariónica u ordinaria, 
+\emph default
+compuesta por partículas descriptas según el Modelo Estándar.
+ Es ésta componente la cual integra los objetos observables.
+\end_layout
+
+\begin_layout Standard
+En el marco de este modelo, se tiene un escenario jerárquico para la formación
+ de galaxias 
+\emph on
+(Hierarchical Clustering Model)
+\emph default
+.
+ Las estructuras cosmológicas emergen de pequeñas fluctuaciones de densidad
+ con estadística gaussiana en el universo temprano.
+ Mientras evoluciona el universo, estas perturbaciones son amplificadas
+ gravitacionalemente, y la materia oscura colapsa formando estructuras pequeñas
+ primero.
+ Dentro de estos halos de materia oscura, el gas colapsa y se enfría, dando
+ lugar a la formación estelar.
+ Éstas estructuras se agregan y fusionan, generando así sistemas más grandes
+ a partir de otros más pequeños.
+\end_layout
+
+\begin_layout Standard
+De esa forma, cada galaxia sigue una historia evolutiva única, con 
+\emph on
+mergers 
+\emph default
+y acreción particulares.
+ Así, a partir del modelo 
+\begin_inset Formula $\lcdm$
+\end_inset
+
+ se espera una gran diversidad en las propiedades de las galaxias.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -368,7 +483,8 @@ Simulaciones
 \begin_layout Standard
 La formación de estructura a escala galáctica es un proceso altamente no
  lineal, multiescala y libre de simetrías que lo simplifiquen.
- Estas características hacen que sea imposible de estudiar analíticamente
+ Estas características resultan en la imposibilidad de estudiar el problema
+ analíticamente.
 \end_layout
 
 \begin_layout Standard
