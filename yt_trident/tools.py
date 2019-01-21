@@ -51,6 +51,7 @@ all_line_keys=['C II 1036', 'C II 1335', 'C II 904', 'C II* 1037', 'C II* 1336',
        'Ly 28', 'Ly 29', 'Ly 30', 'Ly 31', 'Ly 32', 'Ly 33', 'Ly 34',
        'Ly 35', 'Ly 36', 'Ly 37', 'Ly 38', 'Ly 39', 'Ly 6', 'Ly 7',
        'Ly 8', 'Ly 9', 'Ly a', 'Ly b', 'Ly c', 'Ly d', 'Ly e',
+       'O VI 1032', 'O VI 1038',
        'Si II 1021', 'Si II 1190', 'Si II 1193', 'Si II 1260',
        'Si II 1304', 'Si II 1808', 'Si II 990', 'Si II* 1024',
        'Si II* 1194', 'Si II* 1197', 'Si II* 1265', 'Si II* 1309',
@@ -308,9 +309,9 @@ def get_absorber_chars_from_file(absorber_filename, line_key):
 
     #index_absorber = np.argmax(line_df['N'])
 
-    # identifies _the_ absorber by the maximum tau (absorbption) and its
+    # identifies _the_ absorber by the maximum rho and its
     # wavelength as the central
-    index_absorber = np.argmax(line_df['tau'])
+    index_absorber = np.argmax(line_df['rho'])
     N = line_df['N'][index_absorber]
 
     lambda_obs = line_df['lambda'][index_absorber]
