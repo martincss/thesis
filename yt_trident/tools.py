@@ -277,14 +277,26 @@ def get_absorber_chars(ray, line_key, line_list):
 
 
 def get_absorber_chars_from_file(absorber_filename, line_key):
+    """
+    Convenience function to return m31 subhalo center from 2Mpc_LG dataset
+
+    Returns
+    -------
+    mw_center: ndarray
+        Three dimensional array containing coordinates of m31 subhalo center
+    """
 
     df = pd.read_csv(absorber_filename, skiprows=1)
     line_df = (df[df['Line']== line_key])
 
-    N = line_df['N'].max()
+    #N = line_df['N'].max()
     T = line_df['T'].median()
 
-    index_absorber = np.argmax(line_df['N'])
+    #index_absorber = np.argmax(line_df['N'])
+    # identifies _the_ absorber by the maximum tau (absorbption) and its
+    # wavelength as the central
+    index_absorber = np.argmax(line_df['tau'])
+    N = line_df['N'][index_absorber]
 
     lambda_obs = line_df['lambda'][index_absorber]
 
