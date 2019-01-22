@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 from numpy import pi as pi
-import matplotlib.pyplot as plt
-plt.ion()
-import yt
-yt.enable_parallelism()
+from multiprocessing import Pool
 import trident
 import gc
 
@@ -15,11 +12,7 @@ from tools import get_2Mpc_LG_dataset, get_mw_center_2Mpc_LG, \
 # ~~~~~~~~~~~~~~~~~~~~ SETUP ~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
-snap_num = 135
-subfind_path = '../../2Mpc_LG'
-
-rays_directory = './rays_2Mpc_LG_to_mw_2000/'
+rays_directory = './rays_test/'
 subhalo_rays_directory = './rays_2Mpc_LG_from_subhalos/'
 
 ds = get_2Mpc_LG_dataset()
@@ -71,6 +64,8 @@ def sample_single_sightline(r, theta, phi):
                    'ray_{:.3f}_{:.3f}_{:.3f}.h5'.format(r, theta, phi)
     make_ray_to_mw((r, theta, phi), ray_filename=ray_filename)
 
+    gc.collect()
+
 
 
 def make_ray_sample(r_interval, theta_interval, phi_interval):
@@ -89,20 +84,30 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
 
                 gc.collect()
 
-def make_ray_sample_uniform(r_interval, number_of_sightlines):
+def sample_one_to_map(args):
+
+    i, number_of_sightlines, r, theta, phi = args
+
+    print('\n RAY NUMBER {:d}/{:d} ~~~~~~~~~~~~~~~~~~~'
+          ' \n'.format(i, number_of_sightlines))
+
+    sample_single_sightline(r,theta, phi)
+
+
+
+def make_ray_sample_uniform(r_interval, number_of_sightlines, pool):
 
     theta_interval, phi_interval = sphere_uniform_grid(number_of_sightlines)
 
     for r in r_interval:
 
-        for i, (theta, phi) in enumerate(zip(theta_interval, phi_interval)):
+        tasks = [(i, number_of_sightlines, r, theta, phi) for i, (theta, phi) in \
+                 enumerate(zip(theta_interval, phi_interval))]
+        pool.map(sample_one_to_map, tasks)
 
-            print('\n RAY NUMBER {:d}/{:d} ~~~~~~~~~~~~~~~~~~~'
-                  ' \n'.format(i, number_of_sightlines))
 
-            sample_single_sightline(r,theta, phi)
 
-            gc.collect()
+
 
 #################################################################
 
@@ -190,5 +195,5 @@ close_up_050 = np.linspace(0.36, 0.51, 50)
 
 if __name__ == '__main__':
     #sample_m31_and_away(close_up_050)
-    #make_ray_sample_uniform([2000], 500)
-    pass
+    pool = Pool(4)
+    make_ray_sample_uniform([2000], 10, pool)
