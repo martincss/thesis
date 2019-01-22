@@ -106,6 +106,13 @@ def get_dl_kmccmh(ray):
 
     return dl
 
+def get_cell_volume_cm3(ray):
+
+    cell_volume = ray.r['gas', 'cell_volume']
+
+    return cell_volume
+
+
 def get_cell_volume_kpccmh3(ray):
 
     cell_volume = np.array( ray.r['dx'].in_units('kpccm/h') * \
