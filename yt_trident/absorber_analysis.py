@@ -499,3 +499,49 @@ def column_density_ratio_profile(absorbers_directory,
         profile += np.histogram(r, r_bins, weights=ratio)[0]
 
     return r_bins, profile/counts_per_bin
+
+
+
+def covering_fraction_by_rays(absorbers_directory, line, N_thresh_list):
+    """
+    Calculates total covering_fraction of absorbers with column_density
+    exceeding N_thresh for a given absorption line.
+    Counts all sightlines with total (i.e. summed) N greater than the threshold
+    and divides it by total number of sightlines; for each N_thresh in the list.
+
+    Parameters
+    ----------
+    absorbers_directory: string
+        path to directory
+    line: string
+        line string e.g. 'C II 1036'
+    N_thresh_list: list of floats
+        min column density values for absorber to be counted
+
+    Returns
+    -------
+    covf: float
+
+
+    """
+
+    number_of_sightlines = 0
+    sightlines_over_thresh = {N_thresh:0 for N_thresh in N_thresh_list}
+
+    for handle in glob.glob(absorbers_directory + 'abs*'):
+
+        df = pd.read_csv(handle, skiprows=1)
+        r, N = get_attribute_by_distance(df, line, 'N')
+
+        for N_thresh in N_thresh_list:
+
+            if N[r > 20*HUBBLE_2Mpc_LG].sum() > N_thresh:
+
+                sightlines_over_thresh[N_thresh] += 1
+
+        number_of_sightlines += 1
+
+    covf = {N_thresh: sightlines_over_thresh[N_thresh]/number_of_sightlines
+            for N_thresh in N_thresh_list}
+
+    return covf
