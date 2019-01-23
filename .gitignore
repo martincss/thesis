@@ -48,6 +48,8 @@ nosetests.xml
 #*.txt
 #*.h5
 ./yt_trident/spectra_C_Si_2Mpc_LG_from_mw/
+./yt_trident/rays_test/
+./yt_trident/absorbers_2Mpc_LG_to_mw_2000/
 
 # Jupyter notebook checkpoints
 .ipynb_checkpoints/

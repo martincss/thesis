@@ -218,6 +218,12 @@ def ray_mean_density(ray, field):
 
     return np.mean(density)
 
+def lambda_to_velocity(wavelength, lambda_0):
+
+    velocity = (wavelength - lambda_0)/lambda_0 * LIGHTSPEED
+
+    return velocity
+
 
 def get_line(lambda_0, wavelength, flux, wavelength_interval):
 
@@ -237,9 +243,8 @@ def get_line(lambda_0, wavelength, flux, wavelength_interval):
         left_index = np.argmin(np.abs(wavelength - lambda_0 + wavelength_interval/2))
 
         wavelength_section = wavelength[left_index:right_index]
-        delta_lambda = wavelength_section - lambda_0
         flux_section = flux[left_index:right_index]
-        velocity = LIGHTSPEED * delta_lambda/lambda_0
+        velocity = lambda_to_velocity(wavelength, lambda_0)
         #pdb.set_trace()
 
     except:
@@ -356,3 +361,46 @@ def absorber_region_2Mpc_LG(absorber_position):
     else:
 
         return 'IGM'
+
+def identify_hvcs(df, line):
+    """
+    Retrieves (at most 2) HVCs from an absorber dataframe for a given absorption
+    line.
+    HVCs are selected as first to maxima of optical depth tau, if the second if
+    greater than 33% of the first.
+
+    Parameters
+    ----------
+    df: dataframe
+        absorber dataframe
+    line: string
+        absorption line string
+
+    Returns
+    -------
+    dataframe with identified HVCs
+    """
+
+    line_df = df[df['Line'] == line]
+
+    index_absorber = line_df['rho'].argmax()
+    lambda_obs = line_df['lambda'][index_absorber]
+    vel = lambda_to_velocity(line_df['lambda'], lambda_obs)
+
+    condition = (np.abs(vel) > 100) & (line_df['tau'] != 0)
+    candidates = line_df[condition].sort_values('tau', ascending = False)
+    candidates['vel_spectrum'] = vel[condition]
+
+    absorbers = [candidates.iloc[0]]
+
+    tau_1st = candidates['tau'].iloc[0]
+    tau_2nd = candidates['tau'].iloc[1]
+
+    if tau_2nd > tau_1st/3:
+        absorbers.append(candidates.iloc[1])
+
+    return pd.concat(absorbers, axis=1)
+
+
+def retrieve_all_hvcs(absorbers_directory):
+    pass
