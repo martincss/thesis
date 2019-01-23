@@ -421,7 +421,8 @@ def identify_hvcs_all_lines(df):
 
     absorbers = []
 
-    for line in df['Line'].unique():
+    #for line in df['Line'].unique():
+    for line in ['Si III 1206', 'C II 1335', 'Si II 1193', 'C IV 1548']:
 
         identified = identify_hvcs_single_line(df, line)
 
@@ -441,6 +442,7 @@ def identify_hvcs_all_lines(df):
 def identify_one_to_map(path_to_absorber):
 
     df = pd.read_csv(path_to_absorber, skiprows=1)
+    #print(path_to_absorber)
 
     hvcs = identify_hvcs_all_lines(df)
 

@@ -5,16 +5,16 @@ plt.ion()
 import pandas as pd
 from tools import retrieve_all_hvcs
 from multiprocessing import Pool
-p= Pool(4)
+p= Pool(2)
 
-absorbers_directory = 'absorber_2Mpc_LG_to_mw_2000/'
+absorbers_directory = 'absorbers_2Mpc_LG_to_mw_2000/'
 abs_lines = ['Si III 1206', 'C II 1335', 'Si II 1193', 'C IV 1548']
 
 number_of_bins = 50
 
 hvcs = retrieve_all_hvcs(absorbers_directory, p)
 
-hvcs_each = [line:hvcs[hvcs['Line']==line] for line in abs_lines]
+hvcs_each = {line:hvcs[hvcs['Line']==line] for line in abs_lines}
 vel_each =  {line: np.array(hvcs_each[line]['vel_spectrum'], dtype=float) \
              for line in abs_lines}
 
