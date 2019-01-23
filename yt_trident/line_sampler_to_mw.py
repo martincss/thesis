@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 from numpy import pi as pi
-from multiprocessing import Pool
+from multiprocessing import Pool, cpu_count
+number_of_cores = cpu_count()
 import trident
 import gc
 
@@ -195,5 +196,5 @@ close_up_050 = np.linspace(0.36, 0.51, 50)
 
 if __name__ == '__main__':
     #sample_m31_and_away(close_up_050)
-    pool = Pool(4)
+    pool = Pool(number_of_cores)
     make_ray_sample_uniform([2000], 10, pool)
