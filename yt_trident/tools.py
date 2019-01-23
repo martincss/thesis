@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import math
 import pandas as pd
 import pdb
+import glob
+from multiprocessing import Pool, cpu_count
 
 LIGHTSPEED = 299792 # in km/s
 HUBBLE_2Mpc_LG = 0.7
@@ -362,7 +364,8 @@ def absorber_region_2Mpc_LG(absorber_position):
 
         return 'IGM'
 
-def identify_hvcs(df, line):
+
+def identify_hvcs_single_line(df, line):
     """
     Retrieves (at most 2) HVCs from an absorber dataframe for a given absorption
     line.
@@ -391,16 +394,65 @@ def identify_hvcs(df, line):
     candidates = line_df[condition].sort_values('tau', ascending = False)
     candidates['vel_spectrum'] = vel[condition]
 
-    absorbers = [candidates.iloc[0]]
+    try:
+        absorbers = [candidates.iloc[0]]
 
-    tau_1st = candidates['tau'].iloc[0]
-    tau_2nd = candidates['tau'].iloc[1]
+    except IndexError:
 
-    if tau_2nd > tau_1st/3:
-        absorbers.append(candidates.iloc[1])
+        absorbers = None
 
-    return pd.concat(absorbers, axis=1)
+    try:
+        tau_1st = candidates['tau'].iloc[0]
+        tau_2nd = candidates['tau'].iloc[1]
+
+        if tau_2nd > tau_1st/3:
+
+            absorbers.append(candidates.iloc[1])
+#        pdb.set_trace()
+        absorbers = pd.concat(absorbers, axis=1)
+
+    except IndexError:
+
+        absorbers = None
+
+    return absorbers
+
+def identify_hvcs_all_lines(df):
+
+    absorbers = []
+
+    for line in df['Line'].unique():
+
+        identified = identify_hvcs_single_line(df, line)
+
+        if identified is not None:
+
+            absorbers.append(identified)
+    try:
+#        pdb.set_trace()
+        df_all = pd.concat(absorbers, axis=1)
+
+    except ValueError:
+
+        df_all = None
+
+    return df_all
+
+def identify_one_to_map(path_to_absorber):
+
+    df = pd.read_csv(path_to_absorber, skiprows=1)
+
+    hvcs = identify_hvcs_all_lines(df)
+
+    return hvcs
 
 
-def retrieve_all_hvcs(absorbers_directory):
-    pass
+def retrieve_all_hvcs(absorbers_directory, pool):
+
+    handles = [handle for handle in glob.glob(absorbers_directory + 'abs*')]
+
+    results = pool.map(identify_one_to_map, handles)
+
+    hvcs = pd.concat([df for df in results if df is not None], axis=1)
+
+    return hvcs.T
