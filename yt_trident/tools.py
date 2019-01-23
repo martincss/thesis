@@ -220,7 +220,7 @@ def ray_mean_density(ray, field):
 
 def lambda_to_velocity(wavelength, lambda_0):
 
-    velocity = (wavelength - lambda_0)/LIGHTSPEED
+    velocity = (wavelength - lambda_0)/lambda_0 * LIGHTSPEED
 
     return velocity
 
@@ -363,6 +363,44 @@ def absorber_region_2Mpc_LG(absorber_position):
         return 'IGM'
 
 def identify_hvcs(df, line):
+    """
+    Retrieves (at most 2) HVCs from an absorber dataframe for a given absorption
+    line.
+    HVCs are selected as first to maxima of optical depth tau, if the second if
+    greater than 33% of the first.
 
-    dfc = df[df['Line'] == line]
-    dfl = dfc[(np.abs(dfc['v_los']) > 100) & (dfc['tau'] != 0)]
+    Parameters
+    ----------
+    df: dataframe
+        absorber dataframe
+    line: string
+        absorption line string
+
+    Returns
+    -------
+    dataframe with identified HVCs
+    """
+
+    line_df = df[df['Line'] == line]
+
+    index_absorber = line_df['rho'].argmax()
+    lambda_obs = line_df['lambda'][index_absorber]
+    vel = lambda_to_velocity(line_df['lambda'], lambda_obs)
+
+    condition = (np.abs(vel) > 100) & (line_df['tau'] != 0)
+    candidates = line_df[condition].sort_values('tau', ascending = False)
+    candidates['vel_spectrum'] = vel[condition]
+
+    absorbers = [candidates.iloc[0]]
+
+    tau_1st = candidates['tau'].iloc[0]
+    tau_2nd = candidates['tau'].iloc[1]
+
+    if tau_2nd > tau_1st/3:
+        absorbers.append(candidates.iloc[1])
+
+    return pd.concat(absorbers, axis=1)
+
+
+def retrieve_all_hvcs(absorbers_directory):
+    pass
