@@ -218,6 +218,12 @@ def ray_mean_density(ray, field):
 
     return np.mean(density)
 
+def lambda_to_velocity(wavelength, lambda_0):
+
+    velocity = (wavelength - lambda_0)/LIGHTSPEED
+
+    return velocity
+
 
 def get_line(lambda_0, wavelength, flux, wavelength_interval):
 
@@ -237,9 +243,8 @@ def get_line(lambda_0, wavelength, flux, wavelength_interval):
         left_index = np.argmin(np.abs(wavelength - lambda_0 + wavelength_interval/2))
 
         wavelength_section = wavelength[left_index:right_index]
-        delta_lambda = wavelength_section - lambda_0
         flux_section = flux[left_index:right_index]
-        velocity = LIGHTSPEED * delta_lambda/lambda_0
+        velocity = lambda_to_velocity(wavelength, lambda_0)
         #pdb.set_trace()
 
     except:
@@ -356,3 +361,8 @@ def absorber_region_2Mpc_LG(absorber_position):
     else:
 
         return 'IGM'
+
+def identify_hvcs(df, line):
+
+    dfc = df[df['Line'] == line]
+    dfl = dfc[(np.abs(dfc['v_los']) > 100) & (dfc['tau'] != 0)]
