@@ -2,22 +2,26 @@
 import numpy as np
 import os
 import glob
-import matplotlib.pyplot as plt
-plt.ion()
 import yt
-yt.enable_parallelism()
 import trident
 from tools import make_SpectrumGenerator, get_line_observables_dict
 from get_arrays_from_ray import get_data_array
-import pandas as pd
+from multiprocessing import Pool, cpu_count
 
-line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H I']
+number_of_cores = cpu_count()//2
+pool = Pool(number_of_cores)
+
+#line_list = ['C II', 'C IV', 'Si III', 'Si II', 'Si IV', 'H I']
 #line_list = ['C II', 'C IV', 'Si III', 'Si II', 'O VI']
+line_list = ['C II 1335', 'C IV 1548', 'Si II 1193', 'Si III 1206', 'Ly a']
 
-
-rays_directory = './rays_2Mpc_LG_to_m31_210/'
-absorbers_directory = './absorbers_2Mpc_LG_to_m31_210/'
+# rays_directory = './rays_2Mpc_LG_to_m31_210/'
+# absorbers_directory = './absorbers_2Mpc_LG_to_m31_210/'
 #absorbers_directory = './'
+rays_directory = './rays_test/'
+absorbers_directory = './rays_test/'
+
+
 
 
 def get_lines(line_observables_dict):
@@ -123,6 +127,30 @@ def generate_absorbers_file(rays_directory, ray_filename, absorbers_directory):
             write_line(handle, i, line, data_array)
 
 
+def generate_one_to_map(args):
+
+    i, handle, rays_directory, absorbers_directory = args
+
+    ray_filename = handle.split('/')[2]
+    absorber_filename = 'abs_' + ray_filename[4:-3] + '.txt'
+
+
+    if not os.path.exists(absorbers_directory + absorber_filename):
+
+        print('\n Generating file for ray #{:2d} ~~~~~~~~~~~\n'.format(i+1))
+
+        generate_absorbers_file(rays_directory, ray_filename,
+                                absorbers_directory)
+
+
+def generate_absorbers_sample(rays_directory, absorbers_directory, pool):
+
+    tasks =[(i,handle, rays_directory, absorbers_directory) for i, handle in \
+            enumerate(glob.glob(rays_directory + 'ray*'))]
+
+    pool.map(generate_one_to_map, tasks)
+
+
 if __name__ == '__main__':
 
     #rays_list = ['ray_1000_0.70_4.19.h5', 'ray_1000_1.05_1.40.h5', 'ray_1000_2.8_2.1.h5']
@@ -131,15 +159,17 @@ if __name__ == '__main__':
 
     #    generate_absorbers_file(ray_filename, absorbers_directory)
 
-    for i, handle in enumerate(glob.glob(rays_directory + 'ray*')):
+#     for i, handle in enumerate(glob.glob(rays_directory + 'ray*')):
+#
+#         ray_filename = handle.split('/')[2]
+#         absorber_filename = 'abs_' + ray_filename[4:-3] + '.txt'
+#
+#         if not os.path.exists(absorbers_directory + absorber_filename):
+#
+#             print('\n Generating file for ray #{:2d} ~~~~~~~~~~~\n'.format(i+1))
+#
+# # kind of hard-coded, ray_filename extracted from rays_directory + ray_filename
+#             generate_absorbers_file(rays_directory, ray_filename,
+#                                     absorbers_directory)
 
-        ray_filename = handle.split('/')[2]
-        absorber_filename = 'abs_' + ray_filename[4:-3] + '.txt'
-
-        if not os.path.exists(absorbers_directory + absorber_filename):
-
-            print('\n Generating file for ray #{:2d} ~~~~~~~~~~~\n'.format(i+1))
-
-# kind of hard-coded, ray_filename extracted from rays_directory + ray_filename
-            generate_absorbers_file(rays_directory, ray_filename,
-                                    absorbers_directory)
+    generate_absorbers_sample(rays_directory, absorbers_directory, pool)
