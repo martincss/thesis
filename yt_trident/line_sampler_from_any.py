@@ -8,7 +8,7 @@ yt.enable_parallelism()
 import trident
 import gc
 
-from tools import my_field_def, unit_base, subhalo_center, ray_start_from_sph, make_projection
+from tools import my_field_def, unit_base, subhalo_center, ray_end_from_sph, make_projection
 
 
 # ~~~~~~~~~~~~~~~~~~~~ SETUP ~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +36,7 @@ mw_center = subhalo_center(subfind_path=subfind_path, snap_num=snap_num,
 # ~~~~~~~~~~~~~~~~~~~~ ACTIONS ~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def make_ray_from_any(ray_end, spherical_coords_start, ray_filename):
+def make_ray_from_any(ray_start, spherical_coords_start, ray_filename):
     """
     Creates ray with center of MW as starting point, and end point passed by
     its spherical coordinates from MW center.
@@ -44,7 +44,7 @@ def make_ray_from_any(ray_end, spherical_coords_start, ray_filename):
     Spherical coordinates of end point to be passed as iterable.
     """
 
-    ray_start = ray_start_from_sph(ray_end, spherical_coords_start)
+    ray_end = ray_end_from_sph(ray_start, spherical_coords_start)
 
     # for some reason, make_simple_ray overwrites start_position and end_position
     # actually are passed as pointers and changes them to cgs; this can be prevented
@@ -57,6 +57,18 @@ def make_ray_from_any(ray_end, spherical_coords_start, ray_filename):
                                   ftype='Gas')
 
     return ray
+
+
+def sample_one_to_map_from_any(args):
+
+    r, theta, phi, ray_start = args
+
+    print('\n NOW SAMPLING r = {}, theta = {}, phi = {} ~~~~~~~~~~~~~~~~~~~ \n'.format(r, theta, phi))
+
+    ray_filename = rays_directory + 'ray_{:.3f}_{:.2f}_{:.2f}.h5'.format(r, theta, phi)
+    make_ray_from_any(ray_start,(r, theta, phi), ray_filename=ray_filename)
+
+    gc.collect()
 
 
 
