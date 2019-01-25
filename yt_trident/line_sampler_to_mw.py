@@ -105,6 +105,7 @@ def make_ray_sample_uniform(r_interval, number_of_sightlines, pool):
         tasks = [(i, number_of_sightlines, r, theta, phi) for i, (theta, phi) in \
                  enumerate(zip(theta_interval, phi_interval))]
         pool.map(sample_one_to_map, tasks)
+    pass
 
 
 
@@ -198,3 +199,4 @@ if __name__ == '__main__':
     #sample_m31_and_away(close_up_050)
     #pool = Pool(number_of_cores)
     #make_ray_sample_uniform([2000], 10, pool)
+    sample_single_sightline(2000,1.0, 5.6)

@@ -43,8 +43,8 @@ unit_base = {'length'   :  (1.0, 'kpccm/h'),
              'mass'     :   (1.0e10, 'Msun'),
              'velocity' :      (1.0, 'km/s')}
 
-line_table = {'Si III':1206, 'Si IIa':1190, 'Si IIb':1260, 'C II': 1334.532,
-              'C IV':1548}
+line_table = {'Si III 1206':1206.5, 'Si II 1193':1193.29, 'Si IIb':1260, 'C II 1335': 1334.532,
+              'C IV 1548':1548.19}
 
 all_line_keys=['C II 1036', 'C II 1335', 'C II 904', 'C II* 1037', 'C II* 1336',
        'C IV 1548', 'C IV 1551', 'Ly 10', 'Ly 11', 'Ly 12', 'Ly 13',
@@ -67,7 +67,8 @@ all_line_keys=['C II 1036', 'C II 1335', 'C II 904', 'C II* 1037', 'C II* 1336',
 
 def get_2Mpc_LG_dataset():
 
-    snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
+    #snap_file = './snapdir_135/snap_LG_WMAP5_2048_135.0'
+    snap_file = '../../2Mpc_LG/snapdir_135/snap_LG_WMAP5_2048_135.0'
 
     ds = yt.frontends.gadget.GadgetDataset(filename = snap_file,
                                            unit_base = unit_base,
@@ -182,6 +183,26 @@ def ray_start_from_sph(ray_end, trajectory):
     return ray_start
 
 
+def ray_end_from_sph(ray_start, trajectory):
+    """
+    Since supplying 'trajectory' argument to make_simple_ray does not seem to be
+    working because some issue with yt units; am now reproducing the function
+    here.
+
+    Given an ending position, and the spherical coordinates for a starting point
+    (using such ending position as the origin), returns ray start point as array.
+    """
+
+    ray_end = np.asarray(ray_end)
+
+    r, theta, phi = trajectory
+
+    ray_end = ray_start -  r * np.array([np.cos(phi) * np.sin(theta),
+            np.sin(phi) * np.sin(theta), np.cos(theta)])
+
+    return ray_end
+
+
 def make_projection(ds, center, side, axis, field='density'):
 
     # for this to work fine and prevent colorbar to linear scale, center and
@@ -225,7 +246,7 @@ def lambda_to_velocity(wavelength, lambda_0):
     velocity = (wavelength - lambda_0)/lambda_0 * LIGHTSPEED
 
     return velocity
-
+    #return wavelength
 
 def get_line(lambda_0, wavelength, flux, wavelength_interval):
 
@@ -246,7 +267,7 @@ def get_line(lambda_0, wavelength, flux, wavelength_interval):
 
         wavelength_section = wavelength[left_index:right_index]
         flux_section = flux[left_index:right_index]
-        velocity = lambda_to_velocity(wavelength, lambda_0)
+        velocity = lambda_to_velocity(wavelength_section, lambda_0)
         #pdb.set_trace()
 
     except:
@@ -275,7 +296,8 @@ def get_absorber_chars(ray, line_key, line_list):
 
     index_absorber = np.argmax(np.array(observables_dict[line_key]['column_density']))
 
-    lambda_obs = np.array(observables_dict[line_key]['lambda_obs'])[index_absorber]
+    #lambda_obs = np.array(observables_dict[line_key]['lambda_obs'])[index_absorber]
+    lambda_obs = line_table[line_key]
 
     position = (np.array(ray.r['x'].in_units('kpccm/h'))[index_absorber],
                 np.array(ray.r['y'].in_units('kpccm/h'))[index_absorber],
