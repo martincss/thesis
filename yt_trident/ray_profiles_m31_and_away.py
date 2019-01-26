@@ -65,6 +65,18 @@ if __name__=='__main__':
     plt.grid()
     plt.legend()
 
+
+    plt.figure()
+    r_m31, vlos_m31 = get_attribute_by_distance(df_m31, 'C II 1036', 'v_los')
+    r_away,vlos_away = get_attribute_by_distance(df_away, 'C II 1036', 'v_los')
+    plt.semilogy(r_m31/HUBBLE_2Mpc_LG, vlos_m31, label = 'from m31', color = 'magenta')
+    plt.semilogy(r_away/HUBBLE_2Mpc_LG, vlos_away, label = 'from away', color = 'purple')
+    plt.xlabel('Distance [kpc]', fontsize = 15)
+    plt.ylabel('v LOS [km/s]', fontsize = 15)
+    plt.title('vlos profile', fontsize = 20)
+    plt.grid()
+    plt.legend()
+
     plt.figure()
     r_m31, NS3_m31 = get_attribute_by_distance(df_m31, 'Si III 1206', 'N')
     r_away, NS3_away = get_attribute_by_distance(df_away, 'Si III 1206', 'N')
