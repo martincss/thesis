@@ -535,7 +535,7 @@ def covering_fraction_by_rays(absorbers_directory, line, N_thresh_list):
 
         for N_thresh in N_thresh_list:
 
-            if N[r > 20*HUBBLE_2Mpc_LG].sum() > N_thresh:
+            if N[(r > 10*HUBBLE_2Mpc_LG) & (r < 300*HUBBLE_2Mpc_LG)].sum() > N_thresh:
 
                 sightlines_over_thresh[N_thresh] += 1
 
@@ -545,3 +545,21 @@ def covering_fraction_by_rays(absorbers_directory, line, N_thresh_list):
             for N_thresh in N_thresh_list}
 
     return covf
+
+
+def covering_fraction_by_rays_one_to_map(args):
+
+    handle, N_thresh_list, line_list, sightlines_over_thresh = args
+
+
+    df = pd.read_csv(handle, skiprows=1)
+
+    for line in line_list:
+
+        r, N = get_attribute_by_distance(df, line, 'N')
+
+        for N_thresh in N_thresh_list:
+
+            if N[r > 20*HUBBLE_2Mpc_LG].sum() > N_thresh:
+
+                sightlines_over_thresh[(N_thresh, line)] += 1
