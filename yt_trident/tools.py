@@ -65,6 +65,15 @@ all_line_keys=['C II 1036', 'C II 1335', 'C II 904', 'C II* 1037', 'C II* 1336',
 #     return data["density"] * data["thermal_energy"]
 
 
+def usable_cores():
+
+    if cpu_count() == 12:
+         number_of_cores = 5
+    else:
+         number_of_cores = 2
+
+    return number_of_cores
+
 def get_2Mpc_LG_dataset():
 
     #snap_file = './snapdir_135/snap_LG_WMAP5_2048_135.0'
