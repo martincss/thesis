@@ -4,7 +4,6 @@ import os
 import matplotlib.pyplot as plt
 plt.ion()
 import yt
-yt.enable_parallelism()
 import trident
 from tools import get_line, get_absorber_chars, get_absorber_chars_from_file, absorber_region_2Mpc_LG
 import pandas as pd
@@ -16,15 +15,27 @@ import pandas as pd
 
 
 #sightlines_list = ['ray_1000_1.0_5.6.h5', 'ray_1000_0.3_2.8.h5', 'ray_1000_1.7_1.4.h5']
-sightlines_list = ['ray_1000_0.70_4.19.h5', 'ray_1000_1.05_1.40.h5', 'ray_1000_2.8_2.1.h5']
+#sightlines_list = ['ray_1000_0.70_4.19.h5', 'ray_1000_1.05_1.40.h5', 'ray_1000_2.8_2.1.h5']
+
+#sightlines_list = ['ray_2000.000_0.698_4.115.h5', 'ray_2000.000_1.059_1.881.h5', 'ray_2000.000_2.837_2.574.h5']
+sightlines_list = ['ray_1000.000_0.698_4.189.h5', 'ray_2000.000_0.698_4.189.h5', 'ray_1000.000_1.047_1.396.h5', 'ray_2000.000_1.047_1.396.h5']
 
 line_list = ['C II', 'C IV', 'Si III', 'Si II']
-line_keys = ['Si III 1206', 'Si II 1190', 'Si II 1260','C II 1335', 'C IV 1548']
-bandwidth = 4
+line_keys = ['Si III 1206', 'Si II 1193','C II 1335', 'C IV 1548']
+bandwidth = 8
 
-rays_directory = './rays_2Mpc_LG_from_mw/'
-spectra_directory = './spectra_C_Si_2Mpc_LG_from_mw/'
-absorbers_directory = './absorbers_2Mpc_LG_from_mw/'
+# rays_directory = './rays_2Mpc_LG_from_mw/'
+# spectra_directory = './spectra_C_Si_2Mpc_LG_from_mw/'
+# absorbers_directory = './absorbers_2Mpc_LG_from_mw/'
+
+# rays_directory = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
+# spectra_directory = './spectra_C_Si_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
+# absorbers_directory = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
+
+rays_directory = './rays_test/'
+spectra_directory = './rays_test/'
+absorbers_directory = './rays_test/'
+
 
 
 def make_spectrum(ray, filename):
@@ -32,7 +43,7 @@ def make_spectrum(ray, filename):
     sg = trident.SpectrumGenerator(lambda_min = 1000, lambda_max = 1600,
         dlambda = 0.01)
 
-    sg.make_spectrum(ray, lines=line_list)
+    sg.make_spectrum(ray, lines=line_list, use_peculiar_velocity=True)
     sg.save_spectrum(filename + '.txt')
     sg.plot_spectrum(filename + '.png')
 
@@ -43,9 +54,11 @@ def load_or_make_spectrum(ray, ray_filename, spectra_directory):
     # a little brute, but I guess it can be polished
     spec_filename = 'spec_' + ray_filename[4:-3]
 
-    if not os.path.exists(spectra_directory + spec_filename + '.txt'):
+    #if not os.path.exists(spectra_directory + spec_filename + '.txt'):
 
-        make_spectrum(ray, spectra_directory + spec_filename)
+    #    make_spectrum(ray, spectra_directory + spec_filename)
+    make_spectrum(ray, spectra_directory + spec_filename)
+
 
     wavelength, _, flux, _ = np.loadtxt(fname=spectra_directory+spec_filename+'.txt',
                             delimiter=' ', skiprows=1, unpack=True)
