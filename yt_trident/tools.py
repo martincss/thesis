@@ -77,7 +77,7 @@ def usable_cores():
 def get_2Mpc_LG_dataset():
 
     #snap_file = './snapdir_135/snap_LG_WMAP5_2048_135.0'
-    snap_file = '../../2Mpc_LG/snapdir_135/snap_LG_WMAP5_2048_135.0'
+    snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
 
     ds = yt.frontends.gadget.GadgetDataset(filename = snap_file,
                                            unit_base = unit_base,
@@ -118,8 +118,8 @@ def subhalo_center(subfind_path, snap_num, subhalo_number):
     """
 
     cat = SubfindCatalogue(subfind_path, snap_num)
-    #center = cat.subhalo[subhalo_number].pot_min
-    center = cat.subhalo[subhalo_number].com
+    center = cat.subhalo[subhalo_number].pot_min
+    #center = cat.subhalo[subhalo_number].com
 
     return center
 
