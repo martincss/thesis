@@ -43,8 +43,8 @@ unit_base = {'length'   :  (1.0, 'kpccm/h'),
              'mass'     :   (1.0e10, 'Msun'),
              'velocity' :      (1.0, 'km/s')}
 
-line_table = {'Si III 1206':1206.5, 'Si II 1193':1193.29, 'Si IIb':1260, 'C II 1335': 1334.532,
-              'C IV 1548':1548.19}
+line_table = {'Si III 1206':1206.5, 'Si II 1193':1193.29,
+              'C II 1335': 1334.532, 'C IV 1548':1548.19, 'Ly a':1215.67}
 
 all_line_keys=['C II 1036', 'C II 1335', 'C II 904', 'C II* 1037', 'C II* 1336',
        'C IV 1548', 'C IV 1551', 'Ly 10', 'Ly 11', 'Ly 12', 'Ly 13',
@@ -349,10 +349,17 @@ def get_absorber_chars_from_file(absorber_filename, line_key):
 
     # identifies _the_ absorber by the maximum rho and its
     # wavelength as the central
-    index_absorber = np.argmax(line_df['rho'])
+    try:
+        index_absorber = np.argmax(line_df['rho'])
+
+    except KeyError:
+        index_absorber = np.argmax(line_df['N'])
+
     N = line_df['N'][index_absorber]
 
-    lambda_obs = line_df['lambda'][index_absorber]
+    #lambda_obs = line_df['lambda'][index_absorber]
+    lambda_obs = line_table[line_key]
+
 
     position = (line_df['x'][index_absorber], line_df['y'][index_absorber],
                 line_df['z'][index_absorber])
