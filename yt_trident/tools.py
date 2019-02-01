@@ -440,8 +440,9 @@ def identify_hvcs_single_line(df, line):
 
     line_df = df[df['Line'] == line]
 
-    index_absorber = line_df['rho'].argmax()
-    lambda_obs = line_df['lambda'][index_absorber]
+    # index_absorber = line_df['rho'].argmax()
+    # lambda_obs = line_df['lambda'][index_absorber]
+    lambda_obs = line_table[line]
     vel = lambda_to_velocity(line_df['lambda'], lambda_obs)
 
     condition = (np.abs(vel) > 100) & (line_df['tau'] != 0)

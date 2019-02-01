@@ -2,10 +2,11 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-plt.ion()
+#plt.ion()
 import yt
 import trident
-from tools import get_line, get_absorber_chars, get_absorber_chars_from_file, absorber_region_2Mpc_LG
+from tools import get_line, get_absorber_chars, get_absorber_chars_from_file,\
+                  absorber_region_2Mpc_LG, line_table
 import pandas as pd
 
 # np.mean(mean_denisities) = 2.528e-6
@@ -43,7 +44,7 @@ def make_spectrum(ray, filename):
     sg = trident.SpectrumGenerator(lambda_min = 1000, lambda_max = 1600,
         dlambda = 0.01)
 
-    sg.make_spectrum(ray, lines=line_list, use_peculiar_velocity=True)
+    sg.make_spectrum(ray, lines=line_keys, use_peculiar_velocity=True)
     sg.save_spectrum(filename + '.txt')
     sg.plot_spectrum(filename + '.png')
 
@@ -54,10 +55,9 @@ def load_or_make_spectrum(ray, ray_filename, spectra_directory):
     # a little brute, but I guess it can be polished
     spec_filename = 'spec_' + ray_filename[4:-3]
 
-    #if not os.path.exists(spectra_directory + spec_filename + '.txt'):
+    if not os.path.exists(spectra_directory + spec_filename + '.txt'):
 
-    #    make_spectrum(ray, spectra_directory + spec_filename)
-    make_spectrum(ray, spectra_directory + spec_filename)
+        make_spectrum(ray, spectra_directory + spec_filename)
 
 
     wavelength, _, flux, _ = np.loadtxt(fname=spectra_directory+spec_filename+'.txt',
@@ -73,26 +73,27 @@ def plot_line(ax, line, wavelength, flux, bandwidth, ray):
     """
 
     ray_filename = str(ray)
-    abs_filename = 'abs_' + ray_filename[4:-3] + '.txt'
-
-    if not os.path.exists(absorbers_directory + abs_filename):
-
-        lambda_0, N, T, absorber_position = get_absorber_chars(ray, line,
-                                                               line_list)
-
-    else:
-
-        lambda_0, N, T, absorber_position = get_absorber_chars_from_file(
-                                            absorbers_directory + abs_filename,
-                                            line)
-
-    absorber_region = absorber_region_2Mpc_LG(absorber_position)
+    # abs_filename = 'abs_' + ray_filename[4:-3] + '.txt'
+    #
+    # if not os.path.exists(absorbers_directory + abs_filename):
+    #
+    #     lambda_0, N, T, absorber_position = get_absorber_chars(ray, line,
+    #                                                            line_list)
+    #
+    # else:
+    #
+    #     lambda_0, N, T, absorber_position = get_absorber_chars_from_file(
+    #                                         absorbers_directory + abs_filename,
+    #                                         line)
+    #
+    # absorber_region = absorber_region_2Mpc_LG(absorber_position)
+    lambda_0 = line_table[line]
 
     velocity, flux = get_line(lambda_0, wavelength=wavelength, flux=flux,
                     wavelength_interval=bandwidth)
 
-    ax.plot(velocity, flux, label = 'N = {:.2e}\nT = {:.2e}\n{}'.format(N, T,
-                                                               absorber_region))
+    ax.plot(velocity, flux)#, label = 'N = {:.2e}\nT = {:.2e}\n{}'.format(N, T,
+#                                                              absorber_region))
 
     #ax.set_xlabel('Velocity [km/s]', fontsize = 15)
     #ax.set_ylabel('Relative Flux', fontsize = 15)
