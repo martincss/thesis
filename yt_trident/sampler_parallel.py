@@ -3,17 +3,19 @@ import glob
 from absorber_file_generator import generate_one_to_map
 from multiprocessing import Pool, cpu_count
 from line_sampler_to_mw import sphere_uniform_grid, sample_one_to_map
-from R_N_fig1_to_M31_and_away import sightlines_filenames, make_figure
+from R_N_fig1_to_M31_and_away import sightlines_filenames, make_figure, all_distances
 from tools import usable_cores
 #from line_sampler_from_any import sample_one_to_map_from_any
 
 
 number_of_cores = usable_cores()
 pool = Pool(number_of_cores)
+#pool = Pool(12)
 
 #rays_directory = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
-rays_directory = './rays_test/'
-absorbers_directory = './rays_test/'
+rays_directory = './rays_2Mpc_LG_to_m31_and_away/'
+#rays_directory = './rays_test/'
+absorbers_directory = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
 
 def generate_absorbers_sample(rays_directory, absorbers_directory, pool):
 
@@ -69,5 +71,5 @@ if __name__ == '__main__':
     #generate_absorbers_sample(rays_directory, absorbers_directory, pool)
 
     #make_ray_sample_uniform([2000], 10, pool)
-    #sample_m31_and_away([10, 23], rays_directory, pool)
-    generate_RN_fig1_distance_frames([10, 23], pool)
+    #sample_m31_and_away(all_distances[1:], rays_directory, pool)
+    generate_RN_fig1_distance_frames(all_distances[1:], pool)

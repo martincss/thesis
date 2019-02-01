@@ -20,7 +20,7 @@ bandwidth = 6
 # spectra_directory = './rays_test/'
 # figs_directory = './rays_test/'
 
-rays_directory = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter'
+rays_directory = './rays_2Mpc_LG_to_m31_and_away/'
 absorbers_directory = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
 spectra_directory = './spectra_2Mpc_LG_to_m31_and_away/'
 figs_directory = './R_N_Fig1_by_distance_2MpcLG_new/'

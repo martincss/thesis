@@ -2,10 +2,10 @@
 import numpy as np
 from numpy import pi as pi
 from multiprocessing import Pool, cpu_count
-
+import os
 import trident
 import gc
-
+import pdb
 from tools import get_2Mpc_LG_dataset, get_mw_center_2Mpc_LG, \
                   ray_start_from_sph, sphere_uniform_grid, z_from_distance
 
@@ -65,7 +65,11 @@ def sample_single_sightline(r, theta, phi, rays_directory=rays_directory):
 
     ray_filename = rays_directory + \
                    'ray_{:.3f}_{:.3f}_{:.3f}.h5'.format(r, theta, phi)
-    make_ray_to_mw((r, theta, phi), ray_filename=ray_filename)
+
+    if not os.path.exists(ray_filename):
+        #pdb.set_trace()
+        #print(r)
+        make_ray_to_mw((r, theta, phi), ray_filename=ray_filename)
 
     gc.collect()
 
