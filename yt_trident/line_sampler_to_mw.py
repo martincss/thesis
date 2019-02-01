@@ -46,7 +46,7 @@ def make_ray_to_mw(spherical_coords, ray_filename):
                                   start_position=ray_start.copy(),
                                   end_position=mw_center.copy(),
                                   data_filename=ray_filename,
-                                  redshift=z_from_distance(r)
+                                  redshift=z_from_distance(r),
                                   fields=['thermal_energy','density'],
                                   lines=line_list,
                                   ftype='Gas')

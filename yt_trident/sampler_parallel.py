@@ -2,7 +2,7 @@ import glob
 from absorber_file_generator import generate_one_to_map
 from multiprocessing import Pool, cpu_count
 from line_sampler_to_mw import sphere_uniform_grid, sample_one_to_map
-from line_sampler_from_any import sample_one_to_map_from_any
+#from line_sampler_from_any import sample_one_to_map_from_any
 
 if cpu_count() == 12:
      number_of_cores = 5
@@ -10,6 +10,7 @@ else:
      number_of_cores = 2
 pool = Pool(number_of_cores)
 
+#rays_directory = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
 rays_directory = './rays_test/'
 absorbers_directory = './rays_test/'
 
@@ -28,16 +29,16 @@ def make_ray_sample_uniform(r_interval, number_of_sightlines, pool):
 
     for r in r_interval:
 
-        tasks = [(i, number_of_sightlines, r, theta, phi) for i, (theta, phi) in \
-                 enumerate(zip(theta_interval, phi_interval))]
+        tasks = [(i, number_of_sightlines, r, theta, phi, rays_directory) for \
+                i, (theta, phi) in enumerate(zip(theta_interval, phi_interval))]
         pool.map(sample_one_to_map, tasks)
 
 def make_sample_from_any():
+    pass
 
-    
 
 
 if __name__ == '__main__':
     #generate_absorbers_sample(rays_directory, absorbers_directory, pool)
 
-    make_ray_sample_uniform([300], 10, pool)
+    make_ray_sample_uniform([2000], 10, pool)

@@ -86,13 +86,13 @@ def z_from_distance(r):
     # length must be in physical units first
     z = z_at_value(cosmo.comoving_distance, r/HUBBLE_2Mpc_LG * u.kpc)
 
-    return r
+    return z
 
 
 def get_2Mpc_LG_dataset():
 
     #snap_file = './snapdir_135/snap_LG_WMAP5_2048_135.0'
-    snap_file = ('../../2Mpc_LG_convert_corrected_MWcenter/snapdir_135/'
+    snap_file = ('../../2Mpc_LG_corrected_MWcenter/snapdir_135/'
                 'snap_LG_WMAP5_2048_135.0')
 
     ds = yt.frontends.gadget.GadgetDataset(filename = snap_file,
