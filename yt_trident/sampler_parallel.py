@@ -3,6 +3,7 @@ import glob
 from absorber_file_generator import generate_one_to_map
 from multiprocessing import Pool, cpu_count
 from line_sampler_to_mw import sphere_uniform_grid, sample_one_to_map
+from R_N_fig1_to_M31_and_away import sightlines_filenames, make_figure
 from tools import usable_cores
 #from line_sampler_from_any import sample_one_to_map_from_any
 
@@ -56,10 +57,17 @@ def sample_m31_and_away(r_interval, rays_directory, pool):
 
     pool.map(sample_one_to_map, tasks)
 
+def generate_RN_fig1_distance_frames(distances, pool):
+
+    tasks = [(r, sightlines_filenames(r)) for r in distances]
+
+    pool.map(make_figure, tasks)
+
 
 
 if __name__ == '__main__':
     #generate_absorbers_sample(rays_directory, absorbers_directory, pool)
 
     #make_ray_sample_uniform([2000], 10, pool)
-    sample_m31_and_away([10, 23], rays_directory, pool)
+    #sample_m31_and_away([10, 23], rays_directory, pool)
+    generate_RN_fig1_distance_frames([10, 23], pool)

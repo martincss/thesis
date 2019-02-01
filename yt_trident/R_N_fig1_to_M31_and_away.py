@@ -1,20 +1,24 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-import os
 import matplotlib.pyplot as plt
-plt.ion()
+#plt.ion()
 import yt
-yt.enable_parallelism()
-import trident
-from tools import get_line, line_table
+from tools import get_line
 from R_N_fig1 import load_or_make_spectrum, plot_line
 
-line_list = ['C II', 'C IV', 'Si III', 'Si II']
+
+line_table = {'Si III 1206':1206.5, 'Si II 1193':1193.29,
+              'C II 1335': 1334.532, 'C IV 1548':1548.19}
+
 bandwidth = 6
 
-rays_directory = './rays_2Mpc_LG_from_outside_mw/'
-spectra_directory = './spectra_C_Si_2Mpc_LG_from_outside_mw/'
-figs_directory = './R_N_Fig1_by_distance_2MpcLG_outside_mw/'
+# rays_directory = './rays_2Mpc_LG_from_outside_mw/'
+# spectra_directory = './spectra_C_Si_2Mpc_LG_from_outside_mw/'
+# figs_directory = './R_N_Fig1_by_distance_2MpcLG_outside_mw/'
+
+rays_directory = './rays_test/'
+spectra_directory = './rays_test/'
+figs_directory = './rays_test/'
 
 distances = np.linspace(10, 700, 100)
 distances_detail = np.linspace(1, 10, 50)
@@ -34,9 +38,9 @@ def sightlines_filenames(distance):
 
 
 
-    ray_to_m31_filename = 'ray_{:.3f}_0.70_4.19.h5'.format(distance)
+    ray_to_m31_filename = 'ray_{:.3f}_0.698_4.189.h5'.format(distance)
 
-    ray_away_filename = 'ray_{:.3f}_1.05_1.40.h5'.format(distance)
+    ray_away_filename = 'ray_{:.3f}_1.047_1.396.h5'.format(distance)
 
     # when using 'distances'
     #ray_to_m31_filename = 'ray_{:.0f}_0.70_4.19.h5'.format(distance)
@@ -58,10 +62,12 @@ def plot_labels(axarr, distance):
     column_titles = ['Ray to M31, r={:.3f}'.format(distance), 'Ray away, r={:.3f}'.format(distance)]
     for i, axes in enumerate(axarr[0,:]):
 
-        axes.set_title('{} \n {}'.format(column_titles[i], 'Si III'), fontsize = 15)
+        axes.set_title('{} \n {}'.format(column_titles[i], 'Si III 1206'), fontsize = 15)
 
 
-def make_figure(sightlines_list, distance):
+def make_figure(args):
+
+    distance, sightlines_list = args
 
     # figsize here for a big display, maybe adjust it to any computer?
     fig, axarr = plt.subplots(len(line_table), len(sightlines_list), figsize=(18,10.5))
@@ -74,7 +80,7 @@ def make_figure(sightlines_list, distance):
 
         for row_number, line in enumerate(line_table.keys()):
 
-            plot_line(axarr[row_number, col_number], line, wavelength, flux, bandwidth)
+            plot_line(axarr[row_number, col_number], line, wavelength, flux, bandwidth, ray)
             axarr[row_number, col_number].set_xlim(-600,600) # hardcoded af, to be changed...
 
     plot_labels(axarr, distance)
@@ -91,8 +97,9 @@ def make_figure(sightlines_list, distance):
 # ~~~~~~~~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-for r in all_distances[1:]:
+if __name__=='__main__':
+    for r in all_distances[1:]:
 
-    sightlines_list = sightlines_filenames(r)
+        sightlines_list = sightlines_filenames(r)
 
-    make_figure(sightlines_list, r)
+        make_figure((r, sightlines_list))
