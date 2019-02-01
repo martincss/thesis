@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 #plt.ion()
 import yt
-from tools import get_line
+from tools import get_line, HUBBLE_2Mpc_LG
 from R_N_fig1 import load_or_make_spectrum, plot_line
 
 
@@ -15,10 +15,15 @@ bandwidth = 6
 # rays_directory = './rays_2Mpc_LG_from_outside_mw/'
 # spectra_directory = './spectra_C_Si_2Mpc_LG_from_outside_mw/'
 # figs_directory = './R_N_Fig1_by_distance_2MpcLG_outside_mw/'
+#
+# rays_directory = './rays_test/'
+# spectra_directory = './rays_test/'
+# figs_directory = './rays_test/'
 
-rays_directory = './rays_test/'
-spectra_directory = './rays_test/'
-figs_directory = './rays_test/'
+rays_directory = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter'
+absorbers_directory = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
+spectra_directory = './spectra_2Mpc_LG_to_m31_and_away/'
+figs_directory = './R_N_Fig1_by_distance_2MpcLG_new/'
 
 distances = np.linspace(10, 700, 100)
 distances_detail = np.linspace(1, 10, 50)
@@ -59,7 +64,8 @@ def plot_labels(axarr, distance):
 
     axarr[2,0].set_ylabel('Relative Flux', fontsize = 15)
 
-    column_titles = ['Ray to M31, r={:.3f}'.format(distance), 'Ray away, r={:.3f}'.format(distance)]
+    column_titles = ['Ray to M31, r={:.3f}kpc'.format(distance/HUBBLE_2Mpc_LG),
+                     'Ray away, r={:.3f}kpc'.format(distance/HUBBLE_2Mpc_LG)]
     for i, axes in enumerate(axarr[0,:]):
 
         axes.set_title('{} \n {}'.format(column_titles[i], 'Si III 1206'), fontsize = 15)
