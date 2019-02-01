@@ -7,7 +7,7 @@ import trident
 import gc
 
 from tools import get_2Mpc_LG_dataset, get_mw_center_2Mpc_LG, \
-                  ray_start_from_sph, sphere_uniform_grid
+                  ray_start_from_sph, sphere_uniform_grid, z_from_distance
 
 
 # ~~~~~~~~~~~~~~~~~~~~ SETUP ~~~~~~~~~~~~~~~~~~~~
@@ -37,6 +37,7 @@ def make_ray_to_mw(spherical_coords, ray_filename):
     """
 
     ray_start = ray_start_from_sph(mw_center, spherical_coords)
+    r, _, _ = spherical_coords
 
     # for some reason, make_simple_ray overwrites start_position & end_position
     # actually are passed as pointers and changes them to cgs; this can be
@@ -45,6 +46,7 @@ def make_ray_to_mw(spherical_coords, ray_filename):
                                   start_position=ray_start.copy(),
                                   end_position=mw_center.copy(),
                                   data_filename=ray_filename,
+                                  redshift=z_from_distance(r)
                                   fields=['thermal_energy','density'],
                                   lines=line_list,
                                   ftype='Gas')
@@ -52,7 +54,7 @@ def make_ray_to_mw(spherical_coords, ray_filename):
     return ray
 
 
-def sample_single_sightline(r, theta, phi):
+def sample_single_sightline(r, theta, phi, rays_directory=rays_directory):
     """
     Samples ray along the sightline given by the sperical coordinates of
     starting point to mw center as endpoint.
@@ -87,12 +89,12 @@ def make_ray_sample(r_interval, theta_interval, phi_interval):
 
 def sample_one_to_map(args):
 
-    i, number_of_sightlines, r, theta, phi = args
+    i, number_of_sightlines, r, theta, phi, rays_directory = args
 
     print('\n RAY NUMBER {:d}/{:d} ~~~~~~~~~~~~~~~~~~~'
           ' \n'.format(i, number_of_sightlines))
 
-    sample_single_sightline(r,theta, phi)
+    sample_single_sightline(r,theta, phi, rays_directory)
 
 
 
@@ -196,7 +198,8 @@ distances_more_detail = np.linspace(0, 1, 50)
 close_up_050 = np.linspace(0.36, 0.51, 50)
 
 if __name__ == '__main__':
+    pass
     #sample_m31_and_away(close_up_050)
     #pool = Pool(number_of_cores)
     #make_ray_sample_uniform([2000], 10, pool)
-    sample_single_sightline(2000,1.0, 5.6)
+    #sample_single_sightline(2000,1.0, 5.6)

@@ -12,6 +12,9 @@ import pandas as pd
 import pdb
 import glob
 from multiprocessing import Pool, cpu_count
+from astropy.cosmology import FlatLambdaCDM, z_at_value
+import astropy.units as u
+
 
 LIGHTSPEED = 299792 # in km/s
 HUBBLE_2Mpc_LG = 0.7
@@ -64,6 +67,7 @@ all_line_keys=['C II 1036', 'C II 1335', 'C II 904', 'C II* 1037', 'C II* 1336',
 # def _pressure(field, data):
 #     return data["density"] * data["thermal_energy"]
 
+cosmo = FlatLambdaCDM(H0=70, Om0=0.279)
 
 def usable_cores():
 
@@ -74,10 +78,22 @@ def usable_cores():
 
     return number_of_cores
 
+def z_from_distance(r):
+    """
+    Computes redshift for a given comoving length in kpc/h
+    """
+
+    # length must be in physical units first
+    z = z_at_value(cosmo.comoving_distance, r/HUBBLE_2Mpc_LG * u.kpc)
+
+    return r
+
+
 def get_2Mpc_LG_dataset():
 
     #snap_file = './snapdir_135/snap_LG_WMAP5_2048_135.0'
-    snap_file = '../../2Mpc_LG_convert/snapdir_135/snap_LG_WMAP5_2048_135.0'
+    snap_file = ('../../2Mpc_LG_convert_corrected_MWcenter/snapdir_135/'
+                'snap_LG_WMAP5_2048_135.0')
 
     ds = yt.frontends.gadget.GadgetDataset(filename = snap_file,
                                            unit_base = unit_base,
