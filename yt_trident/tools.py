@@ -13,6 +13,7 @@ import pdb
 import glob
 from multiprocessing import Pool, cpu_count
 from astropy.cosmology import FlatLambdaCDM, z_at_value
+from astropy.cosmology.core import CosmologyError
 import astropy.units as u
 
 
@@ -82,9 +83,11 @@ def z_from_distance(r):
     """
     Computes redshift for a given comoving length in kpc/h
     """
-
-    # length must be in physical units first
-    z = z_at_value(cosmo.comoving_distance, r/HUBBLE_2Mpc_LG * u.kpc)
+    try:
+        # length must be in physical units first
+        z = z_at_value(cosmo.comoving_distance, r/HUBBLE_2Mpc_LG * u.kpc)
+    except CosmologyError:
+        z = 0
 
     return z
 
