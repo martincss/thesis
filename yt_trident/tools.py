@@ -130,7 +130,7 @@ def get_line_observables_dict(ray, sg, line_list):
 
 
 
-def subhalo_center(subfind_path, snap_num, subhalo_number):
+def subhalo_center(subfind_path='../../2Mpc_LG', snap_num=135, subhalo_number):
     """
     Finds and returns subhalo center by locating its minimum of potential, for
     the specified subhalo_number.
@@ -172,6 +172,81 @@ def get_m31_center_2Mpc_LG():
                                subhalo_number = 0)
 
     return m31_center
+
+def get_disk_normal_vector_mw_2Mpc_LG():
+    """
+    Convenience function to return a vector normal to the MW disk from 2Mpc_LG
+    dataset
+
+    Returns
+    -------
+    perp: ndarray
+        Three dimensional array containing components of a vector normal to MW
+        disk
+    """
+
+    # rotation matrix from sim coordinates to coordinates with disk on XY plane
+    rot = np.array([[0.38444049,-0.89949922,-0.20762143],
+                    [0.70601157,0.43138525,-0.56165330],
+                    [0.59477153,0.069339139,0.80089882]])
+
+    # we map the new z axis (perp to the disk) to the old (sim) coordinates by
+    # inverting the rotation
+    perp = rot.transpose() @ np.array([0,0,1])
+
+    return perp
+
+
+def get_sun_position_2Mpc_LG():
+    """
+    Convenience function to return a sun position from 2Mpc_LG dataset
+
+    Returns
+    -------
+    perp: ndarray
+        Three dimensional array containing coordinates of possible sun
+    """
+
+
+    mw_center = get_mw_center_2Mpc_LG()
+    normal = get_disk_normal_vector_mw_2Mpc_LG()
+
+    # there is no unique choice for this vector
+    arbitrary_vector = [1,0,0]
+    r_center_to_sun = np.cross(normal, arbitrary_vector)
+
+    # we set the sun 10kpc from mw center
+    r_center_to_sun *= 10*HUBBLE_2Mpc_LG / norm(r_center_to_sun)
+
+    r_sun = mw_center + r_center_to_sun
+
+    return r_sun
+
+
+def cart_to_sph(coordinates):
+    """
+    Converts three dimensional array in cartesian coordinates to spherical
+    coordinates
+
+    Parameters
+    ----------
+    coordinates: iterable
+        should have three elements representing cartesian coordinates of a
+        vector
+
+    Returns
+    -------
+    (r, theta, phi): tuple of floats
+        spherical coordinates of inputted vector
+    """
+
+    x,y,z = coordinates
+
+    phi = np.arctan2(y,x)
+    theta = np.arctan2(z, np.sqrt(x**2 + y**2))
+    r = np.sqrt(x**2 + y**2 + z**2)
+
+    return (r, theta, phi)
 
 
 def sphere_uniform_grid(number_of_points):
