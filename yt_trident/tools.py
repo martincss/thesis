@@ -20,6 +20,7 @@ import astropy.units as u
 LIGHTSPEED = 299792 # in km/s
 HUBBLE_2Mpc_LG = 0.7
 K_BOLTZMANN = 1.38064852e-16 # erg/K
+GRAV_CONST = 4.3071e-6 # kpc M_sun^-1 (km/s)^2
 
 # do not comment any further fields to load in dataset; for some reason,
 # (seemingly an YT bug), gas density is not smoothed correctly if fewer fields
@@ -130,7 +131,8 @@ def get_line_observables_dict(ray, sg, line_list):
 
 
 
-def subhalo_center(subfind_path='../../2Mpc_LG', snap_num=135, subhalo_number):
+def subhalo_center(subhalo_number, subfind_path='../../2Mpc_LG',
+                          snap_num=135):
     """
     Finds and returns subhalo center by locating its minimum of potential, for
     the specified subhalo_number.
@@ -141,6 +143,24 @@ def subhalo_center(subfind_path='../../2Mpc_LG', snap_num=135, subhalo_number):
     #center = cat.subhalo[subhalo_number].com
 
     return center
+
+
+def subhalo_virial_radius(subhalo_number, subfind_path='../../2Mpc_LG',
+                          snap_num=135):
+    """
+    Finds and returns subhalo virual radius by
+    for
+    the specified subhalo_number.
+    """
+
+    cat = SubfindCatalogue(subfind_path, snap_num)
+    # as mass units are 10^10 M_sun, we scale mass for units to be M_sun
+    subhalo_mass = cat.subhalo[subhalo_number].mass*10**10
+
+    r_200 = (GRAV_CONST * HUBBLE_2Mpc_LG * subhalo_mass)**(1/3) # in kpc/h
+
+    return r_200
+
 
 
 def get_mw_center_2Mpc_LG():
