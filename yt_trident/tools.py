@@ -6,6 +6,7 @@ from iccpy.gadget.subfind import SubfindCatalogue
 import numpy as np
 from numpy import pi
 from numpy.linalg import norm
+from numpy.random import random
 import matplotlib.pyplot as plt
 import math
 import pandas as pd
@@ -262,7 +263,7 @@ def cart_to_sph(coordinates):
 
     x,y,z = coordinates
 
-    phi = np.arctan2(y,x)
+    phi = np.arctan2(y,x) % (2*pi)
     theta = np.arctan2(z, np.sqrt(x**2 + y**2))
     r = np.sqrt(x**2 + y**2 + z**2)
 
@@ -326,6 +327,61 @@ def ray_end_from_sph(ray_start, trajectory):
     return ray_end
 
 
+def displacement_from_subhalo(R_vir):
+    """
+    Given a subhalo virial radius, returns a vector with random direction and
+    length from 0 to R_vir; representing a random displacement from a subhalo
+    center.
+
+    Parameters
+    ----------
+    R_vir: float
+        Virial radius of subhalo to consider.
+
+    Returns
+    -------
+    disp: ndarray
+        three dimensional vector with length between 0 and R_vir (in same units
+        as R_vir).
+    """
+
+    disp = random(3)
+    distance_from_center = random(1)*R_vir
+
+    disp *= distance_from_center/norm(disp)
+
+    return disp
+
+def fuzzy_samples_from_subhalo(subhalo_number, number_of_samples):
+    """
+    For the selected subhalo, generates a number of (absolute) positions of
+    random points inside its virial radius.
+
+    Parameters
+    ----------
+    subhalo_number: integer
+        index for the desired subhalo (0 for M31, 1 for MW, etc)
+
+    number_of_samples: integer
+        number of random points to construct
+
+    Returns
+    -------
+    ray_starts: list
+        list of absolute positions of the sampled points.
+
+    """
+
+    center = subhalo_center(subhalo_number)
+    R_vir = subhalo_virial_radius(subhalo_number)
+
+
+    ray_starts = [displacement_from_subhalo(R_vir) + center for i in \
+                  range(number_of_samples)]
+
+    return ray_starts
+
+
 def make_projection(ds, center, side, axis, field='density'):
 
     # for this to work fine and prevent colorbar to linear scale, center and
@@ -385,8 +441,10 @@ def get_line(lambda_0, wavelength, flux, wavelength_interval):
 
     try:
         central_index = np.argmin(np.abs(wavelength - lambda_0))
-        right_index = np.argmin(np.abs(wavelength - lambda_0 - wavelength_interval/2))
-        left_index = np.argmin(np.abs(wavelength - lambda_0 + wavelength_interval/2))
+        right_index = np.argmin(np.abs(wavelength - lambda_0 - \
+                                       wavelength_interval/2))
+        left_index = np.argmin(np.abs(wavelength - lambda_0 + \
+                                      wavelength_interval/2))
 
         wavelength_section = wavelength[left_index:right_index]
         flux_section = flux[left_index:right_index]
