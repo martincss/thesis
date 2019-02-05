@@ -3,16 +3,17 @@ import glob
 from absorber_file_generator import generate_one_to_map
 from multiprocessing import Pool, cpu_count
 from line_sampler_to_mw import sphere_uniform_grid, sample_one_to_map
-from line_sampler_to_any import sample_one_to_map_from_any
-from R_N_fig1_to_M31_and_away import sightlines_filenames, make_figure,
+from line_sampler_to_any import sample_one_to_map_from_any, \
+                                subhalo_fuzzy_sampling_one_to_map
+from R_N_fig1_to_M31_and_away import sightlines_filenames, make_figure, \
                                      all_distances
 from tools import usable_cores
 from tools import get_sun_position_2Mpc_LG as sun
 
 
 number_of_cores = usable_cores()
-pool = Pool(number_of_cores)
-#pool = Pool(12)
+#pool = Pool(number_of_cores)
+pool = Pool(2)
 
 #rays_directory = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
 rays_directory = './rays_2Mpc_LG_to_m31_and_away/'
@@ -81,9 +82,23 @@ def generate_RN_fig1_distance_frames(distances, pool):
 
 
 
+def generate_subhalo_fuzzy_samples(number_of_subhalos, ray_end,
+                                  subhalo_rays_directory, number_of_rays, pool):
+
+    tasks = [(subhalo_idx, ray_end, subhalo_rays_directory, number_of_rays) for\
+             subhalo_idx in range(number_of_subhalos) if subhalo_idx != 1]
+    # sample from subhalos excluding number 1 (i.e. MW)
+
+    pool.map(subhalo_fuzzy_sampling_one_to_map, tasks)
+
+
+
+
 if __name__ == '__main__':
     #generate_absorbers_sample(rays_directory, absorbers_directory, pool)
 
     #make_ray_sample_uniform([2000], 10, pool)
     #sample_m31_and_away(all_distances[1:], rays_directory, pool)
-    generate_RN_fig1_distance_frames(all_distances[1:], pool)
+    #generate_RN_fig1_distance_frames(all_distances[1:], pool)
+
+    generate_subhalo_fuzzy_samples(3, sun(), './rays_test/', 3, pool)
