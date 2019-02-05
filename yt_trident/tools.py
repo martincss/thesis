@@ -709,11 +709,11 @@ def select_polar_rays(theta, phi, amplitude = 0.52):
 
 
 def select_m31_rays(theta, phi, theta_amplitude = 0.52, phi_amplitude = 0.52,
-                    obserber = get_sun_position_2Mpc_LG()):
+                    observer = get_sun_position_2Mpc_LG()):
 
 
     m31_center = get_m31_center_2Mpc_LG()
-    _, theta_m31, phi_m31 = cart_to_sph(m31_center - obserber)
+    _, theta_m31, phi_m31 = cart_to_sph(m31_center - observer)
 
     if (np.abs(theta - theta_m31) < theta_amplitude) and \
        (np.abs(phi - phi_m31) < phi_amplitude):
