@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 import glob
-from tools import HUBBLE_2Mpc_LG, K_BOLTZMANN
+from tools import HUBBLE_2Mpc_LG, K_BOLTZMANN, handle_in_subsample
 
 
 def get_distances(df, line):
@@ -528,7 +528,7 @@ def covering_fraction_by_rays(absorbers_directory, line, N_thresh_list):
     number_of_sightlines = 0
     sightlines_over_thresh = {N_thresh:0 for N_thresh in N_thresh_list}
 
-    for handle in glob.glob(absorbers_directory + 'abs*'):
+    for handle in [handle for handle in glob.glob(absorbers_directory + 'abs*') if handle_in_subsample(handle)]:
 
         df = pd.read_csv(handle, skiprows=1)
         r, N = get_attribute_by_distance(df, line, 'N')
@@ -536,6 +536,7 @@ def covering_fraction_by_rays(absorbers_directory, line, N_thresh_list):
         for N_thresh in N_thresh_list:
 
             if N[(r > 10*HUBBLE_2Mpc_LG) & (r < 300*HUBBLE_2Mpc_LG)].sum() > N_thresh:
+            # if N[(r > 10*HUBBLE_2Mpc_LG)].sum() > N_thresh:
 
                 sightlines_over_thresh[N_thresh] += 1
 
