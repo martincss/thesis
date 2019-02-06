@@ -52,7 +52,8 @@ def make_ray_from_any(ray_end, spherical_coords_start, ray_filename):
         storing 'density' and 'thermal_energy' additional fields.
     """
 
-    ray_start = ray_end_from_sph(ray_end, spherical_coords_start)
+    ray_start = ray_start_from_sph(ray_end, spherical_coords_start)
+    r, _, _ = spherical_coords_start
 
     # for some reason, make_simple_ray overwrites start_position and end_position
     # actually are passed as pointers and changes them to cgs; this can be prevented

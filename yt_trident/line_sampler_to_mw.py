@@ -157,6 +157,7 @@ def ray_to_subhalo(subhalo_idx, subhalo_rays_directory, ray_end = mw_center):
                                   end_position=ray_end.copy(),
                                   data_filename=ray_filename,
                                   fields=['thermal_energy','density'],
+                                  redshift=z_from_distance(r),
                                   lines=line_list,
                                   ftype='Gas')
     gc.collect()
