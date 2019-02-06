@@ -390,10 +390,6 @@ def fuzzy_samples_from_subhalo(subhalo_number, number_of_samples):
                   range(number_of_samples)]
 
 
-    x = r * np.cos(phi) * np.sin(theta)
-    y = r * np.sin(phi) * np.sin(theta)
-    z = r * np.cos(theta)
-
     return ray_starts
 
 
