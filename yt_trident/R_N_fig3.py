@@ -54,9 +54,11 @@ axs = axs.flatten()
 
 for i, line in enumerate(abs_lines):
 
-    axs[i].semilogx(10**observations[line][:,0], observations[line][:,1])
+    axs[i].errorbar(10**observations[line][:,0], observations[line][:,1],
+                    observations[line][:,2])
     axs[i].semilogx(N_threshs, np.array(list(covfs[line].values())), label = line)
                  #lw = '.')
+    axs[i].set_xscale('log')
     axs[i].legend()
     axs[i].grid()
     #plt.xlabel('$\\Log N_{thresh}$', fontsize = 15)
