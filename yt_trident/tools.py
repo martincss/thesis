@@ -243,6 +243,16 @@ def get_sun_position_2Mpc_LG():
 
     return r_sun
 
+def sph_to_cart(coordinates):
+
+    r, theta, phi = coordinates
+
+    x = r * np.cos(phi) * np.sin(theta)
+    y = r * np.sin(phi) * np.sin(theta)
+    z = r * np.cos(theta)
+
+    return np.array([x,y,z])
+
 
 def cart_to_sph(coordinates):
     """
@@ -378,6 +388,11 @@ def fuzzy_samples_from_subhalo(subhalo_number, number_of_samples):
 
     ray_starts = [displacement_from_subhalo(R_vir) + center for i in \
                   range(number_of_samples)]
+
+
+    x = r * np.cos(phi) * np.sin(theta)
+    y = r * np.sin(phi) * np.sin(theta)
+    z = r * np.cos(theta)
 
     return ray_starts
 
@@ -691,15 +706,13 @@ def extract_angles_from_handle(handle):
 
 def select_polar_rays(theta, phi, amplitude = 0.52):
 
-
+    # polar_vect already has unit norm
     polar_vect = get_disk_normal_vector_mw_2Mpc_LG()
-    _, polar_theta, _ = cart_to_sph(polar_vect)
 
     # select for rays close to north pole (with polar_theta) or south pole
     # (with pi - polar_theta)
 
-    if (np.abs(polar_theta - theta) < amplitude) or \
-       (np.abs(pi - polar_theta - theta ) < amplitude):
+    if (np.abs(polar_vect @ sph_to_cart((1, theta, phi))) > np.cos(amplitude)):
 
        return True
 
@@ -708,15 +721,15 @@ def select_polar_rays(theta, phi, amplitude = 0.52):
        return False
 
 
-def select_m31_rays(theta, phi, theta_amplitude = 0.52, phi_amplitude = 0.52,
+def select_m31_rays(theta, phi, amplitude = 0.52,
                     observer = get_sun_position_2Mpc_LG()):
 
 
     m31_center = get_m31_center_2Mpc_LG()
-    _, theta_m31, phi_m31 = cart_to_sph(m31_center - observer)
+    unit_to_m31 = cart_to_sph(m31_center - observer)
+    unit_to_m31 /= norm(unit_to_m31)
 
-    if (np.abs(theta - theta_m31) < theta_amplitude) and \
-       (np.abs(phi - phi_m31) < phi_amplitude):
+    if ((unit_to_m31 @ sph_to_cart((1, theta, phi))) > np.cos(amplitude)):
 
        return True
 
