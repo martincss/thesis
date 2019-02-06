@@ -709,7 +709,7 @@ def select_polar_rays(theta, phi, amplitude = 0.52):
     # (with pi - polar_theta)
 
     if (np.abs(polar_vect @ sph_to_cart((1, theta, phi))) > np.cos(amplitude)):
-
+    # if (polar_vect @ sph_to_cart((1, theta, phi)) > np.cos(amplitude)):
        return True
 
     else:
@@ -722,7 +722,7 @@ def select_m31_rays(theta, phi, amplitude = 0.52,
 
 
     m31_center = get_m31_center_2Mpc_LG()
-    unit_to_m31 = cart_to_sph(m31_center - observer)
+    unit_to_m31 = m31_center - observer
     unit_to_m31 /= norm(unit_to_m31)
 
     if ((unit_to_m31 @ sph_to_cart((1, theta, phi))) > np.cos(amplitude)):

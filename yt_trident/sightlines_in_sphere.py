@@ -35,11 +35,11 @@ ax3 = Axes3D(fig)
 
 def plot_polar_and_m31():
 
-    ax3.scatter(polar_vect, c = 'red', s = 200, marker = 'x')
+    ax3.scatter(*polar_vect, c = 'red', s = 200, marker = 'x')
 
-    ax3.scatter(-polar_vect, c = 'red', s = 200, marker = 'x')
+    ax3.scatter(*-polar_vect, c = 'red', s = 200, marker = 'x')
 
-    ax3.scatter(unit_to_m31, c = 'blue', s = 200, marker = '*')
+    ax3.scatter(*unit_to_m31, c = 'blue', s = 200, marker = '*')
 
 
 
@@ -54,3 +54,4 @@ def plot_in_sphere(selection, color):
 
 plot_polar_and_m31()
 plot_in_sphere(selected_m31, 'violet')
+plot_in_sphere(selected_polar, 'red')
