@@ -671,9 +671,14 @@ def identify_one_to_map(path_to_absorber):
     return hvcs
 
 
-def retrieve_all_hvcs(absorbers_directory, pool):
+def retrieve_all_hvcs(absorbers_directory, pool, subsampling=True):
 
-    handles = [handle for handle in glob.glob(absorbers_directory + 'abs*')]
+    if subsampling:
+        handles = [handle for handle in glob.glob(absorbers_directory + 'abs*') if \
+                   handle_in_subsample(handle)]
+
+    else:
+        handles = [handle for handle in glob.glob(absorbers_directory + 'abs*')]
 
     results = pool.map(identify_one_to_map, handles)
 
@@ -709,7 +714,7 @@ def select_polar_rays(theta, phi, amplitude = 0.52):
     # (with pi - polar_theta)
 
     if (np.abs(polar_vect @ sph_to_cart((1, theta, phi))) > np.cos(amplitude)):
-    # if (polar_vect @ sph_to_cart((1, theta, phi)) > np.cos(amplitude)):
+
        return True
 
     else:

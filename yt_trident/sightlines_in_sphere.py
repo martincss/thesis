@@ -20,8 +20,8 @@ thetas, phis = sphere_uniform_grid(500)
 # x, y, z = cos(thetas) * sin(phis), sin(thetas) * sin(phis), cos(phis);
 
 
-#selected = [(theta, phi) for theta, phi in zip(thetas, phis) if \
-            # sightline_in_subsample(theta, phi)]
+selected = [(theta, phi) for theta, phi in zip(thetas, phis) if \
+            sightline_in_subsample(theta, phi)]
 
 selected_polar = [(theta, phi) for theta, phi in zip(thetas, phis) if \
                    select_polar_rays(theta, phi)]
