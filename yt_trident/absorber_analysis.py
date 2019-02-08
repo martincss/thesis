@@ -2,8 +2,9 @@
 import numpy as np
 import pandas as pd
 import glob
-from tools import HUBBLE_2Mpc_LG, K_BOLTZMANN, handle_in_subsample
-
+from tools import HUBBLE_2Mpc_LG, K_BOLTZMANN, handle_in_subsample, line_table,\
+                  lambda_to_velocity
+import pdb
 
 def get_distances(df, line):
     """
@@ -445,7 +446,7 @@ def covering_fraction_various(absorbers_directory, line_list, N_thresh, r_max,
         for line in line_list:
 
             r, N = get_attribute_by_distance(df, line, 'N')
-
+            # pdb.set_trace()
             counts_per_bin[line] += np.histogram(r, r_bins)[0]
             absorbers_per_bin[line] += np.histogram(r, r_bins,
                                 weights=np.asarray(N > N_thresh,dtype='int'))[0]
@@ -528,7 +529,8 @@ def covering_fraction_by_rays(absorbers_directory, line, N_thresh_list):
     number_of_sightlines = 0
     sightlines_over_thresh = {N_thresh:0 for N_thresh in N_thresh_list}
 
-    for handle in [handle for handle in glob.glob(absorbers_directory + 'abs*') if handle_in_subsample(handle)]:
+    for handle in [handle for handle in glob.glob(absorbers_directory + 'abs*')\
+                   if handle_in_subsample(handle, amplitude_polar=1)]:
 
         df = pd.read_csv(handle, skiprows=1)
         r, N = get_attribute_by_distance(df, line, 'N')
@@ -550,17 +552,22 @@ def covering_fraction_by_rays(absorbers_directory, line, N_thresh_list):
 
 def covering_fraction_by_rays_one_to_map(args):
 
-    handle, N_thresh_list, line_list, sightlines_over_thresh = args
+    handle, N_thresh_array, line_list, vel_thresh_list, r_min, r_max = args
 
+    counts = {}
 
     df = pd.read_csv(handle, skiprows=1)
 
     for line in line_list:
 
         r, N = get_attribute_by_distance(df, line, 'N')
+        r, wavelength = get_attribute_by_distance(df, line, 'lambda')
+        vel_spec = lambda_to_velocity(wavelength, line_table[line])
 
-        for N_thresh in N_thresh_list:
+        for vel_thresh in vel_thresh_list:
 
-            if N[r > 20*HUBBLE_2Mpc_LG].sum() > N_thresh:
+            counts[(line, vel_thresh)] = \
+            1*(N[(r > r_min) & (r < r_max) & \
+              (vel_spec > vel_thresh)].sum() > N_thresh_array)
 
-                sightlines_over_thresh[(N_thresh, line)] += 1
+    return counts
