@@ -585,6 +585,15 @@ def absorber_region_2Mpc_LG(absorber_position):
 
         return 'IGM'
 
+def absorber_mean_vlos(absorber_filename):
+
+    df = pd.read_csv(absorber_filename, skiprows=1)
+    linekey = df['Line'].iloc[0]
+
+    v_los = df[df['Line']==linekey]['v_los']
+
+    return v_los.mean()
+
 
 def identify_hvcs_single_line(df, line):
     """
@@ -675,7 +684,7 @@ def retrieve_all_hvcs(absorbers_directory, pool, subsampling=True):
 
     if subsampling:
         handles = [handle for handle in glob.glob(absorbers_directory + 'abs*') if \
-                   handle_in_subsample(handle)]
+                   handle_in_subsample(handle, amplitude_polar=1)]
 
     else:
         handles = [handle for handle in glob.glob(absorbers_directory + 'abs*')]
@@ -713,14 +722,9 @@ def select_polar_rays(theta, phi, amplitude = 0.52):
     # select for rays close to north pole (with polar_theta) or south pole
     # (with pi - polar_theta)
 
-    if (np.abs(polar_vect @ sph_to_cart((1, theta, phi))) > np.cos(amplitude)):
+    in_cone = (np.abs(polar_vect @ sph_to_cart((1, theta, phi))) > np.cos(amplitude))
 
-       return True
-
-    else:
-
-       return False
-
+    return in_cone
 
 def select_m31_rays(theta, phi, amplitude = 0.52,
                     observer = get_sun_position_2Mpc_LG()):
@@ -730,24 +734,21 @@ def select_m31_rays(theta, phi, amplitude = 0.52,
     unit_to_m31 = m31_center - observer
     unit_to_m31 /= norm(unit_to_m31)
 
-    if ((unit_to_m31 @ sph_to_cart((1, theta, phi))) > np.cos(amplitude)):
+    in_cone = ((unit_to_m31 @ sph_to_cart((1, theta, phi))) > np.cos(amplitude))
 
-       return True
-
-    else:
-
-        return False
+    return in_cone
 
 
-def sightline_in_subsample(theta, phi):
+def sightline_in_subsample(theta, phi, amplitude_polar):
 
-    condition = select_polar_rays(theta, phi) or select_m31_rays(theta, phi)
+    in_cone = select_polar_rays(theta, phi, amplitude_polar) or \
+                select_m31_rays(theta, phi)
 
-    return condition
+    return in_cone
 
 
-def handle_in_subsample(handle):
+def handle_in_subsample(handle, amplitude_polar):
 
     theta, phi = extract_angles_from_handle(handle)
 
-    return sightline_in_subsample(theta, phi)
+    return sightline_in_subsample(theta, phi, amplitude_polar)
