@@ -7,7 +7,7 @@ from tools import retrieve_all_hvcs
 from multiprocessing import Pool
 p= Pool(2)
 
-absorbers_directory = 'absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
+absorbers_directory = 'absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/'
 abs_lines = ['Si III 1206', 'C II 1335', 'Si II 1193', 'C IV 1548']
 
 number_of_bins = 100
