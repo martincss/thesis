@@ -340,7 +340,7 @@ def ray_end_from_sph(ray_start, trajectory):
 def displacement_from_subhalo(R_vir):
     """
     Given a subhalo virial radius, returns a vector with random direction and
-    length from 0 to R_vir; representing a random displacement from a subhalo
+    length from 0 to 2*R_vir; representing a random displacement from a subhalo
     center.
 
     Parameters
@@ -351,12 +351,12 @@ def displacement_from_subhalo(R_vir):
     Returns
     -------
     disp: ndarray
-        three dimensional vector with length between 0 and R_vir (in same units
-        as R_vir).
+        three dimensional vector with length between 0 and 2*R_vir (in same
+        units as R_vir).
     """
 
     disp = random(3)
-    distance_from_center = random(1)*R_vir
+    distance_from_center = random(1)*2*R_vir
 
     disp *= distance_from_center/norm(disp)
 
