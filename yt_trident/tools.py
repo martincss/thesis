@@ -273,10 +273,10 @@ def cart_to_sph(coordinates):
 
     x,y,z = coordinates
 
-    phi = np.arctan2(y,x) % (2*pi)
-    theta = np.arctan2(z, np.sqrt(x**2 + y**2)) % pi
     r = np.sqrt(x**2 + y**2 + z**2)
-
+    phi = np.arctan2(y,x) % (2*pi)
+    theta = np.arccos(z/r)
+    
     return (r, theta, phi)
 
 
