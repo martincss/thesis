@@ -7,11 +7,11 @@ from tools import HUBBLE_2Mpc_LG, K_BOLTZMANN
 from absorber_analysis import get_attribute_by_distance, get_ratio_by_distance
 
 
-ray_m31_filename = './rays_2Mpc_LG_to_mw_2000/ray_2000.000_0.698_4.115.h5'
-ray_away_filename = './rays_2Mpc_LG_to_mw_2000/ray_2000.000_1.036_1.314.h5'
+ray_m31_filename = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter/ray_2000.000_0.698_4.115.h5'
+ray_away_filename = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter/ray_2000.000_1.036_1.314.h5'
 
-abs_m31_filename = './absorbers_2Mpc_LG_to_mw_2000/abs_2000.000_0.698_4.115.txt'
-abs_away_filename = './absorbers_2Mpc_LG_to_mw_2000/abs_2000.000_1.036_1.314.txt'
+abs_m31_filename = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter/abs_2000.000_0.698_4.115.txt'
+abs_away_filename = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter/abs_2000.000_1.036_1.314.txt'
 
 df_m31 = pd.read_csv(abs_m31_filename, skiprows=1)
 df_away = pd.read_csv(abs_away_filename, skiprows=1)
@@ -67,8 +67,8 @@ if __name__=='__main__':
 
 
     plt.figure()
-    r_m31, vlos_m31 = get_attribute_by_distance(df_m31, 'C II 1036', 'v_los')
-    r_away,vlos_away = get_attribute_by_distance(df_away, 'C II 1036', 'v_los')
+    r_m31, vlos_m31 = get_attribute_by_distance(df_m31, df_m31['Line'].iloc[0], 'v_los')
+    r_away,vlos_away = get_attribute_by_distance(df_away, df_away['Line'].iloc[0], 'v_los')
     plt.plot(r_m31/HUBBLE_2Mpc_LG, vlos_m31, label = 'from m31', color = 'magenta')
     plt.plot(r_away/HUBBLE_2Mpc_LG, vlos_away, label = 'from away', color = 'purple')
     plt.xlabel('Distance [kpc]', fontsize = 15)
