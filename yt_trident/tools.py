@@ -274,7 +274,7 @@ def cart_to_sph(coordinates):
     x,y,z = coordinates
 
     phi = np.arctan2(y,x) % (2*pi)
-    theta = np.arctan2(z, np.sqrt(x**2 + y**2))
+    theta = np.arctan2(z, np.sqrt(x**2 + y**2)) % pi
     r = np.sqrt(x**2 + y**2 + z**2)
 
     return (r, theta, phi)
@@ -696,7 +696,7 @@ def retrieve_all_hvcs(absorbers_directory, pool, subsampling=True):
     return hvcs.T
 
 
-def extract_angles_from_handle(handle):
+def extract_angles_from_handle(handle, file='abs'):
     """
 
     Parameters
@@ -707,8 +707,9 @@ def extract_angles_from_handle(handle):
         with both angles as {:.3f}
 
     """
+    end_by_filetype = {'rays':-3, 'abs':-4}
 
-    theta, phi = handle[-15:-4].split('_')
+    theta, phi =handle[:end_by_filetype[file]].split('_')[-2]
     theta = float(theta); phi = float(phi)
 
     return theta, phi
