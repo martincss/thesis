@@ -28,7 +28,7 @@ def impact_parameter_from_handle(handle):
     return impact_parameter
 
 
-def absorbers_in_subhalo(handle, max_flux = 0.9):
+def absorbers_in_subhalo(handle, max_flux = 1.0):
 
     sub_num, _, _, _ = extract_sub_coordinates_from_handle(handle)
 
@@ -67,6 +67,6 @@ def subhalo_analysis_one_to_map(handle):
     N_by_line['sub'] = [sub_num]; N_by_line['b'] = [b]
 
     analysis = DataFrame(N_by_line)
-    analysis.reindex(columns = ['sub', 'b'] + abs_lines)
+    analysis = analysis.reindex(columns = ['sub', 'b'] + abs_lines)
 
     return analysis
