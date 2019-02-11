@@ -276,7 +276,7 @@ def cart_to_sph(coordinates):
     r = np.sqrt(x**2 + y**2 + z**2)
     phi = np.arctan2(y,x) % (2*pi)
     theta = np.arccos(z/r)
-    
+
     return (r, theta, phi)
 
 
@@ -709,10 +709,30 @@ def extract_angles_from_handle(handle, file='abs'):
     """
     end_by_filetype = {'rays':-3, 'abs':-4}
 
-    theta, phi =handle[:end_by_filetype[file]].split('_')[-2]
+    theta, phi =handle[:end_by_filetype[file]].split('_')[-2:]
     theta = float(theta); phi = float(phi)
 
     return theta, phi
+
+
+def extract_sub_coordinates_from_handle(handle, file='abs'):
+    """
+
+    Parameters
+    ----------
+    handle
+        must be in the form
+   './absorbers_2Mpc_LG_from_subhalos_fuzzy/abs_fsub_00_488.712_1.156_4.498.txt'
+        with both angles as {:.3f}
+
+    """
+    end_by_filetype = {'rays':-3, 'abs':-4}
+
+    sub, r, theta, phi =handle[:end_by_filetype[file]].split('_')[-4:]
+    sub = int(sub); r = float(r); theta = float(theta); phi = float(phi)
+
+    return sub, r, theta, phi
+
 
 
 def select_polar_rays(theta, phi, amplitude = 0.52):
