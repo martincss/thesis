@@ -1,13 +1,13 @@
 """
 A file to store data labels used in Gadget snapshots
-Each dictionary maps a block name (e.g. "RHO " or "Z) to a number of 
+Each dictionary maps a block name (e.g. "RHO " or "Z) to a number of
 entries per particle (e.g. 1 or 12) and identifies which particles they apply to.
 
 The data type is not given as it is assumed to be the floating point type
 given in the gadget header (i.e. 32 bit or 64 bit).
 
 POS, VEL, MASS and ID are not given as they are assumed to be in all gadget files.
- 
+
 """
 
 
@@ -32,6 +32,7 @@ cecilia_labels = {
 "SRTB":(3, allparts),
 "Zs  ":(1, gas_stars),
 "Z   ":(1, gas_stars),
+"TEMP":(1, gas_only),
 "INFO":(1, (0,0,0,0,0,0)),
 "AGE ":(1, stars_only),
 "iM  ":(1, stars_only),
