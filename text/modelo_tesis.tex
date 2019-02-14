@@ -1,0 +1,220 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\topmargin=-.50cm % Establece el margen superior.
+\textheight=24cm %Establece el largo del texto en cada página.
+\textwidth=15cm %Establece el ancho del texto en cada página
+\oddsidemargin=1cm % Establece el margen izquierdo de la hoja. El default es de 4.5 cm; sin embargo, con sólo poner esta instrucción el margen queda en 2.5 cm. Si el parámetro es positivo se aumenta este margen y si es negativo disminuye.
+%\headheight=0 cm
+
+
+\usepackage{graphicx}
+\usepackage{graphicx, color}% Include  files
+\usepackage{subfig}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[latin1]{inputenc}  %con este y el anterior me deja escribir acentos asÃ­, utf8 pa ubuntu, latin 1 p windows
+\usepackage[utf8]{inputenc}
+\usepackage[cp1252]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{wasysym}
+%\usepackage[numbers , sort&compress]{nat}
+%\usepackage{biblatex}
+%\usepackage{fancyheadings}
+%\usepackage{tocbibind}
+\usepackage{enumerate}
+\usepackage{caption}
+\captionsetup{font=small, textfont=it,labelfont=it, skip=0.2cm}
+\usepackage{cite}
+%\usepackage[T1]{fontenc}
+%\usepackage{times} % Para poder seleccionar texto correctamente en pdf (con el anterior tambien activo) (Puede cambiar las posiciones de las figuras)bookman
+\usepackage{colortbl}
+\usepackage{bigstrut}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\lhead{\nouppercase{\rightmark}}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{}
+%\rhead{\leftmark\\\rightmark}
+%\lhead{\leftmark\\\rightmark}
+%\pagestyle{fancyplain}
+
+%\lhead[\rightmark]{\rightmark }
+%\chead[fg]{\}
+%\rhead[]{caro}
+
+
+
+\hyphenation{} %agregar palabras separadas en sí-la-bas
+
+
+
+\begin{document}
+
+
+\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip
+
+
+\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip
+
+
+
+
+\begin{center}
+
+\baselineskip=0.8cm
+%\lineskip=.1cm
+%\lineskiplimit=.35cm
+%\lineskip=.35cm
+\vspace*{4cm}
+
+    {\huge ESTE ES EL TÍTULO}
+\baselineskip=.8cm
+    {\huge DE LA TESIS}
+
+    \smallskip\smallskip\smallskip\smallskip\smallskip\smallskip
+
+    {\large Nombre Apellido}
+
+    \bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip%
+    \bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip%
+    \bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip%
+%    \bigskip\bigskip\bigskip
+
+    {\large Tesis de Licenciatura en Ciencias Físicas}
+
+    {\large Facultad de Ciencias Exactas y Naturales}
+
+    {\large Universidad de Buenos Aires}
+
+    {\large Mes Año}
+
+\end{center}
+
+\thispagestyle{empty}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+ %   \begin{equation*}
+  %  \end{equation*}
+   % \thispagestyle{empty}
+
+
+\newpage
+    \thispagestyle{empty}
+    %\begin{equation*}\end{equation*}
+
+    {\large TEMA:}
+
+    \bigskip
+
+    {\large ALUMNO:}
+
+    \bigskip
+
+    {\large LU Nº:}
+
+    \bigskip
+
+    {\large LUGAR DE TRABAJO:}
+
+
+    \bigskip
+
+    {\large DIRECTOR DEL TRABAJO:}
+
+    \bigskip
+
+    {\large CODIRECTOR DEL TRABAJO:}
+
+    \bigskip
+
+    {\large FECHA DE INICIACIÓN:}
+
+    \bigskip
+
+    {\large FECHA DE FINALIZACIÓN:}
+
+    \bigskip
+
+    {\large FECHA DE EXAMEN: }
+
+    \bigskip
+
+    {\large INFORME FINAL APROBADO POR:}
+
+    \begin{equation*}\end{equation*}
+    \begin{equation*}\end{equation*}
+    \begin{equation*}\end{equation*}
+    \begin{equation*}\end{equation*}
+    \begin{equation*}\end{equation*}
+    \begin{equation*}\end{equation*}
+    %\begin{equation*}\end{equation*}
+    %\begin{equation*}\end{equation*}
+    %\begin{equation*}\end{equation*}
+
+    \begin{tabular}{lll}
+        \cline{1-1}\cline{1-1}\cline{3-3}\cline{3-3}%
+        Autor:  & & Jurado\ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \\
+        && \\
+        && \\
+        && \\
+        \cline{1-1}\cline{1-1}\cline{3-3}\cline{3-3}%
+        Director: \ \ \ \ \ \ \ \ \ \ \ \ \  & & Jurado\\
+        && \\
+        && \\
+        && \\
+        \cline{1-1}\cline{1-1}\cline{3-3}\cline{3-3}%
+        Profesor: Mirta A. Gil  &  & Jurado\\
+        && \\
+        && \\
+        && \\
+    \end{tabular}
+
+
+\chapter*{Resumen}
+\addcontentsline{toc}{chapter}{Resumen}
+
+
+\chapter*{Agradecimientos}
+\addcontentsline{toc}{chapter}{Agradecimientos}
+
+
+\tableofcontents
+
+
+\chapter{Introducción}
+
+
+
+\section{Primera Sección}
+\label{sec:PrimeraSeccion}
+\indent Hola \cite{2}\cite{3}\cite{1}\cite{4}
+
+\subsection{Primera subsección}
+\label{sec:Primerasubseccion}
+
+
+\chapter{Capítulo Dos}
+\label{sec:CapituloDos}
+
+\section{Sección Primera}
+\label{sec:SeccionPrimera}
+
+\chapter{Conclusiones}
+
+\bibliographystyle{unsrt}
+
+%ieeetr
+%unsrt
+%plainnat
+%unsrtnat
+%apsrev.bst
+\bibliography{Biblio}
+\addcontentsline{toc}{chapter}{Bibliografía}
+
+\end{document}

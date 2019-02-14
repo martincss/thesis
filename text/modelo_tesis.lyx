@@ -1,0 +1,2052 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\topmargin=-.50cm % Establece el margen superior.
+\textheight=24cm %Establece el largo del texto en cada página.
+\textwidth=15cm %Establece el ancho del texto en cada página
+\oddsidemargin=1cm % Establece el margen izquierdo de la hoja. El default es de 4.5 cm; sin embargo, con sólo poner esta instrucción el margen queda en 2.5 cm. Si el parámetro es positivo se aumenta este margen y si es negativo disminuye.
+%\headheight=0 cm
+
+
+\usepackage{graphicx}
+\usepackage{graphicx}\usepackage{color}% Include  files
+%\usepackage[spanish,es-tabla]{babel}
+%\usepackage[spanish]{babel}
+%con este y el anterior me deja escribir acentos asÃ­, utf8 pa ubuntu, latin 1 p windows
+\usepackage{textcomp}
+\usepackage{wasysym}
+%\usepackage[numbers , sort&compress]{nat}
+%\usepackage{biblatex}
+%\usepackage{fancyheadings}
+%\usepackage{tocbibind}
+\usepackage{enumerate}
+\usepackage{caption}
+\captionsetup{font=small, textfont=it,labelfont=it, skip=0.2cm}
+\usepackage{cite}
+%\usepackage[T1]{fontenc}
+%\usepackage{times} % Para poder seleccionar texto correctamente en pdf (con el anterior tambien activo) (Puede cambiar las posiciones de las figuras)bookman
+\usepackage{colortbl}
+\usepackage{bigstrut}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+
+\lhead{\nouppercase{\rightmark}}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{}
+%\rhead{\leftmark\\\rightmark}
+%\lhead{\leftmark\\\rightmark}
+%\pagestyle{fancyplain}
+
+%\lhead[\rightmark]{\rightmark }
+%\chead[fg]{\}
+%\rhead[]{caro}
+
+
+
+\hyphenation{} %agregar palabras separadas en sí-la-bas
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding default
+\font_roman "utopia" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+baselineskip
+\end_layout
+
+\end_inset
+
+=0.8cm 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+lineskip=.1cm
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+lineskiplimit=.35cm
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+lineskip=.35cm
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace 4cm*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size huge
+Estudio de la distribución de gas en el Grupo Local 
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+baselineskip
+\end_layout
+
+\end_inset
+
+=.8cm
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+Martín Carusso
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\size large
+Tesis de Licenciatura en Ciencias Físicas
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+Facultad de Ciencias Exactas y Naturales
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+Universidad de Buenos Aires
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+Marzo 2019
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   
+\backslash
+begin{equation*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  
+\backslash
+end{equation*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{equation*}
+\backslash
+end{equation*}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size large
+TEMA:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size large
+ALUMNO: Martín Carusso
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size large
+LU Nº: 922/13
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size large
+LUGAR DE TRABAJO:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size large
+DIRECTOR DEL TRABAJO: Cecilia Scannapieco
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size large
+CODIRECTOR DEL TRABAJO: Sebastián Nuza
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size large
+FECHA DE INICIACIÓN: Abril 2018
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size large
+FECHA DE FINALIZACIÓN: Marzo 2019
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size large
+FECHA DE EXAMEN:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size large
+INFORME FINAL APROBADO POR:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{equation*}
+\backslash
+end{equation*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{equation*}
+\backslash
+end{equation*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{equation*}
+\backslash
+end{equation*}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Autor: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jurado
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Director: 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jurado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Profesor: Juan Pablo Paz 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jurado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Resumen
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Resumen}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Agradecimientos
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Agradecimientos}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introducción
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\lcdm}{\Lambda\mathrm{CDM}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang english
+\begin_inset Formula $\Lambda$
+\end_inset
+
+CDM [tesis de cecilia]
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:PrimeraSeccion"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+indent
+\end_layout
+
+\end_inset
+
+ Hola 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "2"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "3"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "1"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "4"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+El modelo cosmológico más aceptado para la descripción del universo en que
+ vivimos es el denominado 
+\begin_inset Formula $\lcdm$
+\end_inset
+
+ (
+\emph on
+cosmological constant 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ with Cold Dark Matter
+\emph default
+).
+ Este supone un universo descripto por las ecuaciones de campo de Einstein
+ incluyendo la constante cosmológica 
+\begin_inset Formula $\left(\Lambda\right)$
+\end_inset
+
+; con una cosmología isótropa y homogénea dada por la solución de Friedmann-Robe
+rtson-Walker.
+ Estas suposiciones predicen un universo en expansión (de forma acelerada
+ gracias a la inclusión de 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+), en concordancia con las observaciones realizadas hasta el presente.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+De acuerdo con el modelo, aproximadamente sólo un 
+\begin_inset Formula $30\%$
+\end_inset
+
+ del universo está formado por materia, y el restante 
+\begin_inset Formula $70\%$
+\end_inset
+
+ por 
+\emph on
+energía oscura, 
+\emph default
+el nombre que recibe la densidad de energía correspondiente a la inclusión
+ de 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+.
+ Del total de materia, un 
+\begin_inset Formula $90\%$
+\end_inset
+
+ está formado por la llamada 
+\emph on
+materia oscura 
+\emph default
+que no parece interactuar electromagnéticamente, de esa forma evitando su
+ observación mediante emisión u absorción de radiación; es por esto que
+ sólo se aprecian sus efectos gravitacionales.
+ El modelo 
+\begin_inset Formula $\lcdm$
+\end_inset
+
+ supone que la materia oscura está formada por partículas de baja velocidad
+ térmica 
+\emph on
+-frías-.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+El restante 
+\begin_inset Formula $10\%$
+\end_inset
+
+ de la materia en el universo es conocida como 
+\emph on
+materia bariónica u ordinaria, 
+\emph default
+compuesta por partículas descriptas según el Modelo Estándar.
+ Es ésta componente la cual integra los objetos observables.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+En el marco de este modelo, se tiene un escenario jerárquico para la formación
+ de galaxias 
+\emph on
+(Hierarchical Clustering Model)
+\emph default
+.
+ Las estructuras cosmológicas emergen de pequeñas fluctuaciones de densidad
+ con estadística gaussiana en el universo temprano.
+ Mientras evoluciona el universo, estas perturbaciones son amplificadas
+ gravitacionalemente, y la materia oscura colapsa formando estructuras pequeñas
+ primero.
+ Dentro de estos halos de materia oscura, el gas colapsa y se enfría, dando
+ lugar a la formación estelar.
+ Éstas estructuras se agregan y fusionan, generando así sistemas más grandes
+ a partir de otros más pequeños.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+De esa forma, cada galaxia sigue una historia evolutiva única, con 
+\emph on
+mergers 
+\emph default
+y acreción particulares.
+ Así, a partir del modelo 
+\begin_inset Formula $\lcdm$
+\end_inset
+
+ se espera una gran diversidad en las propiedades de las galaxias.
+\end_layout
+
+\begin_layout Subsection
+Primera subsección
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Primerasubseccion"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+LG
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Nuestra galaxia, 
+\emph on
+la vía láctea (MW),
+\emph default
+ no se encuentra aislada sino que forma parte de un grupo, llamado el 
+\emph on
+grupo local (LG).
+ 
+\emph default
+Integra también este grupo la galaxia espiral vecina 
+\emph on
+Andrómeda (M31),
+\emph default
+ de una masa similar a MW y a una distancia menor a 
+\begin_inset Formula $1$
+\end_inset
+
+Mpc; junto con otras galaxias satélites de menor masa [citation-needed].
+ Galaxias espirales semejantes son prevalentes en el universo, lo cual respresen
+ta una prueba al modelo 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+CDM: que objetos tales como MW, M31 y el universo local no sean extremadamente
+ improbables 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "env15"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Estudios en las últimas décadas han acumulado evidencia a favor de que el
+ 
+\emph on
+environment
+\emph default
+ en donde se encuentren las galaxias influye en la determinación de sus
+ propiedades finales.
+ Por ejemplo, predicciones teóricas en el marco de 
+\begin_inset Formula $\lcdm$
+\end_inset
+
+ indican que la cantidad de 
+\emph on
+mergers
+\emph default
+ que sufren las galaxias incrementa con la densidad de su 
+\emph on
+environment.
+
+\emph default
+ En particular, en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "env15"
+literal "false"
+
+\end_inset
+
+, simulaciones computacionales sugieren que, para 
+\emph on
+environments
+\emph default
+ en forma de 
+\emph on
+loose groups
+\emph default
+ como el LG, la morfología de las galaxias integrantes no se ve afectada,
+ pero su SFR aumenta [vs no estar en el grupo??].
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Distribución de gas
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+La distribución de material gaseoso, tanto en las galaxias como en su 
+\emph on
+environment
+\emph default
+, se presenta como un aspecto clave para el entendimiento de la formación
+ galáctica y el estadio evolutivo reciente de las primeras.
+ Por ejemplo, 
+\emph on
+inflows
+\emph default
+ de gas frío en el presente pueden dar cuenta de una formación estelar activa
+ en el futuro próximo.
+ Como contracara, 
+\emph on
+outflows
+\emph default
+ de gas caliente pueden indicar que la formación estelar y 
+\emph on
+feedback
+\emph default
+ por supernovas han tenido lugar en el pasado reciente 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "N14"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Estudios teóricos y observacionales indican que una fracción sustancial
+ (y hasta dominante) del material gaseoso difuso en galaxias espirales se
+ encuentra por fuera del disco, en un halo extendido hasta su radio virial
+ 
+\begin_inset Formula $R_{\text{vir}}$
+\end_inset
+
+.
+ A esta componente de gas se la conoce como 
+\emph on
+medio circumgaláctico (CGM).
+
+\emph default
+ A la (gran) cantidad de gas que existe por fuera del radio virial se le
+ denomina genéricamente 
+\emph on
+medio intergaláctico (IGM)
+\emph default
+, el cual puede además estar gravitacionalmente ligado al grupo ó 
+\emph on
+cluster
+\emph default
+ de galaxias, llamado así 
+\emph on
+medio intragrupo/intracluster.
+
+\emph default
+ El ciclo de vida de este gas está determinado por la formación de estructura
+ cosmológica, flujos desde/hacia galaxias y eventos de 
+\emph on
+mergers; 
+\emph default
+de ese modo, sus condiciones físicas y abundancias químicas son bastante
+ variadas, y éste puede oficiar como un gran reservorio de bariones [cf.
+ 
+\emph on
+missing mass problem??
+\emph default
+]
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN17,N14"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+En particular para el LG, en las últimas dos décadas se ha alcanzado un
+ avance significativo en la comprensión de la distribución y las propiedades
+ físicas del gas en el CGM e IGM.
+ Es posible estudiar los halos gaseosos extendidos de MW y M31 gracias a
+ las observaciones de 
+\begin_inset Formula $21$
+\end_inset
+
+cm de la línea hiperfina del hidrógeno neutro 
+\begin_inset Formula $\left(\text{H}_{\text{I}}\right),$
+\end_inset
+
+complementadas con espectros de absorción del gas neutro y ionizado en las
+ bandas ópticas y UV, contra fuentes extragalácticas.
+ Se entiende actualmente que el CGM de MW y M31 es de caracter multifásico:
+ coexisten una fase fría 
+\begin_inset Formula $\left(T<10^{4}\text{K}\right)$
+\end_inset
+
+ predominablemente neutra y densa, principalmente concentrada dentro de
+ sendos radios viriales; junto con una fase caliente 
+\begin_inset Formula $\left(T\gtrsim10^{5}\text{K}\right)$
+\end_inset
+
+ mayormente ionizada, extendida también sobre el IGM.
+ Es posible que esta fase caliente y tenue hospede a una gran fracción de
+ la materia bariónica en el LG [y acá más sobre missing mass??].
+\begin_inset CommandInset citation
+LatexCommand cite
+key "N14"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Según el modelo actual de formación galáctica, existen dos principales modos
+ de acreción en la providencia del gas frío posteriormente empleado en la
+ formación estelar.
+ Un modo 
+\begin_inset Quotes eld
+\end_inset
+
+caliente
+\begin_inset Quotes erd
+\end_inset
+
+ en el cual el gas de alta densidad que rodea a la galaxia se enfría radiativame
+nte y colapsa hacia el centro; y un modo 
+\begin_inset Quotes eld
+\end_inset
+
+frío
+\begin_inset Quotes erd
+\end_inset
+
+, conducido por filamentos de gas frío que ingresan dentro del radio virial
+ del halo.
+ Estudios recientes [citar??] indican que la acreción fría tiende a ocupar
+ las regiones centrales, mientras que la acreción de gas ionizado caliente
+ es dominante sobre un gran rango de distancias hasta el radio virial.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "N14"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+De esa forma, estudios con el objetivo de caracterizar el CGM de MW y M31,
+ y su conexión con el gas en el IGM son claves en aras de profundizar nuestra
+ comprensión de la distribución y composición de la materia bariónica en
+ el universo local.
+\end_layout
+
+\begin_layout Chapter
+Simulaciones
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:CapituloDos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+La formación de estructura a escala galáctica es un proceso altamente no
+ lineal, multiescala y libre de simetrías que lo simplifiquen.
+ Estas características resultan en la imposibilidad de estudiar el problema
+ analíticamente.
+\end_layout
+
+\begin_layout Section
+Sección Primera
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:SeccionPrimera"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Conclusiones
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%ieeetr
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%unsrt
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%plainnat
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%unsrtnat
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%apsrev.bst
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "bibliography"
+options "bibtotoc,apalike"
+
+\end_inset
+
+
+\lang spanish
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Bibliografía}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
