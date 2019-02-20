@@ -22,7 +22,7 @@
 \font_roman "utopia" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_math "default" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -96,6 +96,14 @@ Notas para tesis
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\lcdm}{\Lambda\mathrm{CDM}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dd}{\text{d}}
 \end_inset
 
 
@@ -485,6 +493,336 @@ La formación de estructura a escala galáctica es un proceso altamente no
  lineal, multiescala y libre de simetrías que lo simplifiquen.
  Estas características resultan en la imposibilidad de estudiar el problema
  analíticamente.
+\end_layout
+
+\begin_layout Subsection
+SPH 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sphspringel"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Formulación
+\end_layout
+
+\begin_layout Standard
+La hidródinámica en las simulaciones numéricas se implementa con la técnica
+ de 
+\emph on
+Hidrodinámica de partículas suavizadas 
+\emph default
+(
+\emph on
+SPH
+\emph default
+, por sus siglas en inglés).
+ Ésta consiste en una aproximación a la mecánica del contínuo utilizando
+ partículas, que pueden pensarse también como puntos de interpolación.
+ La técnica tiene numerosas ventajas, las más relevantes son la simplicidad
+ de las ecuaciones resultantes y la garantía de cumplimiento de varias leyes
+ de conservación.
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Esto lo hace 
+\begin_inset Quotes fld
+\end_inset
+
+lagrangiano
+\begin_inset Quotes frd
+\end_inset
+
+ posta? 
+\emph on
+i.e.
+
+\emph default
+ son las mismas ecuaciones de fluidos pero en repr.
+ lagragiana? Por lo que entiendo no, si las 
+\begin_inset Quotes fld
+\end_inset
+
+partículas
+\begin_inset Quotes frd
+\end_inset
+
+ simplemente son puntos de sampleo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para cualquier campo 
+\begin_inset Formula $F\left(\boldsymbol{r}\right)$
+\end_inset
+
+, definido en todo el espacio, podemos definir una versión suavizada e interpola
+da 
+\begin_inset Formula $F_{s}$
+\end_inset
+
+ mediante la convolución con un 
+\emph on
+núcleo 
+\emph default
+(
+\emph on
+kernel,
+\emph default
+ en inglés) 
+\begin_inset Formula $W\left(\boldsymbol{r},h\right)$
+\end_inset
+
+ que representa a cada partícula, donde 
+\begin_inset Formula $h$
+\end_inset
+
+ es una 
+\emph on
+longitud de suavizado 
+\emph default
+que describe la longitud característica del 
+\emph on
+kernel.
+ 
+\emph default
+
+\begin_inset Formula 
+\[
+F_{s}\left(\boldsymbol{r}\right)=\int F\left(\boldsymbol{r}\right)W\left(\boldsymbol{r-}\boldsymbol{r'},h\right)\dd^{3}\boldsymbol{r'}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+El 
+\emph on
+kernel 
+\emph default
+está normalizado a la unidad, e imita a una función 
+\begin_inset Formula $\delta$
+\end_inset
+
+ de Dirac para el límite 
+\begin_inset Formula $h\to0$
+\end_inset
+
+.
+ Para éste se pueden utilizar gaussianas, pero las implementaciones más
+ actuales utilizan 
+\emph on
+splines 
+\emph default
+cúbicos con soporte finito.
+\end_layout
+
+\begin_layout Standard
+Si sólo conocemos el campo en una muestra finita de puntos 
+\begin_inset Formula $\boldsymbol{r}_{i}$
+\end_inset
+
+, 
+\emph on
+i.e\SpecialChar endofsentence
+ 
+\begin_inset Formula $F_{i}=F\left(\boldsymbol{r}_{i}\right)$
+\end_inset
+
+, 
+\emph default
+a los cuales les asignamos masas 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ y densidades 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+ de forma tal que cada uno tenga un elemento de volumen 
+\begin_inset Formula $\Delta\boldsymbol{r}_{i}$
+\end_inset
+
+; podemos aproximar la integral por la suma
+\begin_inset Formula 
+\begin{align*}
+F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r'}_{i},h\right)\Delta\boldsymbol{r}_{i}\\
+F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r'}_{i},h\right)\dfrac{m_{i}}{\rho_{i}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+siempre y cuando estos puntos muestreen densamente el volumen del 
+\emph on
+kernel 
+\emph default
+(esta aproximación es, efectivamente, una integración de Monte Carlo).
+ Con este esquema, la densidad de cada punto se puede estimar según
+\begin_inset Formula 
+\[
+\rho_{s}\left(\boldsymbol{r}\right)\simeq\sum_{i}W\left(\boldsymbol{r-}\boldsymbol{r'}_{i},h\right)m_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Vemos aquí la ventaja de utilizar un 
+\emph on
+kernel 
+\emph default
+con soporte finito (de radio 
+\begin_inset Formula $2h$
+\end_inset
+
+): cada suma sobre partículas se limita entonces a las que estén a una distancia
+ menor a 
+\begin_inset Formula $2h$
+\end_inset
+
+ del punto para el cual se calcula el campo o la densidad suavizadas, lo
+ cual no sucede para 
+\emph on
+kernels 
+\emph default
+de tipo gaussiano.
+\end_layout
+
+\begin_layout Standard
+Para un fluido ideal, sus ecuaciones de movimiento (
+\emph on
+i.e.
+ 
+\emph default
+conservación de la masa, momento y energía) se pueden deducir del siguiente
+ lagrangiano:
+\begin_inset Formula 
+\[
+\mathcal{L}=\int\rho\left(\dfrac{1}{2}\boldsymbol{v}^{2}-u\right)\dd V
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $u$
+\end_inset
+
+ es la energía interna por unidad de masa.
+ La idea del método SPH es discretizar este lagrangiano en términos de las
+ partículas de fluido, de masa 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{L_{\text{SPH}}}=\sum_{i}\left(\dfrac{1}{2}m_{i}\boldsymbol{v}_{i}^{2}-m_{i}u_{i}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Para obtener la energía interna 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ de cada partícula, se les asigna una entropía específica 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+esta es la misma que 
+\begin_inset Formula $A_{i}?$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ de modo que la primera se defina en términos del estimado de densidad
+\begin_inset Formula 
+\[
+u_{i}=s_{i}\dfrac{\rho_{i}^{\gamma-1}}{\gamma-1}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ es el índice adiabático.
+ Así obtenemos también la presión de cada partícula como 
+\begin_inset Formula $P_{i}=s_{i}\rho_{i}^{\gamma}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A partir del lagranangiano para SPH, se obtiene la dinámica de las partículas
+ como las ecuaciones de Euler-Lagrange correspondientes.
+ Estas resultan un conjunto de ecuaciones diferenciales ordinarias, de primer
+ orden para la velocidad 
+\begin_inset Formula $\boldsymbol{v}_{i}$
+\end_inset
+
+ de cada partícula, lo cual es una simplificación notable de las ecuaciones
+ de movimiento para un fluido ideal (las cuales recordamos, son diferenciales
+ parciales).
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+expandir más en detalle la parte de las ecuaciones?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Extensiones y correcciones
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
