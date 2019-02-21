@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass extbook
 \begin_preamble
 \renewcommand{\labelenumi}{\alph{enumi})}
 \usepackage{amsmath}
@@ -14,6 +14,11 @@
 %\setenumerate[2]{label=a)}
 \end_preamble
 \use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
 \maintain_unincluded_children false
 \language spanish
 \language_package default
@@ -75,7 +80,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style french
+\quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -109,11 +114,11 @@ Notas para tesis
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Chapter
 Introducción
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 \begin_inset Formula $\Lambda$
 \end_inset
 
@@ -235,7 +240,7 @@ y acreción particulares.
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 LG
 \end_layout
 
@@ -316,7 +321,7 @@ loose groups
  pero su SFR aumenta [vs no estar en el grupo??].
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Distribución de gas
 \end_layout
 
@@ -484,7 +489,7 @@ De esa forma, estudios con el objetivo de caracterizar el CGM de MW y M31,
  el universo local.
 \end_layout
 
-\begin_layout Section
+\begin_layout Chapter
 Simulaciones
 \end_layout
 
@@ -495,7 +500,11 @@ La formación de estructura a escala galáctica es un proceso altamente no
  analíticamente.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+En este capítulo, veremos ....
+\end_layout
+
+\begin_layout Section
 SPH 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -507,7 +516,7 @@ literal "false"
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Formulación
 \end_layout
 
@@ -817,12 +826,122 @@ expandir más en detalle la parte de las ecuaciones?
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Extensiones y correcciones
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
+Viscosidad artificial
+\end_layout
 
+\begin_layout Standard
+Al describir la dinámica de 
+\emph on
+gases ideales, 
+\emph default
+las ecuaciones pueden producir discontinuidades en forma de ondas de choque
+ (
+\emph on
+shocks
+\emph default
+), incluso partiendo desde condiciones iniciales suaves.
+ Es necesaria entonces una modificación de la dinámica en los 
+\emph on
+shocks, 
+\emph default
+que introduzca un mecanismo de disipación necesario.
+ Se introduce entonces una viscosidad artificial que disipe energía cinética
+ en térmica en las ecuaciones de SPH, generando así entropía y ensanchando
+ el choque de forma tal que la descripción en términos diferenciales se
+ mantenga adecuada.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+ídem, no ahondo mucho más en esto, no?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Acoplamiento con auto gravedad
+\end_layout
+
+\begin_layout Standard
+La interacción auto-gravitatoria es de principal importancia en flujos astrofísi
+cos.
+ Su inclusión en esquemas hydrodinmámicos eulerianos (basados en grillas)
+ no es trivial, puesto que no conserva la energía total de forma manifiesta
+ [acá una cita, me imagino].
+ En cambio, en SPH puede ser incluida de manera simple y precisa modificando
+ el lagrangiano utilizado.
+ El potencial gravitatorio dado por el conjunto de puntos de SPH es 
+\begin_inset Formula 
+\[
+\Phi\left(\boldsymbol{r}\right)=G\sum_{i}m_{i}\phi\left(\boldsymbol{r}-\boldsymbol{r}_{i},\varepsilon_{i}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $\varepsilon_{i}$
+\end_inset
+
+ es la 
+\begin_inset Quotes eld
+\end_inset
+
+longitud de enblandecimiento gravitacional
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+ (gravitational softening length)
+\emph default
+ de cada partícula
+\emph on
+, 
+\emph default
+una cota inferior a la distancia, para evitar divergencias en el cálculo
+ del potencial.
+ Entonces, la auto-energía potencial total del sistema de partículas será:
+\begin_inset Formula 
+\[
+E_{\text{pot}}=\dfrac{1}{2}\sum_{i}m_{i}\Phi\left(\boldsymbol{r}_{i}\right)=\dfrac{G}{2}\sum_{i,j}m_{i}m_{j}\phi\left(r_{ij},\varepsilon_{j}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+con lo cual, el lagrangiano resulta
+\begin_inset Formula 
+\[
+\mathcal{L_{\text{SPH}}}=\sum_{i}\left(\dfrac{1}{2}m_{i}\boldsymbol{v}_{i}^{2}-m_{i}u_{i}\right)-\dfrac{G}{2}\sum_{i,j}m_{i}m_{j}\phi\left(r_{ij},\varepsilon_{j}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+[algo de treePM??]
+\end_layout
+
+\begin_layout Subsubsection
+Formación estelar [tesis de cecilia]
 \end_layout
 
 \begin_layout Standard
