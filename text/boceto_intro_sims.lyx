@@ -936,12 +936,300 @@ con lo cual, el lagrangiano resulta
 
 \end_layout
 
+\begin_layout Section
+GADGET-2
+\end_layout
+
 \begin_layout Standard
-[algo de treePM??]
+Las simulaciones utilizadas para la formación galáctica en un contexto cosmológi
+co emplean el código 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{GADGET-2}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gadget2005"
+literal "false"
+
+\end_inset
+
+, con modificaciones para la formación estelar, el 
+\emph on
+feedback
+\emph default
+ por supernovas y enriquecimiento químico 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cecilia2005"
+literal "false"
+
+\end_inset
+
+.
+ En las siguientes secciones expandiremos acerca de los detalles involucrados.
+\end_layout
+
+\begin_layout Subsection
+Resumen del código [tesis cecilia]
+\end_layout
+
+\begin_layout Standard
+El código 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{GADGET-2}
+\end_layout
+
+\end_inset
+
+ describe la evolución acoplada de un gas ideal y un fluido no colisional,
+ dentro de un universo cuya dinámica global está regulada por el modelo
+ cosmológico elegido.
+ La descripción se hace en términos de partículas de tres clases: materia
+ oscura, estrellas y gas.
+ Para los primeros dos tipos, sólo se utiliza una dinámica de auto-gravitación,
+ mientras que las partículas de gas modelan la hidrodinámica según la técnica
+ SPH antes detallada.
+\end_layout
+
+\begin_layout Standard
+Llevar a cabo estas simulaciones implica un gran costo computacional.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{GADGET-2}
+\end_layout
+
+\end_inset
+
+ es un código masivamente paralelizado, de modo que es capaz de correr en
+ supercomputadoras distribuyendo el trabajo en muchos procesadores, reduciendo
+ así el tiempo total de cómputo.
+ El código fuente está escrito en lenguaje 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{C}
+\end_layout
+
+\end_inset
+
+, yLa comunicación entre procesadores se ejecuta mediante el protocolo estandari
+zado MPI (Interfaz de Pasaje de Mensajes).
 \end_layout
 
 \begin_layout Subsubsection
-Formación estelar [tesis de cecilia]
+Implementación de la gravedad
+\end_layout
+
+\begin_layout Standard
+El cálculo de fuerzas de gravedad entre partículas es un punto de alto costo
+ computacional si se implementa en forma de una suma directa
+\emph on
+; i.e.
+ 
+\emph default
+para 
+\begin_inset Formula $N$
+\end_inset
+
+ partículas el algoritmo tiene una complejidad temporal 
+\begin_inset Formula $\mathcal{O}\left(N^{2}\right)$
+\end_inset
+
+.
+ Para evitar este comportamiento, se suele descomponer la fuerza gravitaroria
+ en una componente de largo alcance que varía suavemente, y otra contribución
+ de las partículas cercanas.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{GADGET-2}
+\end_layout
+
+\end_inset
+
+ implementa el cálculo de largo alcance con un algoritmo 
+\begin_inset Quotes eld
+\end_inset
+
+malla de partículas
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\emph on
+PM, particle mesh
+\emph default
+) y la del material cercano con un algoritmo de árbol (
+\emph on
+tree
+\emph default
+), integrando ambos esquemas en el llamado método 
+\emph on
+TreePM.
+\end_layout
+
+\begin_layout Standard
+El método PM consiste en dividir la materia en una serie de 
+\begin_inset Quotes eld
+\end_inset
+
+superpartículas
+\begin_inset Quotes erd
+\end_inset
+
+ ubicadas en una malla regular.
+ Con éstas se calcula la fuerza sobre los puntos de la grilla, la cual luego
+ se interpola para obtener la fuerza en cualquier punto del volumen de simulació
+n.
+ En cambio, para el algoritmo 
+\emph on
+Tree 
+\emph default
+las partículas cercanas se arreglan en una jerarquía de grupos, y la fuerza
+ resultante de cada uno se calcula mediante la suma de una expansión multipolar
+ del grupo.
+ Este algoritmo representa una mejora notable en términos de complejidad
+ temporal respecto de la suma directa: escala a orden 
+\begin_inset Formula $\mathcal{O}\left(N\log N\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+algo de la integración cosmológica?
+\end_layout
+
+\begin_layout Subsection
+Formación estelar
+\end_layout
+
+\begin_layout Standard
+En la simulación, la formación estelar se da por la fragmentación de una
+ partícula de gas en otra partícula de gas y una de estrella, cuando se
+ cumplen ciertas condiciones.
+ Estas emulan la 
+\emph on
+inestabilidad de Jeans, 
+\emph default
+producida cuando el soporte de presiones de una nube de gas no es suficiente
+ para balancear su colapso auto-gravitatorio, mientras el gas se mantenga
+ frío durante este colapso.
+ Las partículas de gas elegibles para la fragmentación deben presentar una
+ densidad mayor a un valor crítico 
+\begin_inset Formula $\left(\rho>\rho_{\ast}=7.0\times10^{26}\text{g}\text{cm}^{-3}\right)$
+\end_inset
+
+ y deben ubicarse dentro de un flujo convergente 
+\begin_inset Formula $\left(\boldsymbol{\nabla}\cdot\boldsymbol{v}<0\right)$
+\end_inset
+
+.
+ Para estas partículas elegibles, se asume una tasa de formación estelar
+ volumétrica de 
+\begin_inset Formula 
+\[
+\dot{\rho}_{\ast}=c\dfrac{\rho}{\tau_{\text{dyn}}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $c$
+\end_inset
+
+ es una 
+\emph on
+eficiencia de formación estelar 
+\emph default
+(tomada como 
+\begin_inset Formula $c=0.1$
+\end_inset
+
+) y 
+\begin_inset Formula $\tau_{\text{dyn}}=1\slash\sqrt{4\pi G\rho}$
+\end_inset
+
+ es el tiempo dinámico.
+\end_layout
+
+\begin_layout Standard
+La formación estelar es tomada como un proceso estocástico: para cada partícula
+ de gas elegible en un dado tiempo se asigna una probabilidad de fragmentación
+ 
+\begin_inset Formula $p_{\ast}$
+\end_inset
+
+, con la cual ésta tendrá lugar o no en la iteración temporal siguiente.
+ Esta probabilidad está dada por 
+\begin_inset Formula 
+\[
+p_{\ast}=\dfrac{m}{m_{\ast}}\left[1-\exp\left(-c\dfrac{\Delta t}{\tau_{\text{dyn}}}\right)\right]
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ es el paso de integración temporal de la simulación, 
+\begin_inset Formula $m$
+\end_inset
+
+ es la masa de la partícula de gas y 
+\begin_inset Formula $m_{\ast}=m\slash2$
+\end_inset
+
+ es la masa de la partícula de estrella a formarse.
+ En caso de una formación exitosa, la masa de la partícula de gas se reduce
+ en 
+\begin_inset Formula $m_{\ast}$
+\end_inset
+
+.
+ Si tuviera lugar una segunda formación sobre la misma partícula de gas,
+ ésta es íntegramente transformada en una de estella, en lugar de su fragmentaci
+ón.
 \end_layout
 
 \begin_layout Standard
