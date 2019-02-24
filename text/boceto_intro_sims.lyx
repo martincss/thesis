@@ -6,19 +6,14 @@
 \origin unavailable
 \textclass extbook
 \begin_preamble
+\usepackage{babel}
 \renewcommand{\labelenumi}{\alph{enumi})}
-\usepackage{amsmath}
-\usepackage{amssymb}
 %\usepackage{enumitem}
 %\setenumerate{label=a)}
 %\setenumerate[2]{label=a)}
 \end_preamble
+\options 13pt
 \use_default_options false
-\begin_modules
-theorems-ams
-eqs-within-sections
-figs-within-sections
-\end_modules
 \maintain_unincluded_children false
 \language spanish
 \language_package default
@@ -27,7 +22,7 @@ figs-within-sections
 \font_roman "utopia" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
-\font_math "default" "auto"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -43,11 +38,20 @@ figs-within-sections
 \index_command default
 \paperfontsize 12
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
 \papersize default
 \use_geometry true
-\use_package amsmath 1
-\use_package amssymb 0
+\use_package amsmath 2
+\use_package amssymb 2
 \use_package cancel 0
 \use_package esint 1
 \use_package mathdots 0
@@ -70,17 +74,17 @@ figs-within-sections
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2cm
-\topmargin 2cm
-\rightmargin 2cm
-\bottommargin 2cm
+\leftmargin 2.5cm
+\topmargin 3cm
+\rightmargin 2.5cm
+\bottommargin 3cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -115,7 +119,14 @@ Notas para tesis
 \end_layout
 
 \begin_layout Chapter
-Introducción
+Introducción 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Introducción"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -123,6 +134,13 @@ Introducción
 \end_inset
 
 CDM [tesis de cecilia]
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:LCDM"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -237,11 +255,17 @@ y acreción particulares.
 \end_inset
 
  se espera una gran diversidad en las propiedades de las galaxias.
- 
 \end_layout
 
 \begin_layout Section
 LG
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:LG"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -323,6 +347,13 @@ loose groups
 
 \begin_layout Subsection
 Distribución de gas
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:gas"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -450,20 +481,20 @@ Según el modelo actual de formación galáctica, existen dos principales modos
  de acreción en la providencia del gas frío posteriormente empleado en la
  formación estelar.
  Un modo 
-\begin_inset Quotes eld
+\begin_inset Quotes fls
 \end_inset
 
 caliente
-\begin_inset Quotes erd
+\begin_inset Quotes frs
 \end_inset
 
  en el cual el gas de alta densidad que rodea a la galaxia se enfría radiativame
 nte y colapsa hacia el centro; y un modo 
-\begin_inset Quotes eld
+\begin_inset Quotes fls
 \end_inset
 
 frío
-\begin_inset Quotes erd
+\begin_inset Quotes frs
 \end_inset
 
 , conducido por filamentos de gas frío que ingresan dentro del radio virial
@@ -491,17 +522,53 @@ De esa forma, estudios con el objetivo de caracterizar el CGM de MW y M31,
 
 \begin_layout Chapter
 Simulaciones
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Sims"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-La formación de estructura a escala galáctica es un proceso altamente no
- lineal, multiescala y libre de simetrías que lo simplifiquen.
+La formación de estructura a escala galáctica en un contexto cosmológico
+ es un proceso altamente no lineal, multiescala y libre de simetrías que
+ lo simplifiquen.
  Estas características resultan en la imposibilidad de estudiar el problema
- analíticamente.
+ analíticamente, lo cual posiciona a las simulaciones numéricas como una
+ herramienta esencial.
+ Las simulaciones implementan las leyes físicas relevantes al problema,
+ pero además deben incluirse modelos efectivos de subgrilla a fin de considerar
+ procesos físicos que no están enteramente entendidos.
 \end_layout
 
 \begin_layout Standard
-En este capítulo, veremos ....
+En particular, nuestro interés se centra en las simulaciones del Grupo Local
+ y su componente gaseosa.
+ Éstas nos permiten identificar estructuras en la distribución del gas y
+ estudiar su origen y evolución.
+ Comparar las simulaciones con las observaciones nos permite guiar e interpretar
+ mejor estas últimas.
+ Esta comparación no es trivial; se debe tener en cuenta qué resultados
+ se obtienen de las observaciones, y cómo pueden ser construidos a partir
+ de las simulaciones.
+\end_layout
+
+\begin_layout Standard
+En este capítulo veremos un resumen de los distintos códigos y simulaciones
+ necesarias para el presente trabajo.
+ Empezaremos por el formalismo de base para las simulaciones hidrodinámicas
+ con autogravedad, SPH.
+ Luego, su implementación particular en el código 
+\begin_inset Formula $\textsc{{gadget-2}}$
+\end_inset
+
+, junto con extensiones para la formación estelar y otros procesos subgrilla,
+ seguidas por la serie de simulaciones particulares a este trabajo.
+ Las últimas secciones están dedicadas a el conjunto de herramientas necesaria
+ para la síntesis de espectros de absorción a partir de las simulaciones
+ descriptas.
 \end_layout
 
 \begin_layout Section
@@ -510,6 +577,13 @@ SPH
 LatexCommand cite
 key "sphspringel"
 literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:SPH"
 
 \end_inset
 
@@ -617,7 +691,7 @@ F_{s}\left(\boldsymbol{r}\right)=\int F\left(\boldsymbol{r}\right)W\left(\boldsy
 \begin_inset Newline newline
 \end_inset
 
-El 
+ El 
 \emph on
 kernel 
 \emph default
@@ -664,11 +738,11 @@ a los cuales les asignamos masas
 \begin_inset Formula $\Delta\boldsymbol{r}_{i}$
 \end_inset
 
-; podemos aproximar la integral por la suma
+; podemos aproximar la integral por la suma 
 \begin_inset Formula 
 \begin{align*}
-F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r'}_{i},h\right)\Delta\boldsymbol{r}_{i}\\
-F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r'}_{i},h\right)\dfrac{m_{i}}{\rho_{i}}
+F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r}_{i}^{\prime},h\right)\Delta\boldsymbol{r}_{i}\\
+F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r}_{i}^{\prime},h\right)\dfrac{m_{i}}{\rho_{i}}
 \end{align*}
 
 \end_inset
@@ -677,15 +751,15 @@ F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\bol
 \begin_inset Newline newline
 \end_inset
 
-siempre y cuando estos puntos muestreen densamente el volumen del 
+ siempre y cuando estos puntos muestreen densamente el volumen del 
 \emph on
 kernel 
 \emph default
 (esta aproximación es, efectivamente, una integración de Monte Carlo).
- Con este esquema, la densidad de cada punto se puede estimar según
+ Con este esquema, la densidad de cada punto se puede estimar según 
 \begin_inset Formula 
 \[
-\rho_{s}\left(\boldsymbol{r}\right)\simeq\sum_{i}W\left(\boldsymbol{r-}\boldsymbol{r'}_{i},h\right)m_{i}
+\rho_{s}\left(\boldsymbol{r}\right)\simeq\sum_{i}W\left(\boldsymbol{r-}\boldsymbol{r}_{i}^{\prime},h\right)m_{i}
 \]
 
 \end_inset
@@ -694,7 +768,7 @@ kernel
 \begin_inset Newline newline
 \end_inset
 
-Vemos aquí la ventaja de utilizar un 
+ Vemos aquí la ventaja de utilizar un 
 \emph on
 kernel 
 \emph default
@@ -722,7 +796,7 @@ i.e.
  
 \emph default
 conservación de la masa, momento y energía) se pueden deducir del siguiente
- lagrangiano:
+ lagrangiano: 
 \begin_inset Formula 
 \[
 \mathcal{L}=\int\rho\left(\dfrac{1}{2}\boldsymbol{v}^{2}-u\right)\dd V
@@ -734,7 +808,7 @@ conservación de la masa, momento y energía) se pueden deducir del siguiente
 \begin_inset Newline newline
 \end_inset
 
-donde 
+ donde 
 \begin_inset Formula $u$
 \end_inset
 
@@ -744,7 +818,7 @@ donde
 \begin_inset Formula $m_{i}$
 \end_inset
 
-
+ 
 \begin_inset Formula 
 \[
 \mathcal{L_{\text{SPH}}}=\sum_{i}\left(\dfrac{1}{2}m_{i}\boldsymbol{v}_{i}^{2}-m_{i}u_{i}\right)
@@ -756,7 +830,7 @@ donde
 \begin_inset Newline newline
 \end_inset
 
-Para obtener la energía interna 
+ Para obtener la energía interna 
 \begin_inset Formula $u_{i}$
 \end_inset
 
@@ -778,7 +852,18 @@ esta es la misma que
 
 \end_inset
 
- de modo que la primera se defina en términos del estimado de densidad
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+ de modo que la primera se defina en términos del estimado de densidad 
 \begin_inset Formula 
 \[
 u_{i}=s_{i}\dfrac{\rho_{i}^{\gamma-1}}{\gamma-1}
@@ -790,7 +875,7 @@ u_{i}=s_{i}\dfrac{\rho_{i}^{\gamma-1}}{\gamma-1}
 \begin_inset Newline newline
 \end_inset
 
-donde 
+ donde 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -891,16 +976,16 @@ cos.
 \begin_inset Newline newline
 \end_inset
 
-donde 
+ donde 
 \begin_inset Formula $\varepsilon_{i}$
 \end_inset
 
  es la 
-\begin_inset Quotes eld
+\begin_inset Quotes fls
 \end_inset
 
 longitud de enblandecimiento gravitacional
-\begin_inset Quotes erd
+\begin_inset Quotes frs
 \end_inset
 
 
@@ -914,6 +999,7 @@ longitud de enblandecimiento gravitacional
 una cota inferior a la distancia, para evitar divergencias en el cálculo
  del potencial.
  Entonces, la auto-energía potencial total del sistema de partículas será:
+ 
 \begin_inset Formula 
 \[
 E_{\text{pot}}=\dfrac{1}{2}\sum_{i}m_{i}\Phi\left(\boldsymbol{r}_{i}\right)=\dfrac{G}{2}\sum_{i,j}m_{i}m_{j}\phi\left(r_{ij},\varepsilon_{j}\right)
@@ -925,7 +1011,7 @@ E_{\text{pot}}=\dfrac{1}{2}\sum_{i}m_{i}\Phi\left(\boldsymbol{r}_{i}\right)=\dfr
 \begin_inset Newline newline
 \end_inset
 
-con lo cual, el lagrangiano resulta
+ con lo cual, el lagrangiano resulta 
 \begin_inset Formula 
 \[
 \mathcal{L_{\text{SPH}}}=\sum_{i}\left(\dfrac{1}{2}m_{i}\boldsymbol{v}_{i}^{2}-m_{i}u_{i}\right)-\dfrac{G}{2}\sum_{i,j}m_{i}m_{j}\phi\left(r_{ij},\varepsilon_{j}\right)
@@ -938,23 +1024,21 @@ con lo cual, el lagrangiano resulta
 
 \begin_layout Section
 GADGET-2
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:GADGET-2"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Las simulaciones utilizadas para la formación galáctica en un contexto cosmológi
 co emplean el código 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{GADGET-2}
-\end_layout
-
-\end_inset
-
+\shape smallcaps
+gadget-2
+\shape default
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -967,10 +1051,19 @@ literal "false"
 \emph on
 feedback
 \emph default
- por supernovas y enriquecimiento químico 
+ por supernovas , enriquecimiento químico y enfriamiento dependiente de
+ metales según 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "cecilia2005"
+literal "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cecilia2006"
 literal "false"
 
 \end_inset
@@ -985,18 +1078,9 @@ Resumen del código [tesis cecilia]
 
 \begin_layout Standard
 El código 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{GADGET-2}
-\end_layout
-
-\end_inset
-
+\shape smallcaps
+gadget-2
+\shape default
  describe la evolución acoplada de un gas ideal y un fluido no colisional,
  dentro de un universo cuya dinámica global está regulada por el modelo
  cosmológico elegido.
@@ -1010,34 +1094,16 @@ texttt{GADGET-2}
 \begin_layout Standard
 Llevar a cabo estas simulaciones implica un gran costo computacional.
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{GADGET-2}
-\end_layout
-
-\end_inset
-
+\shape smallcaps
+gadget-2
+\shape default
  es un código masivamente paralelizado, de modo que es capaz de correr en
  supercomputadoras distribuyendo el trabajo en muchos procesadores, reduciendo
  así el tiempo total de cómputo.
  El código fuente está escrito en lenguaje 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{C}
-\end_layout
-
-\end_inset
-
+\family typewriter
+C
+\family default
 , yLa comunicación entre procesadores se ejecuta mediante el protocolo estandari
 zado MPI (Interfaz de Pasaje de Mensajes).
 \end_layout
@@ -1066,24 +1132,15 @@ para
  en una componente de largo alcance que varía suavemente, y otra contribución
  de las partículas cercanas.
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{GADGET-2}
-\end_layout
-
-\end_inset
-
+\shape smallcaps
+gadget-2
+\shape default
  implementa el cálculo de largo alcance con un algoritmo 
-\begin_inset Quotes eld
+\begin_inset Quotes fls
 \end_inset
 
 malla de partículas
-\begin_inset Quotes erd
+\begin_inset Quotes frs
 \end_inset
 
  (
@@ -1101,11 +1158,11 @@ TreePM.
 
 \begin_layout Standard
 El método PM consiste en dividir la materia en una serie de 
-\begin_inset Quotes eld
+\begin_inset Quotes fls
 \end_inset
 
 superpartículas
-\begin_inset Quotes erd
+\begin_inset Quotes frs
 \end_inset
 
  ubicadas en una malla regular.
@@ -1169,7 +1226,7 @@ producida cuando el soporte de presiones de una nube de gas no es suficiente
 \begin_inset Newline newline
 \end_inset
 
-donde 
+ donde 
 \begin_inset Formula $c$
 \end_inset
 
@@ -1185,7 +1242,7 @@ eficiencia de formación estelar
 \begin_inset Formula $\tau_{\text{dyn}}=1\slash\sqrt{4\pi G\rho}$
 \end_inset
 
- es el tiempo dinámico.
+ es el tiempo dinámico de la partícula.
 \end_layout
 
 \begin_layout Standard
@@ -1208,7 +1265,7 @@ p_{\ast}=\dfrac{m}{m_{\ast}}\left[1-\exp\left(-c\dfrac{\Delta t}{\tau_{\text{dyn
 \begin_inset Newline newline
 \end_inset
 
-donde 
+ donde 
 \begin_inset Formula $\Delta t$
 \end_inset
 
@@ -1232,12 +1289,328 @@ donde
 ón.
 \end_layout
 
+\begin_layout Subsection
+Enriquecimiento químico
+\end_layout
+
+\begin_layout Section
+CLUES
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:CLUES"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las simulaciones particulares utilizadas en el presente trabajo se enmarcan
+ en el contexto del Proyecto CLUES (
+\emph on
+Constrained Local UniversE Simulations
+\emph default
+)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "\\texttt{https://www.clues-project.org}"
+target "https://www.clues-project.org"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Éste apunta a simular de manera más realista el grupo local, incluyendo
+ los efectos del 
+\emph on
+environment, 
+\emph default
+y otras de las estructuras circundantes más prominentes.
+\end_layout
+
+\begin_layout Standard
+Las simulaciones presentes son las utilizadas en el trabajo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "N14"
+literal "false"
+
+\end_inset
+
+.
+ Fueron corridas con el código 
+\shape smallcaps
+gadget-3
+\shape default
+ (una revisión de 
+\family typewriter
+gadget-2
+\family default
+ que permite la covertura de un mayor rango dinámico 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "aquarius"
+literal "false"
+
+\end_inset
+
+), junto con las extensiones de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cecilia2005"
+literal "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cecilia2006"
+literal "false"
+
+\end_inset
+
+ antes comentadas.
+ Las condiciones iniciales fueron construidas de forma tal de imponer un
+ conjunto de vínculos gaussianos a alto 
+\emph on
+redshift, 
+\emph default
+usando restricciones observacionales a 
+\begin_inset Formula $z\approx0$
+\end_inset
+
+.
+ La distribución inicial de materia consiste en una caja cúbica de 
+\begin_inset Formula $64\text{Mpc}\slash h$
+\end_inset
+
+ de lado, con una región de alta resolución esférica de radio 
+\begin_inset Formula $2\text{Mpc}\slash h$
+\end_inset
+
+, ubicada en su centro.
+\end_layout
+
+\begin_layout Standard
+La simulación se inicia a 
+\begin_inset Formula $z=50$
+\end_inset
+
+ asumiendo la cosmología 
+\begin_inset Formula $\lcdm$
+\end_inset
+
+ deducida a partir del fondo cósmico de microondas medido por la sonda WMAP5
+ (
+\emph on
+Wilkinson Microwave Anisotropy Probe 5
+\emph default
+) 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+deducida??
+\end_layout
+
+\end_inset
+
+.
+ Los parámetros cosmológicos adoptados fueron: una densidad de materia 
+\begin_inset Formula $\Omega_{\text{m}}=0.279$
+\end_inset
+
+, una densidad de bariones 
+\begin_inset Formula $\Omega_{\text{b}}=0.046$
+\end_inset
+
+, una densidad de constante cosmológica 
+\begin_inset Formula $\Omega_{\Lambda}=0.721$
+\end_inset
+
+, una constante de Hubble 
+\begin_inset Formula $H_{0}=100h\,\text{km s}^{-1}\text{Mpc}^{-1}$
+\end_inset
+
+ con 
+\begin_inset Formula $h=0.7$
+\end_inset
+
+, y una normalización del espectro de potencias de 
+\begin_inset Formula $\sigma_{8}=0.8$
+\end_inset
+
+.
+ Las masas de las partículas de gas y materia oscura dentro de la región
+ de alta resolución son 
+\begin_inset Formula $M_{\text{g}}=3.89\times10^{5}M_{\sun}\slash h$
+\end_inset
+
+ y 
+\begin_inset Formula $M_{\text{dm}}=1.97\times10^{6}M_{\sun}\slash h$
+\end_inset
+
+ respectivamente.
+\end_layout
+
+\begin_layout Standard
+La simulación contiene también estructuras similares a los cúmulos de galaxias
+ Virgo, Fornax, Perseo y Gran Atractor.
+ Como las escalas en las cuales actúan los vínculos son del orden de algunos
+ Mpc, la formación de estructura a escalas menores es esencialmente aleatoria.
+ Por esta razón, se corrió una serie de realizaciones de la simulación a
+ efectos de obtener los mejores acuerdos posibles entre las masas y velocidad
+ radial relativa observadas para MW y M31, con estas propiedades en sus
+ candidatas resultantes de la simulación.
+\end_layout
+
+\begin_layout Subsection
+SUBFIND
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:SUBFIND"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La identificación de 
+\emph on
+subestructuras
+\emph default
+ en la simulación se lleva a cabo mediante el algoritmo 
+\begin_inset Formula $\textsc{subfind}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "subfind"
+literal "false"
+
+\end_inset
+
+.
+ Éste permite la detección de galaxias y objetos autogravitacionalmente
+ ligados (con un mínimo de 
+\begin_inset Formula $32$
+\end_inset
+
+ partículas) basada en su energía de ligadura.
+ Dicha identificación permite determinar la pertenencia de cada partícula
+ a un dado 
+\emph on
+subhalo, 
+\emph default
+los cuales pueden corresponder a galaxias o satélites asociados.
+\end_layout
+
+\begin_layout Standard
+El resultado del algortimo en esta simulación nos permite identificar las
+ estructuras que corresponden a las candidatas de MW y M31, junto con varias
+ de sus propiedades: lista de las partículas que las conforman, posición
+ de sus centros, masa total, etc.
+\end_layout
+
+\begin_layout Section
+Generación de espectros de absorción
+\end_layout
+
+\begin_layout Subsection
+CLOUDY
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+yt
+\end_layout
+
+\begin_layout Subsection
+TRIDENT 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "trident"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\textsc{trident}$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "\\texttt{http://trident-project.org}"
+target "http://trident-project.org"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ es una librería de Python para la generación de espectros de absorción
+ sintéticos a partir de simulaciones hidrodinámicas, basado en la librería
+ 
+\begin_inset Formula $\texttt{{yt}}$
+\end_inset
+
+ antes detallada.
+ Permite además obtener información detallada acerca de las densidades de
+ iones presentes en la simulación, calculadas a partir de ciertas asunciones,
+ junto con características espectroscópicas tales como 
+\emph on
+redshift, 
+\emph default
+ancho equivalente, ampliación térmica, intensidad de la absorción, etc.
+ Éstas pueden consiguientemente trazar estructuras físicas a partir de caracterí
+sticas espectrales, asociándoles su contraparte espacial y dinámica dentro
+ del universo de la simulación.
+\end_layout
+
+\begin_layout Standard
+La principal rutina de 
+\begin_inset Formula $\textsc{trident}$
+\end_inset
+
+ consiste en construir una 
+\emph on
+línea de la visual 
+\emph default
+como un rayo de luz dirigido uniendo dos puntos dentro del volumen de la
+ simulación.
+ A el punto de partida se lo considera como una fuente de emisión de un
+ espectro contínuo, y al punto de llegada como el de observación.
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-btprint "btPrintCited"
 bibfiles "bibliography"
-options "bibtotoc,apalike"
+options "apalike"
 
 \end_inset
 
