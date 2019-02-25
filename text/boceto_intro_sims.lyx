@@ -15,6 +15,24 @@
 \options 13pt
 \use_default_options false
 \maintain_unincluded_children false
+\begin_local_layout
+Format 66
+InsetLayout Flex:Code
+    LyxType               charstyle
+    LabelString           code
+    LatexType             command
+    LatexName             code
+    Font
+      Family              Typewriter
+    EndFont
+    Preamble
+    \newcommand{\code}[1]{\texttt{#1}}
+    EndPreamble
+    InToc                 true
+    HTMLTag               code
+	ResetsFont true
+End
+\end_local_layout
 \language spanish
 \language_package default
 \inputencoding iso8859-15
@@ -37,7 +55,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize 12
-\spacing single
+\spacing other 1.125
 \use_hyperref true
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
@@ -84,7 +102,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style french
+\quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -113,6 +131,30 @@ Notas para tesis
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\dd}{\text{d}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\gd}{\textsc{gadget}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cl}{\textsc{cloudy}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\tri}{\textsc{trident}}
 \end_inset
 
 
@@ -1338,10 +1380,18 @@ y otras de las estructuras circundantes más prominentes.
 \end_layout
 
 \begin_layout Standard
-Las simulaciones presentes son las utilizadas en el trabajo 
+Las simulaciones presentes son las utilizadas en los trabajos 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "N14"
+literal "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "morph15"
 literal "false"
 
 \end_inset
@@ -1528,6 +1578,37 @@ El resultado del algortimo en esta simulación nos permite identificar las
 Generación de espectros de absorción
 \end_layout
 
+\begin_layout Standard
+En las siguientes secciones veremos el 
+\emph on
+suite 
+\emph default
+de herramientas que permiten, como resultado final, la generación de espectros
+ de absorción sintéticos a partir de las simulaciones hidrodinámicas antes
+ detalladas.
+ El 
+\emph on
+software
+\emph default
+ 
+\begin_inset Formula $\textsc{cloudy}$
+\end_inset
+
+ es la base necesaria para la determinación de la densidad de especies iónicas
+ que producen la absorción en el medio gaseoso.
+ Las librerías 
+\begin_inset Formula $\texttt{{yt}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\textsc{trident}$
+\end_inset
+
+, implementadas en el lenguaje de programación Python, proveen el enlace
+ entre los resultados de nuestras simulaciones y la generación de espectros
+ asociados a estructuras de gas dentro del volumen de simulación.
+\end_layout
+
 \begin_layout Subsection
 CLOUDY
 \end_layout
@@ -1596,7 +1677,7 @@ La principal rutina de
 \begin_inset Formula $\textsc{trident}$
 \end_inset
 
- consiste en construir una 
+ consiste en los siguientes pasos: primero, construir una 
 \emph on
 línea de la visual 
 \emph default
@@ -1604,6 +1685,1263 @@ como un rayo de luz dirigido uniendo dos puntos dentro del volumen de la
  simulación.
  A el punto de partida se lo considera como una fuente de emisión de un
  espectro contínuo, y al punto de llegada como el de observación.
+ Entonces, para el gas atravesado por el rayo de luz calcula las densidades
+ de los iones presentes según sus condiciones físicas y su absorción sobre
+ el espectro de la fuente.
+ Finalizando este proceso, devuelve el espectro de la fuente, sobre el cual
+ figuran las líneas de absorción calculadas.
+ Podemos ver una ilustración de este protocolo en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:trident demo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/trident_demo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:trident demo"
+
+\end_inset
+
+Ilustración del protocolo de generación de espectros de absorción.
+ En el centro de la imagen se ubica una galaxia, con su CGM encerrado por
+ la línea punteada y el IGM por fuera.
+ Desde el incio del rayo de luz una fuente emite con el espectro adjunto.
+ Éste es absorbido en longitudes de onda discretas por el gas atravesado
+ por el rayo de luz, y finalmente visto por el ojo observador, según el
+ esquema a su lado.
+ Extraído de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "trident"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Detallaremos ahora los mecanismos que el código utiliza para sus varias
+ tareas, divididos en tres módulos:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+ion_balance
+\end_layout
+
+\end_inset
+
+: módulo que lleva a cabo el cálculo de densidades iónicas a partir de 
+\begin_inset Formula $\textsc{cloudy}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+: objeto (clase) representando una el rayo de luz en una 
+\emph on
+línea de la visual.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+SpectrumGenerator
+\end_layout
+
+\end_inset
+
+: objeto (clase) capaz de generar el espectro de absorción a partir de un
+ objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Generación de densidad de iones mediante 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+ion_balance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El módulo recibe la simulación hidrodinámica y calcula la densidad de partículas
+ para cada ión solicitado en las partículas
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Los elementos computacionales serán partículas si la simulación fuera de
+ tipo SPH, previa a la deposición por 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+yt
+\end_layout
+
+\end_inset
+
+.
+ En otro caso, serán directamente celdas de una malla.
+\end_layout
+
+\end_inset
+
+ de la simulación que lo requieran.
+ Este cálculo se basa en una serie de asumciones según se registre o no
+ la presencia de metales en la simulación; la primera de las cuales es la
+ condición de equilibrio iónico.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+decir algo sobre si ya están presentes los iones o elementos o etc? el cual
+ no es nuestro caso
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para cada partícula, de define la densidad de partículas de un ión 
+\begin_inset Formula $i$
+\end_inset
+
+ del elemento químico 
+\begin_inset Formula $X$
+\end_inset
+
+ según 
+\begin_inset Formula 
+\[
+n_{X_{i}}=n_{X}f_{X_{i}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $n_{X}$
+\end_inset
+
+ es la densidad numérica de núcleos de todas las especies del elemento 
+\begin_inset Formula $X$
+\end_inset
+
+, y 
+\begin_inset Formula $f_{X_{i}}$
+\end_inset
+
+ es la 
+\emph on
+fracción de ionización 
+\emph default
+de su 
+\emph on
+i-
+\emph default
+ésimo ión.
+ La densidad de núcleos puede escribirse según la densidad de masa 
+\begin_inset Formula $\rho_{X}$
+\end_inset
+
+ y la masa de cada nucleón 
+\begin_inset Formula $m_{X}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\rho_{X}=n_{X}m_{X}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+y esta última a su vez en términos de su masa atómica 
+\begin_inset Formula $\mathcal{M}_{X}$
+\end_inset
+
+ y la masa de hidrógeno 
+\begin_inset Formula $m_{\text{H}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+m_{X}=\mathcal{M}_{X}m_{H}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el caso que la información de 
+\begin_inset Formula $\rho_{X}$
+\end_inset
+
+ esté presente en la simulación, se calcula entonces la densidad de núcleos
+ según 
+\begin_inset Formula 
+\begin{equation}
+n_{X}=\dfrac{\rho_{X}}{\mathcal{M}_{X}m_{H}}\label{eq:ene_x}
+\end{equation}
+
+\end_inset
+
+Si no se tiene 
+\begin_inset Formula $\rho_{X}$
+\end_inset
+
+, se deben hacer algunas aproximaciones.
+ En principio, si 
+\begin_inset Formula $X$
+\end_inset
+
+ es H ó He, se toma su abundancia solar 
+\begin_inset Formula $A_{X}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A_{X}=\left.\dfrac{n_{X}}{n_{\text{H}}}\right|_{\sun}
+\]
+
+\end_inset
+
+de modo que sus densidades nuclear sean 
+\begin_inset Formula 
+\[
+n_{X}=A_{X}n_{H}
+\]
+
+\end_inset
+
+y, en caso que se tenga 
+\begin_inset Formula $\rho_{\text{H}}$
+\end_inset
+
+, tenemos 
+\begin_inset Formula 
+\[
+n_{X}=A_{X}\dfrac{\rho_{H}}{m_{H}}
+\]
+
+\end_inset
+
+Si no se tiene 
+\begin_inset Formula $\rho_{\text{H}}$
+\end_inset
+
+, entonces se asume la fracción de masa primordial para el hidrógeno 
+\begin_inset Formula $\chi=0.76$
+\end_inset
+
+.
+ En ese caso 
+\begin_inset Formula 
+\[
+n_{\text{H}}=\dfrac{\chi\rho}{m_{\text{H}}}
+\]
+
+\end_inset
+
+con lo cual 
+\begin_inset Formula 
+\[
+n_{X}=A_{X}\dfrac{\chi\rho}{m_{\text{H}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por otro lado, si 
+\begin_inset Formula $X$
+\end_inset
+
+ es un metal, definimos su metalicidad 
+\begin_inset Formula $Z_{X}$
+\end_inset
+
+como 
+\begin_inset Formula 
+\[
+Z_{X}=\dfrac{\rho_{X}}{\rho}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+y, si disponemos de esta metalicidad en nuestros datos, utilizamos la ecuación
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ene_x"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n_{X}=\dfrac{Z_{X}\rho}{m_{\text{H}}\mathcal{M}_{X}}
+\]
+
+\end_inset
+
+de otra forma, debemos tener necesariamente la metalicidad total 
+\begin_inset Formula $Z$
+\end_inset
+
+, dada por 
+\begin_inset Formula 
+\[
+Z=\dfrac{\rho_{\text{metales}}}{\rho}
+\]
+
+\end_inset
+
+y asumir la abundancia solar para cada metal.
+ Así, obtenemos la densidad de masa del metal 
+\begin_inset Formula $\rho_{X}$
+\end_inset
+
+ según el producto
+\begin_inset Formula 
+\begin{equation}
+\rho_{X}=Z\rho\,\times\,\left.\dfrac{\rho_{X}}{\rho}\right|_{\sun}\label{eq:rho_x}
+\end{equation}
+
+\end_inset
+
+Deseamos reexpresar este resultado en términos de la abundancia solar 
+\begin_inset Formula $A_{X}$
+\end_inset
+
+ antes definida.
+ Para eso, tomamos el cociente entre la densidad metales 
+\begin_inset Formula $\rho_{X}$
+\end_inset
+
+ y la densidad de hidrógeno 
+\begin_inset Formula $\rho_{\text{H}}$
+\end_inset
+
+, según la ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ene_x"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dfrac{\rho_{X}}{\rho_{\text{H}}}=\dfrac{n_{X}\mathcal{M}_{X}m_{\text{H}}}{n_{\text{H}}m_{\text{H}}}=\dfrac{n_{X}\mathcal{M}_{X}}{n_{\text{H}}}
+\]
+
+\end_inset
+
+de modo tal que, considerado este cociente con los valores solares, obtenemos
+ 
+\begin_inset Formula 
+\[
+\left.\dfrac{\rho_{X}}{\rho_{\text{H}}}\right|_{\sun}=\left.\dfrac{n_{X}}{n_{\text{H}}}\right|_{\sun}\mathcal{M}_{X}=A_{X}\mathcal{M}_{X}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De esa forma, podemos escribir la ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho_x"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ según
+\begin_inset Formula 
+\[
+\rho_{X}=Z\rho_{\text{H}}A_{X}\mathcal{M}_{X}
+\]
+
+\end_inset
+
+Si nuevamente no disponemos de 
+\begin_inset Formula $\rho_{\text{H}}$
+\end_inset
+
+, consideramos la fracción primordial de hidrógeno para obtener 
+\begin_inset Formula 
+\[
+\rho_{X}=Z\rho\chi A_{X}\mathcal{M}_{X}
+\]
+
+\end_inset
+
+y así, usando la ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ene_x"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, podemos finalmente obtener la densidad de núcleos del metal 
+\begin_inset Formula $X$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n_{X}=\dfrac{Z\rho\chi A_{X}}{m_{\text{H}}}
+\]
+
+\end_inset
+
+Mediante la cual se obtiene la densidad del 
+\emph on
+i-
+\emph default
+ésimo ión utilizando la fracción de ionización 
+\begin_inset Formula $f_{X_{i}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n_{X_{i}}=f_{X_{I}}\dfrac{Z\rho\chi A_{X}}{m_{\text{H}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bajo la asumción de equilibrio de ionización, la fracción de ionización
+ es una función de la temperatura y densidad del gas y forma e intensidad
+ del campo de radiación incidente.
+ El módulo 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+ion_balance
+\end_layout
+
+\end_inset
+
+ considera la radiación de fondo UV de modelos metagalácticos, en partículas
+ de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "haardtmadau"
+literal "false"
+
+\end_inset
+
+.
+ En este modelo, el campo de radiación está parametrizado únicamente por
+ el 
+\emph on
+redshift
+\emph default
+, de forma que la fracción de ionización es sólo función de la temperatura,
+ densidad y 
+\emph on
+redshift.
+ 
+\emph default
+El módulo accede a una tabla de valores de 
+\begin_inset Formula $f_{X_{i}}$
+\end_inset
+
+ precalculada mediante 
+\begin_inset Formula $\cl$
+\end_inset
+
+.
+ Así, la fracción de ionización deseada para cada ión se obtiene interpolando
+ linealmente los valores de esta tabla.
+\end_layout
+
+\begin_layout Standard
+En la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ion_balance"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ podemos ver un esquema del proceso de generación de densidades iónicas,
+ junto con las magnitudes necesarias para este.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/trident_ion_balance.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ion_balance"
+
+\end_inset
+
+ Esquema de la generación de densidades iónicas.
+ Desde la simulación se requieren: una lista de los iones a calcular (aquí
+ fueron elegidos 
+\begin_inset Formula $\text{H}_{\text{I}}$
+\end_inset
+
+,
+\begin_inset Formula $\text{C}_{\text{IV}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\text{O}_{\text{VI}}$
+\end_inset
+
+), la densidad, temperatura y metalicidad del gas, y el 
+\emph on
+redshift.
+ 
+\emph default
+Para una simulación basada en partículas, como es nuestro caso, 
+\emph on
+primero
+\emph default
+ se calculan las densidades iónicas correspondientes sobre cada partícula,
+ y 
+\emph on
+luego
+\emph default
+ se efectúa la deposición al 
+\emph on
+octree 
+\emph default
+mediante 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+yt
+\end_layout
+
+\end_inset
+
+.
+ Extraída de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "trident"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Creación de 
+\emph on
+lineas de la visual 
+\emph default
+con la clase 
+\series medium
+
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Según adelantábamos en las secciones previas, la generación de espectros
+ se computa para el gas atravesado por una trayectoria o 
+\emph on
+línea de la visual
+\emph default
+ en el volumen de la simulación.
+ Esta trayectoria se define por un punto de 
+\emph on
+emisión
+\emph default
+ como su origen, y un punto de 
+\emph on
+observación
+\emph default
+ como su extremo.
+ 
+\begin_inset Formula $\tri$
+\end_inset
+
+ implementa este concepto en forma de objetos generados por la clase 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+; éstos consisten en una secuencia unidimensional ordenada de las celdas
+ de la simulación atravesadas por la trayectoria de la línea de la visual
+ (las celdas aquí pertenecen al 
+\emph on
+octree 
+\emph default
+generado por la deposición a la grilla mediante 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+yt
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+El objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+ puede contener además, una selección de campos definidos para cada una
+ de sus celdas, tales como la posición, velocidad, densidad, temperatura,
+ volumen de la celda, etc.
+ Cabe aclarar que las celdas contenidas en el rayo no tienen todas las mismas
+ dimensiones: habrá celdas de menor tamaño en las regiones de la simulación
+ con mayor densidad de partículas.
+\end_layout
+
+\begin_layout Standard
+Además de los campos seleccionados para guardarse en el objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+, éste define y registra una serie de campos especiales para el procesamiento
+ posterior.
+ Para cada celda en el rayo, 
+\begin_inset Formula $\tri$
+\end_inset
+
+ calcula su longitud de camino 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+dl
+\end_layout
+
+\end_inset
+
+, su intervalo de 
+\emph on
+redshift 
+\emph default
+cosmológico 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+dredshift
+\end_layout
+
+\end_inset
+
+, su 
+\emph on
+redshift 
+\emph default
+cosmológico 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+redshift
+\end_layout
+
+\end_inset
+
+, su velocidad a los largo de la línea de la visual 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+velocity_los
+\end_layout
+
+\end_inset
+
+, su 
+\emph on
+redshift 
+\emph default
+por efecto Döppler 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+redshift_dopp
+\end_layout
+
+\end_inset
+
+ y su 
+\emph on
+redshift efectivo
+\emph default
+ 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+redshift_eff
+\end_layout
+
+\end_inset
+
+.
+ Veremos aquí el cálculo específico de cada una de estas magnitudes.
+\end_layout
+
+\begin_layout Standard
+Definimos la línea de la visual de un objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+ como un vector 
+\begin_inset Formula $\boldsymbol{\ell}$
+\end_inset
+
+ dentro del volumen de la simulación que parte de un punto 
+\begin_inset Formula $\boldsymbol{r}_{a}$
+\end_inset
+
+ a un punto 
+\begin_inset Formula $\boldsymbol{r}_{b}$
+\end_inset
+
+ (de observación).
+ Este vector será entonces la suma de 
+\begin_inset Formula $n$
+\end_inset
+
+ elementos de línea 
+\begin_inset Formula $\dd\boldsymbol{\ell}$
+\end_inset
+
+, tantos como celdas atravesadas por el rayo: 
+\begin_inset Formula 
+\[
+\boldsymbol{\ell}=\boldsymbol{r}_{b}-\boldsymbol{r}_{a}=\sum_{i=0}^{n}\dd\boldsymbol{\ell}_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+La longitud de camino 
+\begin_inset Formula $\dd\ell$
+\end_inset
+
+ de cada celda será entonces 
+\begin_inset Formula $\dd\ell_{i}=|\dd\boldsymbol{\ell}_{i}|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se asume una expansión de Hubble suave entre los puntos 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+, de tal forma que su separación en 
+\emph on
+redshift 
+\emph default
+es la distancia radial comóvil:
+\begin_inset Formula 
+\begin{equation}
+\ell=D_{\text{H}}\int_{z_{a}}^{z_{b}}\dfrac{\dd z'}{E(z')}\label{eq:long_comv}
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $D_{\text{H}}$
+\end_inset
+
+ es la distancia de Hubble, y el denominador es
+\begin_inset Formula 
+\[
+E(z)=\sqrt{\Omega_{\text{m}}\left(1+z\right)^{3}+\Omega_{k}\left(1+z\right)^{2}+\Omega_{\Lambda}}
+\]
+
+\end_inset
+
+En la simulación, el lado conocido de la ecuación es la distancia comóvil
+ 
+\begin_inset Formula $\ell$
+\end_inset
+
+, mientras que se desea obtener la diferencia de 
+\emph on
+redshifts 
+\emph default
+
+\begin_inset Formula $z_{a}-z_{b}$
+\end_inset
+
+.
+ No hay una solución analítica cerrada para esta ecuación, por lo tanto
+ se obtiene iterativamente mediante el método de Newton-Raphson.
+ Cabe destacar que el código adopta la siguiente convención: el 
+\emph on
+redshift 
+\emph default
+asignado 
+\series bold
+siempre 
+\series default
+es mayor en el punto 
+\begin_inset Formula $a$
+\end_inset
+
+ (emisión), y 
+\series bold
+decrece
+\series default
+ en la dirección del rayo hacia 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Teniendo la diferencia de 
+\emph on
+redshift
+\emph default
+ entre extremos del rayo, se asume que el intervalo de 
+\emph on
+redshift 
+\emph default
+en cada celda depende linealmente de su longitud de camino 
+\begin_inset Formula $\dd\ell$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\dd z_{i}=\dfrac{\dd\ell_{i}}{\ell_{i}}\left(z_{b}-z_{a}\right)
+\]
+
+\end_inset
+
+(notemos que este incremento es 
+\emph on
+negativo
+\emph default
+, pues 
+\begin_inset Formula $z$
+\end_inset
+
+ decrece de 
+\begin_inset Formula $a$
+\end_inset
+
+ hacia 
+\begin_inset Formula $b$
+\end_inset
+
+).
+ Así, se puede obtener el 
+\emph on
+redshift
+\emph default
+ cosmológico para cada celda atravesada por el rayo 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+le cambié el signo a la ecuación del paper, no estoy seguro si hay un error..
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+z_{i}=z_{b}-\sum_{j=i}^{n}\dd z_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Al generar un espectro, para quien observa no le es posible distinguir si
+ el corrimiento en frecuencia de una línea de absorción corresponde al 
+\emph on
+redshift 
+\emph default
+cosmológico o al efecto Döppler debido al movimiento del gas.
+ Por esa razón, 
+\begin_inset Formula $\tri$
+\end_inset
+
+ incluye las siguientes magnitudes dentro del objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+.
+ La 
+\emph on
+velocidad en la línea de la visual (Line Of Sight
+\emph default
+, en inglés
+\emph on
+)
+\emph default
+ de una celda es simplemente la proyección de la velocidad de la celda sobre
+ la dirección del rayo:
+\begin_inset Formula 
+\[
+v_{\text{LOS},i}=\boldsymbol{v}_{i}\cdot\dd\boldsymbol{\ell}_{i}=v_{i}\dd\ell_{i}\cos\left(\theta_{i}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+ es el ángulo entre el vector velocidad de la celda 
+\begin_inset Formula $i$
+\end_inset
+
+-ésima y la dirección de la línea de la visual.
+ Con esta información se puede calcular el 
+\emph on
+redshift
+\emph default
+ debido al efecto Döppler, para cada celda del rayo 
+\begin_inset Formula 
+\[
+1+z_{\text{dopp},i}=\dfrac{1+\dfrac{v_{i}}{c}\cos\left(\theta_{i}\right)}{\sqrt{1-\left(\dfrac{v_{i}}{c}\right)^{2}}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+siendo 
+\begin_inset Formula $c$
+\end_inset
+
+ la velocidad de la luz.
+ El 
+\emph on
+redshift efectivo, 
+\emph default
+la magnitud con la cual se modifica directamente la longitud de onda de
+ una línea de absorción dentro del espectro, está definido para cada celda
+ como una combinación del cosmológico y el Döppler 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "z_eff"
+literal "false"
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+1+z_{\text{eff},i}=\left(1+z_{\text{dopp},i}\right)\left(1+z_{i}\right)\label{eq:z_eff}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para generar un objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+, se debe especificar la trayectoria, campos a guardar, y lista de iones
+ para los cuales calcular y guardar las densidades numéricas.
+ Una vez finalizada su creación, el mismo se guarda en disco como un archivo
+ binario en formato 
+\begin_inset Formula $\textsc{hdf5}$
+\end_inset
+
+.
+ Este archivo puede ser cargado nuevamente mediante 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+yt
+\end_layout
+
+\end_inset
+
+ cuando sea necesario.
+\end_layout
+
+\begin_layout Subsubsection
+Generación de espectros con la clase 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+SpectrumGenerator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La clase 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+SpectrumGenerator
+\end_layout
+
+\end_inset
+
+ contiene las herramientas necesarias para generar un espectro de absorción
+ y sus magnitudes asociadas a partir de un objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+.
+ Para definir un objeto de esta clase, se le debe cargar el rango de longitudes
+ de onda deseado con un espaciamiento entre valores consecutivos, y una
+ lista de las líneas de absorción a generar sobre un espectro contínuo.
+ 
+\begin_inset Formula $\tri$
+\end_inset
+
+ contiene una base de datos con 
+\begin_inset Formula $220$
+\end_inset
+
+ líneas de absorción en el visible y UV frecuentemente utilizadas; para
+ cada una incluye su ión de fuente, su longitud de onda 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, su fuerza de oscilador 
+\begin_inset Formula $f_{\text{val}}$
+\end_inset
+
+ y su probabilidad de transición 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
