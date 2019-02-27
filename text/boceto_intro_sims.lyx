@@ -160,6 +160,15 @@ Notas para tesis
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Introducción 
 \begin_inset CommandInset label
@@ -2942,6 +2951,815 @@ LightRay
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Un objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+SpectrumGenerator
+\end_layout
+
+\end_inset
+
+ tiene dos funciones: calcular y guardar atributos observables y generar
+ el espectro de absorción propiamente dicho.
+ Para ambas operaciones, recibe el objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+ que porta los datos de velocidad, 
+\emph on
+redshift, 
+\emph default
+y densidades numéricas de iones.
+ Con ellos calcula, para cada una de las líneas de absorción y para cada
+ una de las celdas del rayo, las siguientes magnitudes:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Densidad columnar 
+\emph default
+
+\begin_inset Formula $N_{X}$
+\end_inset
+
+ de la especie iónica, obtenida como el producto de la densidad numérica
+ 
+\begin_inset Formula $n_{X}$
+\end_inset
+
+ y la longitud de camino de cada celda 
+\begin_inset Formula $\dd\ell$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+N_{X}=n_{X}\dd\ell\text{  para cada celda}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Longitud de onda 
+\emph on
+observada 
+\emph default
+de la línea 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, calculada como la longitud de onda de la transición 
+\begin_inset Formula $\lambda_{0}$
+\end_inset
+
+ corregida según el 
+\emph on
+redshift efectivo
+\emph default
+ que da cuenta del 
+\emph on
+redshift 
+\emph default
+cosmológico y el efecto Döppler, según la ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:z_eff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lambda=\lambda_{0}\left(1+z_{\text{eff}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Parámetro de ensanchamiento térmico ó Döppler (
+\emph on
+thermal broadening
+\emph default
+) de la línea producto de la agitación térmica del gas, calculado según
+ 
+\begin_inset Formula 
+\[
+b=\sqrt{\dfrac{2kT}{\mathcal{M}}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+siendo 
+\begin_inset Formula $k$
+\end_inset
+
+ la constante de Boltzmann, 
+\begin_inset Formula $T$
+\end_inset
+
+ la temperatura del gas, y 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ la masa atómica del ión considerado.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Ancho equivalente
+\emph default
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+ver qué es esto...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Profundidad óptica
+\emph default
+ 
+\begin_inset Formula $\tau$
+\end_inset
+
+ de la absorción, que caracteriza la absorbancia de la línea particular.
+ La examinaremos en detalle en la siguiente sección.
+\end_layout
+
+\begin_layout Standard
+Recordamos que cada una de estas magnitudes se obtiene 
+\series bold
+para cada celda en el rayo
+\series default
+, de modo que se seguir su dependencia espacial, en contraste con las observacio
+nes.
+\end_layout
+
+\begin_layout Standard
+La otra función de un objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+SpectrumGenerator
+\end_layout
+
+\end_inset
+
+ es la generación del espectro de absorción según las líneas especificadas
+ y las características observables antes descritas.
+ Dada esta información, el objeto puede generar un espectro de absorción
+ 
+\emph on
+en bruto, 
+\emph default
+como vemos en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:abs_spec_raw"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/abs_spec_demo.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:abs_spec_raw"
+
+\end_inset
+
+Espectro de absorción 
+\emph on
+en bruto
+\emph default
+.
+ El flujo relativo de valor unidad indica una transimión total, mientras
+ que de valor nulo indica una absorción total.
+ Podemos ver la absorción en líneas discretas, producto de transiciones
+ iónicas en el gas sobre el cual se incide la radiación.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Este 
+\begin_inset Quotes eld
+\end_inset
+
+espectro
+\begin_inset Quotes erd
+\end_inset
+
+ es simplemente una gráfica del flujo relativo (ó 
+\emph on
+transmitancia
+\emph default
+) de radiación incidente que atraviesa al gas en función de su longitud
+ de onda.
+ Vemos que este flujo toma el valor de la unidad cuando el gas es completamente
+ transparente a la radiación; y decrece hasta un valor nulo a medida que
+ se produce la absorción.
+ La magnitud física que regula la absorción es la 
+\emph on
+profundidad óptica 
+\emph default
+
+\begin_inset Formula $\tau$
+\end_inset
+
+, a partir de la cual el flujo relativo se obtiene como 
+\begin_inset Formula 
+\[
+f=\text{e}^{-\tau}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Esta magnitud se relaciona con la 
+\emph on
+absorbancia 
+\emph default
+
+\begin_inset Formula $A$
+\end_inset
+
+ según 
+\begin_inset Formula 
+\[
+\tau=A\ln10
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:trident_spectrum_features"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ podemos apreciar la manifestación de estructuras físicas en el gas absorbente
+ con características en el espectro.
+ Vemos cómo una mayor densidad de partículas incide en una mayor absorción,
+ y cada valle en el espectro se compone de las absorciones de las celdas
+ con valores de 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ contíguos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/trident_structure_spectrum.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:trident_spectrum_features"
+
+\end_inset
+
+ Conexión entre estructuras físicas y características espectrales.
+ 
+\begin_inset Formula $A$
+\end_inset
+
+: corte en la simulación, indicando la densidad de hidrógeno neutro 
+\begin_inset Formula $\text{H}_{\text{I}}$
+\end_inset
+
+ y vector velocidad en cada celda, junto en el rayo.
+ 
+\begin_inset Formula $B$
+\end_inset
+
+: densidad columnar de 
+\begin_inset Formula $\text{H}_{\text{I}}$
+\end_inset
+
+de cada celda a lo largo del rayo.
+ 
+\begin_inset Formula $C$
+\end_inset
+
+: perfil de velocidad en la línea de la visual 
+\begin_inset Formula $v_{\text{LOS}}$
+\end_inset
+
+, a lo largo del rayo.
+ 
+\begin_inset Formula $D$
+\end_inset
+
+: perfil de densidad columnar, ahora con la posición en el espacio de 
+\emph on
+redshift 
+\emph default
+de cada celda corregida por el efecto Döppler utilizando la correspondiente
+ 
+\begin_inset Formula $v_{\text{LOS}}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $E$
+\end_inset
+
+: temperatura para cada celda en función de su longitud de onda observada.
+ 
+\begin_inset Formula $F$
+\end_inset
+
+: densidad columnar de cada celda, en su correspodiente longitud de onda,
+ junto con su ensanchamiento térmico.
+ 
+\begin_inset Formula $G$
+\end_inset
+
+: perfiles de Voigt calculados para cada celda (en verde), junto con el
+ espectro de absorción final en negro.
+ Extraída de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "trident"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cada valle en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:abs_spec_raw"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ representa una línea de absorción.
+ Podemos apreciar que éstas absorciones no están completamente concentradas
+ en una longitud de onda única, sino que presentan un ancho característico.
+ Por otro lado, las absorciones no necesariamente son 
+\emph on
+completas 
+\emph default
+(produciendo un flujo relativo nulo)
+\emph on
+, 
+\emph default
+sino que pueden ser 
+\emph on
+parciales 
+\emph default
+(como vemos en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:trident_spectrum_features"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ G), absorbiendo sólo una parte de la intensidad incidente.
+\end_layout
+
+\begin_layout Standard
+En primer lugar, la forma de la línea de absorción está determinada por
+ dos características del gas absorbente: el ensanchamiento Döppler debido
+ a la distribución térmica de velocidades en el gas, y el 
+\emph on
+ensanchamiento por presión 
+\emph default
+producto de las colisiones entre partículas.
+ El primero de estos efectos es bien descripto por un perfil gaussiano,
+ mientras que el segundo se puede modelar con un perfil lorentziano.
+ La combinación de estos dos efectos se realiza mediante la convolución
+ de ambos perfiles, obteniendo así el denominado 
+\emph on
+perfil de Voigt.
+\end_layout
+
+\begin_layout Standard
+Veamos de qué forma se obtiene este perfil.
+ Si definimos 
+\begin_inset Formula $x=\nu-\nu_{0}$
+\end_inset
+
+ y partimos de las funciones gaussiana centrada en el origen, con desviación
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+G\left(x,\sigma\right)=\dfrac{1}{\sqrt{2\pi}\sigma}\exp\left(-\dfrac{x^{2}}{2\sigma^{2}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+y lorentziana con semiancho a media altura 
+\begin_inset Formula $\gamma$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+L\left(x,\gamma\right)=\dfrac{\gamma\slash\pi}{\gamma^{2}+x^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+obtenemos el perfil de Voigt mediante la convolución
+\begin_inset Formula 
+\[
+V\left(x,\sigma,\gamma\right)=\int_{-\infty}^{\infty}G\left(x',\sigma\right)L\left(x-x',\gamma\right)\dd x'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Adoptamos ahora a la longitud de onda 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ como variable independiente.
+ El perfil de Voigt no tiene forma cerrada, pero puede ser computado numéricamen
+te según 
+\begin_inset Formula 
+\[
+V\left(\lambda,\sigma,\gamma\right)=\dfrac{\Re\left[w\left(z\right)\right]}{\sqrt{2\pi}\sigma}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $w\left(z\right)$
+\end_inset
+
+ es la fución de Faddeeva, definida como 
+\begin_inset Formula 
+\[
+w\left(z\right)=\exp\left(-z^{2}\right)\left(1+\dfrac{2i}{\sqrt{\pi}}\int_{0}^{z}\text{e}^{t^{2}}\dd t\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+y su argumento complejo es 
+\begin_inset Formula 
+\[
+z=\dfrac{u+ia}{\sqrt{2}\sigma}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+siendo 
+\begin_inset Formula $u$
+\end_inset
+
+ la diferencia de longitud de onda relativa al centro 
+\begin_inset Formula $\lambda_{0}$
+\end_inset
+
+, y 
+\begin_inset Formula $a$
+\end_inset
+
+ el parámetro de amortiguación
+\begin_inset Formula 
+\[
+u=c\left(\dfrac{\lambda_{0}}{\lambda}-1\right)\text{   y }a=\dfrac{\Gamma\lambda_{0}}{4\pi}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+recordando que 
+\begin_inset Formula $c$
+\end_inset
+
+ es la velocidad de la luz, y 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ es la probabilidad de transición de la línea.
+\end_layout
+
+\begin_layout Standard
+Así, el perfil de profundidad óptica para cada línea (que se reflejará en
+ el espectro según 
+\begin_inset Formula $f=\exp\left(-\tau\right)$
+\end_inset
+
+) queda determinado por 
+\begin_inset Formula 
+\[
+\tau\left(\lambda,\sigma,\gamma\right)=\tau_{0}V\left(\lambda,\sigma,\gamma\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+con el valor máximo de profundidad en el centro de la línea 
+\begin_inset Formula $\tau_{0}$
+\end_inset
+
+ dado por 
+\begin_inset Formula 
+\[
+\tau_{0}=\dfrac{\pi e^{2}Nf_{\text{val}}\lambda_{0}}{m_{e}c}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+siendo 
+\begin_inset Formula $e$
+\end_inset
+
+ y 
+\begin_inset Formula $m_{e}$
+\end_inset
+
+ la carga y masa del electrón, 
+\begin_inset Formula $N$
+\end_inset
+
+ es la densidad columnar del gas y 
+\begin_inset Formula $f_{\text{val}}$
+\end_inset
+
+ es la fuerza de oscilador de la transición iónica.
+\end_layout
+
+\begin_layout Subsubsection
+Post-procesamiento del espectro
+\end_layout
+
+\begin_layout Standard
+Hasta ahora, hemos visto la generación de un espectro de absorción 
+\emph on
+en bruto
+\emph default
+, según se dispone en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:abs_spec_raw"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Sin embargo, 
+\begin_inset Formula $\tri$
+\end_inset
+
+ posee funcionalidades que agregar complejidad al espectro generado de forma
+ tal de emular fuentes más realistas u efectos observacionales.
+ En primer lugar, se puede agregar el espectro de un quásar como simulación
+ de el espectro de emisión de la fuente ubicada al origen de la línea de
+ la visual.
+ También, es posible agregar una contaminación al espectro por el 
+\emph on
+foreground 
+\emph default
+de la Vía láctea.
+ Para emular los efectos inherentes al instrumento de observación, se puede
+ convolucionar el espectro con una 
+\emph on
+función de transferencia de línea 
+\emph default
+(LSF en inglés) y finalmente agregar un ruido gaussiano.
+ Podemos apreciar la aplicación sucesiva de estos efectos en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:trident_postprocessing"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/trident_spectrum_postprocessing.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:trident_postprocessing"
+
+\end_inset
+
+Post-procesamiento del espectro de absorción a partir del espectro 
+\emph on
+en bruto
+\emph default
+ (curva al pie).
+ Desde éste, se agregan secuencialmente: el espectro de un quásar en la
+ fuente, el 
+\emph on
+foreground
+\emph default
+ de la Vía láctea, la convolución con una LSF, y un ruido gaussiano.
+ Los 
+\emph on
+offsets
+\emph default
+ de las curvas son artificiales para mejor comparación entre ellas.
+ Extraído de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "trident"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
