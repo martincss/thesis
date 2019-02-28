@@ -161,6 +161,14 @@ Notas para tesis
 \end_layout
 
 \begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\pdev}[2]{\dfrac{\partial#1}{\partial#2}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -1619,7 +1627,86 @@ software
 \end_layout
 
 \begin_layout Subsection
-CLOUDY
+CLOUDY 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cloudy2013"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\cl$
+\end_inset
+
+ es un programa que determina las condiciones físicas dentro de un gas fuera
+ del equilibrio, con posibilidad de exposición a una fuente externa de radiación
+ y predice el espectro resultante.
+ Esto posibilita la predicción de magnitudes observables específicando sólo
+ las propiedades de la nube de gas y el campo de radiación incidente.
+\end_layout
+
+\begin_layout Standard
+El código parte de primeros principios, y calcula el estado térmico, químico
+ y de ionización de una nube de gas fuera del equilibrio, a ser posiblemente
+ expuesta a una fuente externa de radiación.
+ Se asume que ha transcurrido un tiempo tal que los procesos atómicos que
+ ocurran se hayan vuelto estacionarios.
+ La densidad de partículas de una especie ó nivel 
+\begin_inset Formula $i$
+\end_inset
+
+ estará dada por 
+\begin_inset Formula 
+\[
+\pdev{n_{i}}t=\sum_{j\neq i}n_{j}R_{ji}+\text{Fuente}-n_{i}\left(\sum_{j,i}R_{ij}+\text{Sumidero}\right)=0
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde aquí 
+\begin_inset Formula $R_{ji}$
+\end_inset
+
+ representa la tasa 
+\begin_inset Formula $\left[\text{s}^{-1}\right]$
+\end_inset
+
+ a la cual la especie 
+\begin_inset Formula $j$
+\end_inset
+
+ migra a 
+\begin_inset Formula $i$
+\end_inset
+
+, Fuente es la tasa por unidad de volumen 
+\begin_inset Formula $\left[\text{cm}^{-3}\text{s}^{-1}\right]$
+\end_inset
+
+ a la cual aparecen nuevos átomos en 
+\begin_inset Formula $i$
+\end_inset
+
+, y Sumidero es la tasa 
+\begin_inset Formula $\left[\text{s}^{-1}\right]$
+\end_inset
+
+ a la cual se pierden.
+\end_layout
+
+\begin_layout Standard
+Esta ecuación de balance, junto con la conservación de masa, carga, y energía
+ determinan completamente el problema.
+ El código resuelve éstas ecuaciones de manera auto-consistente con un número
+ mínimo de parámetros libres.
 \end_layout
 
 \begin_layout Subsection
@@ -3638,6 +3725,26 @@ siendo
 \end_inset
 
  es la fuerza de oscilador de la transición iónica.
+ Podemos apreciar que la intensidad de la absorción crece con la densidad
+ del gas 
+\begin_inset Formula $N$
+\end_inset
+
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+y con 
+\begin_inset Formula $\lambda_{0}$
+\end_inset
+
+??????
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
