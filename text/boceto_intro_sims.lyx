@@ -3860,6 +3860,176 @@ literal "false"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Procesamiento?
+\end_layout
+
+\begin_layout Chapter
+Análisis y resultados
+\end_layout
+
+\begin_layout Section
+Comparación de las direcciones hacia M31 y ortogonal
+\end_layout
+
+\begin_layout Standard
+En primer lugar, queremos realizar una comparación en varios aspectos entre
+ una línea de la visual que apunte hacia M31, y otra perpendicular que no
+ apunte a alguna estructura en particular (que denominamos 
+\emph on
+away
+\emph default
+).
+ Seleccionamos dos rayos de nuestra muestra con esas características, que
+ podemos ver en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:m31_and_away"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ sobre una proyección de densidad en el dominio.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/proj_poster.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:m31_and_away"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Si bien aquí sólo mostramos una proyección, hemos verificado que los rayos
+ elegidos cumplen éstas condiciones al observar otras proyecciones.
+ Elegimos comparar estas dos direcciones en particular para estudiar la
+ hipótesis de la extensión de los halos de MW y M31 en un 
+\begin_inset Quotes eld
+\end_inset
+
+puente
+\begin_inset Quotes erd
+\end_inset
+
+ de gas en la dirección que las une 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+esto pero dicho mejor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Densidad de gas y espectros de absorción
+\end_layout
+
+\begin_layout Standard
+A modo de una primera comparación, queremos estudiar las diferencias de
+ densidad de gas entre estas direcciones y cómo se reflejan en los espectros
+ de absorción, siendo éstos la única magnitud de acceso directo observacional.
+ Para eso, graficamos la densidad columnar 
+\begin_inset Formula $N$
+\end_inset
+
+ en las líneas Si III 
+\begin_inset Formula $1206$
+\end_inset
+
+ y SI II 
+\begin_inset Formula $1193$
+\end_inset
+
+ en función de la distancia para ambas direcciones, como disponemos en la
+ Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:N_profiles_m31_away"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/m31_away_N_profiles.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:N_profiles_m31_away"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 
 \end_layout
