@@ -146,6 +146,19 @@ def subhalo_center(subhalo_number, subfind_path='../../2Mpc_LG',
     return center
 
 
+def subhalo_velocity(subhalo_number, subfind_path='../../2Mpc_LG',
+                          snap_num=135):
+    """
+    Finds and returns subhalo velocity for
+    the specified subhalo_number.
+    """
+
+    cat = SubfindCatalogue(subfind_path, snap_num)
+    vel = cat.subhalo[subhalo_number].velocity
+
+    return vel
+
+
 def subhalo_virial_radius(subhalo_number, subfind_path='../../2Mpc_LG',
                           snap_num=135):
     """

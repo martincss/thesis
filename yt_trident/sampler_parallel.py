@@ -13,32 +13,48 @@ from tools import get_sun_position_2Mpc_LG as sun
 
 
 number_of_cores = usable_cores()
-#pool = Pool(number_of_cores)
-pool = Pool(2)
+pool = Pool(number_of_cores)
+#pool = Pool()
 
-#rays_directory = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
-rays_directory = './rays_2Mpc_LG_to_m31_and_away/'
+rays_directory = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/'
+#rays_directory = './rays_2Mpc_LG_to_m31_and_away_sun/'
 #rays_directory = './rays_test/'
-absorbers_directory = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
+#absorbers_directory = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/'
+absorbers_directory = './absorbers_2Mpc_LG_from_subhalos_fuzzy/'
+
+rays_subhalo_directory = './rays_2Mpc_LG_from_subhalos/'
+rays_subhalo_fuzzy_directory = './rays_2Mpc_LG_from_subhalos_fuzzy/'
 
 def generate_absorbers_sample(rays_directory, absorbers_directory, pool):
 
     tasks =[(i,handle, rays_directory, absorbers_directory) for i, handle in \
             enumerate(glob.glob(rays_directory + 'ray*'))]
 
+    # hardcoding this now because absorber 0.858_6.031 won't generate
+    tasks.pop(57)
+
     pool.map(generate_one_to_map, tasks)
 
 
 
-def make_ray_sample_uniform(r_interval, number_of_sightlines, pool):
+def make_ray_sample_uniform(r_interval, number_of_sightlines, pool, sun=False):
 
     theta_interval, phi_interval = sphere_uniform_grid(number_of_sightlines)
 
     for r in r_interval:
 
-        tasks = [(i, number_of_sightlines, r, theta, phi, rays_directory) for \
-                i, (theta, phi) in enumerate(zip(theta_interval, phi_interval))]
-        pool.map(sample_one_to_map, tasks)
+
+        if sun:
+
+            tasks = [(r, theta, phi, sun(), rays_directory) for theta, phi in \
+            zip(theta_interval, phi_interval)]
+            pool.map(sample_one_to_map_any, tasks)
+
+        else:
+
+            tasks = [(i, number_of_sightlines, r, theta, phi, rays_directory) \
+            for i, (theta, phi) in enumerate(zip(theta_interval, phi_interval))]
+            pool.map(sample_one_to_map, tasks)
 
 
 def sample_m31_and_away(r_interval, rays_directory, pool, to_mw = True):
@@ -105,11 +121,12 @@ def generate_subhalo_fuzzy_samples(number_of_subhalos, ray_end,
 
 
 if __name__ == '__main__':
-    #generate_absorbers_sample(rays_directory, absorbers_directory, pool)
+    generate_absorbers_sample(rays_subhalo_fuzzy_directory, absorbers_directory, pool)
 
-    #make_ray_sample_uniform([2000], 10, pool)
-    #sample_m31_and_away(all_distances[1:], rays_directory, pool)
+    #make_ray_sample_uniform([2000], 500, pool)
+    #sample_m31_and_away(all_distances[1:], rays_directory, pool, to_mw=False)
     #generate_RN_fig1_distance_frames(all_distances[1:], pool)
 
-    #generate_subhalo_fuzzy_samples(3, sun(), './rays_test/', 3, pool)
-    generate_subhalo_samples(3, sun(), './rays_test/', pool)
+#    generate_subhalo_fuzzy_samples(15, sun(), rays_subhalo_fuzzy_directory,
+#                                 10, pool)
+    #generate_subhalo_samples(15, sun(), rays_subhalo_directory, pool)

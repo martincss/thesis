@@ -20,10 +20,10 @@ bandwidth = 6
 # spectra_directory = './rays_test/'
 # figs_directory = './rays_test/'
 
-rays_directory = './rays_2Mpc_LG_to_m31_and_away/'
+rays_directory = './rays_2Mpc_LG_to_m31_and_away_sun/'
 absorbers_directory = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
-spectra_directory = './spectra_2Mpc_LG_to_m31_and_away/'
-figs_directory = './R_N_Fig1_by_distance_2MpcLG_new/'
+spectra_directory = './spectra_2Mpc_LG_to_m31_and_away_sun/'
+figs_directory = './R_N_Fig1_by_distance_2MpcLG_sun/'
 
 distances = np.linspace(10, 700, 100)
 distances_detail = np.linspace(1, 10, 50)
@@ -43,9 +43,13 @@ def sightlines_filenames(distance):
 
 
 
-    ray_to_m31_filename = 'ray_{:.3f}_0.698_4.189.h5'.format(distance)
+    # ray_to_m31_filename = 'ray_{:.3f}_0.698_4.189.h5'.format(distance)
+    #
+    # ray_away_filename = 'ray_{:.3f}_1.047_1.396.h5'.format(distance)
 
-    ray_away_filename = 'ray_{:.3f}_1.047_1.396.h5'.format(distance)
+    ray_to_m31_filename = 'ray_{:.3f}_0.70_4.19.h5'.format(distance)
+
+    ray_away_filename = 'ray_{:.3f}_1.05_1.40.h5'.format(distance)
 
     # when using 'distances'
     #ray_to_m31_filename = 'ray_{:.0f}_0.70_4.19.h5'.format(distance)
