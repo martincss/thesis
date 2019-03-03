@@ -82,21 +82,22 @@ def get_temperature(ray):
 
 def get_density_gcm3(ray):
 
-    dens = ray.r['gas', 'density']
+    dens = np.array(ray.r['gas', 'density'])
 
     return dens
 
 def get_pressure_dynecm2(ray):
 
     # dyne/cm^2 = erg/cm^3
-    pres = ray.r['gas', 'density']*ray.r['gas','thermal_energy']
+    pres = np.array(ray.r['gas', 'density']*ray.r['gas','thermal_energy'])
 
     return pres
 
 def get_pressure_Kcm3(ray):
 
     # [p/k] = erg/cm^3 / erg/K = K/cm^3
-    pres = ray.r['gas', 'density']*ray.r['gas','thermal_energy']/K_BOLTZMANN
+    pres = np.array(ray.r['gas', 'density']*ray.r['gas','thermal_energy'])\
+           /K_BOLTZMANN
 
     return pres
 
@@ -108,7 +109,7 @@ def get_dl_kmccmh(ray):
 
 def get_cell_volume_cm3(ray):
 
-    cell_volume = ray.r['gas', 'cell_volume']
+    cell_volume = np.array(ray.r['gas', 'cell_volume'])
 
     return cell_volume
 
