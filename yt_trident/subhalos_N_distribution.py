@@ -16,7 +16,7 @@ def subhalos_analysis_parallel(abs_directory, pool):
 
     results = pool.map(subhalo_analysis_one_to_map, tasks)
 
-    return pd.concat(results).sort_values(['sub', 'b'])
+    return pd.concat(results).sort_values(['mass', 'sub', 'b'], ascending=False)
 
 
 if __name__ == '__main__':

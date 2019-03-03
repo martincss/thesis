@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from tools import subhalo_center, subhalo_virial_radius, \
                   get_sun_position_2Mpc_LG as sun, sph_to_cart, \
-                  extract_sub_coordinates_from_handle
+                  extract_sub_coordinates_from_handle, subhalo_mass
 
 import numpy as np
 from numpy.linalg import norm
@@ -61,12 +61,14 @@ def absorbers_in_subhalo(handle, max_flux = 1.0):
 def subhalo_analysis_one_to_map(handle):
 
     sub_num, _, _, _ = extract_sub_coordinates_from_handle(handle)
+    sub_mass = subhalo_mass(sub_num)
     b = impact_parameter_from_handle(handle)
     N_by_line = absorbers_in_subhalo(handle)
 
-    N_by_line['sub'] = [sub_num]; N_by_line['b'] = [b]
+    N_by_line['sub'] = [sub_num]; N_by_line['b'] = [b];
+    N_by_line['mass'] = [sub_mass]
 
     analysis = DataFrame(N_by_line)
-    analysis = analysis.reindex(columns = ['sub', 'b'] + abs_lines)
+    analysis = analysis.reindex(columns = ['mass', 'sub', 'b'] + abs_lines)
 
     return analysis
