@@ -159,6 +159,19 @@ def subhalo_velocity(subhalo_number, subfind_path='../../2Mpc_LG',
     return vel
 
 
+def subhalo_mass(subhalo_number, subfind_path='../../2Mpc_LG',
+                          snap_num=135):
+    """
+    Finds and returns subhalo mass for specified subhalo_number.
+    """
+
+    cat = SubfindCatalogue(subfind_path, snap_num)
+    # as mass units are 10^10 M_sun, we scale mass for units to be M_sun
+    subhalo_mass = cat.subhalo[subhalo_number].mass*10**10
+
+    return subhalo_mass
+
+
 def subhalo_virial_radius(subhalo_number, subfind_path='../../2Mpc_LG',
                           snap_num=135):
     """
@@ -169,9 +182,9 @@ def subhalo_virial_radius(subhalo_number, subfind_path='../../2Mpc_LG',
 
     cat = SubfindCatalogue(subfind_path, snap_num)
     # as mass units are 10^10 M_sun, we scale mass for units to be M_sun
-    subhalo_mass = cat.subhalo[subhalo_number].mass*10**10
+    mass = subhalo_mass(subhalo_number)
 
-    r_200 = (GRAV_CONST * HUBBLE_2Mpc_LG * subhalo_mass)**(1/3) # in kpc/h
+    r_200 = (GRAV_CONST * HUBBLE_2Mpc_LG * mass)**(1/3) # in kpc/h
 
     return r_200
 
