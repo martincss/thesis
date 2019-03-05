@@ -799,3 +799,25 @@ def handle_in_subsample(handle, amplitude_polar):
     theta, phi = extract_angles_from_handle(handle)
 
     return sightline_in_subsample(theta, phi, amplitude_polar)
+
+
+def angle_to_m31(handle):
+
+    m31_center = get_m31_center_2Mpc_LG()
+    unit_to_m31 = m31_center - get_sun_position_2Mpc_LG()
+    unit_to_m31 /= norm(unit_to_m31)
+
+    theta, phi = extract_angles_from_handle(handle)
+
+    angle = np.arccos(unit_to_m31 @ sph_to_cart((1, theta, phi)))
+
+    return angle*360/(2*pi)
+
+
+def ray_away_from_m31(handle, amplitude):
+
+    angle = angle_to_m31(handle)
+
+    is_away = np.abs(angle - 90) < amplitude
+
+    return is_away
