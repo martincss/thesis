@@ -4603,7 +4603,7 @@ name "fig:all_away"
 \end_layout
 
 \begin_layout Subsubsection
-Densidad
+Densidad de gas
 \end_layout
 
 \begin_layout Standard
@@ -4701,7 +4701,7 @@ no entiendo esto.
 \end_layout
 
 \begin_layout Subsubsection
-Velocidad en la línea de la visual
+Velocidades en la línea de la visual
 \end_layout
 
 \begin_layout Standard
@@ -4752,6 +4752,16 @@ noprefix "false"
 \emph on
 away.
  
+\emph default
+Graficamos también con una línea horizontal quebrada la 
+\begin_inset Formula $v_{\text{LOS}}$
+\end_inset
+
+ correspondiente a la estructura M31, obtenida desde la salida de 
+\begin_inset Formula $\textsc{subfind}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4797,6 +4807,16 @@ name "fig:v_los_profiles_m31_away_all"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+En principio, podemos notar que en la dirección hacia M31, la velocidad
+ es siempre negativa salvo en una pequeña región a distancias muy bajas
+ 
+\begin_inset Formula $\left(<100\textrm{kpc}\right)$
+\end_inset
+
+, correspondiente al interior del halo de MW.
 \end_layout
 
 \begin_layout Standard
