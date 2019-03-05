@@ -3093,7 +3093,7 @@ Densidad columnar
 
 \begin_inset Formula 
 \[
-N_{X}=n_{X}\dd\ell\text{  para cada celda}
+N_{X}=n_{X}\dd\ell\text{ para cada celda}
 \]
 
 \end_inset
@@ -3654,7 +3654,7 @@ siendo
  el parámetro de amortiguación
 \begin_inset Formula 
 \[
-u=c\left(\dfrac{\lambda_{0}}{\lambda}-1\right)\text{   y }a=\dfrac{\Gamma\lambda_{0}}{4\pi}
+u=c\left(\dfrac{\lambda_{0}}{\lambda}-1\right)\text{ y }a=\dfrac{\Gamma\lambda_{0}}{4\pi}
 \]
 
 \end_inset
@@ -3948,7 +3948,8 @@ puente
 \begin_inset Quotes erd
 \end_inset
 
- de gas en la dirección que las une 
+ de gas en la dirección que las une.
+ 
 \begin_inset Note Greyedout
 status open
 
@@ -3969,23 +3970,15 @@ Densidad de gas y espectros de absorción
 A modo de una primera comparación, queremos estudiar las diferencias de
  densidad de gas entre estas direcciones y cómo se reflejan en los espectros
  de absorción, siendo éstos la única magnitud de acceso directo observacional.
- Para eso, graficamos la densidad columnar 
-\begin_inset Formula $N$
-\end_inset
-
- en las líneas Si III 
-\begin_inset Formula $1206$
-\end_inset
-
- y SI II 
-\begin_inset Formula $1193$
+ Para eso, graficamos la densidad de gas 
+\begin_inset Formula $\rho$
 \end_inset
 
  en función de la distancia para ambas direcciones, como disponemos en la
  Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:N_profiles_m31_away"
+reference "fig:rho_profiles_m31_away"
 plural "false"
 caps "false"
 noprefix "false"
@@ -3993,6 +3986,20 @@ noprefix "false"
 \end_inset
 
 .
+ Recordamos que los objetos 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+ consisten en un conjunto de celdas de la simulación alineadas desde el
+ punto inicial al final, de modo que en la figura, la densidad graficada
+ para una distancia particular corresponde a la obnetida en una celda del
+ rayo a dicha distancia.
 \end_layout
 
 \begin_layout Standard
@@ -4004,8 +4011,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/m31_away_N_profiles.png
-	scale 50
+	filename images/m31_away_density_profiles.png
+	scale 60
 
 \end_inset
 
@@ -4018,7 +4025,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:N_profiles_m31_away"
+name "fig:rho_profiles_m31_away"
 
 \end_inset
 
@@ -4037,6 +4044,449 @@ name "fig:N_profiles_m31_away"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+En la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:rho_profiles_m31_away"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ podemos ver que la densidad de masa muestra una tendencia generalmente
+ decreciente con la distancia en ambas direcciones, salvo a una distancia
+ de 
+\begin_inset Formula $\sim500\text{kpc}$
+\end_inset
+
+ en la dirección hacia M31.
+ Es a esta distancia en la cual el rayo comienza a atravesar el halo de
+ M31, explicando así este pico de densidad, cuya posición coincide aproximadaman
+te con la distancia MW-M31 en la simulación (652kpc).
+ Vemos entonces que, sobre la dirección hacia M31, el valor de la densidad
+ es siempre mayor a la otra dirección (exceptuando las regiones centrales
+ de MW, a menos de 
+\begin_inset Formula $50\text{kpc}$
+\end_inset
+
+), a veces por un orden de magnitud.
+ Este hecho sienta evidencia sobre el puente de gas en la dirección MW-M31.
+\end_layout
+
+\begin_layout Standard
+En vistas de la marcada diferencia en la densidad de gas entre ambas direcciones
+, queremos estudiar de qué forma se reflejan estas características en su
+ contraparte observacional.
+ Para eso, recordamos que el punto de acceso a la densidad de gas en las
+ observaciones se da mediante los espectros de absorción.
+ En particular, las simulaciones nos permiten no sólo acceder a este espectro
+ de la forma en la cual es observado directamente (
+\emph on
+i.e.
+
+\emph default
+ con fuentes de radiación naturales que provean líneas de la visual en posicione
+s fijas), sino también ubicar el inicio de las líneas de la visual a distancias
+ variables en direcciones dadas.
+ Esta técnica nos permite 
+\begin_inset Quotes eld
+\end_inset
+
+sondear
+\begin_inset Quotes erd
+\end_inset
+
+ estructuras físicas en la dirección de observación comparando qué 
+\emph on
+features
+\emph default
+ se producen en los espectros de absorción a cada distancia.
+\end_layout
+
+\begin_layout Standard
+Procedemos a tomar dichos espectros de absorción en ambas direcciones a
+ distancias variables.
+ Para esto, dejamos el extremo de ambos rayos fijo en la posición del sol
+ y movemos su origen (en donde se ubica la fuente de radiación) sobre cada
+ dirección, incrementando la distancia al extremo hasta un valor de 
+\begin_inset Formula $1000\text{kpc}$
+\end_inset
+
+, como se ve en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:m31_and_away"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Obtenemos los espectros de absorción para cuatro de las líneas utilizadas
+ en [RN17] comentadas en la sección SECREF//****, y representamos el espectro
+ utilizando la 
+\emph on
+velocidad espectral 
+\emph default
+como variable independiente en lugar de la longitud de onda.
+ Esta transformación se hace según 
+\begin_inset Formula 
+\[
+v\left(\lambda\right)=c\dfrac{\lambda-\lambda_{0}}{\lambda_{0}}=cz_{\text{eff}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $\lambda_{0}$
+\end_inset
+
+ es la longitud de onda de la línea, 
+\begin_inset Formula $c$
+\end_inset
+
+ es la velocidad de la luz, y 
+\begin_inset Formula $z_{\text{eff}}$
+\end_inset
+
+ es el 
+\emph on
+redshift efectivo, 
+\emph default
+según la ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:z_eff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ De esa forma, obtenemos una velocidad equivalente a la combinación de los
+ efectos de 
+\emph on
+redshift
+\emph default
+ cosmológico y Döppler cómo si se observara un único 
+\begin_inset Quotes eld
+\end_inset
+
+Döppler efectivo
+\begin_inset Quotes erd
+\end_inset
+
+ a ese valor de velocidad.
+\end_layout
+
+\begin_layout Standard
+La progresión de espectros de absorción en función de la distancia está
+ disponible como material audiovisual complementario; representamos aquí
+ los espectros para tres distancias importantes, en las Figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RN_m31_away_253kpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RN_m31_away_691kpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RN_m31_away_1000kpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Éstas corresponden a los orígenes de líneas de la visual ubicados: justo
+ fuera del radio virial de MW; a la distancia de M31; a la máxima distancia
+ tomada.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/RN_m31_away_253kpc.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RN_m31_away_253kpc"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RN_m31_away_253kpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ corresponde a posiciones de origen de los rayos justo por fuera del radio
+ virial de MW, de modo que la absorción sólo es producida por el gas dentro
+ del halo de MW.
+ Ya a esta distancia, podemos apreciar que la dirección hacia M31 presenta
+ una mayor absorción en cada línea, debida a la mayor densidad de gas.
+ Éstas asimetrías dentro del halo gaseoso son consistentes con lo estudiado
+ en el trabajo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "N14"
+literal "false"
+
+\end_inset
+
+, que utiliza esta misma simulación.
+ Podemos notar aquí una característica común en estos espectros: la absorción
+ en forma de campana simétrica.
+ Esta forma particular de absorción para una dada línea se debe a que, respecto
+ de la velocidad del centro de la campana, el gas adopta velocidades tanto
+ mayores como menores por igual.
+ Esto implica que la proyección de la nube de gas en el plano de la línea
+ de la visual está rotando.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/RN_m31_away_691kpc.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RN_m31_away_691kpc"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RN_m31_away_691kpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, vemos que los espectros de absorción en la dirección 
+\emph on
+away 
+\emph default
+no presentan cambios, mientras que en la dirección hacia M31 se observan
+ nuevas 
+\emph on
+features
+\emph default
+ importantes en todas las líneas.
+ Dado que a esta distancia se ubica ya M31, podemos entender estas diferencias
+ como producto de la absorción del gas en el halo de M31.
+ Notemos también que la velocidad espectral a la cual se presentan estas
+ absorciones es negativa; esto quiere decir que el efecto combinado del
+ 
+\emph on
+redshift 
+\emph default
+cosmológico y Döppler resulta en un 
+\emph on
+corrimiento al azul 
+\emph default
+(menor longitud de onda que en reposo).
+ Puesto que el 
+\emph on
+redshift 
+\emph default
+cosmológico siempre produce un corrimiento al rojo, podemos concluir que
+ el efecto dominante aquí es el Döppler debido a la propia velocidad del
+ gas, que se acerca al punto de observación.
+ Tendremos en cuenta este hecho en un posterior análisis.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/RN_m31_away_1000kpc.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RN_m31_away_1000kpc"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por último, en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RN_m31_away_1000kpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ disponemos los espectros de absorción para la última distancia tomada,
+ 
+\begin_inset Formula $1000\text{kpc}$
+\end_inset
+
+, que supera ya el radio virial de M31.
+ Nuevamente vemos aquí que para la dirección 
+\emph on
+away
+\emph default
+ no han habido cambios respecto a la anterior distancia.
+ Para la dirección hacia M31 no se presentan mayores diferencias, salvo
+ una ligera absorción mayor en la línea 
+\begin_inset Formula $\text{C II }1548$
+\end_inset
+
+, lo cual nos puede indicar que este elemento se encuentra esparcido sobre
+ el IGM, además de en los halos galácticos.
+ Como en ninguna línea se observa una saturación total de la absorción (
+\emph on
+i.e.
+
+\emph default
+ que el flujo alcance un valor nulo), queda abierta la posibilidad de una
+ absorción mayor en la dirección hacia M31, que no observamos.
+ Esto nos permite concluir que la principal componente de absorción es la
+ producida por el gas en los halos galácticos de MW y M31, en concordancia
+ con los resultados presentados en [RN17].
+\end_layout
+
+\begin_layout Standard
+El conjunto de estos resultados dan cuenta de la forma en la cual se manifiestan
+ las variaciones en la densidad de gas en función de la dirección en las
+ observaciones.
 \end_layout
 
 \begin_layout Standard
