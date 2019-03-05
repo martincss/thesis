@@ -4011,7 +4011,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/m31_away_density_profiles.png
+	filename images/0_m31_away_density_profiles.png
 	scale 60
 
 \end_inset
@@ -4502,7 +4502,206 @@ a del puente de gas en la dirección MW-M31.
 \end_layout
 
 \begin_layout Subsection
-Velocidad del gas
+Comparación con todas las direcciones ortogonales
+\end_layout
+
+\begin_layout Standard
+En el análisis anterior, comparamos únicamente las dos líneas de la visual
+ vistas en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:m31_and_away"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, correspondientes a la dirección que une MW y M31, y otra dirección ortogonal.
+ Esta primera comparación tomando una única línea ortogonal nos permitió
+ entender en detalle el efecto de la diferencia de densidad en los espectros
+ de absorción obtenidos emulando las observaciones.
+ No obstante, nos gustaría verificar si esta tendencia se mantiene al selecciona
+r cualquier otra dirección ortogonal, o es producto de una fluctuación estadísti
+ca.
+\end_layout
+
+\begin_layout Standard
+Para eso, compararemos la misma línea de la visual que une MW y M31 con
+ un conjunto de líneas en direcciones ortogonales.
+ Seleccionamos de nuestra muestra de 
+\begin_inset Formula $500$
+\end_inset
+
+ a estas líneas como las que formen un ángulo de 
+\begin_inset Formula $90^{\circ}\pm5^{\circ}$
+\end_inset
+
+ con la dirección MW-M31, como podemos observar en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:all_away"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Éstas dan un total de 
+\begin_inset Formula $42$
+\end_inset
+
+ direcciones 
+\emph on
+away.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/0_m31_away_directions.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:all_away"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Densidad
+\end_layout
+
+\begin_layout Standard
+Repetiremos la comparación vista en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:rho_profiles_m31_away"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, ahora considerando a todas las direcciones ortogonales mencionadas.
+ Para ésto, obtenemos la densidad en cada una de las direcciones 
+\emph on
+away, 
+\emph default
+y calculamos su promedio y varianza para cada distancia.
+ En la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:rho_profiles_m31_away_all"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ graficamos nuevamente la densidad de gas 
+\begin_inset Formula $\rho$
+\end_inset
+
+ en función de la distancia en la dirección hacia M31; y ahora graficamos
+ también el promedio de la densidades en las direcciones ortogonales, sombreando
+ la región flanqueada por su primer desviación estándar a cada lado.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/0_m31_all_away_density_profiles.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:rho_profiles_m31_away_all"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+.....
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+no entiendo esto.
+ la de M31 le gana en todos lados salvo en la región del puente de gas,
+ what do we make of this?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Velocidad en la línea de la visual
 \end_layout
 
 \begin_layout Standard
@@ -4532,6 +4731,72 @@ cosmológico, obtener directamente
 
  de la simulación nos permitirá comparar con la obtenida mediante los espectros
  de absorción, y sumar confianza sobre este último método.
+ Repetimos la metodología de la sección anterior: comparamos la 
+\begin_inset Formula $v_{\text{LOS}}$
+\end_inset
+
+ en la dirección hacia M31 con su promedio sobre todas las direcciones ortogonal
+es seleccionadas.
+ Grafiamos estas magnitudes en función de la distancia en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:v_los_profiles_m31_away_all"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, nuevamente sombreando la región con una desviación estándar en torno al
+ promedio sobre las direcciones 
+\emph on
+away.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/0_mean_vlos_vs_r.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:v_los_profiles_m31_away_all"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
