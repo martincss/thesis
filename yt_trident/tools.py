@@ -759,6 +759,13 @@ def extract_sub_coordinates_from_handle(handle, file='abs'):
 
     return sub, r, theta, phi
 
+def get_unit_to_m31():
+
+    m31_center = get_m31_center_2Mpc_LG()
+    unit_to_m31 = m31_center - get_sun_position_2Mpc_LG()
+    unit_to_m31 /= norm(unit_to_m31)
+
+    return unit_to_m31
 
 
 def select_polar_rays(theta, phi, amplitude = 0.52):
@@ -777,9 +784,7 @@ def select_m31_rays(theta, phi, amplitude = 0.52,
                     observer = get_sun_position_2Mpc_LG()):
 
 
-    m31_center = get_m31_center_2Mpc_LG()
-    unit_to_m31 = m31_center - observer
-    unit_to_m31 /= norm(unit_to_m31)
+    unit_to_m31 = get_unit_to_m31()
 
     in_cone = ((unit_to_m31 @ sph_to_cart((1, theta, phi))) > np.cos(amplitude))
 
@@ -803,9 +808,7 @@ def handle_in_subsample(handle, amplitude_polar):
 
 def angle_to_m31(handle):
 
-    m31_center = get_m31_center_2Mpc_LG()
-    unit_to_m31 = m31_center - get_sun_position_2Mpc_LG()
-    unit_to_m31 /= norm(unit_to_m31)
+    unit_to_m31 = get_unit_to_m31()
 
     theta, phi = extract_angles_from_handle(handle)
 
