@@ -5,7 +5,7 @@ from subhalos_analysis import subhalo_analysis_one_to_map
 import glob
 import pandas as pd
 from multiprocessing import Pool
-from tools import usable_cores, subhalo_virial_radius
+from tools import usable_cores, subhalo_virial_radius, HUBBLE_2Mpc_LG
 
 abs_directory = './absorbers_2Mpc_LG_from_subhalos_fuzzy/'
 pool = Pool(usable_cores())
@@ -32,16 +32,22 @@ def plot_N_vs_b(index, axarr, data):
         axarr[index].semilogy(data_now['b']/radius, data_now[line], label = '')
 
 
-    axarr[index].plot([], [], ' ', label="Mass = {:.2E} M_sun".format(
-                                                      data_now['mass'].iloc[0]))
+    axarr[index].plot([], [], ' ', label="$M= {:.2E}$".format(
+                                        data_now['mass'].iloc[0])+"$M_{sun}$")
+
+    axarr[index].plot([], [], ' ', label="$R_{vir}$"+"$= {:.2f} kpc$".format(
+                                                        radius/HUBBLE_2Mpc_LG))
+
 
     axarr[index].grid()
     axarr[index].set_xlim(0,2)
-    axarr[index].set_ylim(10**8, 10**15)
+    axarr[index].set_ylim(10**8, 10**17)
     axarr[index].legend()
 
 
 if __name__ == '__main__':
+
+    # data = subhalos_analysis_parallel(abs_directory, pool)
 
     try:
         data = pd.read_pickle('./subhalos_N_b.pkl')

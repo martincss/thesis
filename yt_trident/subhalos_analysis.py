@@ -28,7 +28,7 @@ def impact_parameter_from_handle(handle):
     return impact_parameter
 
 
-def absorbers_in_subhalo(handle, max_flux = 1.0):
+def absorbers_in_subhalo(handle, max_flux = 0.95):
 
     sub_num, _, _, _ = extract_sub_coordinates_from_handle(handle)
 
