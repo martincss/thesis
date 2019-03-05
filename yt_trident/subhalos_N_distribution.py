@@ -5,7 +5,8 @@ from subhalos_analysis import subhalo_analysis_one_to_map
 import glob
 import pandas as pd
 from multiprocessing import Pool
-from tools import usable_cores, subhalo_virial_radius, HUBBLE_2Mpc_LG
+from tools import usable_cores, subhalo_virial_radius, HUBBLE_2Mpc_LG, \
+                  subhalo_center, absorber_region_2Mpc_LG
 
 abs_directory = './absorbers_2Mpc_LG_from_subhalos_fuzzy/'
 pool = Pool(usable_cores())
@@ -26,7 +27,12 @@ def plot_N_vs_b(index, axarr, data):
 
     masses = data['mass'].unique()
     data_now = data [data['mass'] == masses[index]]
-    radius = subhalo_virial_radius(data_now['sub'].iloc[0])
+
+    subhalo_number = data_now['sub'].iloc[0]
+    radius = subhalo_virial_radius(subhalo_number)
+    sub_pos = subhalo_center(subhalo_number)
+    region = absorber_region_2Mpc_LG(sub_pos)
+
 
     for line in lines_abs:
         axarr[index].semilogy(data_now['b']/radius, data_now[line], label = '')
@@ -37,6 +43,8 @@ def plot_N_vs_b(index, axarr, data):
 
     axarr[index].plot([], [], ' ', label="$R_{vir}$"+"$= {:.2f} kpc$".format(
                                                         radius/HUBBLE_2Mpc_LG))
+
+    axarr[index].plot([], [], ' ', label="Region: {}".format(region))
 
 
     axarr[index].grid()
