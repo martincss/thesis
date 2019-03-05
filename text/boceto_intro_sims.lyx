@@ -2879,9 +2879,9 @@ velocidad en la línea de la visual (Line Of Sight
  de una celda es simplemente la proyección de la velocidad de la celda sobre
  la dirección del rayo:
 \begin_inset Formula 
-\[
-v_{\text{LOS},i}=\boldsymbol{v}_{i}\cdot\dd\boldsymbol{\ell}_{i}=v_{i}\dd\ell_{i}\cos\left(\theta_{i}\right)
-\]
+\begin{equation}
+v_{\text{LOS},i}=\boldsymbol{v}_{i}\cdot\dd\boldsymbol{\ell}_{i}=v_{i}\dd\ell_{i}\cos\left(\theta_{i}\right)\label{eq:v_los}
+\end{equation}
 
 \end_inset
 
@@ -3963,7 +3963,7 @@ esto pero dicho mejor
 \end_layout
 
 \begin_layout Subsection
-Densidad de gas y espectros de absorción
+Densidad de gas
 \end_layout
 
 \begin_layout Standard
@@ -4075,6 +4075,10 @@ te con la distancia MW-M31 en la simulación (652kpc).
 
 ), a veces por un orden de magnitud.
  Este hecho sienta evidencia sobre el puente de gas en la dirección MW-M31.
+\end_layout
+
+\begin_layout Subsection
+Espectros de absorción
 \end_layout
 
 \begin_layout Standard
@@ -4487,6 +4491,47 @@ i.e.
 El conjunto de estos resultados dan cuenta de la forma en la cual se manifiestan
  las variaciones en la densidad de gas en función de la dirección en las
  observaciones.
+ Ya desde los datos directos de la simulación (
+\emph on
+i.e.
+
+\emph default
+ densidades de gas en cada celda) como desde los espectros sintéticos vemos
+ diferencias apreciables entre ambas direcciones, que dan cuenta de la existenci
+a del puente de gas en la dirección MW-M31.
+\end_layout
+
+\begin_layout Subsection
+Velocidad del gas
+\end_layout
+
+\begin_layout Standard
+Como última comparación entre estas direcciones, observamos la velocidad
+ del gas proyectada sobre cada línea de la visual (la 
+\begin_inset Formula $v_{\text{LOS}}$
+\end_inset
+
+, según la ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:v_los"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ A menos del efecto del 
+\emph on
+redshift 
+\emph default
+cosmológico, obtener directamente 
+\begin_inset Formula $v_{\text{LOS}}$
+\end_inset
+
+ de la simulación nos permitirá comparar con la obtenida mediante los espectros
+ de absorción, y sumar confianza sobre este último método.
 \end_layout
 
 \begin_layout Standard
