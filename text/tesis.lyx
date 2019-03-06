@@ -1422,7 +1422,7 @@ gadget-3
 \family typewriter
 gadget-2
 \family default
- que permite la covertura de un mayor rango dinámico 
+ que permite la cobertura de un mayor rango dinámico 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "aquarius"
@@ -4931,6 +4931,265 @@ no me convence este último comentario...
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Fracciones de cobertura en MW y M31
+\end_layout
+
+\begin_layout Standard
+Estudiaremos ahora otra magnitud que nos permite establecer un nexo entre
+ simulaciones y observaciones: la denominada 
+\emph on
+fracción de cobertura (covering fraction).
+
+\emph default
+ Observacionalmente, esta magnitud se define como la fracción de líneas
+ de la visual cuya densidad columnar en un elemento particular supere un
+ valor dado (correspondiente a la sensibilidad del intrumento); dando así
+ una noción de qué fracción del cielo está cubierta por gas de una dada
+ especie química.
+ Esta magnitud resume una primera aproximación a la distribución del gas
+ en el halo e IGM, teniendo en cuenta la perspectiva de quien observe.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+decir algo más de para qué miramos esto??
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En principio, mediante las observaciones no es posible acceder directamente
+ a la distancia a la cual se ubica una nube de gas; lo cual motiva la definición
+ anterior como una medida que no tenga en cuenta dicha distancia.
+ En cambio, desde las simulaciones contamos con la información completa
+ de esta distribución, y podemos entonces extender esta definición para
+ incluir la dependencia con la distancia, como veremos en el siguiente párrafo.
+\end_layout
+
+\begin_layout Standard
+Recordemos que cada rayo representando a una línea de la visual consiste
+ en una secuencia de celdas de la simulación ordenadas por distancia, cada
+ una conteniendo un valor para la densidad columnar 
+\begin_inset Formula $N$
+\end_inset
+
+ de los iones registrados.
+ Para un dado valor umbral de densidad columnar 
+\begin_inset Formula $N_{\text{thresh}}$
+\end_inset
+
+ y una resolución entre distancias 
+\begin_inset Formula $\Delta r$
+\end_inset
+
+, definimos la fracción de cobertura 
+\begin_inset Formula $f_{c}$
+\end_inset
+
+ a una distancia 
+\begin_inset Formula $r$
+\end_inset
+
+ como la cantidad de celdas con 
+\begin_inset Formula $N>N_{\text{thresh}}$
+\end_inset
+
+ dentro del cascarón esférico de radios 
+\begin_inset Formula $r$
+\end_inset
+
+ y 
+\begin_inset Formula $r+\Delta r$
+\end_inset
+
+, sobre el total de celdas en el cascarón.
+\begin_inset Formula 
+\[
+f_{c}\left(r\right)=\sum_{r_{i}\in\left[r,r+\Delta r\right]}\Theta\left(N_{i}-N_{\text{thresh}}\right)\biggr\slash\sum_{r_{i}\in\left[r,r+\Delta r\right]}1
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+muy innecesario, sólo quería escribirlo cheto
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con esta definición en cuenta, queremos comparar las tendencias de cobertura
+ en función de la distancia desde los puntos de vista de MW y M31, para
+ el gas en el halo de cada una.
+ Utilizando un conjunto de 
+\begin_inset Formula $500$
+\end_inset
+
+ líneas de la visual muestradas uniformemente desde la posición del sol,
+ y otro desde el centro de M31, calculamos la cobertura en cada caso, para
+ las líneas de absorción antes mencionadas y dos valores de 
+\begin_inset Formula $N_{\text{thresh}}$
+\end_inset
+
+; según la definición expuesta.
+ Presentamos los resultados en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:covf_mw_m31"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/1_covfs_10_13.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:covf_mw_m31"
+
+\end_inset
+
+Fracciónes de cobertura en función de la distancia, vistas desde MW (columna
+ izquierda) y M31 (columna derecha).
+ En la primer fila el valor umbral de densidad columnar es 
+\begin_inset Formula $N_{\text{thresh}}=10^{10}\text{cm}^{-2}$
+\end_inset
+
+, y en la segunda fila es 
+\begin_inset Formula $N_{\text{thresh}}=10^{13}\text{cm}^{-2}$
+\end_inset
+
+.
+ Las distancias representadas superan sendos radios viriales: 
+\begin_inset Formula $R_{\text{MW}}=222.2\text{kpc}$
+\end_inset
+
+ y 
+\begin_inset Formula $R_{\text{M31}}=244.9\text{kpc}$
+\end_inset
+
+.
+ Utilizamos 
+\begin_inset Formula $\Delta r=4.3\text{kpc}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos notar varias tendencias dentro de los resultados, comenzamos con
+ el umbral menor, 
+\begin_inset Formula $N_{\text{thresh}}=10^{10}\text{cm}^{-2}$
+\end_inset
+
+.
+ En primer lugar, en ambas galaxias las fracciones decrecen desde la unidad
+ hasta un valor cercano a cero en una distancia aproximada al radio virial
+ de cada una.
+ Esto sucede en todas las líneas de absorción salvo 
+\begin_inset Formula $\text{C IV }1548$
+\end_inset
+
+, en la cual se observa un decrecimiento mucho más lento.
+ Para las otras líneas, en ambas galaxias notamos que el decrecimiento se
+ hace menos pronunciado conforme aumenta la distania.
+ El único caso en el cual esta tendencia no tiene lugar corresponde a la
+ línea 
+\begin_inset Formula $\text{C IV }1548$
+\end_inset
+
+ desde MW: su fracción comienza en un valor 
+\begin_inset Formula $\sim0.1$
+\end_inset
+
+, y en una distancia de 
+\begin_inset Formula $\sim25\text{kpc}$
+\end_inset
+
+ 
+\emph on
+crece
+\emph default
+ hasta un valor de 
+\begin_inset Formula $0.8$
+\end_inset
+
+, para luego decrecer con la distancia.
+ Salvo por esa excepción, notamos también que el ordenamiento de elementos
+ de menor a mayor cobertura es el mismo para ambas galaxias.
+\end_layout
+
+\begin_layout Standard
+Por otro lado, para el umbral mayor 
+\begin_inset Formula $N_{\text{thresh}}=10^{13}\text{cm}^{-2}$
+\end_inset
+
+, notamos que el decrecimiento es mucho más pronunciado que en el caso anterior,
+ de manera tal que las fracciones se anulan en 
+\begin_inset Formula $r=50\text{kpc}$
+\end_inset
+
+ para MW, y 
+\begin_inset Formula $r\sim100\text{kpc}$
+\end_inset
+
+ para M31.
+ 
 \end_layout
 
 \begin_layout Standard

@@ -11,8 +11,11 @@ abs_lines = ['Si III 1206', 'Si II 1193', 'C II 1335', 'C IV 1548']
 
 R_BIN_LENGTH = 3 # kpc/h
 
-thresh_1 = 1e10
-thresh_2 = 1e13
+exp1 = 10
+exp2 = 13
+
+thresh_1 = 10**exp1
+thresh_2 = 10**exp2
 
 def plot_covfs(r, covfs):
 
@@ -35,14 +38,14 @@ def plot_covfs(r, covfs):
 
     axarr[1,0].set_xlabel('Distance [kpc]', fontsize = 15)
     axarr[1,1].set_xlabel('Distance [kpc]', fontsize = 15)
-    axarr[0,0].set_ylabel('$f$', fontsize = 15)
+    axarr[0,0].set_ylabel('$f$  with $\\log N > $ {:d}'.format(exp1), fontsize = 15)
     axarr[0,0].set_title('MW', fontsize = 15)
     axarr[0,1].set_title('M31', fontsize = 15)
-    axarr[1,0].set_ylabel('$f$', fontsize = 15)
+    axarr[0,1].legend()
+    axarr[1,0].set_ylabel('$f$  with $\\log N > $ {:d}'.format(exp2), fontsize = 15)
 
     for ax in axarr.flatten():
         ax.grid()
-        ax.legend()
 
     fig.suptitle('Covering fraction by distance', fontsize = 20)
     fig.subplots_adjust(wspace=0, hspace=0)
@@ -52,11 +55,11 @@ def plot_covfs(r, covfs):
 
 if __name__ == '__main__':
 
-    print('next covering fractions > {}'.format(thresh_1))
+    print('first covering fractions')
     r, covfs_mw_first = covering_fractions_2k(abs_lines, thresh_1, R_BIN_LENGTH)
     r, covfs_m31_first = covering_fractions_m31(abs_lines, thresh_1,R_BIN_LENGTH)
 
-    print('next covering fractions > {}'.format(thresh_2))
+    print('next covering fractions')
     r, covfs_mw_second = covering_fractions_2k(abs_lines, thresh_2, R_BIN_LENGTH)
     r, covfs_m31_second = covering_fractions_m31(abs_lines, thresh_2,R_BIN_LENGTH)
 

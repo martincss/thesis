@@ -93,7 +93,7 @@ if __name__ == '__main__':
              color = 'magenta')
 
     plt.plot(r_one_away/HUBBLE_2Mpc_LG, v_los_one_away,
-             label = 'from single away', color = 'darkorchid', ls = '.-')
+             label = 'from single away', color = 'darkorchid', ls = ':')
 
     plt.hlines(m31_vlos, 0, 1000, color = 'crimson', linestyles='dashed',
                label = 'M31 V LOS')
@@ -111,6 +111,7 @@ if __name__ == '__main__':
 
     r_away, rho_all_away = density_away_binned_all(25)
     rho_mean_away = np.mean(rho_all_away, axis=0)
+    # rho_mean_away = np.median(rho_all_away, axis=0)
     rho_sigma_away = np.std(rho_all_away, axis=0)
 
     plt.figure()
