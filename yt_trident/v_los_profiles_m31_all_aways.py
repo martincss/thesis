@@ -8,13 +8,13 @@ import numpy as np
 from tools import HUBBLE_2Mpc_LG, K_BOLTZMANN, ray_away_from_m31, \
                   extract_angles_from_handle, get_unit_to_m31
 from absorber_analysis import get_attribute_by_distance
-from ray_profiles_m31_and_away import m31_vlos, df_m31
+from ray_profiles_m31_and_away import m31_vlos, df_m31, df_away
 
 
 absorbers_directory = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/'
 
 
-def v_los_away_binned_all(delta_r, r_max = 2000):
+def v_los_away_binned_all(delta_r, r_max = 700):
 
     r_bins = np.arange(0, r_max+delta_r, delta_r)
     counts_per_bin = np.zeros(len(r_bins)-1)
@@ -30,7 +30,7 @@ def v_los_away_binned_all(delta_r, r_max = 2000):
 
     return r_bins, np.vstack(v_los_binned)
 
-def density_away_binned_all(delta_r, r_max = 2000):
+def density_away_binned_all(delta_r, r_max = 700):
 
     r_bins = np.arange(0, r_max+delta_r, delta_r)
     counts_per_bin = np.zeros(len(r_bins)-1)
@@ -78,6 +78,10 @@ if __name__ == '__main__':
     mean_away = np.mean(v_los_all_away, axis=0)
     sigma_away = np.std(v_los_all_away, axis=0)
 
+    r_one_away, v_los_one_away = get_attribute_by_distance(df_away,
+                                                        df_away['Line'].iloc[0],
+                                                        'v_los')
+
     plt.figure()
     plt.plot(r_away[:-1]/HUBBLE_2Mpc_LG, mean_away, color = 'purple',
              label = 'mean away')
@@ -88,7 +92,10 @@ if __name__ == '__main__':
     plt.plot(r_m31/HUBBLE_2Mpc_LG, vlos_m31, label = 'from m31',
              color = 'magenta')
 
-    plt.hlines(m31_vlos, 0, 3000, color = 'crimson', linestyles='dashed',
+    plt.plot(r_one_away/HUBBLE_2Mpc_LG, v_los_one_away,
+             label = 'from single away', color = 'darkorchid', ls = '.-')
+
+    plt.hlines(m31_vlos, 0, 1000, color = 'crimson', linestyles='dashed',
                label = 'M31 V LOS')
 
     plt.xlabel('Distance [kpc]', fontsize = 15)

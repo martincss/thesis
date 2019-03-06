@@ -8,12 +8,21 @@ from tools import HUBBLE_2Mpc_LG, K_BOLTZMANN, subhalo_center, subhalo_velocity,
                   get_sun_position_2Mpc_LG as sun
 from absorber_analysis import get_attribute_by_distance, get_ratio_by_distance
 
+#
+# ray_m31_filename = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/ray_2000.000_0.698_4.115.h5'
+# ray_away_filename = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/ray_2000.000_1.036_1.314.h5'
+#
+# abs_m31_filename = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/abs_2000.000_0.698_4.115.txt'
+# abs_away_filename = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/abs_2000.000_1.036_1.314.txt'
 
-ray_m31_filename = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/ray_2000.000_0.698_4.115.h5'
-ray_away_filename = './rays_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/ray_2000.000_1.036_1.314.h5'
 
-abs_m31_filename = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/abs_2000.000_0.698_4.115.txt'
-abs_away_filename = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/abs_2000.000_1.036_1.314.txt'
+ray_m31_filename = './rays_2Mpc_LG_to_m31_and_away_sun/ray_700.000_0.70_4.19.h5'
+ray_away_filename = './rays_2Mpc_LG_to_m31_and_away_sun/ray_700.000_1.05_1.40.h5'
+
+abs_m31_filename = './rays_2Mpc_LG_to_m31_and_away_sun/abs_700.000_0.70_4.19.txt'
+abs_away_filename = './rays_2Mpc_LG_to_m31_and_away_sun/abs_700.000_1.05_1.40.txt'
+
+
 
 df_m31 = pd.read_csv(abs_m31_filename, skiprows=1)
 df_away = pd.read_csv(abs_away_filename, skiprows=1)
@@ -78,7 +87,7 @@ if __name__=='__main__':
     r_away,vlos_away = get_attribute_by_distance(df_away, df_away['Line'].iloc[0], 'v_los')
     plt.plot(r_m31/HUBBLE_2Mpc_LG, vlos_m31, label = 'from m31', color = 'magenta')
     plt.plot(r_away/HUBBLE_2Mpc_LG, vlos_away, label = 'from away', color = 'purple')
-    plt.hlines(m31_vlos, 0, 3000, color = 'crimson', linestyles='dashed', label = 'M31 V LOS')
+    plt.hlines(m31_vlos, 0, 1000, color = 'crimson', linestyles='dashed', label = 'M31 V LOS')
     plt.xlabel('Distance [kpc]', fontsize = 15)
     plt.ylabel('v LOS [km/s]', fontsize = 15)
     plt.title('vlos profile', fontsize = 20)

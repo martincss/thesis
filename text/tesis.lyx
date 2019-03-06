@@ -4011,7 +4011,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/0_m31_away_density_profiles.png
+	filename images/0_m31_away_density_profiles_new.png
 	scale 60
 
 \end_inset
@@ -4652,7 +4652,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/0_m31_all_away_density_profiles.png
+	filename images/0_m31_all_away_density_profiles_new.png
 	scale 60
 
 \end_inset
@@ -4774,7 +4774,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/0_mean_vlos_vs_r.png
+	filename images/0_mean_vlos_vs_r_new.png
 	scale 60
 
 \end_inset
@@ -4817,6 +4817,120 @@ En principio, podemos notar que en la dirección hacia M31, la velocidad
 \end_inset
 
 , correspondiente al interior del halo de MW.
+ En ésta región es donde se produce la absorción con el espectro corrido
+ al rojo, según vemos en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RN_m31_away_253kpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, correspondiente a la zona de mayor densidadad de gas en esta dirección,
+ como se ve en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:rho_profiles_m31_away"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ El resto del rayo, que las velocidades sean negativas nos indica que todo
+ el gas muestreado en esta dirección (MW-M31) se acerca hacia MW.
+ Entre 
+\begin_inset Formula $600$
+\end_inset
+
+ y 
+\begin_inset Formula $800$
+\end_inset
+
+ kpc, podemos notar una región de un pico de velocidad hacia MW; en la figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:rho_profiles_m31_away"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ notamos que esta región comprende al pico de densidad dado por el halo
+ de M31.
+ Las altas velocidades se reflejan en la absorción corrida al azul que se
+ observa en el espectro de la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RN_m31_away_691kpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Podemos notar también que estas velocidades son siempre mayores a la del
+ centro de M31, de modo que estamos observando la suma de velocidades correspond
+ientes a la acreción de gas a M31 y de centro de masa de M31 hacia MW.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+creo que es esto, pero ni idea...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por otro lado, para las direcciones 
+\emph on
+away, 
+\emph default
+vemos que el promedio de velocidad es en general negavito, pero de menor
+ valor absoluto que en la dirección hacia M31.
+ No obstante, notamos que la dispersión de velocidades es notable, adoptando
+ valores muy altos a distancias cortas (esto se debe a las fuertes asimetrías
+ del flujo de gas dentro del halo de MW).
+\end_layout
+
+\begin_layout Standard
+Considerando las diferencias entre las direcciones hacia M31 y ortogonal,
+ podemos concluir que la primer dirección presenta velocidades que apuntan
+ consistentemente hacia MW a lo largo de toda la línea; en cambio en las
+ direcciones ortogonales estas velocidades pueden ser tanto positivas como
+ negativas.
+ Vemos también, que en la dirección hacia M31, a la distancia correspondiente
+ al halo de esta galaxia tienen lugar valores de velocidad muy altos, que
+ no se observan en las direcciones ortogonales.
+ Podemos atribuir este hecho a la acreción combinada del gas hacia M31 y
+ de M31 hacia MW.
+\end_layout
+
+\begin_layout Standard
+Por último, recordamos que las características descritas, estudiadas analizando
+ directamente los datos de la simulación fueron reflejadas en las observaciones
+ sintéticas, lo cual refuerza el vínculo entre simulaciones y observaciones.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+no me convence este último comentario...
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
