@@ -5064,7 +5064,7 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement h
 wide false
 sideways false
 status open
@@ -5073,7 +5073,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/1_covfs_10_13.png
-	scale 70
+	scale 65
 
 \end_inset
 
@@ -5172,6 +5172,8 @@ crece
 , para luego decrecer con la distancia.
  Salvo por esa excepción, notamos también que el ordenamiento de elementos
  de menor a mayor cobertura es el mismo para ambas galaxias.
+ Notamos también que las dos líneas con coberturas mayores corresponden
+ al carbono, y las dos menores al silicio.
 \end_layout
 
 \begin_layout Standard
@@ -5189,7 +5191,102 @@ Por otro lado, para el umbral mayor
 \end_inset
 
  para M31.
+ Notamos también que, en ambas galaxias, la cobertura de la línea 
+\begin_inset Formula $\text{C IV }1548$
+\end_inset
+
+ es casi nula en todas las distancias; lo cual representa un fuerte contraste
+ con el umbral menor.
+ En cuanto al ordenamiento de los elementos según la cobertura, vemos que
+ nuevamente es el mismo en ambas galaxias.
+ No obstante, el ordenamiento ha cambiado en comparación con el umbral menor,
+ puesto que la línea de menor cobertura (exceptuando a 
+\begin_inset Formula $\text{C IV }1548$
+\end_inset
+
+) es ahora 
+\begin_inset Formula $\text{Si III }1206$
+\end_inset
+
+, en lugar de 
+\begin_inset Formula $\text{Si II }1193$
+\end_inset
+
+.
+ Con excepción de 
+\begin_inset Formula $\text{C IV }1548$
+\end_inset
+
+, nuevamente las dos líneas de menor cobertura corresponden al silicio.
+\end_layout
+
+\begin_layout Section
+Fracciones de cobertura para HVCs
+\end_layout
+
+\begin_layout Standard
+Realizaremos ahora una comparación con un conjunto particular de observaciones
+ en RN17.
+\end_layout
+
+\begin_layout Standard
+Estudiaremos la fracción de cobertura bajo la definición observacional;
  
+\emph on
+i.e.
+ 
+\emph default
+sin tener en cuenta la dependencia con la distancia.
+ Para esto, en cada línea de la visual comparamos la suma de la densidad
+ columnar en todas sus celdas con un valor umbral; y calculamos la fracción
+ de líneas que cumplan este criterio.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/2_RN_f3_with_selection.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RN3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
