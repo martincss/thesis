@@ -5240,6 +5240,25 @@ sin tener en cuenta la dependencia con la distancia.
  Para esto, en cada línea de la visual comparamos la suma de la densidad
  columnar en todas sus celdas con un valor umbral; y calculamos la fracción
  de líneas que cumplan este criterio.
+ Nos interesa, en particular, esta fracción considerando únicamente el gas
+ en forma de HVCs.
+ Esto es, el gas cuya 
+\emph on
+velocidad espectral
+\emph default
+ cumpla algún criterio para ser considerada 
+\begin_inset Quotes eld
+\end_inset
+
+alta
+\begin_inset Quotes erd
+\end_inset
+
+ (en RN17, se adopta que su módulo sea mayor que 
+\begin_inset Formula $100\text{km}\slash\text{s}$
+\end_inset
+
+).
  
 \begin_inset Newline newline
 \end_inset
