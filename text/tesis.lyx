@@ -5309,6 +5309,30 @@ name "fig:RN3"
 \end_layout
 
 \begin_layout Standard
+se obtiene un comportamiento cualitativo similar a las obs en terminos de
+ la tendencia; vemos que un corte en velocidad del absorber que produce
+ estas esta entre 30 y 45 ; es un poco menos que un medio; una posible causa
+ es la resulucion de la simulacion que tienen a suavizar el campo de velocidades
+ del gas
+\end_layout
+
+\begin_layout Chapter
+conclus
+\end_layout
+
+\begin_layout Standard
+implementamos el metodo para simular espectros de absorcion del IGM y halos,
+ para las sims clues.
+ se puede aplicar a simulaciones similares, para obtener esto....
+ es relevante porque necesitamos el marco teorica para interpretar obs i.e.
+ RN17 donde estudiaron, gas en halos IGM, hvcs
+\end_layout
+
+\begin_layout Standard
+resultados, vemos que (cada resultado)
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "bibliography"
