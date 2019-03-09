@@ -49,7 +49,7 @@ def plot_N_vs_b(index, axarr, data):
 
     axarr[index].grid()
     axarr[index].set_xlim(0,2)
-    axarr[index].set_ylim(10**8, 10**17)
+    axarr[index].set_ylim(10**5, 10**17)
     axarr[index].legend()
 
 

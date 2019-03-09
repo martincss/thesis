@@ -9,7 +9,7 @@ from absorber_analysis import get_attribute_by_distance
 import glob
 import gc
 
-abs_directory = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter/'
+abs_directory = './absorbers_2Mpc_LG_to_mw_2000_wrt_mwcenter_sun/'
 
 
 def v_los_all_cells(abs_directory, subsampling=True):
@@ -64,8 +64,8 @@ def v_los_all_cells_by_distance(abs_directory, r_max, delta_r,
 vlos_selected = v_los_all_cells(abs_directory)
 vlos_all = v_los_all_cells(abs_directory, False)
 
-v_dist_selected = v_los_all_cells_by_distance(abs_directory, 2000, 10)
-v_dist_all = v_los_all_cells_by_distance(abs_directory, 2000, 10, False)
+v_dist_selected = v_los_all_cells_by_distance(abs_directory, 250, 10)
+v_dist_all = v_los_all_cells_by_distance(abs_directory, 250, 10, False)
 
 
 plt.figure()
@@ -76,6 +76,13 @@ plt.grid()
 
 plt.figure()
 plt.hist(vlos_all, bins=100, edgecolor='black', color = 'crimson', log=True)
+plt.xlabel('$V_{los} [km\\slash s]$', fontsize=15)
+plt.title('All sightlines', fontsize=15)
+plt.grid()
+
+
+plt.figure()
+plt.hist(v_dist_selected, bins=100, edgecolor='black', color = 'crimson', log=True)
 plt.xlabel('$V_{los} [km\\slash s]$', fontsize=15)
 plt.title('All sightlines', fontsize=15)
 plt.grid()
