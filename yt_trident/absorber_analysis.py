@@ -568,6 +568,6 @@ def covering_fraction_by_rays_one_to_map(args):
 
             counts[(line, vel_thresh)] = \
             1*(N[(r > r_min) & (r < r_max) & \
-              (vel_spec > vel_thresh)].sum() > N_thresh_array)
+              (np.abs(vel_spec) > vel_thresh)].sum() > N_thresh_array)
 
     return counts

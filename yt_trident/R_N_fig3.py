@@ -23,7 +23,7 @@ observations = {line: np.loadtxt('../../RN_fig.3/{}.txt'.format(line),
 
 
 def covering_fractions_parallel(absorbers_directory, N_thresh_array, line_list,
-                                vel_thresh_list, r_min=0, r_max=4000,
+                                vel_thresh_list, r_min=0, r_max=250,
                                 pool=pool):
 
 
@@ -67,7 +67,7 @@ for i, line in enumerate(abs_lines):
     for vel in vel_threshs:
 
         axs[i].semilogx(N_threshs, covfs[(line, vel)],
-                        label = '$v > {} $km/s'.format(vel))
+                        label = '$v\\, > {} $km/s'.format(vel))
         #lw = '.')
 
     axs[i].set_xscale('log')
