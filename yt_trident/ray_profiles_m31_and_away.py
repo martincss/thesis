@@ -76,8 +76,8 @@ if __name__=='__main__':
     plt.semilogy(r_m31/HUBBLE_2Mpc_LG, rho_m31, label = 'from m31', color = 'magenta')
     plt.semilogy(r_away/HUBBLE_2Mpc_LG, rho_away, label = 'from away', color = 'purple')
     plt.xlabel('Distance [kpc]', fontsize = 15)
-    plt.ylabel('density [g/cm^3]', fontsize = 15)
-    plt.title('Mass density profile', fontsize = 20)
+    plt.ylabel('density [g cm$^{-3}$]', fontsize = 15)
+    # plt.title('Mass density profile', fontsize = 20)
     plt.grid()
     plt.legend()
 

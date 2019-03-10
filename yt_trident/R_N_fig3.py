@@ -51,7 +51,7 @@ covfs = covering_fractions_parallel(abs_directory, N_threshs, abs_lines,
 
 
 fig, axs = plt.subplots(2,2, sharex=True, sharey=True, squeeze=True)
-fig.suptitle('Covering fraction by $N_{thresh}$', fontsize = 20)
+# fig.suptitle('Covering fraction by $N_{thresh}$', fontsize = 20)
 axs = axs.flatten()
 
 axs[0].set_ylabel('$f_c$', fontsize= 15)
@@ -62,12 +62,12 @@ axs[3].set_xlabel('$N_{thresh}$ [cm$^{-2}$]', fontsize= 15)
 for i, line in enumerate(abs_lines):
 
     axs[i].errorbar(10**observations[line][:,0], observations[line][:,1],
-                    observations[line][:,2], label = 'observations RN17')
+                    observations[line][:,2], label = 'RN17')
 
     for vel in vel_threshs:
 
         axs[i].semilogx(N_threshs, covfs[(line, vel)],
-                        label = '$v\\, > {} $km/s'.format(vel))
+                        label = '$v\\, > {} $ km/s'.format(vel))
         #lw = '.')
 
     axs[i].set_xscale('log')

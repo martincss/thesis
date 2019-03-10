@@ -38,16 +38,16 @@ def plot_covfs(r, covfs):
 
     axarr[1,0].set_xlabel('Distance [kpc]', fontsize = 15)
     axarr[1,1].set_xlabel('Distance [kpc]', fontsize = 15)
-    axarr[0,0].set_ylabel('$f$  with $\\log N > $ {:d}'.format(exp1), fontsize = 15)
+    axarr[0,0].set_ylabel('$f$  with $\\log \\,N$ cm$^2 >$ {:d}'.format(exp1), fontsize = 15)
     axarr[0,0].set_title('MW', fontsize = 15)
     axarr[0,1].set_title('M31', fontsize = 15)
     axarr[0,1].legend()
-    axarr[1,0].set_ylabel('$f$  with $\\log N > $ {:d}'.format(exp2), fontsize = 15)
+    axarr[1,0].set_ylabel('$f$  with $\\log \\,N$ cm$^2 >$ {:d}'.format(exp2), fontsize = 15)
 
     for ax in axarr.flatten():
         ax.grid()
 
-    fig.suptitle('Covering fraction by distance', fontsize = 20)
+    # fig.suptitle('Covering fraction by distance', fontsize = 20)
     fig.subplots_adjust(wspace=0, hspace=0)
 
     return fig, axarr

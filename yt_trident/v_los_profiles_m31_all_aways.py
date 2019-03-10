@@ -46,6 +46,16 @@ def density_away_binned_all(delta_r, r_max = 700):
 
     return r_bins, np.vstack(rho_binned)
 
+def plot_all_away(ax):
+
+    for handle in all_away:
+
+        df = pd.read_csv(handle, skiprows=1)
+        r, rho = get_attribute_by_distance(df, df['Line'].iloc[0], 'rho')
+
+        ax.plot(r/HUBBLE_2Mpc_LG, rho, color = 'orchid', label = '')
+
+
 
 def plot_away_in_sphere(ax3):
 
@@ -63,18 +73,20 @@ def plot_away_in_sphere(ax3):
                 label = 'M31')
 
     ax3.legend()
-    ax3.set_title('M31 and away directions', fontsize = 20)
+    # ax3.set_title('M31 and away directions', fontsize = 20)
 
 
 if __name__ == '__main__':
 
     all_away = [handle for handle in glob.glob(absorbers_directory + 'abs*') \
-                if ray_away_from_m31(handle, 5)]
+                if ray_away_from_m31(handle, 10)]
+
+
 
     r_m31, vlos_m31 = get_attribute_by_distance(df_m31, df_m31['Line'].iloc[0],
                                                 'v_los')
 
-    r_away, v_los_all_away = v_los_away_binned_all(25)
+    r_away, v_los_all_away = v_los_away_binned_all(2)
     mean_away = np.mean(v_los_all_away, axis=0)
     sigma_away = np.std(v_los_all_away, axis=0)
 
@@ -86,21 +98,22 @@ if __name__ == '__main__':
     plt.plot(r_away[:-1]/HUBBLE_2Mpc_LG, mean_away, color = 'purple',
              label = 'mean away')
 
+
     plt.fill_between(r_away[:-1]/HUBBLE_2Mpc_LG, mean_away - sigma_away,
      mean_away + sigma_away, color = 'plum', label = 'mean away $\\pm \\sigma$')
 
     plt.plot(r_m31/HUBBLE_2Mpc_LG, vlos_m31, label = 'from m31',
              color = 'magenta')
 
-    plt.plot(r_one_away/HUBBLE_2Mpc_LG, v_los_one_away,
-             label = 'from single away', color = 'darkorchid', ls = ':')
+    # plt.plot(r_one_away/HUBBLE_2Mpc_LG, v_los_one_away,
+    #          label = 'from single away', color = 'darkorchid', ls = ':')
 
     plt.hlines(m31_vlos, 0, 1000, color = 'crimson', linestyles='dashed',
                label = 'M31 V LOS')
 
     plt.xlabel('Distance [kpc]', fontsize = 15)
     plt.ylabel('$v_{LOS}$ [km/s]', fontsize = 15)
-    plt.title('Velocity in LOS profiles by direction', fontsize = 20)
+    # plt.title('Velocity in LOS profiles by direction', fontsize = 20)
     plt.grid()
     plt.legend()
 
@@ -109,26 +122,37 @@ if __name__ == '__main__':
     r_m31, rho_m31 = get_attribute_by_distance(df_m31, df_m31['Line'].iloc[0],
                                                 'rho')
 
-    r_away, rho_all_away = density_away_binned_all(25)
+    r_away, rho_all_away = density_away_binned_all(2)
     rho_mean_away = np.mean(rho_all_away, axis=0)
+    # rho_mean_away = np.sum()
     # rho_mean_away = np.median(rho_all_away, axis=0)
     rho_sigma_away = np.std(rho_all_away, axis=0)
 
-    plt.figure()
+    r_one_away, rho_one_away = get_attribute_by_distance(df_away,
+                                                        df_away['Line'].iloc[0],
+                                                        'rho')
+
+    fig = plt.figure()
+    ax = fig.gca()
+
     plt.plot(r_away[:-1]/HUBBLE_2Mpc_LG, rho_mean_away, color = 'purple',
              label = 'mean away')
 
-    plt.fill_between(r_away[:-1]/HUBBLE_2Mpc_LG, rho_mean_away - rho_sigma_away,
+    # plt.plot(r_one_away/HUBBLE_2Mpc_LG, rho_one_away,
+    #          label = 'from single away', color = 'darkorchid', ls = ':')
+
+    # plot_all_away(ax)
+    plt.fill_between(r_away[:-1]/HUBBLE_2Mpc_LG, rho_mean_away,
                      rho_mean_away + rho_sigma_away, color = 'plum',
-                     label = 'mean away $\\pm \\sigma$')
+                     label = 'mean away $+ \\sigma$')
 
     plt.plot(r_m31/HUBBLE_2Mpc_LG, rho_m31, label = 'from m31',
              color = 'magenta')
 
     plt.yscale('log', nonposy='clip')
     plt.xlabel('Distance [kpc]', fontsize = 15)
-    plt.ylabel('Density [g/cm^3]', fontsize = 15)
-    plt.title('Mass density profiles by direction', fontsize = 20)
+    plt.ylabel('Density [g cm$^{-3}$]', fontsize = 15)
+    # plt.title('Mass density profiles by direction', fontsize = 20)
     plt.grid()
     plt.legend()
 
