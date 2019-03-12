@@ -2636,7 +2636,7 @@ velocity_los
 \emph on
 redshift 
 \emph default
-por efecto Döppler 
+por efecto Doppler 
 \begin_inset Flex Code
 status open
 
@@ -2860,7 +2860,7 @@ Al generar un espectro, para quien observa no le es posible distinguir si
 \emph on
 redshift 
 \emph default
-cosmológico o al efecto Döppler debido al movimiento del gas.
+cosmológico o al efecto Doppler debido al movimiento del gas.
  Por esa razón, 
 \begin_inset Formula $\tri$
 \end_inset
@@ -2910,7 +2910,7 @@ donde
 \emph on
 redshift
 \emph default
- debido al efecto Döppler, para cada celda del rayo 
+ debido al efecto Doppler, para cada celda del rayo 
 \begin_inset Formula 
 \[
 1+z_{\text{dopp},i}=\dfrac{1+\dfrac{v_{i}}{c}\cos\left(\theta_{i}\right)}{\sqrt{1-\left(\dfrac{v_{i}}{c}\right)^{2}}}
@@ -2933,7 +2933,7 @@ redshift efectivo,
 \emph default
 la magnitud con la cual se modifica directamente la longitud de onda de
  una línea de absorción dentro del espectro, está definido para cada celda
- como una combinación del cosmológico y el Döppler 
+ como una combinación del cosmológico y el Doppler 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "z_eff"
@@ -3137,7 +3137,7 @@ redshift efectivo
 \emph on
 redshift 
 \emph default
-cosmológico y el efecto Döppler, según la ecuación 
+cosmológico y el efecto Doppler, según la ecuación 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:z_eff"
@@ -3159,7 +3159,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Itemize
-Parámetro de ensanchamiento térmico ó Döppler (
+Parámetro de ensanchamiento térmico ó Doppler (
 \emph on
 thermal broadening
 \emph default
@@ -3454,7 +3454,7 @@ de cada celda a lo largo del rayo.
 \emph on
 redshift 
 \emph default
-de cada celda corregida por el efecto Döppler utilizando la correspondiente
+de cada celda corregida por el efecto Doppler utilizando la correspondiente
  
 \begin_inset Formula $v_{\text{LOS}}$
 \end_inset
@@ -3543,7 +3543,7 @@ noprefix "false"
 
 \begin_layout Standard
 En primer lugar, la forma de la línea de absorción está determinada por
- dos características del gas absorbente: el ensanchamiento Döppler debido
+ dos características del gas absorbente: el ensanchamiento Doppler debido
  a la distribución térmica de velocidades en el gas, y el 
 \emph on
 ensanchamiento por presión 
@@ -3912,7 +3912,6 @@ literal "false"
  En el capítulo anterior hemos visto las herramientas que nos permiten llevar
  a cabo esta tarea; en este capítulo veremos los pasos particulares ejecutados
  para cumplir con el objetivo y su implementación.
- 
 \end_layout
 
 \begin_layout Section
@@ -5147,13 +5146,34 @@ noprefix "false"
  como posición del sol.
 \end_layout
 
+\begin_layout Standard
+En todo el trabajo, nos concentramos en cuatro líneas de absorción utilizadas
+ en RN17: 
+\begin_inset Formula $\textsc{C}_{\textsc{ii}}\,1335$
+\end_inset
+
+, 
+\begin_inset Formula $\textsc{C}_{\textsc{iv}}\,1548$
+\end_inset
+
+, 
+\begin_inset Formula $\textrm{Si}_{\textsc{ii}}\,1193$
+\end_inset
+
+, y 
+\begin_inset Formula $\textrm{Si}_{\textsc{iii}}\,1206$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-Comparación de las direcciones hacia M31 y ortogonal
+Líneas de absorción en dirección a M31
 \end_layout
 
 \begin_layout Standard
 Un primer aspecto interesante discutido en RN17 es la existencia plausible
- de un 
+ de una sobredensidad o 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5161,21 +5181,23 @@ puente
 \begin_inset Quotes erd
 \end_inset
 
- de gas entre MW y M31, amparada por observaciones de absorción de O VI
- con altas velocidades radiales hacia MW, en la dirección general hacia
- M31.
+ de gas entre MW y M31, amparada por observaciones de absorción de 
+\begin_inset Formula $\text{O}_{\textsc{vi}}$
+\end_inset
+
+ con altas velocidades radiales hacia MW, en la dirección general de M31.
  Una explicación posible puede ser un exceso de gas caliente en esta región,
- según implican las simulaciones en N14.
+ según implican las simulaciones de N14.
 \end_layout
 
 \begin_layout Standard
-Con esta motivación, queremos realizar una comparación en varios aspectos
- entre una línea de la visual que apunte hacia M31, y otra perpendicular
- que no apunte a alguna estructura en particular (que denominamos 
+Con esta motivación, analizaremos nuestros resultados para sendas líneas
+ de la visual, una que apunte en dirección a M31, y otra en una dirección
+ perpendicular arbitraria, que denominamos 
 \emph on
-away
+away.
+
 \emph default
-).
  Seleccionamos dos rayos de nuestra muestra con esas características, que
  podemos ver en la Figura 
 \begin_inset CommandInset ref
@@ -5218,8 +5240,16 @@ name "fig:m31_and_away"
 
 \end_inset
 
-Proyección de la densidad de gas en el dominio de la simulación.
- En el centro se ubica MW, y en dirección noroeste, M31.
+Proyección de la densidad de gas en el dominio de la simulación a 
+\begin_inset Formula $z=0$
+\end_inset
+
+.
+ En el centro se ubica MW, y en dirección 
+\emph on
+noroeste
+\emph default
+, M31.
  Las dos flechas indican las líneas de la visual en dirección a M31 y 
 \emph on
 away.
@@ -5236,7 +5266,7 @@ Las unidades de distancia son kpc, en longitud comóvil.
 \end_inset
 
 Si bien aquí sólo mostramos una proyección, hemos verificado que los rayos
- elegidos cumplen éstas condiciones al observar otras proyecciones.
+ elegidos cumplen éstas condiciones al observar las otras proyecciones.
 \end_layout
 
 \begin_layout Subsection
@@ -5246,12 +5276,12 @@ Densidad de gas
 \begin_layout Standard
 A modo de una primera comparación, queremos estudiar las diferencias de
  densidad de gas entre estas direcciones y cómo se reflejan en los espectros
- de absorción, siendo éstos la única magnitud de acceso directo observacional.
+ de absorción, siendo éstos la única magnitud de acceso observacional directo.
  Para eso, graficamos la densidad de gas 
 \begin_inset Formula $\rho$
 \end_inset
 
- en función de la distancia para ambas direcciones, como disponemos en la
+ en función de la distancia para ambas direcciones, como se muestra en la
  Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5263,9 +5293,9 @@ noprefix "false"
 \end_inset
 
 .
- Recordamos que cada rayo consiste en un conjunto de celdas de la simulación
- consecutivas, alineadas entre los puntos inicial y final.
- De este modo , la densidad graficada para una distancia particular en la
+ Recordamos que cada rayo consiste en un conjunto de celdas consecutivas
+ de la simulación, alineadas entre los puntos inicial y final.
+ De este modo, la densidad graficada para una distancia particular en la
  figura corresponde a la obtenida en una celda del rayo a dicha distancia.
 \end_layout
 
@@ -5335,8 +5365,8 @@ noprefix "false"
 
  en la dirección hacia M31.
  Es a esta distancia en la cual el rayo comienza a atravesar el halo de
- M31, explicando así este pico de densidad, cuya posición coincide aproximadamen
-te con la distancia MW-M31 en la simulación (
+ M31, explicando así el pico de densidad, cuya posición coincide aproximadamente
+ con la distancia MW-M31 en la simulación (
 \begin_inset Formula $652$
 \end_inset
 
@@ -5402,13 +5432,12 @@ noprefix "false"
 
 .
  Obtenemos los espectros de absorción para cuatro de las líneas utilizadas
- en RN17 comentadas en la sección [***acá una referencia al capítulo tres
- donde se indiquen los iones], y representamos el espectro utilizando la
- 
+ en RN17 comentadas al principio de éste capítulo, y representamos el espectro
+ utilizando la 
 \emph on
 velocidad espectral 
 \emph default
-como variable independiente en lugar de la longitud de onda.
+como variable.
  Esta transformación se hace según 
 \begin_inset Formula 
 \[
@@ -5453,7 +5482,7 @@ noprefix "false"
 \emph on
 redshift
 \emph default
- cosmológico y Döppler debido a la velocidad intrínseca del gas.
+ cosmológico y Doppler debido a la velocidad intrínseca del gas.
 \end_layout
 
 \begin_layout Standard
@@ -5491,7 +5520,7 @@ noprefix "false"
 
 .
  Éstas corresponden a los orígenes de líneas de la visual ubicados: justo
- fuera del radio virial de MW; a la distancia de M31; a la máxima distancia
+ fuera del radio virial de MW; a la distancia de M31, y a la máxima distancia
  tomada.
 \end_layout
 
@@ -5531,7 +5560,7 @@ Espectros sintéticos de absorción para las líneas de la visual consideradas,
  kpc del sol.
  Cada fila corresponde al espectro de un ión particular en ambas direcciones;
  la columna izquierda corresponde a la dirección hacia M31 y la derecha
- la dirección 
+ a la dirección 
 \emph on
 away.
 \end_layout
@@ -5567,15 +5596,7 @@ noprefix "false"
  Ya a esta distancia, podemos apreciar que la dirección hacia M31 presenta
  una mayor absorción en cada línea, debida a la mayor densidad de gas.
  Éstas asimetrías dentro del halo gaseoso son consistentes con lo estudiado
- en el trabajo 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "N14"
-literal "false"
-
-\end_inset
-
-, que utiliza esta misma simulación.
+ en el N14, que utiliza esta misma simulación.
  Podemos notar aquí una característica común en estos espectros: la absorción
  en forma de campana aproximadamente simétrica.
  Esta forma particular de absorción para una dada línea se debe a que, respecto
@@ -5640,7 +5661,7 @@ noprefix "false"
 
 \end_inset
 
-, a distancia de 
+, a una distancia de 
 \begin_inset Formula $691$
 \end_inset
 
@@ -5677,7 +5698,11 @@ noprefix "false"
 away 
 \emph default
 no presentan cambios, mientras que en la dirección hacia M31 se observan
- nuevas features importantes en todas las líneas.
+ nuevas 
+\emph on
+features
+\emph default
+ importantes en todas las líneas.
  Dado que a esta distancia se ubica ya M31, podemos entender estas diferencias
  como producto de la absorción del gas en el halo de M31.
  Notemos también que la velocidad espectral a la cual se presentan estas
@@ -5686,7 +5711,7 @@ no presentan cambios, mientras que en la dirección hacia M31 se observan
 \emph on
 redshift 
 \emph default
-cosmológico y Döppler por velocidad intrínseca resulta en un 
+cosmológico y Doppler por velocidad intrínseca resulta en un 
 \emph on
 corrimiento al azul 
 \emph default
@@ -5696,7 +5721,7 @@ corrimiento al azul
 redshift 
 \emph default
 cosmológico siempre produce un corrimiento al rojo, podemos concluir que
- el efecto dominante aquí es el Döppler debido a la propia velocidad del
+ el efecto dominante aquí es el Doppler debido a la propia velocidad del
  gas, que se acerca al punto de observación.
  Esto es esperable ya que las galaxias MW y M31 se están acercando.
  Tendremos en cuenta este hecho en un posterior análisis.
@@ -5745,7 +5770,7 @@ noprefix "false"
 
 \end_inset
 
-, a distancia de 
+, a una distancia de 
 \begin_inset Formula $1000$
 \end_inset
 
@@ -5790,11 +5815,11 @@ away
  no han habido cambios respecto a la anterior distancia.
  Para la dirección hacia M31 no se presentan mayores diferencias, salvo
  una ligera absorción mayor en la línea 
-\begin_inset Formula $\text{C IV }1548$
+\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
 \end_inset
 
-, lo cual nos puede indicar que este elemento se encuentra esparcido sobre
- el IGM, además de en los halos galácticos.
+, lo cual nos puede indicar que este elemento se encuentra en el IGM, además
+ de en los halos galácticos.
  Como en ninguna línea se observa una saturación total de la absorción (
 \emph on
 i.e.
@@ -5822,7 +5847,7 @@ a del puente de gas en la dirección MW-M31.
 \end_layout
 
 \begin_layout Subsection
-Comparación con todas las direcciones ortogonales
+Comparación con otras direcciones
 \end_layout
 
 \begin_layout Standard
@@ -5840,20 +5865,28 @@ noprefix "false"
 , correspondientes a la dirección que une MW y M31, y otra dirección ortogonal.
  Esta primera comparación tomando una única línea ortogonal nos permitió
  entender en detalle el efecto de la diferencia de densidad en los espectros
- de absorción obtenidos emulando las observaciones.
+ de absorción simulados.
  No obstante, nos gustaría verificar si esta tendencia se mantiene al selecciona
 r cualquier otra dirección ortogonal, o es producto de una fluctuación estadísti
 ca.
 \end_layout
 
 \begin_layout Standard
-Para eso, compararemos la misma línea de la visual que une MW y M31 con
- un conjunto de líneas en direcciones ortogonales.
- Seleccionamos de nuestra muestra de 
+Para eso, comparamos la misma línea de la visual que une MW y M31 con un
+ conjunto de líneas en direcciones ortogonales.
+ De nuestra muestra de 
 \begin_inset Formula $500$
 \end_inset
 
- a estas líneas como las que formen un ángulo de 
+ líneas de la visual, seleccionamos un total de 
+\begin_inset Formula $90$
+\end_inset
+
+ rayos 
+\emph on
+away
+\emph default
+ que formen un ángulo de 
 \begin_inset Formula $90^{\circ}\pm10^{\circ}$
 \end_inset
 
@@ -5931,7 +5964,7 @@ Densidad de gas
 \end_layout
 
 \begin_layout Standard
-Repetiremos la comparación vista en la Figura 
+Repetimos la comparación mostrada en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:rho_profiles_m31_away"
@@ -5941,7 +5974,7 @@ noprefix "false"
 
 \end_inset
 
-, ahora considerando a todas las direcciones ortogonales mencionadas.
+, ahora considerando todas las direcciones ortogonales mencionadas.
  Para esto, obtenemos la densidad en cada una de las direcciones 
 \emph on
 away, 
@@ -5961,8 +5994,8 @@ noprefix "false"
 \begin_inset Formula $\rho$
 \end_inset
 
- en función de la distancia en la dirección hacia M31; y ahora graficamos
- también el promedio de la densidades en las direcciones ortogonales, sombreando
+ en función de la distancia en la dirección hacia M31; incluyendo también
+ el promedio de la densidades en las direcciones ortogonales, sombreando
  la región flanqueada por su primer desviación estándar hacia valores superiores.
 \end_layout
 
@@ -6015,8 +6048,8 @@ noprefix "false"
 away.
  
 \emph default
-Sombreamos el intervalo de confianza superior sobre este promedio, a una
- desviación estándar.
+El sombreado indica el intervalo de confianza superior sobre este promedio,
+ a una desviación estándar.
 \end_layout
 
 \end_inset
@@ -6048,14 +6081,14 @@ away
 away.
  
 \emph default
-Esta diferencia es consistente con la hipótesis del puente de gas en la
- región entre MW y M31.
+Esta diferencia es consistente con la hipótesis de la existencia de un puente
+ de gas en la región entre MW y M31.
  A partir de una distancia 
 \begin_inset Formula $\sim500$
 \end_inset
 
- kpc, la diferencia se hace muy pronunciada debido al ingreso al halo de
- M31, como hemos visto en la Figura 
+ kpc, la diferencia se hace muy pronunciada debido a la presencia del halo
+ de M31, como hemos visto en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:rho_profiles_m31_away"
@@ -6089,8 +6122,8 @@ noprefix "false"
 \end_inset
 
 ).Obtener esta magnitud directamente de la simulación nos permitirá comparar
- con la calculada mediante los espectros de absorción, y sumar confianza
- sobre esta técnica para su determinación observacional.
+ con la calculada mediante los espectros de absorción, y asegurar la efectividad
+ de esta técnica para su determinación observacional.
 \end_layout
 
 \begin_layout Standard
@@ -6114,9 +6147,9 @@ noprefix "false"
  promedio sobre las direcciones 
 \emph on
 away.
- 
+
 \emph default
-Graficamos también con una línea horizontal quebrada la 
+ También se muestra, con una línea horizontal quebrada la 
 \begin_inset Formula $v_{\text{LOS}}$
 \end_inset
 
@@ -6159,16 +6192,17 @@ Perfiles de
 \begin_inset Formula $v_{\textsc{LOS}}$
 \end_inset
 
-en función de la distancia a MW, según la dirección.
+ en función de la distancia a MW, según la dirección.
  En magenta representamos la dirección hacia M31 y en púrpura el promedio
  del perfil de velocidades en las direcciones 
 \emph on
 away.
  
 \emph default
-Sombreamos el intervalo de confianza sobre este promedio, a una desviación
- estándar a cada lado.
- En línea punteada, incluimos el valor de velocidad LOS del subhalo M31.
+El sombreado indica el intervalo de confianza sobre este promedio, a una
+ desviación estándar.
+ En línea punteada, incluimos el valor de velocidad del subhalo M31 en la
+ línea de la visual.
 \end_layout
 
 \end_inset
@@ -6186,9 +6220,8 @@ Sombreamos el intervalo de confianza sobre este promedio, a una desviación
 \end_layout
 
 \begin_layout Standard
-En principio, podemos notar que en la dirección hacia M31, la velocidad
- es siempre negativa salvo en una pequeña región a distancias muy bajas
- 
+En principio, podemos notar que en dirección hacia M31, la velocidad es
+ siempre negativa salvo en una pequeña región a distancias muy bajas 
 \begin_inset Formula $\left(<100\textrm{ kpc}\right)$
 \end_inset
 
@@ -6204,7 +6237,7 @@ noprefix "false"
 
 \end_inset
 
-, correspondiente a la zona de mayor densidad de gas en esta dirección,
+; correspondiente a la zona de mayor densidad de gas en esta dirección,
  como se ve en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6216,8 +6249,8 @@ noprefix "false"
 \end_inset
 
 .
- El resto del rayo, que las velocidades sean negativas nos indica que todo
- el gas muestreado en esta dirección (MW-M31) se acerca hacia MW.
+ El resto del rayo, posee velocidades negativas, indicando que todo el gas
+ muestreado en esta dirección (MW-M31) se acerca hacia MW.
  Entre 
 \begin_inset Formula $600$
 \end_inset
@@ -6226,7 +6259,8 @@ noprefix "false"
 \begin_inset Formula $800$
 \end_inset
 
- kpc, podemos notar una región de un pico de velocidad hacia MW; en la figura
+ kpc, podemos notar una región de un pico de velocidad hacia MW, que corresponde
+ a la sobredensidad producida por el halo de M31, como se ve en la Figura
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6237,8 +6271,7 @@ noprefix "false"
 
 \end_inset
 
- notamos que esta región comprende al pico de densidad dado por el halo
- de M31.
+ .
  Las altas velocidades se reflejan en la absorción corrida al azul que se
  observa en el espectro de la Figura 
 \begin_inset CommandInset ref
@@ -6263,19 +6296,19 @@ away,
 vemos que el promedio de velocidad es en general negativo y cercano a cero,
  de menor valor absoluto que en la dirección hacia M31.
  No obstante, notamos que la dispersión de velocidades es notable, adoptando
- valores muy altos a distancias cortas (esto se debe a las fuertes asimetrías
- del flujo de gas dentro del halo de MW).
+ valores muy altos a distancias cortas debido a las fuertes asimetrías del
+ flujo de gas dentro del halo de MW.
 \end_layout
 
 \begin_layout Standard
 Considerando las diferencias entre las direcciones hacia M31 y ortogonal,
  podemos concluir que la primer dirección presenta velocidades que apuntan
- consistentemente hacia MW a lo largo de toda la línea; en cambio en las
+ consistentemente hacia MW a lo largo de toda la línea; en cambio, en las
  direcciones ortogonales estas velocidades pueden ser tanto positivas como
  negativas.
- Vemos también, que en la dirección hacia M31, a la distancia correspondiente
- al halo de esta galaxia tienen lugar valores de velocidad muy altos, que
- no se observan en las direcciones ortogonales.
+ Vemos también, que en la dirección hacia M31, tienen lugar valores de velocidad
+ muy altos en la posición correspondiente al halo de esta galaxia, que no
+ se observan en las direcciones ortogonales.
  Podemos atribuir este hecho a la acreción combinada del gas hacia M31 y
  de M31 hacia MW.
 \end_layout
@@ -6296,7 +6329,7 @@ fracción de cobertura (covering fraction).
  valor dado (correspondiente a la sensibilidad del instrumento); dando así
  una noción de qué fracción del cielo está cubierta por gas de una dada
  especie química.
- Esta magnitud resume una primera aproximación a la distribución del gas
+ Esta magnitud brinda una primera aproximación a la distribución del gas
  en el halo e IGM, teniendo en cuenta la perspectiva de quien observe.
  
 \begin_inset Note Comment
@@ -6312,16 +6345,17 @@ decir algo más de para qué miramos esto??
 \end_layout
 
 \begin_layout Standard
-En principio, mediante las observaciones no es posible acceder directamente
- a la distancia a la cual se ubica una nube de gas; lo cual motiva la definición
- anterior como una medida que no tenga en cuenta dicha distancia.
+En principio, no es posible conocer directamente la distancia a la cual
+ se ubica una nube de gas únicamente mediante observaciones de las líneas
+ de absorción; lo cual motiva la definición anterior como una medida que
+ no tenga en cuenta dicha distancia.
  En cambio, desde las simulaciones contamos con la información completa
- de esta distribución, y podemos entonces extender esta definición para
+ sobre esta distribución, y podemos entonces extender esta definición para
  incluir la dependencia con la distancia, como veremos más abajo.
 \end_layout
 
 \begin_layout Standard
-Recordemos que cada rayo representando a una línea de la visual consiste
+Recordemos que cada rayo que representa una línea de la visual consiste
  en una secuencia de celdas de la simulación ordenadas por distancia, cada
  una conteniendo un valor para la densidad columnar 
 \begin_inset Formula $N$
@@ -6368,7 +6402,7 @@ donde
 \begin_inset Formula $\Theta$
 \end_inset
 
- es la función de Heaviside, y 
+ es la función de Heaviside y 
 \begin_inset Formula $r_{i}$
 \end_inset
 
@@ -6393,7 +6427,7 @@ muy innecesario, sólo quería escribirlo cheto
 Con esta definición en cuenta, queremos comparar las tendencias de cobertura
  en función de la distancia desde los puntos de vista de MW y M31, para
  el gas en el halo de cada una.
- Utilizando un conjunto de 
+ Utilizando el conjunto de 
 \begin_inset Formula $500$
 \end_inset
 
@@ -6403,7 +6437,7 @@ Con esta definición en cuenta, queremos comparar las tendencias de cobertura
 \begin_inset Formula $N_{\text{thresh}}$
 \end_inset
 
-; según la definición expuesta.
+.
  Presentamos los resultados en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6487,8 +6521,8 @@ Fracciones de cobertura en función de la distancia, vistas desde MW (columna
 \end_layout
 
 \begin_layout Standard
-Podemos notar varias tendencias dentro de los resultados, comenzamos con
- el umbral menor, 
+Podemos notar varias tendencias en los resultados, empezando por el umbral
+ menor, correspondiente a 
 \begin_inset Formula $N_{\text{thresh}}=10^{10}\text{ cm}^{-2}$
 \end_inset
 
@@ -6497,7 +6531,7 @@ Podemos notar varias tendencias dentro de los resultados, comenzamos con
  hasta un valor cercano a cero en una distancia aproximada al radio virial
  de cada una.
  Esto sucede en todas las líneas de absorción salvo 
-\begin_inset Formula $\text{C IV }1548$
+\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
 \end_inset
 
 , en la cual se observa un decrecimiento mucho más lento.
@@ -6505,30 +6539,25 @@ Podemos notar varias tendencias dentro de los resultados, comenzamos con
  hace menos pronunciado conforme aumenta la distancia.
  El único caso en el cual esta tendencia no tiene lugar corresponde a la
  línea 
-\begin_inset Formula $\text{C IV }1548$
+\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
 \end_inset
 
  desde MW: su fracción comienza en un valor 
 \begin_inset Formula $\sim0.1$
 \end_inset
 
-, y en una distancia de 
-\begin_inset Formula $\sim25\text{ kpc}$
-\end_inset
-
- 
+, 
 \emph on
 crece
 \emph default
- hasta un valor de 
+ hasta de 
 \begin_inset Formula $0.8$
 \end_inset
 
 , para luego decrecer con la distancia.
  Salvo por esa excepción, notamos también que el ordenamiento de elementos
- de menor a mayor cobertura es el mismo para ambas galaxias.
- Notamos también que las dos líneas con coberturas mayores corresponden
- al carbono, y las dos menores al silicio.
+ de menor a mayor cobertura es el mismo para ambas galaxias, siendo las
+ especies del carbono más abundantes que las del silicio.
 \end_layout
 
 \begin_layout Standard
@@ -6538,7 +6567,7 @@ Por otro lado, para el umbral mayor
 
 , notamos que el decrecimiento es mucho más pronunciado que en el caso anterior,
  de manera tal que las fracciones se anulan en 
-\begin_inset Formula $r=50\text{ kpc}$
+\begin_inset Formula $r\sim50\text{ kpc}$
 \end_inset
 
  para MW, y 
@@ -6547,7 +6576,7 @@ Por otro lado, para el umbral mayor
 
  para M31.
  Notamos también que, en ambas galaxias, la cobertura de la línea 
-\begin_inset Formula $\text{C IV }1548$
+\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
 \end_inset
 
  es casi nula en todas las distancias; lo cual representa un fuerte contraste
@@ -6556,28 +6585,23 @@ Por otro lado, para el umbral mayor
  nuevamente es el mismo en ambas galaxias.
  No obstante, el ordenamiento ha cambiado en comparación con el umbral menor,
  puesto que la línea de menor cobertura (exceptuando a 
-\begin_inset Formula $\text{C IV }1548$
+\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
 \end_inset
 
 ) es ahora 
-\begin_inset Formula $\text{Si III }1206$
+\begin_inset Formula $\text{Si}_{\textsc{iii}}\,1206$
 \end_inset
 
 , en lugar de 
-\begin_inset Formula $\text{Si II }1193$
+\begin_inset Formula $\text{Si}_{\textsc{ii}}\,1193$
 \end_inset
 
-.
- Con excepción de 
-\begin_inset Formula $\text{C IV }1548$
-\end_inset
-
-, nuevamente las dos líneas de menor cobertura corresponden al silicio.
+, siendo estas dos líneas las de menor cobertura.
 \end_layout
 
 \begin_layout Standard
-Podemos interpretar los comportamientos anteriores teniendo en cuenta las
- consideraciones descriptas en las sección 
+El comportamiento anterior puede interpretarse teniendo en cuenta las considerac
+iones descriptas en las sección 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:gas"
@@ -6589,13 +6613,13 @@ noprefix "false"
 
 , según los resultados de N14.
  Es claro que en el umbral más bajo se está explorando la región del halo
- extendido de cada galaxia, y en el más alto la región más interna del halo.
- Recordando que asumimos las abundancias solares para la distribución de
- los elementos en toda la simulación, es esperable que la componente de
- carbono domine por sobre la de silicio.
+ extendido de cada galaxia, y en el más alto la región más interna del mismo.
+ Dado que asumimos abundancias solares para la distribución de los elementos
+ en toda la simulación, es esperable que la componente de carbono domine
+ por sobre la de silicio.
  No obstante, la distribución de iones de un dado elemento depende de las
  condiciones termodinámicas locales (que determinan la fracción de ionización
- en la ecuación 
+ en la Ecuación 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:nx_final"
@@ -6606,9 +6630,17 @@ noprefix "false"
 \end_inset
 
 ) del material gaseoso.
- Se puede entender entonces, que en las escalas más grandes del halo (con
- el umbral bajo) dominen los iones más altos (C IV, Si III), ya que el gas
- en estas regiones es más caliente.
+ Se puede entender entonces, que en las escalas más grandes del halo (correspond
+ientes al umbral más bajo de densidad columnar) dominen los iones más altos
+ (
+\begin_inset Formula $\textsc{C}_{\textsc{iv}}$
+\end_inset
+
+, 
+\begin_inset Formula $\textrm{Si}_{\textsc{iii}}$
+\end_inset
+
+), ya que el gas en estas regiones es más caliente.
  De igual forma, en las regiones internas del halo (vistas en el corte alto)
  dominan los iones más bajos, dado que el gas frío y denso se concentra
  en dichas zonas.
@@ -6621,7 +6653,7 @@ Fracciones de cobertura para HVCs en MW
 \begin_layout Standard
 Realizaremos ahora una comparación con un conjunto particular de observaciones
  en RN17.
- Estudiaremos la fracción de cobertura bajo la definición observacional;
+ Estudiaremos la fracción de cobertura según la definición observacional;
  
 \emph on
 i.e.
@@ -6632,7 +6664,11 @@ sin tener en cuenta la dependencia con la distancia.
  columnar en todas sus celdas con un valor umbral; y calculamos la fracción
  de líneas que cumplan este criterio.
  Nos interesa, en particular, esta fracción considerando únicamente el gas
- en forma de HVCs.
+ en forma de HVCs (
+\emph on
+High Velocity Clouds
+\emph default
+).
  Esto es, el gas cuya 
 \emph on
 velocidad espectral
@@ -6645,7 +6681,7 @@ alta
 \begin_inset Quotes erd
 \end_inset
 
- (en RN17, se adopta que su módulo sea mayor que 
+ (en RN17, se adopta que su módulo sea mayor a 
 \begin_inset Formula $100\text{ km}\slash\text{s}$
 \end_inset
 
@@ -6696,7 +6732,7 @@ noprefix "false"
 
 \end_inset
 
-, junto con las observaciones correspondientes en RN17.
+, junto con las observaciones correspondientes a RN17.
 \end_layout
 
 \begin_layout Standard
@@ -6746,7 +6782,7 @@ Fracción de cobertura según
 
 , a distintos cortes de velocidad del gas, para las especies iónicas considerada
 s.
- Incluimos también los resultados de las observaciones en RN17.
+ Incluimos también los resultados de las observaciones a RN17.
 \end_layout
 
 \end_inset
@@ -6763,11 +6799,11 @@ s.
 Podemos observar que en todos los casos la cobertura es monótonamente decrecient
 e con los umbrales de densidad y velocidad en el rango considerado.
  Exceptuando a la línea 
-\begin_inset Formula $\text{C IV }1548$
+\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
 \end_inset
 
 , observamos un comportamiento cualitativamente similar a las tendencias
- en las observaciones.
+ observadas.
  No obstante, podemos ver que este acuerdo aproximado se produce al seleccionar
  un velocidad mínima para los HVCs en el rango 
 \begin_inset Formula $30-45\text{ km}\slash\text{s}$
@@ -6782,22 +6818,21 @@ e con los umbrales de densidad y velocidad en el rango considerado.
 
 \begin_layout Standard
 Teniendo en cuenta que el valor de corte para la velocidad que resulta en
- un mejor acuerdo con las observaciones en un poco menos que la mitad del
+ un mejor acuerdo con las observaciones es un poco menos que la mitad del
  corte observacional, consideramos que una posible causa para esta discrepancia
- es la resolución de las simulaciones.
+ puede estar relacionada con la resolución de las simulaciones.
  Una resolución insuficiente en términos de densidad espacial de partículas
- implicaría un suavizado del campo de velocidades que disminuya el valor
+ implicaría un suavizado del campo de velocidades que disminuye el valor
  de sus máximos (los cuales corresponden a HVCs).
 \end_layout
 
 \begin_layout Section
-Distribución del gas en subhalos
+Distribución de gas en subhalos
 \end_layout
 
 \begin_layout Standard
-Nuestro último estudio y comparación con las observaciones de RN17 en el
- presente trabajo será un análisis de la distribución de gas perteneciente
- a cada subhalo en la simulación.
+Por último consideramos la distribución de gas perteneciente a cada subhalo
+ en la simulación con el fin de comparar con las observaciones de RN17.
  Recordemos que definimos como subhalo a cada estructura identificada por
  el algoritmo 
 \begin_inset Formula $\textsc{subfind}$
@@ -6824,9 +6859,9 @@ M31) como un satélite menor.
 \begin_layout Standard
 En particular, nos interesa estudiar la densidad de gas en función de la
  distancia al centro de cada subhalo, teniendo en cuenta la perspectiva
- particular al punto de observación (MW).
+ particular desde el punto de observación (MW).
  Este último influye en la determinación de la distancia entre el centro
- de un subhalo y una fuente de radiación en el interior de su halo.
+ de un subhalo y la línea de la visual que atraviesa el halo de gas.
  Damos cuenta de este hecho al notar que, desde el punto de vista del sol,
  sólo se puede calcular la distancia perpendicular entre el centro y una
  línea de la visual que pase por la fuente.
@@ -6842,7 +6877,7 @@ parámetro de impacto
 \end_layout
 
 \begin_layout Subsection
-Densidad en función del parámetro de impacto en la simulación
+Densidad columnar en función del parámetro de impacto
 \end_layout
 
 \begin_layout Standard
@@ -6859,10 +6894,11 @@ Para estimar la densidad columnar correspondiente al material gaseoso de
 \begin_inset Formula $R_{\text{vir}}$
 \end_inset
 
- el radio virial correspondiente a esa estructura.
- Entonces, para cada línea de la visual podemos obtener su parámetro de
- impacto a un subhalo y densidad columnar contenida en este último, sobre
- la cual podemos imponer como condición adicional que presente absorción
+ el radio virial correspondiente a esa estructura, en concordancia con las
+ observaciones de RN17 (ver más abajo).
+ Entonces para cada subhalo, es posible obtener los parámetros de impacto
+ de cada línea de la visual y su densidad columnar correspondiente, sobre
+ la cual podemos imponer como condición adicional la presencia de absorción
  (tomando celdas que cumplan 
 \begin_inset Formula $\tau>0$
 \end_inset
@@ -6882,31 +6918,17 @@ noprefix "false"
 
 \begin_layout Standard
 Tomamos los datos de la siguiente manera: para cada subhalo considerado,
- muestramos 
+ muestreamos 
 \begin_inset Formula $150$
 \end_inset
 
  líneas de la visual dirigidas hacia puntos distribuidos al azar en un entorno
- del subhalo, a distancia menor a 
+ del subhalo, a distancias menores a 
 \begin_inset Formula $2R_{\text{vir}}$
 \end_inset
 
 .
- Observamos los 
-\begin_inset Formula $12$
-\end_inset
-
- subhalos más masivos, exceptuando al que le corresponde a MW, y graficamos
- 
-\begin_inset Formula $N$
-\end_inset
-
- en función de 
-\begin_inset Formula $b$
-\end_inset
-
- en cada línea y en todas las especies iónicas para cada uno, como vemos
- en la Figura 
+ La Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:subhalos_N_b"
@@ -6916,10 +6938,15 @@ noprefix "false"
 
 \end_inset
 
-.
- Identificamos también a qué región de la simulación pertenece cada subhalo,
- según la posición de su centro esté contenida en los halos de MW o M31,
- o no (caso al cual catalogamos como IGM).
+ muestra la densidad columnar de las especies consideradas como función
+ del parámetro de impacto 
+\begin_inset Formula $b$
+\end_inset
+
+, para la M31 y los 11 subhalos más masivos dentro del LG simulado.
+ Adicionalmente, en cada panel, se indica la región de la simulación a la
+ que pertenece cada subhalo, según la posición de su centro esté contenida
+ en los halos de MW o M31, o no (caso al cual catalogamos como IGM).
 \end_layout
 
 \begin_layout Standard
@@ -6968,7 +6995,7 @@ Densidad columnar
 \begin_inset Formula $N$
 \end_inset
 
- contenida en cada subhalo versus parámetro de impacto 
+ contenida en cada subhalo versus el parámetro de impacto 
 \begin_inset Formula $b$
 \end_inset
 
@@ -6977,8 +7004,7 @@ Densidad columnar
 \end_inset
 
  correspondiente, para cada línea de absorción.
- Mantenemos la clave de colores para las especies iónicas, según la Figura
- 
+ La clave de colores es la misma utilizada en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:covf_mw_m31"
@@ -7013,7 +7039,7 @@ Los recuadros están ordenados de izquierda a derecha, y de arriba a abajo
 \end_layout
 
 \begin_layout Standard
-Graficamos también, en cada recuadro, la banda de valores de densidad para
+Se muestra también, en cada recuadro, la banda de valores de densidad para
  la cual las observaciones en RN17 son consideradas 
 \emph on
 completas.
@@ -7024,45 +7050,45 @@ En el trabajo, se define la
 completitud
 \emph default
  según la fracción de líneas de la visual en las cuales las absorciones
- existentes pueden ser correctamente detectadas.
+ existentes pueden ser detectadas.
  Entonces, dentro de esa banda de valores podemos afirmar que, si hubiera
  absorciones, éstas habrían sido observadas.
 \end_layout
 
 \begin_layout Standard
 En primer lugar, podemos notar que la densidad columnar de gas en las regiones
- internas al halo de M31 (primer recuadro, con 
+ internas del halo de M31 (primer recuadro, con 
 \begin_inset Formula $b<0.25R_{\text{vir}}=57\text{ kpc}$
 \end_inset
 
 ) es superior a las densidades vistas en el resto de los subhalos, salvo
- algunas excepciones; esto es esperable dado que M31 es el subhalo más masivo
+ algunas excepciones; esto es esperable dado que M31 es la galaxia más masiva
  de la simulación.
- Por otro lado, en este subhalo observamos una marcada disminución de 
+ Por otro lado, en la misma observamos una marcada disminución de 
 \begin_inset Formula $N$
 \end_inset
 
  con la distancia, mientras que en el resto de los subhalos no observamos
- esa tendencia, sino que la magnitud se mantenga aproximadamente constante
+ esa tendencia, sino que la magnitud se mantiene aproximadamente constante
  en muchos casos.
 \end_layout
 
 \begin_layout Standard
 La identificación de la región a la cual pertenece cada subhalo resulta
  clave para interpretar este comportamiento.
- Podemos notar que todos los subhalos salvo M31 poseen masas y radios viriales
- dentro del mismo orden de magnitud, pero algunos de ellos presentan valores
- de densidad columnar bastante más bajos que otros, de modo tal que no estén
- comprendidos dentro de la banda de completitud.
+ Podemos notar que todos los subhalos, salvo M31, poseen masas y radios
+ viriales dentro del mismo orden de magnitud, pero algunos de ellos presentan
+ valores de densidad columnar bastante más bajos que otros, de modo tal
+ que no estén comprendidos dentro de la banda de completitud.
  Si los discriminamos según la región de pertenencia, observamos que estos
  casos particulares corresponden a los subhalos que pertenecen al IGM.
- Esto nos indica que los valores altos de densidad en algunos subhalos de
- deben a que se está muestrando el gas que pertenece realmente al halo de
- MW ó M31, en lugar del que le es propio al subhalo; lo cual no ocurre en
- los que se ubican en la región IGM.
- Este hecho también da cuenta de la constancia de la densidad con la distancia
- en todos los casos salvo M31.
- En esta galaxia, la variación principal se observa hasta escalas de 
+ Esto nos indica que los valores altos de densidad en realidad corresponden
+ a gas asociado al CGM de MW o M31, en lugar de a ellos mismos; lo cual
+ no ocurre en sistemas ubicados en el IGM.
+ Este hecho también permite explicar la constancia de la densidad con la
+ distancia en todos los casos salvo M31.
+ En esta galaxia, la variación de las densidades columnares se observa hasta
+ escalas de 
 \begin_inset Formula $b\sim0.75R_{\text{vir}}=173\text{ kpc}$
 \end_inset
 
@@ -7071,18 +7097,27 @@ La identificación de la región a la cual pertenece cada subhalo resulta
 \begin_inset Formula $\sim90\text{ kpc}$
 \end_inset
 
-, de modo que no se aprecian variaciones significativas.
-\end_layout
+ (
+\emph on
+i.e.
+\emph default
+, una distancia 
+\begin_inset Formula $<2R_{\textrm{vir}}$
+\end_inset
 
-\begin_layout Subsection
-Interpretación según las observaciones
+ alrededor de cada subhalo), de modo que no se aprecian variaciones significativ
+as.
 \end_layout
 
 \begin_layout Standard
-En el trabajo RN17, se analizan líneas de la visual que intersequen al medio
- circumgaláctico de otras galaxias pertenecientes al LG además de MW y sus
- satélites; con el fin de investigar la existencia y extensión de halos
- gaseosos en base a la absorción.
+Dichos resultados pueden ser (re)interpretados a la luz de las observaciones
+ de RN17.
+ En dicho trabajo, se analizan los espectros de fuentes distantes con 
+\begin_inset Formula $b<R_{\text{vir}}$
+\end_inset
+
+ respecto del centro de galaxias en el LG, además de la MW y sus satélites,
+ y así poder investigar la presencia y extensión de su CGM.
  En la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7093,8 +7128,11 @@ noprefix "false"
 
 \end_inset
 
- disponemos sus resultados para la distribución celeste y tamaño angular
- de las galaxias del LG estudiadas.
+ se muestra la distribución celeste y tamaño angular de las galaxias del
+ LG estudiadas, así como distintas líneas de la visual asociadas a fuentes
+ ubicadas a grandes distancias.
+ Puede observarse que alguna de estas líneas atraviesan la zona de influencia
+ de cada galaxia (círculos).
 \end_layout
 
 \begin_layout Standard
@@ -7143,9 +7181,9 @@ Distribución celeste de las 19 galaxias del LG ubicadas por fuera del radio
 \begin_inset Formula $2R_{\text{vir}}$
 \end_inset
 
-, y el color indica la velocidad radial según la escala.
+, y el color indica su velocidad radial sistémica.
  Las cajitas indican la posición de las líneas de la visual con detecciones
- de HVCs, con su color dado por las velocidades medias de absorción.
+ y su color dado por las velocidades medias de absorción.
  Extraída de RN17.
 \end_layout
 
@@ -7160,9 +7198,13 @@ Distribución celeste de las 19 galaxias del LG ubicadas por fuera del radio
 \end_layout
 
 \begin_layout Standard
-En la Figura, vemos que sólo para M31 y la galaxia enana Leo I se tienen
- muestras de múltiples líneas de la visual; y se tienen muestras individuales
- para galaxias enanas/satélites tales como Aquarius, Sextans A y NGC 3109.
+En la Figura, vemos que sólo para M31 y la galaxia enana Leo I existen múltiples
+ líneas de la visual dentro de 
+\begin_inset Formula $2R_{\text{vir}}$
+\end_inset
+
+; mientras que para galaxias tales como Aquarius, Sextans A y NGC 3109,
+ sólo hay una única línea dentro del radio de influencia de cada objeto.
  De todas ellas, sólo se observa una absorción contundente en las líneas
  dirigidas hacia M31.
  La conclusión que se extrae del estudio es que sólo en el caso de M31 hay
@@ -7172,26 +7214,29 @@ En la Figura, vemos que sólo para M31 y la galaxia enana Leo I se tienen
 \end_layout
 
 \begin_layout Standard
-Por nuestra parte, podemos notar que los resultados antes descriptos son
- consistentes con las observaciones.
+Esto último es consistente con los resultados numéricos obtenidos anteriormente.
  A saber: en los subhalos pertenecientes al IGM no hay material gaseoso
  dentro de la banda de completitud (
 \emph on
 i.e.
  
 \emph default
-que se pueda identificar en observaciones); y sólo en el caso de M31 se
- observa un decrecimiento de la densidad con la distancia característico
+que se pueda detectar en las observaciones); y sólo en el caso de M31 se
+ observa una disminución de la densidad con la distancia, característica
  de un halo gaseoso.
- La falta de halo en las galaxias enanas/satélites puede interpretarse en
- el contexto del modelo de 
+ En el contexto de las simulaciones numéricas, la ausencia de CGM en galaxias
+ enanas/satélites puede interpretarse como el resultado del modelo de 
 \emph on
-feedback.
+feedback
+\emph default
+ implementado
+\emph on
+.
  
 \emph default
 En estas galaxias, los vientos de supernova intensos en las regiones centrales
- expulsan la componente gaseosa, dado que no cuentan con la suficiente masa
- para mantenerla ligada gravitacionalmente.
+ expulsan la componente gaseosa, dado que no cuentan con suficiente masa
+ como para mantenerla ligada gravitacionalmente.
 \end_layout
 
 \begin_layout Chapter
