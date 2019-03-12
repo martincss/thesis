@@ -2490,6 +2490,13 @@ LightRay
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Creación-de-lineas"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3016,7 +3023,7 @@ LightRay
 .
  Para definir un objeto de esta clase, se le debe cargar el rango de longitudes
  de onda deseado con un espaciamiento entre valores consecutivos, y una
- lista de las líneas de absorción a generar sobre un espectro contínuo.
+ lista de las líneas de absorción a generar sobre un espectro continuo.
  
 \begin_inset Formula $\tri$
 \end_inset
@@ -3026,7 +3033,7 @@ LightRay
 \end_inset
 
  líneas de absorción en el visible y UV frecuentemente utilizadas; para
- cada una incluye su ión de fuente, su longitud de onda 
+ cada una incluye su ion de fuente, su longitud de onda 
 \begin_inset Formula $\lambda$
 \end_inset
 
@@ -3174,7 +3181,7 @@ siendo
 \begin_inset Formula $\mathcal{M}$
 \end_inset
 
- la masa atómica del ión considerado.
+ la masa atómica del ion considerado.
 \end_layout
 
 \begin_layout Itemize
@@ -3281,7 +3288,7 @@ Espectro de absorción
 en bruto
 \emph default
 .
- El flujo relativo de valor unidad indica una transimión total, mientras
+ El flujo relativo de valor unidad indica una transmisión total, mientras
  que de valor nulo indica una absorción total.
  Podemos ver la absorción en líneas discretas, producto de transiciones
  iónicas en el gas sobre el cual se incide la radiación.
@@ -3373,7 +3380,7 @@ noprefix "false"
 \begin_inset Formula $\lambda$
 \end_inset
 
- contíguos.
+ contiguos.
 \end_layout
 
 \begin_layout Standard
@@ -3455,7 +3462,7 @@ de cada celda corregida por el efecto Döppler utilizando la correspondiente
 \begin_inset Formula $F$
 \end_inset
 
-: densidad columnar de cada celda, en su correspodiente longitud de onda,
+: densidad columnar de cada celda, en su correspondiente longitud de onda,
  junto con su ensanchamiento térmico.
  
 \begin_inset Formula $G$
@@ -3867,7 +3874,1101 @@ literal "false"
 \end_layout
 
 \begin_layout Chapter
-Procesamiento?
+Procesamiento y generación de datos
+\end_layout
+
+\begin_layout Section
+objetivos y esquema
+\end_layout
+
+\begin_layout Standard
+explicar objetivos (comparar con RN17 en base a N14) y los pasos necesarios
+ para obtener los datos finales (idem informe de avance)
+\end_layout
+
+\begin_layout Section
+Lectura de simulaciones cosmológicas
+\end_layout
+
+\begin_layout Subsection
+Salidas de 
+\begin_inset Formula $\gd$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La primer tarea a realizar consiste en la lectura de las salidas (
+\emph on
+outputs
+\emph default
+) de las simulaciones realizadas con 
+\begin_inset Formula $\gd$
+\end_inset
+
+.
+ Cada output consiste en un estado o 
+\emph on
+snapshot 
+\emph default
+de las partículas de gas y estrella para cada tiempo de registro.
+ Este estado contiene, para cada una de las partículas: un identificador
+ único (ID), la posición y velocidad, las propiedades termodinámicas tales
+ como energía interna, temperatura y densidad; y su metalicidad.
+\end_layout
+
+\begin_layout Standard
+Para la lectura de los datos, empleamos y adaptamos un módulo ya desarrollado
+ en Python, 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+iccpy
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ver 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+https://github.com/Lowingbn/iccpy
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+https://github.com/martincss/iccpy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Este contiene rutinas que reciben los archivos de snapshot e introducen
+ sus datos dentro de un objeto, facilitando el acceso individualizado a
+ cada una de las propiedades de las partículas.
+\end_layout
+
+\begin_layout Subsection
+Salidas de 
+\begin_inset Formula $\textsc{subfind}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como habíamos detallado en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:SUBFIND"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, el algoritmo 
+\begin_inset Formula $\textsc{subfind}$
+\end_inset
+
+ permite la identificación de estructuras (
+\emph on
+subhalos
+\emph default
+) que corresponden a galaxias o sus satélites menores.
+\end_layout
+
+\begin_layout Standard
+Para acceder a los resultados de este algoritmo,
+\emph on
+ 
+\emph default
+utilizamos el mismo módulo 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+iccpy
+\end_layout
+
+\end_inset
+
+ que permite la lectura de sus outputs.
+ De esa forma, se tiene disponible una lista con los subhalos, junto con
+ las partículas que integran a cada uno y varios otros atributos.
+ Entre ellos podemos destacar la masa total del subhalo, su radio virial,
+ vector velocidad, y posición de su centro como el mínimo local de potencial.
+ En el caso de las simulaciones del grupo local que utilizamos, los dos
+ principales subhalos corresponden a candidatos para la MW y M31; de modo
+ que podemos obtener sus posiciones con este método.
+\end_layout
+
+\begin_layout Subsection
+Deposición a la grilla
+\end_layout
+
+\begin_layout Standard
+El próximo paso es el que posibilita la interacción entre las simulaciones
+ hidrodinámicas de 
+\begin_inset Formula $\gd$
+\end_inset
+
+ y la generación de espectros sintéticos utilizando 
+\begin_inset Formula $\tri$
+\end_inset
+
+: la deposición a una grilla mediante 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+yt
+\end_layout
+
+\end_inset
+
+.
+ Recordemos que este código nos permite transformar la simulación hidrodinámica
+ basada en partículas a una grilla (en forma de octree) con todas las magnitudes
+ definidas en cada celda.
+ Nos permite también realizar visualizaciones de la simulación, tales como
+ cortes y proyecciones.
+\end_layout
+
+\begin_layout Standard
+Con estas herramientas, centramos el dominio de la simulación en la posición
+ del centro de MW y realizamos la proyección de densidad que vemos en la
+ Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dens_proy_2Mpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Density_proj_2Mpc_LG_Projection_x_density.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dens_proy_2Mpc"
+
+\end_inset
+
+Proyección de la densidad de gas en el dominio de la simulación.
+ En el centro se ubica MW, y en dirección noroeste, M31.
+ Las unidades de distancia son kpc, en longitud comóvil.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En esta proyección podemos distinguir claramente a las regiones más densas
+ en los halos de MW y M31.
+ Se observan también (por ejemplo, abajo a la izquierda) pequeños sistemas
+ satélite; y un filamento gaseoso que atraviesa todo el dominio e incluye
+ a MW y M31.
+\end_layout
+
+\begin_layout Standard
+A modo de ejemplo, realizamos también una proyección de densidad, pero ahora
+ centrándonos en M31; y además exhibimos la estructura de celdas del octree
+ en las Figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:proj_m31"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:proy_m31_cells"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\lang english
+
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{-1cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Density_proj_M31_Projection_x_density.png
+	lyxscale 25
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:proj_m31"
+
+\end_inset
+
+Proyección de la densidad de gas en el halo de M31.
+ Las unidades de distancia son kpc, en longitud comóvil.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{-1cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Density_proj_M31_cells_Projection_x_density.png
+	lyxscale 25
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:proy_m31_cells"
+
+\end_inset
+
+
+\emph on
+Ibid.
+ 
+\emph default
+Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:proj_m31"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Superponemos los bordes de las celdas del octree sobre el cual 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+yt
+\end_layout
+
+\end_inset
+
+ realizó la deposición.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\lang spanish
+Comparando ambas figuras, notamos (como era de esperar), que hay una mayor
+ cantidad de celdas del octree en las regiones más densas de la simulación.
+\end_layout
+
+\begin_layout Section
+Muestreo de líneas de la visual
+\end_layout
+
+\begin_layout Subsection
+Posición de observación
+\end_layout
+
+\begin_layout Standard
+Una vez hecha la deposición al octree, la estructura de datos de la simulación
+ es compatible con 
+\begin_inset Formula $\tri$
+\end_inset
+
+.
+ Para la generación de líneas de la visual, debemos definir primero la posición
+ de observación.
+ Si bien tomar directamente el centro de MW es una opción razonable; para
+ una comparación más precisa con las observaciones construiremos un análogo
+ a la posición del sol.
+\end_layout
+
+\begin_layout Standard
+Para esto, debemos primero determinar el plano del disco de MW; para luego
+ ubicar a nuestro 
+\begin_inset Quotes eld
+\end_inset
+
+sol
+\begin_inset Quotes erd
+\end_inset
+
+ sobre este plano a una distancia de 
+\begin_inset Formula $8$
+\end_inset
+
+ kpc del centro.
+ El plano del disco de MW corresponde al plano cuya normal tiene la dirección
+ del momento angular total de la galaxia.
+ Entonces, a partir del snapshot de 
+\begin_inset Formula $\gd$
+\end_inset
+
+, calculamos el vector momento angular de MW sumando las contribuciones
+ de cada una de las partículas de gas pertenecientes al subhalo que le correspon
+de.
+\end_layout
+
+\begin_layout Standard
+Con la dirección de este momento angular como nuevo eje 
+\begin_inset Formula $z$
+\end_inset
+
+, podemos construir la posición del 
+\begin_inset Quotes eld
+\end_inset
+
+sol
+\begin_inset Quotes erd
+\end_inset
+
+ simplemente tomando un vector perpendicular de norma 
+\begin_inset Formula $8$
+\end_inset
+
+ kpc; el cual luego sumamos como un desplazamiento a la posición del centro
+ de MW.
+\end_layout
+
+\begin_layout Subsection
+Posiciones de emisión
+\end_layout
+
+\begin_layout Standard
+Podemos ahora tomar cada línea de la visual dirigida hacia nuestro 
+\begin_inset Quotes eld
+\end_inset
+
+sol
+\begin_inset Quotes erd
+\end_inset
+
+, al definir un punto de emisión.
+ Con el fin de explorar exhaustivamente el dominio de la simulación, tomamos
+ una muestra de 
+\begin_inset Formula $500$
+\end_inset
+
+ direcciones distribuidas uniformemente en la esfera; y sobre cada una asignamos
+ una posición de emisión a una distancia de 
+\begin_inset Formula $2800$
+\end_inset
+
+ kpc del 
+\begin_inset Quotes eld
+\end_inset
+
+sol
+\begin_inset Quotes erd
+\end_inset
+
+.
+ En la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:all_sphere"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ podemos ver una representación de las 
+\begin_inset Formula $500$
+\end_inset
+
+ direcciones de observación, y en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:100_rays"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ vemos algunas de esas líneas de la visual superpuestas sobre el dominio
+ de la simulación, visto en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dens_proy_2Mpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{-1cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/all_sightlines.png
+	lyxscale 25
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:all_sphere"
+
+\end_inset
+
+Visualización de las direcciones de muestreo de líneas de la visual sobre
+ como puntos sobre una esfera.
+ Se tienen 
+\begin_inset Formula $500$
+\end_inset
+
+ direcciones uniformemente distribuidas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{-1cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/2Mpc_LG_all_rays.png
+	lyxscale 25
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:100_rays"
+
+\end_inset
+
+
+\emph on
+Ibid.
+
+\emph default
+ Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dens_proy_2Mpc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, con la superposición de algunas de las líneas de la visual con punto de
+ observación en la posición del 
+\begin_inset Quotes eld
+\end_inset
+
+sol
+\begin_inset Quotes erd
+\end_inset
+
+ (cerca del centro del dominio).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el 
+\emph on
+sampleo 
+\emph default
+de estas 
+\begin_inset Formula $500$
+\end_inset
+
+ líneas de la visual, debemos tomar algunos recaudos.
+ En principio, debemos recordar que, bajo la convención de 
+\begin_inset Formula $\tri$
+\end_inset
+
+, el redshift 
+\emph on
+decrece
+\emph default
+ en dirección al punto de observación (ver sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Creación-de-lineas"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Por lo tanto, para imponer que el redshift sea nulo en la posición de observaci
+ón, debemos ajustar el redshift en cada punto de emisión adecuadamente.
+ Esto implicó resolver numéricamente la Ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:long_comv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ para determinar el redshift correspondiente al punto de emisión para una
+ dada distancia.
+\end_layout
+
+\begin_layout Standard
+El otro aspecto a considerar es particular a la implementación numérica
+ del sampleo.
+ La generación de cada línea de la visual insume un cierto tiempo computacional,
+ que resulta extenso en el desarrollo del trabajo hasta obtener una muestra
+ definitiva.
+ Más aún, la generación de cada línea de la visual es independiente de las
+ otras, de modo que la creación de la muestra no debe ser necesariamente
+ secuencial.
+ Esto hace al problema 
+\emph on
+vergonzosamente paralelo
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+N.
+ del A.:
+\emph default
+ este es el término utilizado en la literatura
+\end_layout
+
+\end_inset
+
+
+\emph default
+.
+ Teniendo esto en cuenta, implementamos el sampleo siguiendo un esquema
+ de paralelización de tareas.
+ Es decir, se puede generar una cantidad de líneas de la visual de manera
+ simultánea según la cantidad de procesadores y memoria disponibles; reduciendo
+ así el tiempo de computación.
+\end_layout
+
+\begin_layout Subsection
+absorbers
+\end_layout
+
+\begin_layout Standard
+acá decir algo breve que usé el 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+SpectrumGenerator
+\end_layout
+
+\end_inset
+
+ para armarme los archivos de absorbers, que me sirven para tener todo más
+ cómodo; que se generan en paralelo; etc
+\end_layout
+
+\begin_layout Subsection
+Muestreo reducido 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Muestreo-reducido"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si bien la muestra de 
+\begin_inset Formula $500$
+\end_inset
+
+ líneas de la visual en direcciones uniformemente distribuidas nos permite
+ una exploración exhaustiva del dominio de la simulación, las observaciones
+ no se presentan en esa distribución.
+ En particular, cada línea de la visual observada en RN17 proviene de un
+ cuásar que actúa como fuente de radiación donde se detecta el espectro
+ de absorción; los cuales no podemos ubicar a nuestra merced.
+ En la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RN_fig2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ disponemos la distribución celeste de las 
+\begin_inset Formula $270$
+\end_inset
+
+ líneas de la visual consideradas en RN17, en coordenadas galácticas.
+ Podemos notar una mayor densidad de líneas en las regiones cerca de los
+ polos, a partir 
+\begin_inset Formula $\pm30^{\circ}$
+\end_inset
+
+ de latitud; y en la dirección general de M31 (
+\begin_inset Formula $l=121^{\circ}$
+\end_inset
+
+, 
+\begin_inset Formula $b=-21^{\circ}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Para emular esa distribución de líneas, seleccionamos de nuestra muestra
+ de 
+\begin_inset Formula $500$
+\end_inset
+
+ líneas a las que se encuentren comprendidas en conos de 
+\begin_inset Formula $60^{\circ}$
+\end_inset
+
+ de amplitud en torno a las direcciones polares, y en un cono de 
+\begin_inset Formula $30^{\circ}$
+\end_inset
+
+ de amplitud en torno a la dirección de M31.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{-1cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/RN_fig2_posta.png
+	lyxscale 25
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RN_fig2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{-1cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/sightlines_selection.png
+	lyxscale 25
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sight_selection"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -4062,7 +5163,7 @@ noprefix "false"
 
  en la dirección hacia M31.
  Es a esta distancia en la cual el rayo comienza a atravesar el halo de
- M31, explicando así este pico de densidad, cuya posición coincide aproximadaman
+ M31, explicando así este pico de densidad, cuya posición coincide aproximadamen
 te con la distancia MW-M31 en la simulación (
 \begin_inset Formula $652$
 \end_inset
@@ -4224,16 +5325,16 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement ph
 wide false
-sideways false
+sideways true
 status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename images/RN_m31_away_253kpc.png
-	scale 40
+	scale 47
 
 \end_inset
 
@@ -4326,16 +5427,16 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement ph
 wide false
-sideways false
+sideways true
 status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename images/RN_m31_away_691kpc.png
-	scale 40
+	scale 47
 
 \end_inset
 
@@ -4431,16 +5532,16 @@ cosmológico siempre produce un corrimiento al rojo, podemos concluir que
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement ph
 wide false
-sideways false
+sideways true
 status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename images/RN_m31_away_1000kpc.png
-	scale 40
+	scale 47
 
 \end_inset
 
@@ -4669,7 +5770,7 @@ noprefix "false"
 \end_inset
 
 , ahora considerando a todas las direcciones ortogonales mencionadas.
- Para ésto, obtenemos la densidad en cada una de las direcciones 
+ Para esto, obtenemos la densidad en cada una de las direcciones 
 \emph on
 away, 
 \emph default
@@ -4793,7 +5894,6 @@ noprefix "false"
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Subsubsection
@@ -4828,7 +5928,7 @@ Repetimos la metodología de la sección anterior: comparamos la
 
  en la dirección hacia M31 con su promedio sobre todas las direcciones ortogonal
 es seleccionadas.
- Grafiamos estas magnitudes en función de la distancia en la Figura 
+ Graficamos estas magnitudes en función de la distancia en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:v_los_profiles_m31_away_all"
@@ -4932,7 +6032,7 @@ noprefix "false"
 
 \end_inset
 
-, correspondiente a la zona de mayor densidadad de gas en esta dirección,
+, correspondiente a la zona de mayor densidad de gas en esta dirección,
  como se ve en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5021,7 +6121,7 @@ fracción de cobertura (covering fraction).
 \emph default
  Observacionalmente, esta magnitud se define como la fracción de líneas
  de la visual cuya densidad columnar en un elemento particular supere un
- valor dado (correspondiente a la sensibilidad del intrumento); dando así
+ valor dado (correspondiente a la sensibilidad del instrumento); dando así
  una noción de qué fracción del cielo está cubierta por gas de una dada
  especie química.
  Esta magnitud resume una primera aproximación a la distribución del gas
@@ -5392,6 +6492,28 @@ Calculamos la fracción de cobertura en función del umbral de densidad columnar
 \end_inset
 
 ).
+ Utilizamos aquí la muestra de líneas de la visual tomadas emulando la distribuc
+ión de RN17 (ver Sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Muestreo-reducido"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sight_selection"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
  Disponemos estos resultados en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5630,9 +6752,9 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement p
 wide false
-sideways false
+sideways true
 status open
 
 \begin_layout Plain Layout
@@ -5653,7 +6775,7 @@ hspace*{-1cm}
 
 \begin_inset Graphics
 	filename images/4_subhalos_N_b.png
-	scale 40
+	scale 47
 
 \end_inset
 
@@ -5682,7 +6804,7 @@ Densidad columnar
 \begin_inset Formula $R_{\text{vir}}$
 \end_inset
 
- corrspondiente, para cada línea de absorción.
+ correspondiente, para cada línea de absorción.
  Mantenemos la clave de colores para las especies iónicas, según la Figura
  
 \begin_inset CommandInset ref
@@ -5758,7 +6880,7 @@ La identificación de la región a la cual pertenece cada subhalo resulta
  clave para interpretar este comportamiento.
  Podemos notar que todos los subhalos salvo M31 poseen masas y radios viriales
  dentro del mismo orden de magnitud, pero algunos de ellos presentan valores
- de densidad columar bastante más bajos que otros, de modo tal que no estén
+ de densidad columnar bastante más bajos que otros, de modo tal que no estén
  comprendidos dentro de la banda de completitud.
  Si los discriminamos según la región de pertenencia, observamos que estos
  casos particulares corresponden a los subhalos que pertenecen al IGM.
@@ -5772,7 +6894,7 @@ La identificación de la región a la cual pertenece cada subhalo resulta
 \begin_inset Formula $b\sim0.75R_{\text{vir}}=173\text{ kpc}$
 \end_inset
 
-; mientras que en el resto, las regiones muestradas se extienen como máximo
+; mientras que en el resto, las regiones muestradas se extienden como máximo
  hasta 
 \begin_inset Formula $\sim90\text{ kpc}$
 \end_inset
@@ -5914,6 +7036,11 @@ implementamos el metodo para simular espectros de absorcion del IGM y halos,
 
 \begin_layout Standard
 resultados, vemos que (cada resultado)
+\end_layout
+
+\begin_layout Chapter
+\start_of_appendix
+Esto es un apéndice ordinario
 \end_layout
 
 \begin_layout Standard
