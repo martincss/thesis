@@ -2996,6 +2996,13 @@ SpectrumGenerator
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Generación-de-espectros"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3878,12 +3885,34 @@ Procesamiento y generación de datos
 \end_layout
 
 \begin_layout Section
-objetivos y esquema
+Objetivos y métodos
 \end_layout
 
 \begin_layout Standard
-explicar objetivos (comparar con RN17 en base a N14) y los pasos necesarios
- para obtener los datos finales (idem informe de avance)
+El objetivo del presente trabajo es implementar un método para la generación
+ de espectros sintéticos a partir de las simulaciones cosmológicas desarrolladas
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "N14"
+literal "false"
+
+\end_inset
+
+ (de ahora en más, N14) y establecer una comparación con las observaciones
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN17"
+literal "false"
+
+\end_inset
+
+ (de ahora en más, RN17).
+ En el capítulo anterior hemos visto las herramientas que nos permiten llevar
+ a cabo esta tarea; en este capítulo veremos los pasos particulares ejecutados
+ para cumplir con el objetivo y su implementación.
+ 
 \end_layout
 
 \begin_layout Section
@@ -4333,7 +4362,14 @@ Muestreo de líneas de la visual
 \end_layout
 
 \begin_layout Subsection
-Posición de observación
+Posición de observación 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Posición-de-observación"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4711,7 +4747,7 @@ status open
 N.
  del A.:
 \emph default
- este es el término utilizado en la literatura
+ éste es el término utilizado en la literatura
 \end_layout
 
 \end_inset
@@ -4727,11 +4763,33 @@ N.
 \end_layout
 
 \begin_layout Subsection
-absorbers
+Archivos de datos
 \end_layout
 
 \begin_layout Standard
-acá decir algo breve que usé el 
+Según hemos visto en la Sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Creación-de-lineas"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, cada línea de la visual es representada por un objeto 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LightRay
+\end_layout
+
+\end_inset
+
+ en el código, donde se guardan algunos de sus atributos.
+ Nos gustaría también tener un acceso simultáneo a las magnitudes que calcula
+ un objeto 
 \begin_inset Flex Code
 status open
 
@@ -4741,8 +4799,25 @@ SpectrumGenerator
 
 \end_inset
 
- para armarme los archivos de absorbers, que me sirven para tener todo más
- cómodo; que se generan en paralelo; etc
+ (Sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Generación-de-espectros"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), tales como densidad columnar y parámetros del espectro.
+\end_layout
+
+\begin_layout Standard
+Con eso en mente, implementamos un protocolo para la creación de archivos
+ de datos que nos permitan un fácil acceso a todas las magnitudes relevantes
+ en una línea de la visual.
+ Nuevamente, la generación de cada archivo es independiente de los demás,
+ por lo cual utilizamos también un esquema de paralelización de tareas.
 \end_layout
 
 \begin_layout Subsection
@@ -4813,12 +4888,38 @@ Para emular esa distribución de líneas, seleccionamos de nuestra muestra
 \end_inset
 
  de amplitud en torno a la dirección de M31.
- 
+ Podemos ver esta selección en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sight_selection"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+; en contraste con la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:all_sphere"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, este muestreo reducido contiene 
+\begin_inset Formula $259$
+\end_inset
+
+ líneas de las 
+\begin_inset Formula $500$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float figure
 placement h
 wide false
@@ -4826,8 +4927,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -4872,8 +4971,6 @@ hspace*{-1cm}
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -4883,7 +4980,19 @@ name "fig:RN_fig2"
 
 \end_inset
 
+Distribución celeste de las líneas de la visual observadas en RN17; en coordenad
+as galácticas.
+ Las coordenadas de M31 son (
+\begin_inset Formula $l=121^{\circ}$
+\end_inset
 
+, 
+\begin_inset Formula $b=-21^{\circ}$
+\end_inset
+
+).
+ El color indica su velocidad radial sistémica.
+ Extraía de RN17
 \end_layout
 
 \end_inset
@@ -4942,8 +5051,6 @@ hspace*{-1cm}
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -4953,7 +5060,31 @@ name "fig:sight_selection"
 
 \end_inset
 
+Visualización de las direcciones seleccionas de la muestra de la Figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:all_sphere"
+plural "false"
+caps "false"
+noprefix "false"
 
+\end_inset
+
+.
+ Se indican la dirección de M31 con una estrella azul, y las direcciones
+ polares con cruces rojas.
+ Los círculos de color índigo corresponden a las direcciones dentro de un
+ cono de 
+\begin_inset Formula $30^{\circ}$
+\end_inset
+
+ en torno a M31; y los de color orquídeo a las direcciones dentro de conos
+ de 
+\begin_inset Formula $60^{\circ}$
+\end_inset
+
+ en torno a cada dirección polar.
 \end_layout
 
 \end_inset
@@ -4973,6 +5104,47 @@ name "fig:sight_selection"
 
 \begin_layout Chapter
 Análisis y resultados
+\end_layout
+
+\begin_layout Standard
+En este capítulo veremos un desarrollo de los principales resultados y su
+ comparación con las observaciones correspondientes.
+ A lo largo del capítulo, nos referiremos a los candidatos para MW y M31
+ en las simulaciones simplemente como 
+\begin_inset Quotes eld
+\end_inset
+
+MW
+\begin_inset Quotes erd
+\end_inset
+
+ y 
+\begin_inset Quotes eld
+\end_inset
+
+M31
+\begin_inset Quotes erd
+\end_inset
+
+; y a la posición del 
+\begin_inset Quotes eld
+\end_inset
+
+sol
+\begin_inset Quotes erd
+\end_inset
+
+ artificial desarrollada en la Sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Posición-de-observación"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ como posición del sol.
 \end_layout
 
 \begin_layout Section
