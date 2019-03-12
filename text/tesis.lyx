@@ -190,10 +190,7 @@ name "chap:Introducción"
 \end_layout
 
 \begin_layout Section
-\begin_inset Formula $\Lambda$
-\end_inset
-
-CDM [tesis de cecilia]
+Modelo cosmológico 
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:LCDM"
@@ -244,7 +241,7 @@ De acuerdo con el modelo, aproximadamente sólo un
 
  por 
 \emph on
-energía oscura, 
+energía oscura; 
 \emph default
 el nombre que recibe la densidad de energía correspondiente a la inclusión
  de 
@@ -252,45 +249,42 @@ el nombre que recibe la densidad de energía correspondiente a la inclusión
 \end_inset
 
 .
- Del total de materia, un 
-\begin_inset Formula $90\%$
+ Del total de materia, aproximadamente un 
+\begin_inset Formula $85\%$
 \end_inset
 
  está formado por la llamada 
 \emph on
 materia oscura 
 \emph default
-que no parece interactuar electromagnéticamente, de esa forma evitando su
- observación mediante emisión u absorción de radiación; es por esto que
- sólo se aprecian sus efectos gravitacionales.
+que no parece interactuar electromagnéticamente, evitando, de esa forma,
+ su observación mediante emisión u absorción de radiación; apreciándose
+ únicamente sus efectos gravitacionales.
  El modelo 
 \begin_inset Formula $\lcdm$
 \end_inset
 
  supone que la materia oscura está formada por partículas de baja velocidad
- térmica 
+ térmica -es decir, 
 \emph on
--frías-.
+frías.
 \end_layout
 
 \begin_layout Standard
-El restante 
-\begin_inset Formula $10\%$
-\end_inset
-
- de la materia en el universo es conocida como 
+La cantidad restante de materia en el Universo es conocida como 
 \emph on
 materia bariónica u ordinaria, 
 \emph default
-compuesta por partículas descriptas según el Modelo Estándar.
- Es ésta componente la cual integra los objetos observables.
+y está compuesta por partículas descriptas según el Modelo Estándar.
+ Es esta componente la responsable de brindarnos información electromagnética
+ proveniente de los objetos astrofísicos observados.
 \end_layout
 
 \begin_layout Standard
 En el marco de este modelo, se tiene un escenario jerárquico para la formación
  de galaxias 
 \emph on
-(Hierarchical Clustering Model)
+(hierarchical clustering model)
 \emph default
 .
  Las estructuras cosmológicas emergen de pequeñas fluctuaciones de densidad
@@ -298,18 +292,19 @@ En el marco de este modelo, se tiene un escenario jerárquico para la formación
  Mientras evoluciona el universo, estas perturbaciones son amplificadas
  gravitacionalemente, y la materia oscura colapsa formando estructuras pequeñas
  primero.
- Dentro de estos halos de materia oscura, el gas colapsa y se enfría, dando
- lugar a la formación estelar.
+ Dentro de estos halos de materia oscura, el gas colapsa y se enfría, eventualme
+nte dando lugar a la formación estelar.
  Éstas estructuras se agregan y fusionan, generando así sistemas más grandes
  a partir de otros más pequeños.
 \end_layout
 
 \begin_layout Standard
-De esa forma, cada galaxia sigue una historia evolutiva única, con 
+De esa forma, cada galaxia sigue una historia evolutiva única, con fusiones
+ (o 
 \emph on
-mergers 
+mergers
 \emph default
-y acreción particulares.
+) con otros sistemas y acreción de gas particulares.
  Así, a partir del modelo 
 \begin_inset Formula $\lcdm$
 \end_inset
@@ -318,7 +313,7 @@ y acreción particulares.
 \end_layout
 
 \begin_layout Section
-LG
+Grupo local de galaxias
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:LG"
@@ -331,22 +326,51 @@ name "sec:LG"
 \begin_layout Standard
 Nuestra galaxia, 
 \emph on
-la vía láctea (MW),
+la vía láctea (
+\emph default
+o 
+\emph on
+Milky Way, 
+\emph default
+MW
+\emph on
+),
 \emph default
  no se encuentra aislada sino que forma parte de un grupo, llamado el 
 \emph on
-grupo local (LG).
+grupo local (
+\emph default
+LG
+\emph on
+).
  
 \emph default
-Integra también este grupo la galaxia espiral vecina 
+Integra también este grupo la vecina galaxia espiral de 
 \emph on
-Andrómeda (M31),
+Andrómeda (
 \emph default
- de una masa similar a MW y a una distancia menor a 
-\begin_inset Formula $1$
+M31
+\emph on
+),
+\emph default
+ la cual posee una masa similar a MW y está ubicada a una distancia de unos
+ 
+\begin_inset Formula $\sim700$
 \end_inset
 
-Mpc; junto con otras galaxias satélites de menor masa [citation-needed].
+ kpc; junto con otras galaxias (en su mayoría satélites) de menor masa
+\emph on
+ 
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LG"
+literal "false"
+
+\end_inset
+
+.
  Galaxias espirales semejantes son prevalentes en el universo, lo cual respresen
 ta una prueba al modelo 
 \begin_inset Formula $\Lambda$
