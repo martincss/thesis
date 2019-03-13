@@ -5173,19 +5173,19 @@ noprefix "false"
 \begin_layout Standard
 En todo el trabajo, nos concentramos en cuatro líneas de absorción utilizadas
  en RN17: 
-\begin_inset Formula $\textsc{C}_{\textsc{ii}}\,1335$
+\begin_inset Formula $\textsc{C}\textsc{ii}\,1335$
 \end_inset
 
 , 
-\begin_inset Formula $\textsc{C}_{\textsc{iv}}\,1548$
+\begin_inset Formula $\textsc{C}\textsc{iv}\,1548$
 \end_inset
 
 , 
-\begin_inset Formula $\textrm{Si}_{\textsc{ii}}\,1193$
+\begin_inset Formula $\textrm{Si}\textsc{ii}\,1193$
 \end_inset
 
 , y 
-\begin_inset Formula $\textrm{Si}_{\textsc{iii}}\,1206$
+\begin_inset Formula $\textrm{Si}\textsc{iii}\,1206$
 \end_inset
 
 
@@ -5206,7 +5206,7 @@ puente
 \end_inset
 
  de gas entre MW y M31, amparada por observaciones de absorción de 
-\begin_inset Formula $\text{O}_{\textsc{vi}}$
+\begin_inset Formula $\text{O}\textsc{vi}$
 \end_inset
 
  con altas velocidades radiales hacia MW, en la dirección general de M31.
@@ -5839,7 +5839,7 @@ away
  no han habido cambios respecto a la anterior distancia.
  Para la dirección hacia M31 no se presentan mayores diferencias, salvo
  una ligera absorción mayor en la línea 
-\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
+\begin_inset Formula $\text{C}\textsc{iv}\,1548$
 \end_inset
 
 , lo cual nos puede indicar que este elemento se encuentra en el IGM, además
@@ -6555,7 +6555,7 @@ Podemos notar varias tendencias en los resultados, empezando por el umbral
  hasta un valor cercano a cero en una distancia aproximada al radio virial
  de cada una.
  Esto sucede en todas las líneas de absorción salvo 
-\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
+\begin_inset Formula $\text{C}\textsc{iv}\,1548$
 \end_inset
 
 , en la cual se observa un decrecimiento mucho más lento.
@@ -6563,7 +6563,7 @@ Podemos notar varias tendencias en los resultados, empezando por el umbral
  hace menos pronunciado conforme aumenta la distancia.
  El único caso en el cual esta tendencia no tiene lugar corresponde a la
  línea 
-\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
+\begin_inset Formula $\text{C}\textsc{iv}\,1548$
 \end_inset
 
  desde MW: su fracción comienza en un valor 
@@ -6600,7 +6600,7 @@ Por otro lado, para el umbral mayor
 
  para M31.
  Notamos también que, en ambas galaxias, la cobertura de la línea 
-\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
+\begin_inset Formula $\text{C}\textsc{iv}\,1548$
 \end_inset
 
  es casi nula en todas las distancias; lo cual representa un fuerte contraste
@@ -6609,15 +6609,15 @@ Por otro lado, para el umbral mayor
  nuevamente es el mismo en ambas galaxias.
  No obstante, el ordenamiento ha cambiado en comparación con el umbral menor,
  puesto que la línea de menor cobertura (exceptuando a 
-\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
+\begin_inset Formula $\text{C}\textsc{iv}\,1548$
 \end_inset
 
 ) es ahora 
-\begin_inset Formula $\text{Si}_{\textsc{iii}}\,1206$
+\begin_inset Formula $\text{Si}\textsc{iii}\,1206$
 \end_inset
 
 , en lugar de 
-\begin_inset Formula $\text{Si}_{\textsc{ii}}\,1193$
+\begin_inset Formula $\text{Si}\textsc{ii}\,1193$
 \end_inset
 
 , siendo estas dos líneas las de menor cobertura.
@@ -6657,11 +6657,11 @@ noprefix "false"
  Se puede entender entonces, que en las escalas más grandes del halo (correspond
 ientes al umbral más bajo de densidad columnar) dominen los iones más altos
  (
-\begin_inset Formula $\textsc{C}_{\textsc{iv}}$
+\begin_inset Formula $\textsc{C}\textsc{iv}$
 \end_inset
 
 , 
-\begin_inset Formula $\textrm{Si}_{\textsc{iii}}$
+\begin_inset Formula $\textrm{Si}\textsc{iii}$
 \end_inset
 
 ), ya que el gas en estas regiones es más caliente.
@@ -6823,7 +6823,7 @@ s.
 Podemos observar que en todos los casos la cobertura es monótonamente decrecient
 e con los umbrales de densidad y velocidad en el rango considerado.
  Exceptuando a la línea 
-\begin_inset Formula $\text{C}_{\textsc{iv}}\,1548$
+\begin_inset Formula $\text{C}\textsc{iv}\,1548$
 \end_inset
 
 , observamos un comportamiento cualitativamente similar a las tendencias
