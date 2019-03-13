@@ -121,6 +121,18 @@ End
 Notas para tesis
 \end_layout
 
+\begin_layout Author
+Martín Carusso
+\begin_inset Newline newline
+\end_inset
+
+Directora: Cecilia Scannapieco
+\begin_inset Newline newline
+\end_inset
+
+Codirector: Sebastían Nuza
+\end_layout
+
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\lcdm}{\Lambda\mathrm{CDM}}
@@ -167,6 +179,300 @@ Notas para tesis
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\tdev}[2]{\dfrac{\dd#1}{\dd#2}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage  
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+setstretch{1} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\begin_layout Plain Layout
+
+ALUMNO: Martín Carusso 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+L.U.
+ : 922/13 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+LUGAR DE TRABAJO:  Departamento de física 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+DIRECTORA: Cecilia Scannapieco 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+CODIRECTOR: Sebastían Nuza 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+FECHA DE INICIO: Abril 2018 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+FECHA DE FINALIZACIÓN: Marzo 2019 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+FECHA DE EXAMEN: 28 de Marzo de 2019 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Informe Final Aprobado por: 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{5cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+line(1,0){175} 
+\backslash
+hspace{60pt} 
+\backslash
+line(1,0){175}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\begin_layout Plain Layout
+
+Autor 
+\backslash
+hspace{205pt} Jurada
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+line(1,0){175} 
+\backslash
+hspace{60pt} 
+\backslash
+line(1,0){175}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\begin_layout Plain Layout
+
+Director 
+\backslash
+hspace{190pt} Jurado
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+line(1,0){175} 
+\backslash
+hspace{60pt} 
+\backslash
+line(1,0){175}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\begin_layout Plain Layout
+
+Codirector 
+\backslash
+hspace{177pt} Jurado
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+line(1,0){175} 
+\backslash
+hspace{60pt} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\begin_layout Plain Layout
+
+Profesor de Tesis de Licenciatura 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+mbox{} 
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Resumen
+\end_layout
+
+\begin_layout Chapter*
+Agradecimientos
 \end_layout
 
 \begin_layout Standard
@@ -290,7 +596,7 @@ En el marco de este modelo, se tiene un escenario jerárquico para la formación
  Las estructuras cosmológicas emergen de pequeñas fluctuaciones de densidad
  con estadística gaussiana en el universo temprano.
  Mientras evoluciona el universo, estas perturbaciones son amplificadas
- gravitacionalemente, y la materia oscura colapsa formando estructuras pequeñas
+ gravitacionalmente, y la materia oscura colapsa formando estructuras pequeñas
  primero.
  Dentro de estos halos de materia oscura, el gas colapsa y se enfría, eventualme
 nte dando lugar a la formación estelar.
@@ -371,8 +677,50 @@ literal "false"
 \end_inset
 
 .
- Galaxias espirales semejantes son prevalentes en el universo, lo cual respresen
-ta una prueba al modelo 
+ Este par de galaxias presenta masas del orden de 
+\begin_inset Formula $10^{12}\,M_{\sun}$
+\end_inset
+
+, y ambas se acercan entre sí a una velocidad de aproximadamente 
+\begin_inset Formula $110\,\text{km}\slash\text{s}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "m31vel"
+literal "false"
+
+\end_inset
+
+.
+ Conociendo la masa de cada galaxia, podemos definir su 
+\emph on
+radio virial 
+\emph default
+
+\begin_inset Formula $R_{\text{vir}}$
+\end_inset
+
+ como el radio de una esfera que comprenda una densidad de masa 
+\begin_inset Formula $200$
+\end_inset
+
+ veces mayor a la densidad crítica del universo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "N14"
+literal "false"
+
+\end_inset
+
+.
+ Esta magnitud nos da una indicación del tamaño característico de cada galaxia.
+\end_layout
+
+\begin_layout Standard
+Galaxias espirales semejantes son prevalentes en el universo, lo cual representa
+ una consistencia con la predicción del modelo 
 \begin_inset Formula $\Lambda$
 \end_inset
 
@@ -390,12 +738,12 @@ literal "false"
 
 \begin_layout Standard
 Estudios en las últimas décadas han acumulado evidencia a favor de que el
- 
+ entorno (o 
 \emph on
-environment
+environment)
 \emph default
- en donde se encuentren las galaxias influye en la determinación de sus
- propiedades finales.
+ en donde se residen las galaxias influye en la determinación de sus propiedades
+ finales.
  Por ejemplo, predicciones teóricas en el marco de 
 \begin_inset Formula $\lcdm$
 \end_inset
@@ -421,12 +769,12 @@ literal "false"
 \emph on
 environments
 \emph default
- en forma de 
+ en forma de grupos poco ligados (
 \emph on
 loose groups
 \emph default
- como el LG, la morfología de las galaxias integrantes no se ve afectada,
- pero su SFR aumenta [vs no estar en el grupo??].
+) como el LG, la morfología de las galaxias integrantes no se ve afectada,
+ pero su tasa de formación estelar aumenta con la densidad del entorno.
 \end_layout
 
 \begin_layout Subsection
@@ -446,22 +794,24 @@ La distribución de material gaseoso, tanto en las galaxias como en su
 environment
 \emph default
 , se presenta como un aspecto clave para el entendimiento de la formación
- galáctica y el estadio evolutivo reciente de las primeras.
- Por ejemplo, 
+ galáctica y su estadio evolutivo.
+ Por ejemplo, la acreción (o 
 \emph on
-inflows
+inflow)
 \emph default
- de gas frío en el presente pueden dar cuenta de una formación estelar activa
- en el futuro próximo.
- Como contracara, 
+ de gas frío en el tiempo presente pueden dar cuenta de una formación estelar
+ activa en el futuro próximo.
+ Como contracara, eyecciones (o 
 \emph on
-outflows
+outflows)
 \emph default
- de gas caliente pueden indicar que la formación estelar y 
+ de gas caliente pueden indicar que la formación estelar y su impacto en
+ el medio interestelar producido por supernovas y estrellas de masa intermedia
+ (dicho proceso recibe el nombre genérico de 
 \emph on
 feedback
 \emph default
- por supernovas han tenido lugar en el pasado reciente 
+) han tenido lugar en el pasado reciente 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "N14"
@@ -475,29 +825,29 @@ literal "false"
 \begin_layout Standard
 Estudios teóricos y observacionales indican que una fracción sustancial
  (y hasta dominante) del material gaseoso difuso en galaxias espirales se
- encuentra por fuera del disco, en un halo extendido hasta su radio virial
- 
-\begin_inset Formula $R_{\text{vir}}$
-\end_inset
-
-.
+ encuentra por fuera del disco, en un halo extendido hasta su radio virial.
  A esta componente de gas se la conoce como 
 \emph on
-medio circumgaláctico (CGM).
+medio circumgaláctico (
+\emph default
+CGM
+\emph on
+).
 
 \emph default
  A la (gran) cantidad de gas que existe por fuera del radio virial se le
  denomina genéricamente 
 \emph on
-medio intergaláctico (IGM)
+medio intergaláctico (
 \emph default
-, el cual puede además estar gravitacionalmente ligado al grupo ó 
+IGM
 \emph on
-cluster
+)
 \emph default
- de galaxias, llamado así 
+, el cual puede además estar gravitacionalmente ligado al grupo de galaxias,
+ que suele denominarse 
 \emph on
-medio intragrupo/intracluster.
+medio intragrupo.
 
 \emph default
  El ciclo de vida de este gas está determinado por la formación de estructura
@@ -505,13 +855,8 @@ medio intragrupo/intracluster.
 \emph on
 mergers; 
 \emph default
-de ese modo, sus condiciones físicas y abundancias químicas son bastante
- variadas, y éste puede oficiar como un gran reservorio de bariones [cf.
- 
-\emph on
-missing mass problem??
-\emph default
-]
+de ese modo, sus condiciones físicas y abundancias químicas resultan bastante
+ variadas 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "RN17,N14"
@@ -532,22 +877,22 @@ En particular para el LG, en las últimas dos décadas se ha alcanzado un
 \end_inset
 
 cm de la línea hiperfina del hidrógeno neutro 
-\begin_inset Formula $\left(\text{H}_{\text{I}}\right),$
+\begin_inset Formula $\left(\text{H}\textsc{i}\right),$
 \end_inset
 
 complementadas con espectros de absorción del gas neutro y ionizado en las
  bandas ópticas y UV, contra fuentes extragalácticas.
- Se entiende actualmente que el CGM de MW y M31 es de caracter multifásico:
- coexisten una fase fría 
-\begin_inset Formula $\left(T<10^{4}\text{K}\right)$
+ Se entiende actualmente que el CGM de MW y M31 es de carácter multifásico:
+ en el mismo coexisten una fase fría 
+\begin_inset Formula $\left(T<10^{4}\text{ K}\right)$
 \end_inset
 
- predominablemente neutra y densa, principalmente concentrada dentro de
- sendos radios viriales; junto con una fase caliente 
-\begin_inset Formula $\left(T\gtrsim10^{5}\text{K}\right)$
+ predominantemente neutra y densa, principalmente concentrada en las zonas
+ internas de los halos; junto con una fase caliente 
+\begin_inset Formula $\left(T\gtrsim10^{5}\text{ K}\right)$
 \end_inset
 
- mayormente ionizada, extendida también sobre el IGM.
+, mayormente ionizada, extendida también sobre el IGM.
  Es posible que esta fase caliente y tenue hospede a una gran fracción de
  la materia bariónica en el LG [y acá más sobre missing mass??].
 \begin_inset CommandInset citation
@@ -561,9 +906,9 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Según el modelo actual de formación galáctica, existen dos principales modos
- de acreción en la providencia del gas frío posteriormente empleado en la
- formación estelar.
+Según el modelo actual de formación galáctica, existen dos modos principales
+ de acreción de material gaseoso posteriormente empleado en la formación
+ estelar.
  Un modo 
 \begin_inset Quotes fls
 \end_inset
@@ -572,8 +917,8 @@ caliente
 \begin_inset Quotes frs
 \end_inset
 
- en el cual el gas de alta densidad que rodea a la galaxia se enfría radiativame
-nte y colapsa hacia el centro; y un modo 
+ en el cual el gas difuso que rodea a la galaxia se enfría radiativamente
+ y colapsa hacia el centro; y un modo 
 \begin_inset Quotes fls
 \end_inset
 
@@ -581,11 +926,20 @@ frío
 \begin_inset Quotes frs
 \end_inset
 
-, conducido por filamentos de gas frío que ingresan dentro del radio virial
- del halo.
- Estudios recientes [citar??] indican que la acreción fría tiende a ocupar
- las regiones centrales, mientras que la acreción de gas ionizado caliente
- es dominante sobre un gran rango de distancias hasta el radio virial.
+, conformado por filamentos de gas más frío y denso que ingresan dentro
+ del radio virial del halo.
+ Estudios numéricos sugieren que la acreción fría tiende a ocupar las regiones
+ centrales, mientras que la acreción de gas ionizado caliente domina sobre
+ un gran rango de distancias que van desde las proximidades de los discos
+ galácticos hasta el radio virial.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "keres"
+literal "false"
+
+\end_inset
+
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -598,10 +952,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-De esa forma, estudios con el objetivo de caracterizar el CGM de MW y M31,
- y su conexión con el gas en el IGM son claves en aras de profundizar nuestra
- comprensión de la distribución y composición de la materia bariónica en
- el universo local.
+En consecuencia, es posible afirmar que la caracterización del CGM de las
+ galaxias del LG, con especial énfasis en MW y M31, así como su conexión
+ con el gas perteneciente al IGM resulta clave a la hora de profundizar
+ nuestra comprensión de la distribución y composición de la materia bariónica
+ en el universo local.
 \end_layout
 
 \begin_layout Chapter
@@ -624,38 +979,132 @@ La formación de estructura a escala galáctica en un contexto cosmológico
  herramienta esencial.
  Las simulaciones implementan las leyes físicas relevantes al problema,
  pero además deben incluirse modelos efectivos de subgrilla a fin de considerar
- procesos físicos que no están enteramente entendidos.
+ procesos físicos tales como la formación estelar en escalas que no es posible
+ resolver directamente.
 \end_layout
 
 \begin_layout Standard
-En particular, nuestro interés se centra en las simulaciones del Grupo Local
- y su componente gaseosa.
- Éstas nos permiten identificar estructuras en la distribución del gas y
- estudiar su origen y evolución.
- Comparar las simulaciones con las observaciones nos permite guiar e interpretar
- mejor estas últimas.
- Esta comparación no es trivial; se debe tener en cuenta qué resultados
- se obtienen de las observaciones, y cómo pueden ser construidos a partir
- de las simulaciones.
+En particular, nuestro interés se centra en las simulaciones del LG y su
+ componente gaseosa.
+ Éstas nos permiten identificar estructuras en la distribución del gas con
+ el fin de estudiar su origen y evolución.
+ La comparación de las simulaciones con las observaciones nos permite guiar
+ e interpretar mejor estas últimas.
+ Sin embargo, esta comparación no es trivial; se debe tener en cuenta qué
+ tipo de resultados se obtienen de las observaciones, y cómo éstos pueden
+ ser construidos a partir de las simulaciones.
 \end_layout
 
 \begin_layout Standard
 En este capítulo veremos un resumen de los distintos códigos y simulaciones
  necesarias para el presente trabajo.
- Empezaremos por el formalismo de base para las simulaciones hidrodinámicas
- con autogravedad, SPH.
- Luego, su implementación particular en el código 
-\begin_inset Formula $\textsc{{gadget-2}}$
+ Empezaremos por el código para las simulaciones hidrodinámicas con autogravedad
+, 
+\begin_inset Formula $\textsc{{gadget-3}},$
 \end_inset
 
-, junto con extensiones para la formación estelar y otros procesos subgrilla,
- seguidas por la serie de simulaciones particulares a este trabajo.
- Las últimas secciones están dedicadas a el conjunto de herramientas necesaria
+pasando por su formalismo de base para la hidrodinámica, SPH , junto con
+ extensiones para la formación estelar y otros procesos subgrilla, seguidas
+ por la serie de simulaciones particulares a este trabajo.
+ Las últimas secciones están dedicadas a el conjunto de herramientas necesarias
  para la síntesis de espectros de absorción a partir de las simulaciones
  descriptas.
 \end_layout
 
 \begin_layout Section
+GADGET 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:GADGET-2"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las simulaciones utilizadas para la formación galáctica en un contexto cosmológi
+co emplean el código 
+\shape smallcaps
+gadget-3
+\shape default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gadget2005"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "aquarius"
+literal "false"
+
+\end_inset
+
+, con modificaciones para la formación estelar, el 
+\emph on
+feedback
+\emph default
+ por supernovas , enriquecimiento químico y enfriamiento dependiente de
+ metales según 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cecilia2005"
+literal "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cecilia2006"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El código 
+\shape smallcaps
+gadget
+\shape default
+ describe la evolución acoplada de un gas ideal y un fluido no colisional,
+ dentro de un universo cuya dinámica global está regulada por el modelo
+ cosmológico elegido.
+ La descripción se hace en términos de partículas de tres clases: materia
+ oscura, estrellas y gas.
+ Para los primeros dos tipos, sólo se utiliza una dinámica de auto-gravitación,
+ mientras que las partículas de gas modelan la hidrodinámica según la técnica
+ SPH que detallaremos en las próximas secciones.
+\end_layout
+
+\begin_layout Standard
+Llevar a cabo estas simulaciones implica un gran costo computacional.
+ 
+\shape smallcaps
+gadget
+\shape default
+ es un código masivamente paralelizado, de modo que es capaz de correr en
+ supercomputadoras distribuyendo el trabajo en muchos procesadores, reduciendo
+ así el tiempo total de cómputo.
+ El código fuente está escrito en lenguaje 
+\family typewriter
+C
+\family default
+, y la comunicación entre procesadores se ejecuta mediante el protocolo
+ estandarizado MPI (
+\emph on
+Message Passing Interface
+\emph default
+).
+\end_layout
+
+\begin_layout Subsection
 SPH 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -674,27 +1123,19 @@ name "sec:SPH"
 
 \end_layout
 
-\begin_layout Subsection
-Formulación
-\end_layout
-
 \begin_layout Standard
-La hidródinámica en las simulaciones numéricas se implementa con la técnica
+La hidrodinámica en las simulaciones numéricas se implementa con la técnica
  de 
 \emph on
-Hidrodinámica de partículas suavizadas 
+hidrodinámica de partículas suavizadas 
 \emph default
-(
-\emph on
-SPH
-\emph default
-, por sus siglas en inglés).
- Ésta consiste en una aproximación a la mecánica del contínuo utilizando
+(SPH, por sus siglas en inglés).
+ Ésta consiste en una aproximación a la mecánica del continuo utilizando
  partículas, que pueden pensarse también como puntos de interpolación.
  La técnica tiene numerosas ventajas, las más relevantes son la simplicidad
  de las ecuaciones resultantes y la garantía de cumplimiento de varias leyes
  de conservación.
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -744,9 +1185,9 @@ núcleo
 \emph default
 (
 \emph on
-kernel,
+kernel
 \emph default
- en inglés) 
+) 
 \begin_inset Formula $W\left(\boldsymbol{r},h\right)$
 \end_inset
 
@@ -760,10 +1201,9 @@ longitud de suavizado
 \emph default
 que describe la longitud característica del 
 \emph on
-kernel.
- 
+kernel, 
 \emph default
-
+siendo
 \begin_inset Formula 
 \[
 F_{s}\left(\boldsymbol{r}\right)=\int F\left(\boldsymbol{r}\right)W\left(\boldsymbol{r-}\boldsymbol{r'},h\right)\dd^{3}\boldsymbol{r'}
@@ -824,10 +1264,10 @@ a los cuales les asignamos masas
 
 ; podemos aproximar la integral por la suma 
 \begin_inset Formula 
-\begin{align*}
-F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r}_{i}^{\prime},h\right)\Delta\boldsymbol{r}_{i}\\
-F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r}_{i}^{\prime},h\right)\dfrac{m_{i}}{\rho_{i}}
-\end{align*}
+\begin{align}
+F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r}_{i}^{\prime},h\right)\Delta\boldsymbol{r}_{i}\nonumber \\
+F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r}_{i}^{\prime},h\right)\dfrac{m_{i}}{\rho_{i}}\label{eq:sph_smooth}
+\end{align}
 
 \end_inset
 
@@ -874,7 +1314,7 @@ de tipo gaussiano.
 \end_layout
 
 \begin_layout Standard
-Para un fluido ideal, sus ecuaciones de movimiento (
+Para un fluido ideal, las ecuaciones de movimiento (
 \emph on
 i.e.
  
@@ -919,11 +1359,11 @@ conservación de la masa, momento y energía) se pueden deducir del siguiente
 \end_inset
 
  de cada partícula, se les asigna una entropía específica 
-\begin_inset Formula $s_{i}$
+\begin_inset Formula $A_{i}$
 \end_inset
 
 
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -936,21 +1376,10 @@ esta es la misma que
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
  de modo que la primera se defina en términos del estimado de densidad 
 \begin_inset Formula 
 \[
-u_{i}=s_{i}\dfrac{\rho_{i}^{\gamma-1}}{\gamma-1}
+u_{i}=A_{i}\dfrac{\rho_{i}^{\gamma-1}}{\gamma-1}
 \]
 
 \end_inset
@@ -964,8 +1393,8 @@ u_{i}=s_{i}\dfrac{\rho_{i}^{\gamma-1}}{\gamma-1}
 \end_inset
 
  es el índice adiabático.
- Así obtenemos también la presión de cada partícula como 
-\begin_inset Formula $P_{i}=s_{i}\rho_{i}^{\gamma}$
+ En consecuencia, la presión de cada partícula puede escribirse como 
+\begin_inset Formula $P_{i}=A_{i}\rho_{i}^{\gamma}$
 \end_inset
 
 .
@@ -983,7 +1412,7 @@ A partir del lagranangiano para SPH, se obtiene la dinámica de las partículas
  de movimiento para un fluido ideal (las cuales recordamos, son diferenciales
  parciales).
  
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -995,11 +1424,11 @@ expandir más en detalle la parte de las ecuaciones?
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Extensiones y correcciones
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Viscosidad artificial
 \end_layout
 
@@ -1024,7 +1453,7 @@ que introduzca un mecanismo de disipación necesario.
  el choque de forma tal que la descripción en términos diferenciales se
  mantenga adecuada.
  
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -1036,16 +1465,24 @@ status open
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Acoplamiento con auto gravedad
 \end_layout
 
 \begin_layout Standard
 La interacción auto-gravitatoria es de principal importancia en flujos astrofísi
 cos.
- Su inclusión en esquemas hydrodinmámicos eulerianos (basados en grillas)
- no es trivial, puesto que no conserva la energía total de forma manifiesta
- [acá una cita, me imagino].
+ Su inclusión en esquemas hidrodinámicos eulerianos (basados en grillas)
+ no es trivial, puesto que no conserva la energía total de forma manifiesta.
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+[acá una cita, me imagino]
+\end_layout
+
+\end_inset
+
  En cambio, en SPH puede ser incluida de manera simple y precisa modificando
  el lagrangiano utilizado.
  El potencial gravitatorio dado por el conjunto de puntos de SPH es 
@@ -1068,7 +1505,7 @@ cos.
 \begin_inset Quotes fls
 \end_inset
 
-longitud de enblandecimiento gravitacional
+longitud de ablandamiento gravitacional
 \begin_inset Quotes frs
 \end_inset
 
@@ -1106,93 +1543,7 @@ E_{\text{pot}}=\dfrac{1}{2}\sum_{i}m_{i}\Phi\left(\boldsymbol{r}_{i}\right)=\dfr
 
 \end_layout
 
-\begin_layout Section
-GADGET-2
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:GADGET-2"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Las simulaciones utilizadas para la formación galáctica en un contexto cosmológi
-co emplean el código 
-\shape smallcaps
-gadget-2
-\shape default
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "gadget2005"
-literal "false"
-
-\end_inset
-
-, con modificaciones para la formación estelar, el 
-\emph on
-feedback
-\emph default
- por supernovas , enriquecimiento químico y enfriamiento dependiente de
- metales según 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "cecilia2005"
-literal "false"
-
-\end_inset
-
- y 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "cecilia2006"
-literal "false"
-
-\end_inset
-
-.
- En las siguientes secciones expandiremos acerca de los detalles involucrados.
-\end_layout
-
 \begin_layout Subsection
-Resumen del código [tesis cecilia]
-\end_layout
-
-\begin_layout Standard
-El código 
-\shape smallcaps
-gadget-2
-\shape default
- describe la evolución acoplada de un gas ideal y un fluido no colisional,
- dentro de un universo cuya dinámica global está regulada por el modelo
- cosmológico elegido.
- La descripción se hace en términos de partículas de tres clases: materia
- oscura, estrellas y gas.
- Para los primeros dos tipos, sólo se utiliza una dinámica de auto-gravitación,
- mientras que las partículas de gas modelan la hidrodinámica según la técnica
- SPH antes detallada.
-\end_layout
-
-\begin_layout Standard
-Llevar a cabo estas simulaciones implica un gran costo computacional.
- 
-\shape smallcaps
-gadget-2
-\shape default
- es un código masivamente paralelizado, de modo que es capaz de correr en
- supercomputadoras distribuyendo el trabajo en muchos procesadores, reduciendo
- así el tiempo total de cómputo.
- El código fuente está escrito en lenguaje 
-\family typewriter
-C
-\family default
-, yLa comunicación entre procesadores se ejecuta mediante el protocolo estandari
-zado MPI (Interfaz de Pasaje de Mensajes).
-\end_layout
-
-\begin_layout Subsubsection
 Implementación de la gravedad
 \end_layout
 
@@ -1212,14 +1563,14 @@ para
 \end_inset
 
 .
- Para evitar este comportamiento, se suele descomponer la fuerza gravitaroria
+ Para evitar este comportamiento, se suele descomponer la fuerza gravitatoria
  en una componente de largo alcance que varía suavemente, y otra contribución
  de las partículas cercanas.
  
 \shape smallcaps
-gadget-2
+gadget
 \shape default
- implementa el cálculo de largo alcance con un algoritmo 
+ implementa el cálculo de largo alcance con un algoritmo del tipo 
 \begin_inset Quotes fls
 \end_inset
 
@@ -1227,9 +1578,9 @@ malla de partículas
 \begin_inset Quotes frs
 \end_inset
 
- (
+ (PM
 \emph on
-PM, particle mesh
+, particle mesh
 \emph default
 ) y la del material cercano con un algoritmo de árbol (
 \emph on
@@ -1269,7 +1620,101 @@ las partículas cercanas se arreglan en una jerarquía de grupos, y la fuerza
 \end_layout
 
 \begin_layout Subsubsection
-algo de la integración cosmológica?
+Integración cosmológica
+\end_layout
+
+\begin_layout Standard
+La cosmología se tiene en cuenta a la hora de integrar numéricamente las
+ ecuaciones de movimiento de cada partícula.
+ Dentro del código, se describen las posiciones y velocidades en el marco
+ comóvil (
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ y 
+\begin_inset Formula $\boldsymbol{v}$
+\end_inset
+
+), que se relacionan con las coordenadas físicas mediante 
+\begin_inset Formula $\boldsymbol{r}=a\boldsymbol{x}$
+\end_inset
+
+ y 
+\begin_inset Formula $\dot{\boldsymbol{r}}=\dot{a}\boldsymbol{x}+a\boldsymbol{v}$
+\end_inset
+
+; donde 
+\begin_inset Formula $a$
+\end_inset
+
+ es el factor de escala cosmológico.
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, para una partícula de materia oscura, la ecuación dinámica
+ está dada por 
+\begin_inset Formula 
+\[
+\ddot{\boldsymbol{x}}+2H\dot{\boldsymbol{x}}=-\dfrac{1}{a^{3}}\boldsymbol{\nabla}\Phi
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $H\equiv\dot{a}\slash a$
+\end_inset
+
+ es el parámetro de Hubble (que da cuenta de la expansión del universo)
+ y 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ es el potencial gravitatorio.
+\end_layout
+
+\begin_layout Standard
+Para la integración temporal, 
+\begin_inset Formula $\gd$
+\end_inset
+
+ adopta un esquema 
+\emph on
+leap-frog
+\emph default
+, en el cual las partículas y velocidades se avanzan según 
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{x}^{m+\nicefrac{1}{2}} & =\boldsymbol{x}^{m-\nicefrac{1}{2}}+\boldsymbol{v}^{m}\Delta t+\mathcal{O}\left(\Delta t^{3}\right)\\
+\boldsymbol{v}^{m+1} & =\boldsymbol{v}^{m}+\tdev{\boldsymbol{v}^{m+\nicefrac{1}{2}}}t\Delta t+\mathcal{O}\left(\Delta t^{3}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $m$
+\end_inset
+
+ indica el paso en el código y 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ es el paso temporal de integración.
+ En el código, cada partícula posee un paso de integración particular, el
+ cual se calcula teniendo en cuenta la fuerza total ejercida sobre ésta
+ y la capacidad del esquema de integración para 
+\emph on
+predecir
+\emph default
+ la evolución inmediata.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1289,7 +1734,7 @@ producida cuando el soporte de presiones de una nube de gas no es suficiente
  frío durante este colapso.
  Las partículas de gas elegibles para la fragmentación deben presentar una
  densidad mayor a un valor crítico 
-\begin_inset Formula $\left(\rho>\rho_{\ast}=7.0\times10^{26}\text{g}\text{cm}^{-3}\right)$
+\begin_inset Formula $\left(\rho>\rho_{\ast}=7.0\times10^{26}\text{g}\text{ cm}^{-3}\right)$
 \end_inset
 
  y deben ubicarse dentro de un flujo convergente 
@@ -1369,16 +1814,82 @@ p_{\ast}=\dfrac{m}{m_{\ast}}\left[1-\exp\left(-c\dfrac{\Delta t}{\tau_{\text{dyn
 
 .
  Si tuviera lugar una segunda formación sobre la misma partícula de gas,
- ésta es íntegramente transformada en una de estella, en lugar de su fragmentaci
-ón.
+ ésta es íntegramente transformada en una de estrella, en lugar de su fragmentac
+ión.
 \end_layout
 
 \begin_layout Subsection
 Enriquecimiento químico
 \end_layout
 
+\begin_layout Standard
+Los elementos químicos son sintetizados en el interior de las estrellas
+ y posteriormente eyectados al medio interestelar mediante explosiones de
+ supernova (SN).
+ Para modelar la producción y distribución de metales en el contexto de
+ estas simulaciones debemos considerar tres elementos: la tasa de SN (
+\emph on
+i.e.
+
+\emph default
+ la cantidad de explosiones de SN por unidad de tiempo), los 
+\emph on
+yields 
+\emph default
+químicos (
+\emph on
+i.e.
+ 
+\emph default
+qué tipo de elementos químicos son eyectados en las explosiones) y los tiempo
+ de vida típicos de estrellas, que determinan el tiempo característico de
+ la liberación de metales.
+\end_layout
+
+\begin_layout Standard
+En este modelo, se incluye un tratamiento separado para las SN de tipo II
+ y tipo Ia (SNII y SNIa).
+ Estos dos tipos de SN se originan de diferentes poblaciones estelares,
+ y tienen distintas tasas, 
+\emph on
+yields, 
+\emph default
+y escalas temporales.
+ Teniendo esto en cuenta, el modelo refleja estas diferencias en su implementaci
+ón.
+ Por ejemplo, las SNII producen la mayor parte de los elementos químicos,
+ excepto por el hierro, que es producido principalmente por las SNIa.
+ Por otro lado, las SNII se encuentran al final de la evolución de estrellas
+ masivas con tiempos de vida cortos; en contraste con las SNIa, que resultan
+ de la evolución de sistemas binarios con tiempos de vida 
+\begin_inset Formula $\sim1$
+\end_inset
+
+ Gyr.
+\end_layout
+
+\begin_layout Standard
+Se asume que, inicialmente, las partículas de gas contienen las abundancias
+ primordiales de hidrógeno y helio, 
+\begin_inset Formula $X_{\text{H}}=0.76$
+\end_inset
+
+ y 
+\begin_inset Formula $Y_{\text{He}}=0.24$
+\end_inset
+
+, y se considera el enriquecimiento químico asumiendo producción de metales
+ por SNII y SNIa de manera tal de obtener un valor de metalicidad global
+ (
+\emph on
+i.e.
+ 
+\emph default
+el cociente entre la masa de metales en una partícula y su masa total).
+\end_layout
+
 \begin_layout Section
-CLUES
+Simulaciones CLUES del grupo local
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:CLUES"
@@ -1422,7 +1933,8 @@ y otras de las estructuras circundantes más prominentes.
 \end_layout
 
 \begin_layout Standard
-Las simulaciones presentes son las utilizadas en los trabajos 
+Las simulaciones utilizadas en el presente trabajo son las correspondientes
+ a 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "N14"
@@ -1443,19 +1955,7 @@ literal "false"
 \shape smallcaps
 gadget-3
 \shape default
- (una revisión de 
-\family typewriter
-gadget-2
-\family default
- que permite la cobertura de un mayor rango dinámico 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "aquarius"
-literal "false"
-
-\end_inset
-
-), junto con las extensiones de 
+, junto con las extensiones de 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "cecilia2005"
@@ -1473,9 +1973,9 @@ literal "false"
 
  antes comentadas.
  Las condiciones iniciales fueron construidas de forma tal de imponer un
- conjunto de vínculos gaussianos a alto 
+ conjunto de vínculos gaussianos a alto corrimiento al rojo (o 
 \emph on
-redshift, 
+redshift), 
 \emph default
 usando restricciones observacionales a 
 \begin_inset Formula $z\approx0$
@@ -1483,11 +1983,11 @@ usando restricciones observacionales a
 
 .
  La distribución inicial de materia consiste en una caja cúbica de 
-\begin_inset Formula $64\text{Mpc}\slash h$
+\begin_inset Formula $64\text{ Mpc}\slash h$
 \end_inset
 
  de lado, con una región de alta resolución esférica de radio 
-\begin_inset Formula $2\text{Mpc}\slash h$
+\begin_inset Formula $2\text{ Mpc}\slash h$
 \end_inset
 
 , ubicada en su centro.
@@ -1502,22 +2002,12 @@ La simulación se inicia a
 \begin_inset Formula $\lcdm$
 \end_inset
 
- deducida a partir del fondo cósmico de microondas medido por la sonda WMAP5
- (
+ consistente con los datos del fondo cósmico de microondas medido por la
+ sonda WMAP5 (
 \emph on
 Wilkinson Microwave Anisotropy Probe 5
 \emph default
-) 
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-deducida??
-\end_layout
-
-\end_inset
-
-.
+).
  Los parámetros cosmológicos adoptados fueron: una densidad de materia 
 \begin_inset Formula $\Omega_{\text{m}}=0.279$
 \end_inset
@@ -1567,7 +2057,7 @@ La simulación contiene también estructuras similares a los cúmulos de galaxia
 \end_layout
 
 \begin_layout Subsection
-SUBFIND
+Identificación de subestructuras (SUBFIND)
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:SUBFIND"
@@ -1600,7 +2090,7 @@ literal "false"
 \begin_inset Formula $32$
 \end_inset
 
- partículas) basada en su energía de ligadura.
+ partículas) basándose en su energía de ligadura.
  Dicha identificación permite determinar la pertenencia de cada partícula
  a un dado 
 \emph on
@@ -1610,10 +2100,10 @@ los cuales pueden corresponder a galaxias o satélites asociados.
 \end_layout
 
 \begin_layout Standard
-El resultado del algortimo en esta simulación nos permite identificar las
- estructuras que corresponden a las candidatas de MW y M31, junto con varias
- de sus propiedades: lista de las partículas que las conforman, posición
- de sus centros, masa total, etc.
+De esta manera, es posible identificar estructuras que corresponden a las
+ candidatas de MW y M31, así como caracterizar varias de sus propiedades:
+ lista de las partículas que las conforman, posición de sus centros, masa
+ total, etc.
 \end_layout
 
 \begin_layout Section
@@ -1621,13 +2111,12 @@ Generación de espectros de absorción
 \end_layout
 
 \begin_layout Standard
-En las siguientes secciones veremos el 
+En las siguientes secciones veremos la 
 \emph on
 suite 
 \emph default
-de herramientas que permiten, como resultado final, la generación de espectros
- de absorción sintéticos a partir de las simulaciones hidrodinámicas antes
- detalladas.
+de herramientas que nos permitirán la generación de espectros de absorción
+ sintéticos a partir de las simulaciones hidrodinámicas antes detalladas.
  El 
 \emph on
 software
@@ -1637,8 +2126,9 @@ software
 \end_inset
 
  es la base necesaria para la determinación de la densidad de especies iónicas
- que producen la absorción en el medio gaseoso.
- Las librerías 
+ que producen la absorción en el medio gaseoso a partir de las propiedades
+ termodinámicas del mismo y las abundancias iniciales.
+ Las librerías numéricas 
 \begin_inset Formula $\texttt{{yt}}$
 \end_inset
 
@@ -1648,7 +2138,7 @@ software
 
 , implementadas en el lenguaje de programación Python, proveen el enlace
  entre los resultados de nuestras simulaciones y la generación de espectros
- asociados a estructuras de gas dentro del volumen de simulación.
+ asociados a estructuras de gas dentro del volumen de la simulación.
 \end_layout
 
 \begin_layout Subsection
@@ -1667,19 +2157,18 @@ literal "false"
 \begin_inset Formula $\cl$
 \end_inset
 
- es un programa que determina las condiciones físicas dentro de un gas fuera
+ es un programa que determina las abundancias iónicas dentro de un gas fuera
  del equilibrio, con posibilidad de exposición a una fuente externa de radiación
- y predice el espectro resultante.
- Esto posibilita la predicción de magnitudes observables específicando sólo
+ , generando así el espectro resultante.
+ Esto posibilita la predicción de magnitudes observables especificando sólo
  las propiedades de la nube de gas y el campo de radiación incidente.
 \end_layout
 
 \begin_layout Standard
 El código parte de primeros principios, y calcula el estado térmico, químico
- y de ionización de una nube de gas fuera del equilibrio, a ser posiblemente
- expuesta a una fuente externa de radiación.
- Se asume que ha transcurrido un tiempo tal que los procesos atómicos que
- ocurran se hayan vuelto estacionarios.
+ y de ionización de una nube de gas fuera del equilibrio.
+ Para esto, se asume que ha transcurrido un tiempo tal que los procesos
+ atómicos que ocurran tiendan al estado estacionario.
  La densidad de partículas de una especie ó nivel 
 \begin_inset Formula $i$
 \end_inset
@@ -1712,7 +2201,15 @@ donde aquí
 \begin_inset Formula $i$
 \end_inset
 
-, Fuente es la tasa por unidad de volumen 
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Fuente
+\begin_inset Quotes erd
+\end_inset
+
+ es la tasa por unidad de volumen 
 \begin_inset Formula $\left[\text{cm}^{-3}\text{s}^{-1}\right]$
 \end_inset
 
@@ -1720,7 +2217,15 @@ donde aquí
 \begin_inset Formula $i$
 \end_inset
 
-, y Sumidero es la tasa 
+, y 
+\begin_inset Quotes eld
+\end_inset
+
+Sumidero
+\begin_inset Quotes erd
+\end_inset
+
+ es la tasa 
 \begin_inset Formula $\left[\text{s}^{-1}\right]$
 \end_inset
 
@@ -1737,7 +2242,185 @@ Esta ecuación de balance, junto con la conservación de masa, carga, y energía
 \begin_layout Subsection
 
 \family typewriter
+yt 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "yt"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
 yt
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "\\texttt{http://yt-project.org/}"
+target "http://yt-project.org/"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ es una librería de Python para el análisis y visualización de simulaciones
+ astrofísicas.
+ Permite la visualización de magnitudes de una simulación en volumen mediante
+ cortes y proyecciones, entre otras herramientas.
+\end_layout
+
+\begin_layout Standard
+En particular, provee el enlace necesario entre las simulaciones de 
+\begin_inset Formula $\gd$
+\end_inset
+
+ y las herramientas de generación de espectros que detallaremos en la siguiente
+ sección (
+\begin_inset Formula $\tri$
+\end_inset
+
+).
+ Esto es, transformar los datos de la simulación basada en partículas a
+ una basada en elementos de grilla.
+ Este proceso (referido como 
+\emph on
+deposición a la grilla
+\emph default
+) consiste en la generación de una grilla de tipo 
+\emph on
+octree
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+ésta es una estructura de datos de árbol en la cual cada celda que se divida,
+ debe hacerlo en ocho octantes iguales.
+\end_layout
+
+\end_inset
+
+
+\emph default
+ en el volumen de la simulación según las posiciones de las partículas presentes.
+ El 
+\emph on
+octree 
+\emph default
+se contruye dividiendo el recinto de simulación de manera recursiva hasta
+ que cada celda contenga, como máximo, una partícula.
+ En la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:octree"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se muestra una representación del 
+\emph on
+octree
+\emph default
+ construido para una distribución de partículas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/octree.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:octree"
+
+\end_inset
+
+
+\emph on
+Octree 
+\emph default
+construido para la distribución de partículas dada.
+ Notemos que cada celda puede contener una única partícula o ninguna.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego, para cada celda en esa estructura, se define cada una de las magnitudes
+ físicas (
+\emph on
+e.g.
+ 
+\emph default
+densidad, temperatura, etc)
+\emph on
+ depositadas a la grilla
+\emph default
+, mediante la integración descrita para SPH (dada por la Ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sph_smooth"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ De esa forma, obtenemos un equivalente basado en grilla de una simulación
+ SPH, junto con todas sus magnitudes físicas.
 \end_layout
 
 \begin_layout Subsection
@@ -1788,29 +2471,27 @@ literal "true"
 redshift, 
 \emph default
 ancho equivalente, ampliación térmica, intensidad de la absorción, etc.
- Éstas pueden consiguientemente trazar estructuras físicas a partir de caracterí
-sticas espectrales, asociándoles su contraparte espacial y dinámica dentro
- del universo de la simulación.
+ Éstas pueden, consiguientemente, trazar estructuras físicas a partir de
+ características espectrales, asociándoles su contraparte espacial y dinámica
+ dentro del universo de la simulación.
 \end_layout
 
 \begin_layout Standard
-La principal rutina de 
+El código 
 \begin_inset Formula $\textsc{trident}$
 \end_inset
 
- consiste en los siguientes pasos: primero, construir una 
+ consta de los siguientes pasos: primero, construir una 
 \emph on
 línea de la visual 
 \emph default
-como un rayo de luz dirigido uniendo dos puntos dentro del volumen de la
- simulación.
+uniendo dos puntos dentro del volumen de la simulación con un rayo de luz.
  A el punto de partida se lo considera como una fuente de emisión de un
- espectro contínuo, y al punto de llegada como el de observación.
- Entonces, para el gas atravesado por el rayo de luz calcula las densidades
- de los iones presentes según sus condiciones físicas y su absorción sobre
- el espectro de la fuente.
- Finalizando este proceso, devuelve el espectro de la fuente, sobre el cual
- figuran las líneas de absorción calculadas.
+ espectro continuo, y al punto de llegada como el de observación.
+ Entonces, para el gas atravesado por el rayo de luz , se calculan la densidad
+ de los iones presentes según sus condiciones físicas.
+ Finalizando este proceso, se obtiene el espectro de la fuente, sobre el
+ cual figuran las líneas de absorción calculadas.
  Podemos ver una ilustración de este protocolo en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1857,8 +2538,8 @@ Ilustración del protocolo de generación de espectros de absorción.
  la línea punteada y el IGM por fuera.
  Desde el incio del rayo de luz una fuente emite con el espectro adjunto.
  Éste es absorbido en longitudes de onda discretas por el gas atravesado
- por el rayo de luz, y finalmente visto por el ojo observador, según el
- esquema a su lado.
+ por el rayo de luz, y finalmente visto por el ojo observador, según indica
+ el esquema a su lado.
  Extraído de 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1867,7 +2548,7 @@ literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -1881,8 +2562,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Detallaremos ahora los mecanismos que el código utiliza para sus varias
- tareas, divididos en tres módulos:
+Detallaremos a continuación los mecanismos que utiliza 
+\begin_inset Formula $\tri$
+\end_inset
+
+, divididos en tres módulos:
 \end_layout
 
 \begin_layout Enumerate
@@ -1912,7 +2596,48 @@ LightRay
 
 \end_inset
 
-: objeto (clase) representando una el rayo de luz en una 
+: objeto (clase)
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Recordamos de la 
+\size normal
+\emph on
+programación orientada a objetos: 
+\emph default
+un 
+\emph on
+objeto
+\emph default
+ es una abstracción conveniente de algún concepto, implementada en un código.
+ Una 
+\emph on
+clase
+\emph default
+ es un elemento del código que genera 
+\emph on
+instancias
+\emph default
+ particulares de objetos.
+ Ambos se refieren por el mismo nombre (en este caso 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\size normal
+LightRay
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+ representando una el rayo de luz en una 
 \emph on
 línea de la visual.
 \end_layout
@@ -1942,7 +2667,7 @@ LightRay
 \end_layout
 
 \begin_layout Subsubsection
-Generación de densidad de iones mediante 
+Generación de densidades iónicas mediante 
 \begin_inset Flex Code
 status open
 
@@ -1956,8 +2681,8 @@ ion_balance
 \end_layout
 
 \begin_layout Standard
-El módulo recibe la simulación hidrodinámica y calcula la densidad de partículas
- para cada ión solicitado en las partículas
+El módulo recibe la una estructura de datos conteniendo la simulación hidrodinám
+ica y calcula la densidad numérica para cada ion solicitado en las partículas
 \begin_inset Foot
 status open
 
@@ -1980,11 +2705,11 @@ yt
 \end_inset
 
  de la simulación que lo requieran.
- Este cálculo se basa en una serie de asumciones según se registre o no
+ Este cálculo se basa en una serie de asunciones según se registre o no
  la presencia de metales en la simulación; la primera de las cuales es la
  condición de equilibrio iónico.
  
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -2059,7 +2784,7 @@ i-
 \begin_inset Newline newline
 \end_inset
 
-y esta última a su vez en términos de su masa atómica 
+y esta última, a su vez, en términos de su masa atómica 
 \begin_inset Formula $\mathcal{M}_{X}$
 \end_inset
 
@@ -2113,7 +2838,7 @@ A_{X}=\left.\dfrac{n_{X}}{n_{\text{H}}}\right|_{\sun}
 
 \end_inset
 
-de modo que sus densidades nuclear sean 
+de modo que sus densidades nucleares sean 
 \begin_inset Formula 
 \[
 n_{X}=A_{X}n_{H}
@@ -2121,6 +2846,11 @@ n_{X}=A_{X}n_{H}
 
 \end_inset
 
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 y, en caso que se tenga 
 \begin_inset Formula $\rho_{\text{H}}$
 \end_inset
@@ -2133,11 +2863,16 @@ n_{X}=A_{X}\dfrac{\rho_{H}}{m_{H}}
 
 \end_inset
 
-Si no se tiene 
+
+\end_layout
+
+\end_inset
+
+Al no contar con 
 \begin_inset Formula $\rho_{\text{H}}$
 \end_inset
 
-, entonces se asume la fracción de masa primordial para el hidrógeno 
+, se asume la fracción de masa primordial para el hidrógeno 
 \begin_inset Formula $\chi=0.76$
 \end_inset
 
@@ -2226,12 +2961,11 @@ y asumir la abundancia solar para cada metal.
 
 \end_inset
 
-Deseamos reexpresar este resultado en términos de la abundancia solar 
+Para reescribir este resultado en términos de la abundancia solar 
 \begin_inset Formula $A_{X}$
 \end_inset
 
- antes definida.
- Para eso, tomamos el cociente entre la densidad metales 
+ antes definida, tomamos el cociente entre la densidad de metales 
 \begin_inset Formula $\rho_{X}$
 \end_inset
 
@@ -2288,11 +3022,11 @@ noprefix "false"
 
 \end_inset
 
-Si nuevamente no disponemos de 
+Estimamos 
 \begin_inset Formula $\rho_{\text{H}}$
 \end_inset
 
-, consideramos la fracción primordial de hidrógeno para obtener 
+ según la fracción primordial de hidrógeno para obtener 
 \begin_inset Formula 
 \[
 \rho_{X}=Z\rho\chi A_{X}\mathcal{M}_{X}
@@ -2342,7 +3076,7 @@ n_{X_{i}}=f_{X_{I}}\dfrac{Z\rho\chi A_{X}}{m_{\text{H}}}\label{eq:nx_final}
 \end_layout
 
 \begin_layout Standard
-Bajo la asumción de equilibrio de ionización, la fracción de ionización
+Bajo la asunción de equilibrio de ionización, la fracción de ionización
  es una función de la temperatura y densidad del gas y forma e intensidad
  del campo de radiación incidente.
  El módulo 
@@ -2370,10 +3104,14 @@ literal "false"
 \emph on
 redshift
 \emph default
-, de forma que la fracción de ionización es sólo función de la temperatura,
- densidad y 
+, de forma que la fracción de ionización es sólo función de la temperatura
+ y densidad
 \emph on
-redshift.
+ 
+\emph default
+cósmica
+\emph on
+.
  
 \emph default
 El módulo accede a una tabla de valores de 
@@ -2385,7 +3123,7 @@ El módulo accede a una tabla de valores de
 \end_inset
 
 .
- Así, la fracción de ionización deseada para cada ión se obtiene interpolando
+ Así, la fracción de ionización deseada para cada ion se obtiene interpolando
  linealmente los valores de esta tabla.
 \end_layout
 
@@ -2554,8 +3292,8 @@ LightRay
 \end_inset
 
 ; éstos consisten en una secuencia unidimensional ordenada de las celdas
- de la simulación atravesadas por la trayectoria de la línea de la visual
- (las celdas aquí pertenecen al 
+ de la simulación atravesadas por la línea de la visual (las celdas aquí
+ pertenecen al 
 \emph on
 octree 
 \emph default
@@ -2592,6 +3330,10 @@ LightRay
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 Además de los campos seleccionados para guardarse en el objeto 
 \begin_inset Flex Code
 status open
@@ -2604,86 +3346,31 @@ LightRay
 
 , éste define y registra una serie de campos especiales para el procesamiento
  posterior.
- Para cada celda en el rayo, 
+ 
+\end_layout
+
+\end_inset
+
+Para cada celda en el rayo, 
 \begin_inset Formula $\tri$
 \end_inset
 
- calcula su longitud de camino 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-dl
-\end_layout
-
-\end_inset
-
-, su intervalo de 
+ calcula su longitud de camino, su intervalo de 
 \emph on
 redshift 
 \emph default
-cosmológico 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-dredshift
-\end_layout
-
-\end_inset
-
-, su 
+cosmológico, su 
 \emph on
 redshift 
 \emph default
-cosmológico 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-redshift
-\end_layout
-
-\end_inset
-
-, su velocidad a los largo de la línea de la visual 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-velocity_los
-\end_layout
-
-\end_inset
-
-, su 
+cosmológico, su velocidad a los largo de la línea de la visual, su 
 \emph on
 redshift 
 \emph default
-por efecto Doppler 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-redshift_dopp
-\end_layout
-
-\end_inset
-
- y su 
+por efecto Doppler y su 
 \emph on
 redshift efectivo
 \emph default
- 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-redshift_eff
-\end_layout
-
-\end_inset
-
 .
  Veremos aquí el cálculo específico de cada una de estas magnitudes.
 \end_layout
@@ -2776,12 +3463,12 @@ E(z)=\sqrt{\Omega_{\text{m}}\left(1+z\right)^{3}+\Omega_{k}\left(1+z\right)^{2}+
 
 \end_inset
 
-En la simulación, el lado conocido de la ecuación es la distancia comóvil
- 
+El lado izquierdo de la ecuación es la distancia comóvil 
 \begin_inset Formula $\ell$
 \end_inset
 
-, mientras que se desea obtener la diferencia de 
+, conocida en la simulación, mientras que se desea obtener la diferencia
+ de 
 \emph on
 redshifts 
 \emph default
@@ -2790,9 +3477,9 @@ redshifts
 \end_inset
 
 .
- No hay una solución analítica cerrada para esta ecuación, por lo tanto
- se obtiene iterativamente mediante el método de Newton-Raphson.
- Cabe destacar que el código adopta la siguiente convención: el 
+ Dado que no hay solución analítica para esta ecuación, la misma se resuelve
+ iterativamente mediante el método de Newton-Raphson.
+ Cabe destacar que se adopta la siguiente convención: el 
 \emph on
 redshift 
 \emph default
@@ -2820,7 +3507,7 @@ Teniendo la diferencia de
 \emph on
 redshift
 \emph default
- entre extremos del rayo, se asume que el intervalo de 
+ entre los extremos del rayo, se asume que el intervalo de 
 \emph on
 redshift 
 \emph default
@@ -2858,7 +3545,7 @@ negativo
 redshift
 \emph default
  cosmológico para cada celda atravesada por el rayo 
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -2879,8 +3566,8 @@ z_{i}=z_{b}-\sum_{j=i}^{n}\dd z_{j}
 \end_layout
 
 \begin_layout Standard
-Al generar un espectro, para quien observa no le es posible distinguir si
- el corrimiento en frecuencia de una línea de absorción corresponde al 
+Al generar un espectro, no es posible distinguir observacionalmente si el
+ corrimiento en frecuencia de una línea de absorción corresponde al 
 \emph on
 redshift 
 \emph default
@@ -2977,6 +3664,10 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 Para generar un objeto 
 \begin_inset Flex Code
 status open
@@ -3006,6 +3697,11 @@ yt
 \end_inset
 
  cuando sea necesario.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -3132,7 +3828,7 @@ Densidad columnar
 
 \begin_inset Formula 
 \[
-N_{X}=n_{X}\dd\ell\text{ para cada celda}
+N_{X}=n_{X}\dd\ell
 \]
 
 \end_inset
@@ -3220,17 +3916,7 @@ siendo
 \emph on
 Ancho equivalente
 \emph default
- 
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-ver qué es esto...
-\end_layout
-
-\end_inset
-
-
+ de la línea
 \end_layout
 
 \begin_layout Itemize
@@ -3251,8 +3937,8 @@ Recordamos que cada una de estas magnitudes se obtiene
 \series bold
 para cada celda en el rayo
 \series default
-, de modo que se seguir su dependencia espacial, en contraste con las observacio
-nes.
+, de modo que tiene cuenta de su dependencia espacial, en contraste con
+ las observaciones.
 \end_layout
 
 \begin_layout Standard
@@ -3361,18 +4047,11 @@ profundidad óptica
 \begin_inset Formula $\tau$
 \end_inset
 
-, a partir de la cual el flujo relativo se obtiene como 
-\begin_inset Formula 
-\begin{equation}
-f=\text{e}^{-\tau}\label{eq:flujo_tau}
-\end{equation}
 
-\end_inset
+\begin_inset Foot
+status open
 
-
-\begin_inset Newline newline
-\end_inset
-
+\begin_layout Plain Layout
 Esta magnitud se relaciona con la 
 \emph on
 absorbancia 
@@ -3392,6 +4071,23 @@ absorbancia
 
 \end_layout
 
+\end_inset
+
+, a partir de la cual el flujo relativo se obtiene como 
+\begin_inset Formula 
+\begin{equation}
+f=\text{e}^{-\tau}\label{eq:flujo_tau}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 En la Figura 
 \begin_inset CommandInset ref
@@ -3405,7 +4101,7 @@ noprefix "false"
 
  podemos apreciar la manifestación de estructuras físicas en el gas absorbente
  con características en el espectro.
- Vemos cómo una mayor densidad de partículas incide en una mayor absorción,
+ Vemos cómo una mayor densidad de partículas genera una mayor absorción,
  y cada valle en el espectro se compone de las absorciones de las celdas
  con valores de 
 \begin_inset Formula $\lambda$
@@ -3416,7 +4112,7 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement p
 wide false
 sideways false
 status open
@@ -3579,24 +4275,15 @@ producto de las colisiones entre partículas.
  de ambos perfiles, obteniendo así el denominado 
 \emph on
 perfil de Voigt.
-\end_layout
 
-\begin_layout Standard
-Veamos de qué forma se obtiene este perfil.
- Si definimos 
-\begin_inset Formula $x=\nu-\nu_{0}$
-\end_inset
-
- y partimos de las funciones gaussiana centrada en el origen, con desviación
- 
-\begin_inset Formula $\sigma$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-G\left(x,\sigma\right)=\dfrac{1}{\sqrt{2\pi}\sigma}\exp\left(-\dfrac{x^{2}}{2\sigma^{2}}\right)
-\]
+\emph default
+ Detallamos su cálculo explícito en el apéndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:voigt"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -3604,138 +4291,7 @@ G\left(x,\sigma\right)=\dfrac{1}{\sqrt{2\pi}\sigma}\exp\left(-\dfrac{x^{2}}{2\si
 \begin_inset Newline newline
 \end_inset
 
-y lorentziana con semiancho a media altura 
-\begin_inset Formula $\gamma$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-L\left(x,\gamma\right)=\dfrac{\gamma\slash\pi}{\gamma^{2}+x^{2}}
-\]
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-obtenemos el perfil de Voigt mediante la convolución
-\begin_inset Formula 
-\[
-V\left(x,\sigma,\gamma\right)=\int_{-\infty}^{\infty}G\left(x',\sigma\right)L\left(x-x',\gamma\right)\dd x'
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Adoptamos ahora a la longitud de onda 
-\begin_inset Formula $\lambda$
-\end_inset
-
- como variable independiente.
- El perfil de Voigt no tiene forma cerrada, pero puede ser computado numéricamen
-te según 
-\begin_inset Formula 
-\[
-V\left(\lambda,\sigma,\gamma\right)=\dfrac{\Re\left[w\left(z\right)\right]}{\sqrt{2\pi}\sigma}
-\]
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-donde 
-\begin_inset Formula $w\left(z\right)$
-\end_inset
-
- es la fución de Faddeeva, definida como 
-\begin_inset Formula 
-\[
-w\left(z\right)=\exp\left(-z^{2}\right)\left(1+\dfrac{2i}{\sqrt{\pi}}\int_{0}^{z}\text{e}^{t^{2}}\dd t\right)
-\]
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-y su argumento complejo es 
-\begin_inset Formula 
-\[
-z=\dfrac{u+ia}{\sqrt{2}\sigma}
-\]
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-siendo 
-\begin_inset Formula $u$
-\end_inset
-
- la diferencia de longitud de onda relativa al centro 
-\begin_inset Formula $\lambda_{0}$
-\end_inset
-
-, y 
-\begin_inset Formula $a$
-\end_inset
-
- el parámetro de amortiguación
-\begin_inset Formula 
-\[
-u=c\left(\dfrac{\lambda_{0}}{\lambda}-1\right)\text{ y }a=\dfrac{\Gamma\lambda_{0}}{4\pi}
-\]
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-recordando que 
-\begin_inset Formula $c$
-\end_inset
-
- es la velocidad de la luz, y 
-\begin_inset Formula $\Gamma$
-\end_inset
-
- es la probabilidad de transición de la línea.
-\end_layout
-
-\begin_layout Standard
-Así, el perfil de profundidad óptica para cada línea (que se reflejará en
- el espectro según 
-\begin_inset Formula $f=\exp\left(-\tau\right)$
-\end_inset
-
-) queda determinado por 
-\begin_inset Formula 
-\[
-\tau\left(\lambda,\sigma,\gamma\right)=\tau_{0}V\left(\lambda,\sigma,\gamma\right)
-\]
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-con el valor máximo de profundidad en el centro de la línea 
-\begin_inset Formula $\tau_{0}$
-\end_inset
-
- dado por 
+El valor máximo de profundidad en el centro de la línea viene dado por 
 \begin_inset Formula 
 \[
 \tau_{0}=\dfrac{\pi e^{2}Nf_{\text{val}}\lambda_{0}}{m_{e}c}
@@ -3769,8 +4325,9 @@ siendo
 \begin_inset Formula $N$
 \end_inset
 
+.
  
-\begin_inset Note Greyedout
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
@@ -3810,8 +4367,8 @@ noprefix "false"
 \begin_inset Formula $\tri$
 \end_inset
 
- posee funcionalidades que agregar complejidad al espectro generado de forma
- tal de emular fuentes más realistas u efectos observacionales.
+ posee funcionalidades que agregan complejidad al espectro generado de forma
+ tal de emular fuentes más realistas o efectos observacionales.
  En primer lugar, se puede agregar el espectro de un quásar como simulación
  de el espectro de emisión de la fuente ubicada al origen de la línea de
  la visual.
@@ -4944,28 +5501,8 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
 wide false
 sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "45text%"
-special "none"
-height "1pt"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -4986,7 +5523,7 @@ hspace*{-1cm}
 \begin_inset Graphics
 	filename images/RN_fig2_posta.png
 	lyxscale 25
-	scale 35
+	scale 50
 
 \end_inset
 
@@ -5015,58 +5552,20 @@ as galácticas.
 
 ).
  El color indica su velocidad radial sistémica.
- Extraía de RN17
+ Extraída de RN17.
 \end_layout
 
 \end_inset
 
 
 \end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "45text%"
-special "none"
-height "1pt"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{-1cm}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename images/sightlines_selection.png
 	lyxscale 25
-	scale 40
+	scale 50
 
 \end_inset
 
@@ -5108,11 +5607,6 @@ noprefix "false"
 \end_inset
 
  en torno a cada dirección polar.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -7281,7 +7775,210 @@ resultados, vemos que (cada resultado)
 
 \begin_layout Chapter
 \start_of_appendix
-Esto es un apéndice ordinario
+Cálculo del perfil de Voigt 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:voigt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El 
+\emph on
+perfil de Voigt
+\emph default
+ describe la forma de la línea de absorción y se obtiene mediante la convolución
+ de un perfil gaussiano con uno lorentziano.
+ Si definimos 
+\begin_inset Formula $x=\nu-\nu_{0}$
+\end_inset
+
+ y partimos de las funciones gaussiana centrada en el origen, con desviación
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+G\left(x,\sigma\right)=\dfrac{1}{\sqrt{2\pi}\sigma}\exp\left(-\dfrac{x^{2}}{2\sigma^{2}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+y lorentziana con semiancho a media altura 
+\begin_inset Formula $\gamma$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+L\left(x,\gamma\right)=\dfrac{\gamma\slash\pi}{\gamma^{2}+x^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+obtenemos el perfil de Voigt mediante la convolución
+\begin_inset Formula 
+\[
+V\left(x,\sigma,\gamma\right)=\int_{-\infty}^{\infty}G\left(x',\sigma\right)L\left(x-x',\gamma\right)\dd x'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Adoptamos ahora a la longitud de onda 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ como variable independiente.
+ El perfil de Voigt no tiene forma cerrada, pero puede ser computado numéricamen
+te según 
+\begin_inset Formula 
+\[
+V\left(\lambda,\sigma,\gamma\right)=\dfrac{\Re\left[w\left(z\right)\right]}{\sqrt{2\pi}\sigma}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+donde 
+\begin_inset Formula $w\left(z\right)$
+\end_inset
+
+ es la fución de Faddeeva, definida como 
+\begin_inset Formula 
+\[
+w\left(z\right)=\exp\left(-z^{2}\right)\left(1+\dfrac{2i}{\sqrt{\pi}}\int_{0}^{z}\text{e}^{t^{2}}\dd t\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+y su argumento complejo es 
+\begin_inset Formula 
+\[
+z=\dfrac{u+ia}{\sqrt{2}\sigma}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+siendo 
+\begin_inset Formula $u$
+\end_inset
+
+ la diferencia de longitud de onda relativa al centro 
+\begin_inset Formula $\lambda_{0}$
+\end_inset
+
+, y 
+\begin_inset Formula $a$
+\end_inset
+
+ el parámetro de amortiguación
+\begin_inset Formula 
+\[
+u=c\left(\dfrac{\lambda_{0}}{\lambda}-1\right)\text{ y }a=\dfrac{\Gamma\lambda_{0}}{4\pi}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+recordando que 
+\begin_inset Formula $c$
+\end_inset
+
+ es la velocidad de la luz, y 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ es la probabilidad de transición de la línea.
+\end_layout
+
+\begin_layout Standard
+Así, el perfil de profundidad óptica para cada línea (que se reflejará en
+ el espectro según 
+\begin_inset Formula $f=\exp\left(-\tau\right)$
+\end_inset
+
+) queda determinado por 
+\begin_inset Formula 
+\[
+\tau\left(\lambda,\sigma,\gamma\right)=\tau_{0}V\left(\lambda,\sigma,\gamma\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+con el valor máximo de profundidad en el centro de la línea 
+\begin_inset Formula $\tau_{0}$
+\end_inset
+
+ dado por 
+\begin_inset Formula 
+\[
+\tau_{0}=\dfrac{\pi e^{2}Nf_{\text{val}}\lambda_{0}}{m_{e}c}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+siendo 
+\begin_inset Formula $e$
+\end_inset
+
+ y 
+\begin_inset Formula $m_{e}$
+\end_inset
+
+ la carga y masa del electrón, 
+\begin_inset Formula $N$
+\end_inset
+
+ es la densidad columnar del gas y 
+\begin_inset Formula $f_{\text{val}}$
+\end_inset
+
+ es la fuerza de oscilador de la transición iónica.
+ Podemos apreciar que la intensidad de la absorción crece con la densidad
+ del gas 
+\begin_inset Formula $N$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
