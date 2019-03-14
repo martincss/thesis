@@ -118,7 +118,8 @@ End
 \begin_body
 
 \begin_layout Title
-Notas para tesis
+Estudio del medio intergaláctico del Grupo Local de galaxias mediante simulacion
+es numéricas
 \end_layout
 
 \begin_layout Author
@@ -130,7 +131,8 @@ Directora: Cecilia Scannapieco
 \begin_inset Newline newline
 \end_inset
 
-Codirector: Sebastían Nuza
+Codirector: Sebastián E.
+ Nuza
 \end_layout
 
 \begin_layout Standard
@@ -225,8 +227,7 @@ ALUMNO: Martín Carusso
 
 \begin_layout Plain Layout
 
-L.U.
- : 922/13 
+L.U.: 922/13 
 \backslash
 
 \backslash
@@ -235,7 +236,7 @@ L.U.
 
 \begin_layout Plain Layout
 
-LUGAR DE TRABAJO:  Departamento de física 
+LUGAR DE TRABAJO:  Departamento de física, FCEN, UBA 
 \backslash
 
 \backslash
@@ -253,7 +254,8 @@ DIRECTORA: Cecilia Scannapieco
 
 \begin_layout Plain Layout
 
-CODIRECTOR: Sebastían Nuza 
+CODIRECTOR: Sebastián E.
+ Nuza 
 \backslash
 
 \backslash
@@ -473,6 +475,45 @@ Resumen
 
 \begin_layout Chapter*
 Agradecimientos
+\end_layout
+
+\begin_layout Standard
+Me parece claro que empezar y terminar una carrera no es un esfuerzo individual
+ o mío, sino de las muchísimas personas que me dieron su apoyo directa e
+ indirectamente, e hicieron que esto sea posible.
+ A todas ellas les quiero expresar mi gratitud.
+\begin_inset Newline newline
+\end_inset
+
+A mi padre y mi madre, que me han permitido mantener la carrera como la
+ prioridad de mi tiempo.
+\begin_inset Newline newline
+\end_inset
+
+A
+\begin_inset Newline newline
+\end_inset
+
+A mis amigxs externxs a la carrera, que me han dado su apoyo incondicional
+ cada vez que lo necesité: Ayrton, Ro, Clara, Lila, Tomás, Naranjita, Iván,
+ Marian, Alan.
+ También a Cristina.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Agradezco muy especialmente a toda la gente que me ha refugiado en su lugar
+ de trabajo, sabiendo lo que lo valoro y que representa más un acompañamiento:
+ Maru, Ludmila, Sol, Paulina, Ulises.
+\begin_inset Newline newline
+\end_inset
+
+A lxs docentes que he tenido en esta carrera y me han enseñado mucho más
+ que su materia.
+\begin_inset Newline newline
+\end_inset
+
+A quienes tuve el agrado de contar como compañeros docentes el último año
 \end_layout
 
 \begin_layout Standard
@@ -894,7 +935,7 @@ complementadas con espectros de absorción del gas neutro y ionizado en las
 
 , mayormente ionizada, extendida también sobre el IGM.
  Es posible que esta fase caliente y tenue hospede a una gran fracción de
- la materia bariónica en el LG [y acá más sobre missing mass??].
+ la materia bariónica en el LG.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "N14"
@@ -1714,7 +1755,6 @@ donde
 predecir
 \emph default
  la evolución inmediata.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -2667,17 +2707,7 @@ LightRay
 \end_layout
 
 \begin_layout Subsubsection
-Generación de densidades iónicas mediante 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-ion_balance
-\end_layout
-
-\end_inset
-
-
+Generación de densidades iónicas
 \end_layout
 
 \begin_layout Standard
@@ -3238,19 +3268,8 @@ literal "false"
 Creación de 
 \emph on
 lineas de la visual 
-\emph default
-con la clase 
 \series medium
-
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-LightRay
-\end_layout
-
-\end_inset
-
+\emph default
 
 \begin_inset CommandInset label
 LatexCommand label
@@ -3705,17 +3724,7 @@ yt
 \end_layout
 
 \begin_layout Subsubsection
-Generación de espectros con la clase 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-SpectrumGenerator
-\end_layout
-
-\end_inset
-
-
+Generación de espectros 
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Generación-de-espectros"
@@ -7758,7 +7767,14 @@ En estas galaxias, los vientos de supernova intensos en las regiones centrales
 \end_layout
 
 \begin_layout Chapter
-conclus
+Conclusiones
+\end_layout
+
+\begin_layout Standard
+Implementamos el método para sintetizar espectros de absorción a partir
+ de simulaciones hidrodinámicas en un marco cosmológico.
+ Lo hemos hecho, en particular, para las simulaciones CLUES, pero es extensible
+ a otras clases de simulaciones.
 \end_layout
 
 \begin_layout Standard
