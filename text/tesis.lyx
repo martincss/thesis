@@ -7775,12 +7775,54 @@ Implementamos el método para sintetizar espectros de absorción a partir
  de simulaciones hidrodinámicas en un marco cosmológico.
  Lo hemos hecho, en particular, para las simulaciones CLUES, pero es extensible
  a otras clases de simulaciones.
+ Completar este objetivo requirió el cumplimiento de una serie de pasos
+ intermedios: lectura de las simulaciones, identificación de subestructuras,
+ y construcción de una muestra de líneas de la visual.
+ La construcción de esta muestra implicó definir un conjunto de direcciones
+ para muestrear e implementar un esquema de paralelización y archivos donde
+ guardar sus datos.
+ Adicionalmente, definimos un muestreo reducido sobre la esfera para emular
+ la distribución de líneas de la visual en las observaciones en RN17.
 \end_layout
 
 \begin_layout Standard
-implementamos el metodo para simular espectros de absorcion del IGM y halos,
- para las sims clues.
- se puede aplicar a simulaciones similares, para obtener esto....
+Como primer resultado, realizamos una serie de comparaciones entre líneas
+ de la visual en una dirección que apunte a M31 y otras direcciones.
+ Notamos diferencias significativas entre los espectros de absorción en
+ sendas direcciones.
+ En particular, el espectro en la dirección hacia M31 presenta 
+\emph on
+features
+\emph default
+ que no se observan en la otra dirección.
+ Éstas 
+\emph on
+features
+\emph default
+ son consistentes con la presencia de material gaseoso del halo de M31,
+ en tanto que observamos un fuerte incremento en la densidad en esa posición.
+ Obtenemos también un acuerdo entre la velocidad intrínseca del gas calculada
+ a partir del espectro de absorción y el valor medido en la simulación.
+\end_layout
+
+\begin_layout Standard
+Comparativamente, la densidad en la dirección que apunta a M31 dentro de
+ la región entre galaxias es mayor que el promedio entre las otras direcciones.
+ Esta diferencia es consistente con la hipótesis de la existencia de un
+ puente de gas en la región entre MW y M31.
+ Por otro lado, las velocidades sobre la línea de la visual en esta dirección
+ (MW-M31) apuntan consistementemente hacia MW, lo cual nos indica que las
+ galaxias se están acercando.
+ Se observa además un fuerte pico en el valor absoluto de esta velocidad
+ en la posición del halo de M31; atribuimos este hecho a la acreción 
+\end_layout
+
+\begin_layout Standard
+——–
+\end_layout
+
+\begin_layout Standard
+ara obtener esto....
  es relevante porque necesitamos el marco teorica para interpretar obs i.e.
  RN17 donde estudiaron, gas en halos IGM, hvcs
 \end_layout
