@@ -1,0 +1,1725 @@
+%% LyX 2.3.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,oneside,spanish,13pt]{extbook}
+\usepackage{utopia}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2.5cm,rmargin=2.5cm}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{color}
+\definecolor{note_fontcolor}{rgb}{0.800781, 0.800781, 0.800781}
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>}}
+
+\usepackage{verbatim}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{wasysym}
+\setstretch{1.125}
+\usepackage[unicode=true,
+ bookmarks=false,
+ breaklinks=false,pdfborder={0 0 1},backref=section,colorlinks=false]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% The greyedout annotation environment
+\newenvironment{lyxgreyedout}
+  {\textcolor{note_fontcolor}\bgroup\ignorespaces}
+  {\ignorespacesafterend\egroup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newcommand{\code}[1]{\texttt{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{babel}
+\usepackage{apalike}
+\renewcommand{\labelenumi}{\alph{enumi})}
+%\usepackage{enumitem}
+%\setenumerate{label=a)}
+%\setenumerate[2]{label=a)}
+
+\makeatother
+
+\begin{document}
+\title{Notas para tesis}
+
+\maketitle
+\global\long\def\lcdm{\Lambda\mathrm{CDM}}%
+
+\global\long\def\dd{\text{d}}%
+
+\global\long\def\gd{\textsc{gadget}}%
+
+\global\long\def\cl{\textsc{cloudy}}%
+
+\global\long\def\tri{\textsc{trident}}%
+
+\global\long\def\pdev#1#2{\dfrac{\partial#1}{\partial#2}}%
+
+\tableofcontents{}
+
+\chapter{Introducción \label{chap:Introducci=0000F3n}}
+
+\section{$\Lambda$CDM {[}tesis de cecilia{]}\label{sec:LCDM}}
+
+El modelo cosmológico más aceptado para la descripción del universo
+en que vivimos es el denominado $\lcdm$ (\emph{cosmological constant
+$\Lambda$ with Cold Dark Matter}). Este supone un universo descripto
+por las ecuaciones de campo de Einstein incluyendo la constante cosmológica
+$\left(\Lambda\right)$; con una cosmología isótropa y homogénea dada
+por la solución de Friedmann-Robertson-Walker. Estas suposiciones
+predicen un universo en expansión (de forma acelerada gracias a la
+inclusión de $\Lambda$), en concordancia con las observaciones realizadas
+hasta el presente.
+
+De acuerdo con el modelo, aproximadamente sólo un $30\%$ del universo
+está formado por materia, y el restante $70\%$ por \emph{energía
+oscura, }el nombre que recibe la densidad de energía correspondiente
+a la inclusión de $\Lambda$. Del total de materia, un $90\%$ está
+formado por la llamada \emph{materia oscura }que no parece interactuar
+electromagnéticamente, de esa forma evitando su observación mediante
+emisión u absorción de radiación; es por esto que sólo se aprecian
+sus efectos gravitacionales. El modelo $\lcdm$ supone que la materia
+oscura está formada por partículas de baja velocidad térmica \emph{-frías-.}
+
+El restante $10\%$ de la materia en el universo es conocida como
+\emph{materia bariónica u ordinaria, }compuesta por partículas descriptas
+según el Modelo Estándar. Es ésta componente la cual integra los objetos
+observables.
+
+En el marco de este modelo, se tiene un escenario jerárquico para
+la formación de galaxias \emph{(Hierarchical Clustering Model)}. Las
+estructuras cosmológicas emergen de pequeñas fluctuaciones de densidad
+con estadística gaussiana en el universo temprano. Mientras evoluciona
+el universo, estas perturbaciones son amplificadas gravitacionalemente,
+y la materia oscura colapsa formando estructuras pequeñas primero.
+Dentro de estos halos de materia oscura, el gas colapsa y se enfría,
+dando lugar a la formación estelar. Éstas estructuras se agregan y
+fusionan, generando así sistemas más grandes a partir de otros más
+pequeños.
+
+De esa forma, cada galaxia sigue una historia evolutiva única, con
+\emph{mergers }y acreción particulares. Así, a partir del modelo $\lcdm$
+se espera una gran diversidad en las propiedades de las galaxias.
+
+\section{LG\label{sec:LG}}
+
+Nuestra galaxia, \emph{la vía láctea (MW),} no se encuentra aislada
+sino que forma parte de un grupo, llamado el \emph{grupo local (LG).
+}Integra también este grupo la galaxia espiral vecina \emph{Andrómeda
+(M31),} de una masa similar a MW y a una distancia menor a $1$Mpc;
+junto con otras galaxias satélites de menor masa {[}citation-needed{]}.
+Galaxias espirales semejantes son prevalentes en el universo, lo cual
+respresenta una prueba al modelo $\Lambda$CDM: que objetos tales
+como MW, M31 y el universo local no sean extremadamente improbables
+\cite{env15}.
+
+Estudios en las últimas décadas han acumulado evidencia a favor de
+que el \emph{environment} en donde se encuentren las galaxias influye
+en la determinación de sus propiedades finales. Por ejemplo, predicciones
+teóricas en el marco de $\lcdm$ indican que la cantidad de \emph{mergers}
+que sufren las galaxias incrementa con la densidad de su \emph{environment.}
+En particular, en \cite{env15}, simulaciones computacionales sugieren
+que, para \emph{environments} en forma de \emph{loose groups} como
+el LG, la morfología de las galaxias integrantes no se ve afectada,
+pero su SFR aumenta {[}vs no estar en el grupo??{]}.
+
+\subsection{Distribución de gas\label{subsec:gas}}
+
+La distribución de material gaseoso, tanto en las galaxias como en
+su \emph{environment}, se presenta como un aspecto clave para el entendimiento
+de la formación galáctica y el estadio evolutivo reciente de las primeras.
+Por ejemplo, \emph{inflows} de gas frío en el presente pueden dar
+cuenta de una formación estelar activa en el futuro próximo. Como
+contracara, \emph{outflows} de gas caliente pueden indicar que la
+formación estelar y \emph{feedback} por supernovas han tenido lugar
+en el pasado reciente \cite{N14}.
+
+Estudios teóricos y observacionales indican que una fracción sustancial
+(y hasta dominante) del material gaseoso difuso en galaxias espirales
+se encuentra por fuera del disco, en un halo extendido hasta su radio
+virial $R_{\text{vir}}$. A esta componente de gas se la conoce como
+\emph{medio circumgaláctico (CGM).} A la (gran) cantidad de gas que
+existe por fuera del radio virial se le denomina genéricamente \emph{medio
+intergaláctico (IGM)}, el cual puede además estar gravitacionalmente
+ligado al grupo ó \emph{cluster} de galaxias, llamado así \emph{medio
+intragrupo/intracluster.} El ciclo de vida de este gas está determinado
+por la formación de estructura cosmológica, flujos desde/hacia galaxias
+y eventos de \emph{mergers; }de ese modo, sus condiciones físicas
+y abundancias químicas son bastante variadas, y éste puede oficiar
+como un gran reservorio de bariones {[}cf. \emph{missing mass problem??}{]}\cite{RN17,N14}
+
+En particular para el LG, en las últimas dos décadas se ha alcanzado
+un avance significativo en la comprensión de la distribución y las
+propiedades físicas del gas en el CGM e IGM. Es posible estudiar los
+halos gaseosos extendidos de MW y M31 gracias a las observaciones
+de $21$cm de la línea hiperfina del hidrógeno neutro $\left(\text{H}_{\text{I}}\right),$complementadas
+con espectros de absorción del gas neutro y ionizado en las bandas
+ópticas y UV, contra fuentes extragalácticas. Se entiende actualmente
+que el CGM de MW y M31 es de caracter multifásico: coexisten una fase
+fría $\left(T<10^{4}\text{K}\right)$ predominablemente neutra y densa,
+principalmente concentrada dentro de sendos radios viriales; junto
+con una fase caliente $\left(T\gtrsim10^{5}\text{K}\right)$ mayormente
+ionizada, extendida también sobre el IGM. Es posible que esta fase
+caliente y tenue hospede a una gran fracción de la materia bariónica
+en el LG {[}y acá más sobre missing mass??{]}.\cite{N14}
+
+Según el modelo actual de formación galáctica, existen dos principales
+modos de acreción en la providencia del gas frío posteriormente empleado
+en la formación estelar. Un modo ``caliente'' en el cual el gas
+de alta densidad que rodea a la galaxia se enfría radiativamente y
+colapsa hacia el centro; y un modo ``frío'', conducido por filamentos
+de gas frío que ingresan dentro del radio virial del halo. Estudios
+recientes {[}citar??{]} indican que la acreción fría tiende a ocupar
+las regiones centrales, mientras que la acreción de gas ionizado caliente
+es dominante sobre un gran rango de distancias hasta el radio virial.
+\cite{N14}
+
+De esa forma, estudios con el objetivo de caracterizar el CGM de MW
+y M31, y su conexión con el gas en el IGM son claves en aras de profundizar
+nuestra comprensión de la distribución y composición de la materia
+bariónica en el universo local.
+
+\chapter{Simulaciones\label{chap:Sims}}
+
+La formación de estructura a escala galáctica en un contexto cosmológico
+es un proceso altamente no lineal, multiescala y libre de simetrías
+que lo simplifiquen. Estas características resultan en la imposibilidad
+de estudiar el problema analíticamente, lo cual posiciona a las simulaciones
+numéricas como una herramienta esencial. Las simulaciones implementan
+las leyes físicas relevantes al problema, pero además deben incluirse
+modelos efectivos de subgrilla a fin de considerar procesos físicos
+que no están enteramente entendidos.
+
+En particular, nuestro interés se centra en las simulaciones del Grupo
+Local y su componente gaseosa. Éstas nos permiten identificar estructuras
+en la distribución del gas y estudiar su origen y evolución. Comparar
+las simulaciones con las observaciones nos permite guiar e interpretar
+mejor estas últimas. Esta comparación no es trivial; se debe tener
+en cuenta qué resultados se obtienen de las observaciones, y cómo
+pueden ser construidos a partir de las simulaciones.
+
+En este capítulo veremos un resumen de los distintos códigos y simulaciones
+necesarias para el presente trabajo. Empezaremos por el formalismo
+de base para las simulaciones hidrodinámicas con autogravedad, SPH.
+Luego, su implementación particular en el código $\textsc{{gadget-2}}$,
+junto con extensiones para la formación estelar y otros procesos subgrilla,
+seguidas por la serie de simulaciones particulares a este trabajo.
+Las últimas secciones están dedicadas a el conjunto de herramientas
+necesaria para la síntesis de espectros de absorción a partir de las
+simulaciones descriptas.
+
+\section{SPH \cite{sphspringel}\label{sec:SPH}}
+
+\subsection{Formulación}
+
+La hidródinámica en las simulaciones numéricas se implementa con la
+técnica de \emph{Hidrodinámica de partículas suavizadas }(\emph{SPH},
+por sus siglas en inglés). Ésta consiste en una aproximación a la
+mecánica del contínuo utilizando partículas, que pueden pensarse también
+como puntos de interpolación. La técnica tiene numerosas ventajas,
+las más relevantes son la simplicidad de las ecuaciones resultantes
+y la garantía de cumplimiento de varias leyes de conservación.%
+\begin{lyxgreyedout}
+Esto lo hace <<lagrangiano>> posta? \emph{i.e.} son las mismas ecuaciones
+de fluidos pero en repr. lagragiana? Por lo que entiendo no, si las
+<<partículas>> simplemente son puntos de sampleo.%
+\end{lyxgreyedout}
+
+Para cualquier campo $F\left(\boldsymbol{r}\right)$, definido en
+todo el espacio, podemos definir una versión suavizada e interpolada
+$F_{s}$ mediante la convolución con un \emph{núcleo }(\emph{kernel,}
+en inglés) $W\left(\boldsymbol{r},h\right)$ que representa a cada
+partícula, donde $h$ es una \emph{longitud de suavizado }que describe
+la longitud característica del \emph{kernel. }
+\[
+F_{s}\left(\boldsymbol{r}\right)=\int F\left(\boldsymbol{r}\right)W\left(\boldsymbol{r-}\boldsymbol{r'},h\right)\dd^{3}\boldsymbol{r'}
+\]
+\\
+ El \emph{kernel }está normalizado a la unidad, e imita a una función
+$\delta$ de Dirac para el límite $h\to0$. Para éste se pueden utilizar
+gaussianas, pero las implementaciones más actuales utilizan \emph{splines
+}cúbicos con soporte finito.
+
+Si sólo conocemos el campo en una muestra finita de puntos $\boldsymbol{r}_{i}$,
+\emph{i.e\@. $F_{i}=F\left(\boldsymbol{r}_{i}\right)$, }a los cuales
+les asignamos masas $m_{i}$ y densidades $\rho_{i}$ de forma tal
+que cada uno tenga un elemento de volumen $\Delta\boldsymbol{r}_{i}$;
+podemos aproximar la integral por la suma 
+\begin{align*}
+F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r}_{i}^{\prime},h\right)\Delta\boldsymbol{r}_{i}\\
+F_{s}\left(\boldsymbol{r}\right) & \simeq\sum_{i}F_{i}W\left(\boldsymbol{r-}\boldsymbol{r}_{i}^{\prime},h\right)\dfrac{m_{i}}{\rho_{i}}
+\end{align*}
+\\
+ siempre y cuando estos puntos muestreen densamente el volumen del
+\emph{kernel }(esta aproximación es, efectivamente, una integración
+de Monte Carlo). Con este esquema, la densidad de cada punto se puede
+estimar según 
+\[
+\rho_{s}\left(\boldsymbol{r}\right)\simeq\sum_{i}W\left(\boldsymbol{r-}\boldsymbol{r}_{i}^{\prime},h\right)m_{i}
+\]
+\\
+ Vemos aquí la ventaja de utilizar un \emph{kernel }con soporte finito
+(de radio $2h$): cada suma sobre partículas se limita entonces a
+las que estén a una distancia menor a $2h$ del punto para el cual
+se calcula el campo o la densidad suavizadas, lo cual no sucede para
+\emph{kernels }de tipo gaussiano.
+
+Para un fluido ideal, sus ecuaciones de movimiento (\emph{i.e. }conservación
+de la masa, momento y energía) se pueden deducir del siguiente lagrangiano:
+\[
+\mathcal{L}=\int\rho\left(\dfrac{1}{2}\boldsymbol{v}^{2}-u\right)\dd V
+\]
+\\
+ donde $u$ es la energía interna por unidad de masa. La idea del
+método SPH es discretizar este lagrangiano en términos de las partículas
+de fluido, de masa $m_{i}$ 
+\[
+\mathcal{L_{\text{SPH}}}=\sum_{i}\left(\dfrac{1}{2}m_{i}\boldsymbol{v}_{i}^{2}-m_{i}u_{i}\right)
+\]
+\\
+ Para obtener la energía interna $u_{i}$ de cada partícula, se les
+asigna una entropía específica $s_{i}$%
+\begin{lyxgreyedout}
+esta es la misma que $A_{i}?$%
+\end{lyxgreyedout}
+{} de modo que la primera se defina en términos del estimado de densidad
+\[
+u_{i}=s_{i}\dfrac{\rho_{i}^{\gamma-1}}{\gamma-1}
+\]
+\\
+ donde $\gamma$ es el índice adiabático. Así obtenemos también la
+presión de cada partícula como $P_{i}=s_{i}\rho_{i}^{\gamma}$.
+
+A partir del lagranangiano para SPH, se obtiene la dinámica de las
+partículas como las ecuaciones de Euler-Lagrange correspondientes.
+Estas resultan un conjunto de ecuaciones diferenciales ordinarias,
+de primer orden para la velocidad $\boldsymbol{v}_{i}$ de cada partícula,
+lo cual es una simplificación notable de las ecuaciones de movimiento
+para un fluido ideal (las cuales recordamos, son diferenciales parciales).
+\begin{lyxgreyedout}
+expandir más en detalle la parte de las ecuaciones?%
+\end{lyxgreyedout}
+
+
+\subsection{Extensiones y correcciones}
+
+\subsubsection{Viscosidad artificial}
+
+Al describir la dinámica de \emph{gases ideales, }las ecuaciones pueden
+producir discontinuidades en forma de ondas de choque (\emph{shocks}),
+incluso partiendo desde condiciones iniciales suaves. Es necesaria
+entonces una modificación de la dinámica en los \emph{shocks, }que
+introduzca un mecanismo de disipación necesario. Se introduce entonces
+una viscosidad artificial que disipe energía cinética en térmica en
+las ecuaciones de SPH, generando así entropía y ensanchando el choque
+de forma tal que la descripción en términos diferenciales se mantenga
+adecuada. %
+\begin{lyxgreyedout}
+ídem, no ahondo mucho más en esto, no?%
+\end{lyxgreyedout}
+
+
+\subsubsection{Acoplamiento con auto gravedad}
+
+La interacción auto-gravitatoria es de principal importancia en flujos
+astrofísicos. Su inclusión en esquemas hydrodinmámicos eulerianos
+(basados en grillas) no es trivial, puesto que no conserva la energía
+total de forma manifiesta {[}acá una cita, me imagino{]}. En cambio,
+en SPH puede ser incluida de manera simple y precisa modificando el
+lagrangiano utilizado. El potencial gravitatorio dado por el conjunto
+de puntos de SPH es 
+\[
+\Phi\left(\boldsymbol{r}\right)=G\sum_{i}m_{i}\phi\left(\boldsymbol{r}-\boldsymbol{r}_{i},\varepsilon_{i}\right)
+\]
+\\
+ donde $\varepsilon_{i}$ es la ``longitud de enblandecimiento gravitacional''\emph{
+(gravitational softening length)} de cada partícula\emph{, }una cota
+inferior a la distancia, para evitar divergencias en el cálculo del
+potencial. Entonces, la auto-energía potencial total del sistema de
+partículas será: 
+\[
+E_{\text{pot}}=\dfrac{1}{2}\sum_{i}m_{i}\Phi\left(\boldsymbol{r}_{i}\right)=\dfrac{G}{2}\sum_{i,j}m_{i}m_{j}\phi\left(r_{ij},\varepsilon_{j}\right)
+\]
+\\
+ con lo cual, el lagrangiano resulta 
+\[
+\mathcal{L_{\text{SPH}}}=\sum_{i}\left(\dfrac{1}{2}m_{i}\boldsymbol{v}_{i}^{2}-m_{i}u_{i}\right)-\dfrac{G}{2}\sum_{i,j}m_{i}m_{j}\phi\left(r_{ij},\varepsilon_{j}\right)
+\]
+
+
+\section{GADGET-2\label{sec:GADGET-2}}
+
+Las simulaciones utilizadas para la formación galáctica en un contexto
+cosmológico emplean el código \textsc{gadget-2} \cite{gadget2005},
+con modificaciones para la formación estelar, el \emph{feedback} por
+supernovas , enriquecimiento químico y enfriamiento dependiente de
+metales según \cite{cecilia2005} y \cite{cecilia2006}. En las siguientes
+secciones expandiremos acerca de los detalles involucrados.
+
+\subsection{Resumen del código {[}tesis cecilia{]}}
+
+El código \textsc{gadget-2} describe la evolución acoplada de un gas
+ideal y un fluido no colisional, dentro de un universo cuya dinámica
+global está regulada por el modelo cosmológico elegido. La descripción
+se hace en términos de partículas de tres clases: materia oscura,
+estrellas y gas. Para los primeros dos tipos, sólo se utiliza una
+dinámica de auto-gravitación, mientras que las partículas de gas modelan
+la hidrodinámica según la técnica SPH antes detallada.
+
+Llevar a cabo estas simulaciones implica un gran costo computacional.
+\textsc{gadget-2} es un código masivamente paralelizado, de modo que
+es capaz de correr en supercomputadoras distribuyendo el trabajo en
+muchos procesadores, reduciendo así el tiempo total de cómputo. El
+código fuente está escrito en lenguaje \texttt{C}, yLa comunicación
+entre procesadores se ejecuta mediante el protocolo estandarizado
+MPI (Interfaz de Pasaje de Mensajes).
+
+\subsubsection{Implementación de la gravedad}
+
+El cálculo de fuerzas de gravedad entre partículas es un punto de
+alto costo computacional si se implementa en forma de una suma directa\emph{;
+i.e. }para $N$ partículas el algoritmo tiene una complejidad temporal
+$\mathcal{O}\left(N^{2}\right)$. Para evitar este comportamiento,
+se suele descomponer la fuerza gravitaroria en una componente de largo
+alcance que varía suavemente, y otra contribución de las partículas
+cercanas. \textsc{gadget-2} implementa el cálculo de largo alcance
+con un algoritmo ``malla de partículas'' (\emph{PM, particle mesh})
+y la del material cercano con un algoritmo de árbol (\emph{tree}),
+integrando ambos esquemas en el llamado método \emph{TreePM.}
+
+El método PM consiste en dividir la materia en una serie de ``superpartículas''
+ubicadas en una malla regular. Con éstas se calcula la fuerza sobre
+los puntos de la grilla, la cual luego se interpola para obtener la
+fuerza en cualquier punto del volumen de simulación. En cambio, para
+el algoritmo \emph{Tree }las partículas cercanas se arreglan en una
+jerarquía de grupos, y la fuerza resultante de cada uno se calcula
+mediante la suma de una expansión multipolar del grupo. Este algoritmo
+representa una mejora notable en términos de complejidad temporal
+respecto de la suma directa: escala a orden $\mathcal{O}\left(N\log N\right)$.
+
+\subsubsection{algo de la integración cosmológica?}
+
+\subsection{Formación estelar}
+
+En la simulación, la formación estelar se da por la fragmentación
+de una partícula de gas en otra partícula de gas y una de estrella,
+cuando se cumplen ciertas condiciones. Estas emulan la \emph{inestabilidad
+de Jeans, }producida cuando el soporte de presiones de una nube de
+gas no es suficiente para balancear su colapso auto-gravitatorio,
+mientras el gas se mantenga frío durante este colapso. Las partículas
+de gas elegibles para la fragmentación deben presentar una densidad
+mayor a un valor crítico $\left(\rho>\rho_{\ast}=7.0\times10^{26}\text{g}\text{cm}^{-3}\right)$
+y deben ubicarse dentro de un flujo convergente $\left(\boldsymbol{\nabla}\cdot\boldsymbol{v}<0\right)$.
+Para estas partículas elegibles, se asume una tasa de formación estelar
+volumétrica de 
+\[
+\dot{\rho}_{\ast}=c\dfrac{\rho}{\tau_{\text{dyn}}}
+\]
+\\
+ donde $c$ es una \emph{eficiencia de formación estelar }(tomada
+como $c=0.1$) y $\tau_{\text{dyn}}=1\slash\sqrt{4\pi G\rho}$ es
+el tiempo dinámico de la partícula.
+
+La formación estelar es tomada como un proceso estocástico: para cada
+partícula de gas elegible en un dado tiempo se asigna una probabilidad
+de fragmentación $p_{\ast}$, con la cual ésta tendrá lugar o no en
+la iteración temporal siguiente. Esta probabilidad está dada por 
+\[
+p_{\ast}=\dfrac{m}{m_{\ast}}\left[1-\exp\left(-c\dfrac{\Delta t}{\tau_{\text{dyn}}}\right)\right]
+\]
+\\
+ donde $\Delta t$ es el paso de integración temporal de la simulación,
+$m$ es la masa de la partícula de gas y $m_{\ast}=m\slash2$ es la
+masa de la partícula de estrella a formarse. En caso de una formación
+exitosa, la masa de la partícula de gas se reduce en $m_{\ast}$.
+Si tuviera lugar una segunda formación sobre la misma partícula de
+gas, ésta es íntegramente transformada en una de estella, en lugar
+de su fragmentación.
+
+\subsection{Enriquecimiento químico}
+
+\section{CLUES\label{sec:CLUES}}
+
+Las simulaciones particulares utilizadas en el presente trabajo se
+enmarcan en el contexto del Proyecto CLUES (\emph{Constrained Local
+UniversE Simulations})\footnote{\href{https://www.clues-project.org}{\texttt{https://www.clues-project.org}}}.
+Éste apunta a simular de manera más realista el grupo local, incluyendo
+los efectos del \emph{environment, }y otras de las estructuras circundantes
+más prominentes.
+
+Las simulaciones presentes son las utilizadas en los trabajos \cite{N14}
+y \cite{morph15}. Fueron corridas con el código \textsc{gadget-3}
+(una revisión de \texttt{gadget-2} que permite la cobertura de un
+mayor rango dinámico \cite{aquarius}), junto con las extensiones
+de \cite{cecilia2005} y \cite{cecilia2006} antes comentadas. Las
+condiciones iniciales fueron construidas de forma tal de imponer un
+conjunto de vínculos gaussianos a alto \emph{redshift, }usando restricciones
+observacionales a $z\approx0$. La distribución inicial de materia
+consiste en una caja cúbica de $64\text{Mpc}\slash h$ de lado, con
+una región de alta resolución esférica de radio $2\text{Mpc}\slash h$,
+ubicada en su centro.
+
+La simulación se inicia a $z=50$ asumiendo la cosmología $\lcdm$
+deducida a partir del fondo cósmico de microondas medido por la sonda
+WMAP5 (\emph{Wilkinson Microwave Anisotropy Probe 5}) %
+\begin{lyxgreyedout}
+deducida??%
+\end{lyxgreyedout}
+. Los parámetros cosmológicos adoptados fueron: una densidad de materia
+$\Omega_{\text{m}}=0.279$, una densidad de bariones $\Omega_{\text{b}}=0.046$,
+una densidad de constante cosmológica $\Omega_{\Lambda}=0.721$, una
+constante de Hubble $H_{0}=100h\,\text{km s}^{-1}\text{Mpc}^{-1}$
+con $h=0.7$, y una normalización del espectro de potencias de $\sigma_{8}=0.8$.
+Las masas de las partículas de gas y materia oscura dentro de la región
+de alta resolución son $M_{\text{g}}=3.89\times10^{5}M_{\sun}\slash h$
+y $M_{\text{dm}}=1.97\times10^{6}M_{\sun}\slash h$ respectivamente.
+
+La simulación contiene también estructuras similares a los cúmulos
+de galaxias Virgo, Fornax, Perseo y Gran Atractor. Como las escalas
+en las cuales actúan los vínculos son del orden de algunos Mpc, la
+formación de estructura a escalas menores es esencialmente aleatoria.
+Por esta razón, se corrió una serie de realizaciones de la simulación
+a efectos de obtener los mejores acuerdos posibles entre las masas
+y velocidad radial relativa observadas para MW y M31, con estas propiedades
+en sus candidatas resultantes de la simulación.
+
+\subsection{SUBFIND\label{subsec:SUBFIND}}
+
+La identificación de \emph{subestructuras} en la simulación se lleva
+a cabo mediante el algoritmo $\textsc{subfind}$ \cite{subfind}.
+Éste permite la detección de galaxias y objetos autogravitacionalmente
+ligados (con un mínimo de $32$ partículas) basada en su energía de
+ligadura. Dicha identificación permite determinar la pertenencia de
+cada partícula a un dado \emph{subhalo, }los cuales pueden corresponder
+a galaxias o satélites asociados.
+
+El resultado del algortimo en esta simulación nos permite identificar
+las estructuras que corresponden a las candidatas de MW y M31, junto
+con varias de sus propiedades: lista de las partículas que las conforman,
+posición de sus centros, masa total, etc.
+
+\section{Generación de espectros de absorción}
+
+En las siguientes secciones veremos el \emph{suite }de herramientas
+que permiten, como resultado final, la generación de espectros de
+absorción sintéticos a partir de las simulaciones hidrodinámicas antes
+detalladas. El \emph{software} $\textsc{cloudy}$ es la base necesaria
+para la determinación de la densidad de especies iónicas que producen
+la absorción en el medio gaseoso. Las librerías $\texttt{{yt}}$ y
+$\textsc{trident}$, implementadas en el lenguaje de programación
+Python, proveen el enlace entre los resultados de nuestras simulaciones
+y la generación de espectros asociados a estructuras de gas dentro
+del volumen de simulación.
+
+\subsection{CLOUDY \cite{cloudy2013}}
+
+$\cl$ es un programa que determina las condiciones físicas dentro
+de un gas fuera del equilibrio, con posibilidad de exposición a una
+fuente externa de radiación y predice el espectro resultante. Esto
+posibilita la predicción de magnitudes observables específicando sólo
+las propiedades de la nube de gas y el campo de radiación incidente.
+
+El código parte de primeros principios, y calcula el estado térmico,
+químico y de ionización de una nube de gas fuera del equilibrio, a
+ser posiblemente expuesta a una fuente externa de radiación. Se asume
+que ha transcurrido un tiempo tal que los procesos atómicos que ocurran
+se hayan vuelto estacionarios. La densidad de partículas de una especie
+ó nivel $i$ estará dada por 
+\[
+\pdev{n_{i}}t=\sum_{j\neq i}n_{j}R_{ji}+\text{Fuente}-n_{i}\left(\sum_{j,i}R_{ij}+\text{Sumidero}\right)=0
+\]
+\\
+donde aquí $R_{ji}$ representa la tasa $\left[\text{s}^{-1}\right]$
+a la cual la especie $j$ migra a $i$, Fuente es la tasa por unidad
+de volumen $\left[\text{cm}^{-3}\text{s}^{-1}\right]$ a la cual aparecen
+nuevos átomos en $i$, y Sumidero es la tasa $\left[\text{s}^{-1}\right]$
+a la cual se pierden.
+
+Esta ecuación de balance, junto con la conservación de masa, carga,
+y energía determinan completamente el problema. El código resuelve
+éstas ecuaciones de manera auto-consistente con un número mínimo de
+parámetros libres.
+
+\subsection{\texttt{yt}}
+
+\subsection{TRIDENT \cite{trident}}
+
+$\textsc{trident}$\footnote{\href{http://trident-project.org}{\texttt{http://trident-project.org}}}
+es una librería de Python para la generación de espectros de absorción
+sintéticos a partir de simulaciones hidrodinámicas, basado en la librería
+$\texttt{{yt}}$ antes detallada. Permite además obtener información
+detallada acerca de las densidades de iones presentes en la simulación,
+calculadas a partir de ciertas asunciones, junto con características
+espectroscópicas tales como \emph{redshift, }ancho equivalente, ampliación
+térmica, intensidad de la absorción, etc. Éstas pueden consiguientemente
+trazar estructuras físicas a partir de características espectrales,
+asociándoles su contraparte espacial y dinámica dentro del universo
+de la simulación.
+
+La principal rutina de $\textsc{trident}$ consiste en los siguientes
+pasos: primero, construir una \emph{línea de la visual }como un rayo
+de luz dirigido uniendo dos puntos dentro del volumen de la simulación.
+A el punto de partida se lo considera como una fuente de emisión de
+un espectro contínuo, y al punto de llegada como el de observación.
+Entonces, para el gas atravesado por el rayo de luz calcula las densidades
+de los iones presentes según sus condiciones físicas y su absorción
+sobre el espectro de la fuente. Finalizando este proceso, devuelve
+el espectro de la fuente, sobre el cual figuran las líneas de absorción
+calculadas. Podemos ver una ilustración de este protocolo en la Figura
+\ref{fig:trident demo}
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.5]{images/trident_demo}
+\par\end{centering}
+\caption{\label{fig:trident demo}Ilustración del protocolo de generación de
+espectros de absorción. En el centro de la imagen se ubica una galaxia,
+con su CGM encerrado por la línea punteada y el IGM por fuera. Desde
+el incio del rayo de luz una fuente emite con el espectro adjunto.
+Éste es absorbido en longitudes de onda discretas por el gas atravesado
+por el rayo de luz, y finalmente visto por el ojo observador, según
+el esquema a su lado. Extraído de \cite{trident}}
+\end{figure}
+
+Detallaremos ahora los mecanismos que el código utiliza para sus varias
+tareas, divididos en tres módulos:
+\begin{enumerate}
+\item \code{ion\_balance}: módulo que lleva a cabo el cálculo de densidades
+iónicas a partir de $\textsc{cloudy}$.
+\item \code{LightRay}: objeto (clase) representando una el rayo de luz
+en una \emph{línea de la visual.}
+\item \code{SpectrumGenerator}: objeto (clase) capaz de generar el espectro
+de absorción a partir de un objeto \code{LightRay}.
+\end{enumerate}
+
+\subsubsection{Generación de densidad de iones mediante \protect\code{ion\_balance}}
+
+El módulo recibe la simulación hidrodinámica y calcula la densidad
+de partículas para cada ión solicitado en las partículas\footnote{Los elementos computacionales serán partículas si la simulación fuera
+de tipo SPH, previa a la deposición por \code{yt}. En otro caso,
+serán directamente celdas de una malla.} de la simulación que lo requieran. Este cálculo se basa en una serie
+de asumciones según se registre o no la presencia de metales en la
+simulación; la primera de las cuales es la condición de equilibrio
+iónico. %
+\begin{lyxgreyedout}
+decir algo sobre si ya están presentes los iones o elementos o etc?
+el cual no es nuestro caso%
+\end{lyxgreyedout}
+
+Para cada partícula, de define la densidad de partículas de un ión
+$i$ del elemento químico $X$ según 
+\[
+n_{X_{i}}=n_{X}f_{X_{i}}
+\]
+\\
+donde $n_{X}$ es la densidad numérica de núcleos de todas las especies
+del elemento $X$, y $f_{X_{i}}$ es la \emph{fracción de ionización
+}de su \emph{i-}ésimo ión. La densidad de núcleos puede escribirse
+según la densidad de masa $\rho_{X}$ y la masa de cada nucleón $m_{X}$:
+\[
+\rho_{X}=n_{X}m_{X}
+\]
+\\
+y esta última a su vez en términos de su masa atómica $\mathcal{M}_{X}$
+y la masa de hidrógeno $m_{\text{H}}$
+\[
+m_{X}=\mathcal{M}_{X}m_{H}
+\]
+
+En el caso que la información de $\rho_{X}$ esté presente en la simulación,
+se calcula entonces la densidad de núcleos según 
+\begin{equation}
+n_{X}=\dfrac{\rho_{X}}{\mathcal{M}_{X}m_{H}}\label{eq:ene_x}
+\end{equation}
+Si no se tiene $\rho_{X}$, se deben hacer algunas aproximaciones.
+En principio, si $X$ es H ó He, se toma su abundancia solar $A_{X}$
+\[
+A_{X}=\left.\dfrac{n_{X}}{n_{\text{H}}}\right|_{\sun}
+\]
+de modo que sus densidades nuclear sean 
+\[
+n_{X}=A_{X}n_{H}
+\]
+y, en caso que se tenga $\rho_{\text{H}}$, tenemos 
+\[
+n_{X}=A_{X}\dfrac{\rho_{H}}{m_{H}}
+\]
+Si no se tiene $\rho_{\text{H}}$, entonces se asume la fracción de
+masa primordial para el hidrógeno $\chi=0.76$. En ese caso 
+\[
+n_{\text{H}}=\dfrac{\chi\rho}{m_{\text{H}}}
+\]
+con lo cual 
+\[
+n_{X}=A_{X}\dfrac{\chi\rho}{m_{\text{H}}}
+\]
+
+Por otro lado, si $X$ es un metal, definimos su metalicidad $Z_{X}$como
+\[
+Z_{X}=\dfrac{\rho_{X}}{\rho}
+\]
+\\
+y, si disponemos de esta metalicidad en nuestros datos, utilizamos
+la ecuación \ref{eq:ene_x}
+\[
+n_{X}=\dfrac{Z_{X}\rho}{m_{\text{H}}\mathcal{M}_{X}}
+\]
+de otra forma, debemos tener necesariamente la metalicidad total $Z$,
+dada por 
+\[
+Z=\dfrac{\rho_{\text{metales}}}{\rho}
+\]
+y asumir la abundancia solar para cada metal. Así, obtenemos la densidad
+de masa del metal $\rho_{X}$ según el producto
+\begin{equation}
+\rho_{X}=Z\rho\,\times\,\left.\dfrac{\rho_{X}}{\rho}\right|_{\sun}\label{eq:rho_x}
+\end{equation}
+Deseamos reexpresar este resultado en términos de la abundancia solar
+$A_{X}$ antes definida. Para eso, tomamos el cociente entre la densidad
+metales $\rho_{X}$ y la densidad de hidrógeno $\rho_{\text{H}}$,
+según la ecuación \ref{eq:ene_x}
+\[
+\dfrac{\rho_{X}}{\rho_{\text{H}}}=\dfrac{n_{X}\mathcal{M}_{X}m_{\text{H}}}{n_{\text{H}}m_{\text{H}}}=\dfrac{n_{X}\mathcal{M}_{X}}{n_{\text{H}}}
+\]
+de modo tal que, considerado este cociente con los valores solares,
+obtenemos 
+\[
+\left.\dfrac{\rho_{X}}{\rho_{\text{H}}}\right|_{\sun}=\left.\dfrac{n_{X}}{n_{\text{H}}}\right|_{\sun}\mathcal{M}_{X}=A_{X}\mathcal{M}_{X}
+\]
+
+De esa forma, podemos escribir la ecuación \ref{eq:rho_x} según
+\[
+\rho_{X}=Z\rho_{\text{H}}A_{X}\mathcal{M}_{X}
+\]
+Si nuevamente no disponemos de $\rho_{\text{H}}$, consideramos la
+fracción primordial de hidrógeno para obtener 
+\[
+\rho_{X}=Z\rho\chi A_{X}\mathcal{M}_{X}
+\]
+y así, usando la ecuación \ref{eq:ene_x}, podemos finalmente obtener
+la densidad de núcleos del metal $X$
+\[
+n_{X}=\dfrac{Z\rho\chi A_{X}}{m_{\text{H}}}
+\]
+Mediante la cual se obtiene la densidad del \emph{i-}ésimo ión utilizando
+la fracción de ionización $f_{X_{i}}$
+\begin{equation}
+n_{X_{i}}=f_{X_{I}}\dfrac{Z\rho\chi A_{X}}{m_{\text{H}}}\label{eq:nx_final}
+\end{equation}
+
+Bajo la asumción de equilibrio de ionización, la fracción de ionización
+es una función de la temperatura y densidad del gas y forma e intensidad
+del campo de radiación incidente. El módulo \code{ion\_balance} considera
+la radiación de fondo UV de modelos metagalácticos, en partículas
+de \cite{haardtmadau}. En este modelo, el campo de radiación está
+parametrizado únicamente por el \emph{redshift}, de forma que la fracción
+de ionización es sólo función de la temperatura, densidad y \emph{redshift.
+}El módulo accede a una tabla de valores de $f_{X_{i}}$ precalculada
+mediante $\cl$. Así, la fracción de ionización deseada para cada
+ión se obtiene interpolando linealmente los valores de esta tabla.
+
+En la Figura \ref{fig:ion_balance} podemos ver un esquema del proceso
+de generación de densidades iónicas, junto con las magnitudes necesarias
+para este.
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.5]{images/trident_ion_balance}
+\par\end{centering}
+\caption{\label{fig:ion_balance} Esquema de la generación de densidades iónicas.
+Desde la simulación se requieren: una lista de los iones a calcular
+(aquí fueron elegidos $\text{H}_{\text{I}}$,$\text{C}_{\text{IV}}$
+y $\text{O}_{\text{VI}}$), la densidad, temperatura y metalicidad
+del gas, y el \emph{redshift. }Para una simulación basada en partículas,
+como es nuestro caso, \emph{primero} se calculan las densidades iónicas
+correspondientes sobre cada partícula, y \emph{luego} se efectúa la
+deposición al \emph{octree }mediante \protect\code{yt}. Extraída
+de \cite{trident}}
+\end{figure}
+
+
+\subsubsection{Creación de \emph{lineas de la visual }con la clase \textmd{\protect\code{LightRay}}}
+
+Según adelantábamos en las secciones previas, la generación de espectros
+se computa para el gas atravesado por una trayectoria o \emph{línea
+de la visual} en el volumen de la simulación. Esta trayectoria se
+define por un punto de \emph{emisión} como su origen, y un punto de
+\emph{observación} como su extremo. $\tri$ implementa este concepto
+en forma de objetos generados por la clase \code{LightRay}; éstos
+consisten en una secuencia unidimensional ordenada de las celdas de
+la simulación atravesadas por la trayectoria de la línea de la visual
+(las celdas aquí pertenecen al \emph{octree }generado por la deposición
+a la grilla mediante \code{yt}).
+
+El objeto \code{LightRay} puede contener además, una selección de
+campos definidos para cada una de sus celdas, tales como la posición,
+velocidad, densidad, temperatura, volumen de la celda, etc. Cabe aclarar
+que las celdas contenidas en el rayo no tienen todas las mismas dimensiones:
+habrá celdas de menor tamaño en las regiones de la simulación con
+mayor densidad de partículas.
+
+Además de los campos seleccionados para guardarse en el objeto \code{LightRay},
+éste define y registra una serie de campos especiales para el procesamiento
+posterior. Para cada celda en el rayo, $\tri$ calcula su longitud
+de camino \code{dl}, su intervalo de \emph{redshift }cosmológico
+\code{dredshift}, su \emph{redshift }cosmológico \code{redshift},
+su velocidad a los largo de la línea de la visual \code{velocity\_los},
+su \emph{redshift }por efecto Döppler \code{redshift\_dopp} y su
+\emph{redshift efectivo} \code{redshift\_eff}. Veremos aquí el cálculo
+específico de cada una de estas magnitudes.
+
+Definimos la línea de la visual de un objeto \code{LightRay} como
+un vector $\boldsymbol{\ell}$ dentro del volumen de la simulación
+que parte de un punto $\boldsymbol{r}_{a}$ a un punto $\boldsymbol{r}_{b}$
+(de observación). Este vector será entonces la suma de $n$ elementos
+de línea $\dd\boldsymbol{\ell}$, tantos como celdas atravesadas por
+el rayo: 
+\[
+\boldsymbol{\ell}=\boldsymbol{r}_{b}-\boldsymbol{r}_{a}=\sum_{i=0}^{n}\dd\boldsymbol{\ell}_{i}
+\]
+\\
+La longitud de camino $\dd\ell$ de cada celda será entonces $\dd\ell_{i}=|\dd\boldsymbol{\ell}_{i}|$
+
+Se asume una expansión de Hubble suave entre los puntos $a$ y $b$,
+de tal forma que su separación en \emph{redshift }es la distancia
+radial comóvil:
+\begin{equation}
+\ell=D_{\text{H}}\int_{z_{a}}^{z_{b}}\dfrac{\dd z'}{E(z')}\label{eq:long_comv}
+\end{equation}
+donde $D_{\text{H}}$ es la distancia de Hubble, y el denominador
+es
+\[
+E(z)=\sqrt{\Omega_{\text{m}}\left(1+z\right)^{3}+\Omega_{k}\left(1+z\right)^{2}+\Omega_{\Lambda}}
+\]
+En la simulación, el lado conocido de la ecuación es la distancia
+comóvil $\ell$, mientras que se desea obtener la diferencia de \emph{redshifts
+}$z_{a}-z_{b}$. No hay una solución analítica cerrada para esta ecuación,
+por lo tanto se obtiene iterativamente mediante el método de Newton-Raphson.
+Cabe destacar que el código adopta la siguiente convención: el \emph{redshift
+}asignado \textbf{siempre }es mayor en el punto $a$ (emisión), y
+\textbf{decrece} en la dirección del rayo hacia $b$.
+
+Teniendo la diferencia de \emph{redshift} entre extremos del rayo,
+se asume que el intervalo de \emph{redshift }en cada celda depende
+linealmente de su longitud de camino $\dd\ell$:
+\[
+\dd z_{i}=\dfrac{\dd\ell_{i}}{\ell_{i}}\left(z_{b}-z_{a}\right)
+\]
+(notemos que este incremento es \emph{negativo}, pues $z$ decrece
+de $a$ hacia $b$). Así, se puede obtener el \emph{redshift} cosmológico
+para cada celda atravesada por el rayo %
+\begin{lyxgreyedout}
+le cambié el signo a la ecuación del paper, no estoy seguro si hay
+un error..%
+\end{lyxgreyedout}
+\[
+z_{i}=z_{b}-\sum_{j=i}^{n}\dd z_{j}
+\]
+
+Al generar un espectro, para quien observa no le es posible distinguir
+si el corrimiento en frecuencia de una línea de absorción corresponde
+al \emph{redshift }cosmológico o al efecto Döppler debido al movimiento
+del gas. Por esa razón, $\tri$ incluye las siguientes magnitudes
+dentro del objeto \code{LightRay}. La \emph{velocidad en la línea
+de la visual (Line Of Sight}, en inglés\emph{)} de una celda es simplemente
+la proyección de la velocidad de la celda sobre la dirección del rayo:
+\begin{equation}
+v_{\text{LOS},i}=\boldsymbol{v}_{i}\cdot\dd\boldsymbol{\ell}_{i}=v_{i}\dd\ell_{i}\cos\left(\theta_{i}\right)\label{eq:v_los}
+\end{equation}
+\\
+donde $\theta_{i}$ es el ángulo entre el vector velocidad de la celda
+$i$-ésima y la dirección de la línea de la visual. Con esta información
+se puede calcular el \emph{redshift} debido al efecto Döppler, para
+cada celda del rayo 
+\[
+1+z_{\text{dopp},i}=\dfrac{1+\dfrac{v_{i}}{c}\cos\left(\theta_{i}\right)}{\sqrt{1-\left(\dfrac{v_{i}}{c}\right)^{2}}}
+\]
+\\
+siendo $c$ la velocidad de la luz. El \emph{redshift efectivo, }la
+magnitud con la cual se modifica directamente la longitud de onda
+de una línea de absorción dentro del espectro, está definido para
+cada celda como una combinación del cosmológico y el Döppler \cite{z_eff}:
+\begin{equation}
+1+z_{\text{eff},i}=\left(1+z_{\text{dopp},i}\right)\left(1+z_{i}\right)\label{eq:z_eff}
+\end{equation}
+
+Para generar un objeto \code{LightRay}, se debe especificar la trayectoria,
+campos a guardar, y lista de iones para los cuales calcular y guardar
+las densidades numéricas. Una vez finalizada su creación, el mismo
+se guarda en disco como un archivo binario en formato $\textsc{hdf5}$.
+Este archivo puede ser cargado nuevamente mediante \code{yt} cuando
+sea necesario.
+
+\subsubsection{Generación de espectros con la clase \protect\code{SpectrumGenerator}}
+
+La clase \code{SpectrumGenerator} contiene las herramientas necesarias
+para generar un espectro de absorción y sus magnitudes asociadas a
+partir de un objeto \code{LightRay}. Para definir un objeto de esta
+clase, se le debe cargar el rango de longitudes de onda deseado con
+un espaciamiento entre valores consecutivos, y una lista de las líneas
+de absorción a generar sobre un espectro contínuo. $\tri$ contiene
+una base de datos con $220$ líneas de absorción en el visible y UV
+frecuentemente utilizadas; para cada una incluye su ión de fuente,
+su longitud de onda $\lambda$, su fuerza de oscilador $f_{\text{val}}$
+y su probabilidad de transición $\Gamma$.
+
+Un objeto \code{SpectrumGenerator} tiene dos funciones: calcular
+y guardar atributos observables y generar el espectro de absorción
+propiamente dicho. Para ambas operaciones, recibe el objeto \code{LightRay}
+que porta los datos de velocidad, \emph{redshift, }y densidades numéricas
+de iones. Con ellos calcula, para cada una de las líneas de absorción
+y para cada una de las celdas del rayo, las siguientes magnitudes:
+\begin{itemize}
+\item \emph{Densidad columnar }$N_{X}$ de la especie iónica, obtenida como
+el producto de la densidad numérica $n_{X}$ y la longitud de camino
+de cada celda $\dd\ell$
+\[
+N_{X}=n_{X}\dd\ell\text{ para cada celda}
+\]
+\item Longitud de onda \emph{observada }de la línea $\lambda$, calculada
+como la longitud de onda de la transición $\lambda_{0}$ corregida
+según el \emph{redshift efectivo} que da cuenta del \emph{redshift
+}cosmológico y el efecto Döppler, según la ecuación \ref{eq:z_eff}
+\[
+\lambda=\lambda_{0}\left(1+z_{\text{eff}}\right)
+\]
+\item Parámetro de ensanchamiento térmico ó Döppler (\emph{thermal broadening})
+de la línea producto de la agitación térmica del gas, calculado según
+\[
+b=\sqrt{\dfrac{2kT}{\mathcal{M}}}
+\]
+\\
+siendo $k$ la constante de Boltzmann, $T$ la temperatura del gas,
+y $\mathcal{M}$ la masa atómica del ión considerado.
+\item \emph{Ancho equivalente} %
+\begin{lyxgreyedout}
+ver qué es esto...%
+\end{lyxgreyedout}
+\item \emph{Profundidad óptica} $\tau$ de la absorción, que caracteriza
+la absorbancia de la línea particular. La examinaremos en detalle
+en la siguiente sección.
+\end{itemize}
+Recordamos que cada una de estas magnitudes se obtiene \textbf{para
+cada celda en el rayo}, de modo que se seguir su dependencia espacial,
+en contraste con las observaciones.
+
+La otra función de un objeto \code{SpectrumGenerator} es la generación
+del espectro de absorción según las líneas especificadas y las características
+observables antes descritas. Dada esta información, el objeto puede
+generar un espectro de absorción \emph{en bruto, }como vemos en la
+Figura \ref{fig:abs_spec_raw}.
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.5]{images/abs_spec_demo}
+\par\end{centering}
+\caption{\label{fig:abs_spec_raw}Espectro de absorción \emph{en bruto}. El
+flujo relativo de valor unidad indica una transimión total, mientras
+que de valor nulo indica una absorción total. Podemos ver la absorción
+en líneas discretas, producto de transiciones iónicas en el gas sobre
+el cual se incide la radiación.}
+
+\end{figure}
+Este ``espectro'' es simplemente una gráfica del flujo relativo
+(ó \emph{transmitancia}) de radiación incidente que atraviesa al gas
+en función de su longitud de onda. Vemos que este flujo toma el valor
+de la unidad cuando el gas es completamente transparente a la radiación;
+y decrece hasta un valor nulo a medida que se produce la absorción.
+La magnitud física que regula la absorción es la \emph{profundidad
+óptica }$\tau$, a partir de la cual el flujo relativo se obtiene
+como 
+\begin{equation}
+f=\text{e}^{-\tau}\label{eq:flujo_tau}
+\end{equation}
+\\
+Esta magnitud se relaciona con la \emph{absorbancia }$A$ según 
+\[
+\tau=A\ln10
+\]
+
+En la Figura \ref{fig:trident_spectrum_features} podemos apreciar
+la manifestación de estructuras físicas en el gas absorbente con características
+en el espectro. Vemos cómo una mayor densidad de partículas incide
+en una mayor absorción, y cada valle en el espectro se compone de
+las absorciones de las celdas con valores de $\lambda$ contíguos.
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.8]{images/trident_structure_spectrum}
+\par\end{centering}
+\caption{\label{fig:trident_spectrum_features} Conexión entre estructuras
+físicas y características espectrales. $A$: corte en la simulación,
+indicando la densidad de hidrógeno neutro $\text{H}\textsc{i}$ y
+vector velocidad en cada celda, junto en el rayo. $B$: densidad columnar
+de $\text{H}\textsc{i}$de cada celda a lo largo del rayo. $C$: perfil
+de velocidad en la línea de la visual $v_{\text{LOS}}$, a lo largo
+del rayo. $D$: perfil de densidad columnar, ahora con la posición
+en el espacio de \emph{redshift }de cada celda corregida por el efecto
+Döppler utilizando la correspondiente $v_{\text{LOS}}$. $E$: temperatura
+para cada celda en función de su longitud de onda observada. $F$:
+densidad columnar de cada celda, en su correspodiente longitud de
+onda, junto con su ensanchamiento térmico. $G$: perfiles de Voigt
+calculados para cada celda (en verde), junto con el espectro de absorción
+final en negro. Extraída de \cite{trident}}
+
+\end{figure}
+
+Cada valle en la Figura \ref{fig:abs_spec_raw} representa una línea
+de absorción. Podemos apreciar que éstas absorciones no están completamente
+concentradas en una longitud de onda única, sino que presentan un
+ancho característico. Por otro lado, las absorciones no necesariamente
+son \emph{completas }(produciendo un flujo relativo nulo)\emph{, }sino
+que pueden ser \emph{parciales }(como vemos en la Figura \ref{fig:trident_spectrum_features}
+G), absorbiendo sólo una parte de la intensidad incidente.
+
+En primer lugar, la forma de la línea de absorción está determinada
+por dos características del gas absorbente: el ensanchamiento Döppler
+debido a la distribución térmica de velocidades en el gas, y el \emph{ensanchamiento
+por presión }producto de las colisiones entre partículas. El primero
+de estos efectos es bien descripto por un perfil gaussiano, mientras
+que el segundo se puede modelar con un perfil lorentziano. La combinación
+de estos dos efectos se realiza mediante la convolución de ambos perfiles,
+obteniendo así el denominado \emph{perfil de Voigt.}
+
+Veamos de qué forma se obtiene este perfil. Si definimos $x=\nu-\nu_{0}$
+y partimos de las funciones gaussiana centrada en el origen, con desviación
+$\sigma$
+\[
+G\left(x,\sigma\right)=\dfrac{1}{\sqrt{2\pi}\sigma}\exp\left(-\dfrac{x^{2}}{2\sigma^{2}}\right)
+\]
+\\
+y lorentziana con semiancho a media altura $\gamma$
+\[
+L\left(x,\gamma\right)=\dfrac{\gamma\slash\pi}{\gamma^{2}+x^{2}}
+\]
+\\
+obtenemos el perfil de Voigt mediante la convolución
+\[
+V\left(x,\sigma,\gamma\right)=\int_{-\infty}^{\infty}G\left(x',\sigma\right)L\left(x-x',\gamma\right)\dd x'
+\]
+
+Adoptamos ahora a la longitud de onda $\lambda$ como variable independiente.
+El perfil de Voigt no tiene forma cerrada, pero puede ser computado
+numéricamente según 
+\[
+V\left(\lambda,\sigma,\gamma\right)=\dfrac{\Re\left[w\left(z\right)\right]}{\sqrt{2\pi}\sigma}
+\]
+\\
+donde $w\left(z\right)$ es la fución de Faddeeva, definida como 
+\[
+w\left(z\right)=\exp\left(-z^{2}\right)\left(1+\dfrac{2i}{\sqrt{\pi}}\int_{0}^{z}\text{e}^{t^{2}}\dd t\right)
+\]
+\\
+y su argumento complejo es 
+\[
+z=\dfrac{u+ia}{\sqrt{2}\sigma}
+\]
+\\
+siendo $u$ la diferencia de longitud de onda relativa al centro $\lambda_{0}$,
+y $a$ el parámetro de amortiguación
+\[
+u=c\left(\dfrac{\lambda_{0}}{\lambda}-1\right)\text{ y }a=\dfrac{\Gamma\lambda_{0}}{4\pi}
+\]
+\\
+recordando que $c$ es la velocidad de la luz, y $\Gamma$ es la probabilidad
+de transición de la línea.
+
+Así, el perfil de profundidad óptica para cada línea (que se reflejará
+en el espectro según $f=\exp\left(-\tau\right)$) queda determinado
+por 
+\[
+\tau\left(\lambda,\sigma,\gamma\right)=\tau_{0}V\left(\lambda,\sigma,\gamma\right)
+\]
+\\
+con el valor máximo de profundidad en el centro de la línea $\tau_{0}$
+dado por 
+\[
+\tau_{0}=\dfrac{\pi e^{2}Nf_{\text{val}}\lambda_{0}}{m_{e}c}
+\]
+\\
+siendo $e$ y $m_{e}$ la carga y masa del electrón, $N$ es la densidad
+columnar del gas y $f_{\text{val}}$ es la fuerza de oscilador de
+la transición iónica. Podemos apreciar que la intensidad de la absorción
+crece con la densidad del gas $N$ %
+\begin{lyxgreyedout}
+y con $\lambda_{0}$??????%
+\end{lyxgreyedout}
+
+
+\subsubsection{Post-procesamiento del espectro}
+
+Hasta ahora, hemos visto la generación de un espectro de absorción
+\emph{en bruto}, según se dispone en la Figura \ref{fig:abs_spec_raw}.
+Sin embargo, $\tri$ posee funcionalidades que agregar complejidad
+al espectro generado de forma tal de emular fuentes más realistas
+u efectos observacionales. En primer lugar, se puede agregar el espectro
+de un quásar como simulación de el espectro de emisión de la fuente
+ubicada al origen de la línea de la visual. También, es posible agregar
+una contaminación al espectro por el \emph{foreground }de la Vía láctea.
+Para emular los efectos inherentes al instrumento de observación,
+se puede convolucionar el espectro con una \emph{función de transferencia
+de línea }(LSF en inglés) y finalmente agregar un ruido gaussiano.
+Podemos apreciar la aplicación sucesiva de estos efectos en la Figura
+\ref{fig:trident_postprocessing}.
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.75]{images/trident_spectrum_postprocessing}
+\par\end{centering}
+\caption{\label{fig:trident_postprocessing}Post-procesamiento del espectro
+de absorción a partir del espectro \emph{en bruto} (curva al pie).
+Desde éste, se agregan secuencialmente: el espectro de un quásar en
+la fuente, el \emph{foreground} de la Vía láctea, la convolución con
+una LSF, y un ruido gaussiano. Los \emph{offsets} de las curvas son
+artificiales para mejor comparación entre ellas. Extraído de \cite{trident}}
+\end{figure}
+
+
+\chapter{Procesamiento?}
+
+\chapter{Análisis y resultados}
+
+\section{Comparación de las direcciones hacia M31 y ortogonal}
+
+Un primer aspecto interesante discutido en RN17 es la existencia plausible
+de un ``puente'' de gas entre MW y M31, amparada por observaciones
+de absorción de O VI con altas velocidades radiales hacia MW, en la
+dirección general hacia M31. Una explicación posible puede ser un
+exceso de gas caliente en esta región, según implican las simulaciones
+en N14.
+
+Con esta motivación, queremos realizar una comparación en varios aspectos
+entre una línea de la visual que apunte hacia M31, y otra perpendicular
+que no apunte a alguna estructura en particular (que denominamos \emph{away}).
+Seleccionamos dos rayos de nuestra muestra con esas características,
+que podemos ver en la Figura \ref{fig:m31_and_away} sobre una proyección
+de densidad en el dominio.
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.5]{images/proj_poster}
+\par\end{centering}
+\caption{\label{fig:m31_and_away}Proyección de la densidad de gas en el dominio
+de la simulación. En el centro se ubica MW, y en dirección noroeste,
+M31. Las dos flechas indican las líneas de la visual en dirección
+a M31 y \emph{away. }Las unidades de distancia son kpc, en longitud
+comóvil.}
+\end{figure}
+Si bien aquí sólo mostramos una proyección, hemos verificado que los
+rayos elegidos cumplen éstas condiciones al observar otras proyecciones.
+
+\subsection{Densidad de gas}
+
+A modo de una primera comparación, queremos estudiar las diferencias
+de densidad de gas entre estas direcciones y cómo se reflejan en los
+espectros de absorción, siendo éstos la única magnitud de acceso directo
+observacional. Para eso, graficamos la densidad de gas $\rho$ en
+función de la distancia para ambas direcciones, como disponemos en
+la Figura \ref{fig:rho_profiles_m31_away}. Recordamos que cada rayo
+consiste en un conjunto de celdas de la simulación consecutivas, alineadas
+entre los puntos inicial y final. De este modo , la densidad graficada
+para una distancia particular en la figura corresponde a la obtenida
+en una celda del rayo a dicha distancia.
+
+\begin{figure}
+\begin{centering}
+\includegraphics[scale=0.6]{images/0_m31_away_density_profiles_new}
+\par\end{centering}
+\caption{\label{fig:rho_profiles_m31_away}Perfiles de densidad de gas en función
+de la distancia a MW para las dos líneas de la visual, hacia M31 y
+\emph{away.}}
+
+\end{figure}
+
+En la Figura \ref{fig:rho_profiles_m31_away} podemos ver que la densidad
+de masa muestra una tendencia generalmente decreciente con la distancia
+en ambas direcciones, salvo en escalas de $\sim500\text{ kpc}$ en
+la dirección hacia M31. Es a esta distancia en la cual el rayo comienza
+a atravesar el halo de M31, explicando así este pico de densidad,
+cuya posición coincide aproximadamante con la distancia MW-M31 en
+la simulación ($652$ kpc). Vemos entonces que la densidad del gas
+en la dirección de M31 es siempre mayor (exceptuando las regiones
+centrales de MW, a menos de $50\text{ kpc}$), a veces por un orden
+de magnitud.
+
+\subsection{Espectros de absorción}
+
+En vistas de la marcada diferencia en la densidad de gas entre ambas
+direcciones, queremos estudiar de qué forma se reflejan estas características
+en su contraparte observacional. Para eso, recordamos que el punto
+de acceso a la densidad de gas en las observaciones se da mediante
+los espectros de absorción. En particular, las simulaciones nos permiten
+no sólo acceder al espectro de la forma en la cual es observado directamente
+(\emph{i.e.} con fuentes de radiación naturales que provean líneas
+de la visual en posiciones fijas), sino también ubicar el inicio de
+las líneas de la visual a distancias variables en direcciones dadas.
+Esta técnica nos permite ``sondear'' estructuras físicas en una
+dada dirección de observación permitiendo estudiar así las características
+de las líneas de absorción como función de la distancia.
+
+Procedemos a tomar dichos espectros de absorción en ambas direcciones
+a distancias variables. Para esto, dejamos el extremo de ambos rayos
+fijo en la posición del sol y movemos su origen (en donde se ubica
+la fuente de radiación) a lo largo de cada dirección, incrementando
+la distancia al sol hasta un valor de $1000\text{ kpc}$, como se
+ve en la Figura \ref{fig:m31_and_away}. Obtenemos los espectros de
+absorción para cuatro de las líneas utilizadas en RN17 comentadas
+en la sección {[}{*}{*}{*}acá una referencia al capítulo tres donde
+se indiquen los iones{]}, y representamos el espectro utilizando la
+\emph{velocidad espectral }como variable independiente en lugar de
+la longitud de onda. Esta transformación se hace según 
+\[
+v\left(\lambda\right)=c\dfrac{\lambda-\lambda_{0}}{\lambda_{0}}=cz_{\text{eff}}
+\]
+\\
+donde $\lambda_{0}$ es la longitud de onda de la línea, $c$ es la
+velocidad de la luz, y $z_{\text{eff}}$ es el \emph{redshift efectivo,
+}según la ecuación \ref{eq:z_eff}. De esa forma, obtenemos una velocidad
+equivalente a la combinación de los efectos de \emph{redshift} cosmológico
+y Döppler debido a la velocidad intrínseca del gas.
+
+La progresión de espectros de absorción en función de la distancia
+está disponible como material audiovisual complementario; representamos
+aquí los espectros para tres distancias importantes, en las Figuras
+\ref{fig:RN_m31_away_253kpc}, \ref{fig:RN_m31_away_691kpc} y \ref{fig:RN_m31_away_1000kpc}.
+Éstas corresponden a los orígenes de líneas de la visual ubicados:
+justo fuera del radio virial de MW; a la distancia de M31; a la máxima
+distancia tomada.
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.4]{images/RN_m31_away_253kpc}
+\par\end{centering}
+\caption{\label{fig:RN_m31_away_253kpc}Espectros sintéticos de absorción para
+las líneas de la visual consideradas, que comienzan a una distancia
+de $253$ kpc del sol. Cada fila corresponde al espectro de un ión
+particular en ambas direcciones; la columna izquierda corresponde
+a la dirección hacia M31 y la derecha la dirección \emph{away.}}
+
+\end{figure}
+
+La Figura \ref{fig:RN_m31_away_253kpc} corresponde a posiciones de
+origen de los rayos justo por fuera del radio virial de MW, de modo
+que la absorción sólo es producida por el gas dentro del halo de MW.
+Ya a esta distancia, podemos apreciar que la dirección hacia M31 presenta
+una mayor absorción en cada línea, debida a la mayor densidad de gas.
+Éstas asimetrías dentro del halo gaseoso son consistentes con lo estudiado
+en el trabajo \cite{N14}, que utiliza esta misma simulación. Podemos
+notar aquí una característica común en estos espectros: la absorción
+en forma de campana aproximadamente simétrica. Esta forma particular
+de absorción para una dada línea se debe a que, respecto de la velocidad
+del centro de la campana, el gas adopta velocidades tanto mayores
+como menores por igual. Esto implica que la nube de gas atravesada
+por la línea de la visual se mueve globalmente con la velocidad del
+centro de la campana, y su ancho está dado por una dispersión en las
+velocidades y el ensanchamiento térmico (ver Figura \ref{fig:trident_spectrum_features}
+F).
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.4]{images/RN_m31_away_691kpc}
+\par\end{centering}
+\caption{\label{fig:RN_m31_away_691kpc}\emph{Ibid. }Figura \ref{fig:RN_m31_away_253kpc},
+a distancia de $691$ kpc del sol.}
+
+\end{figure}
+
+En la Figura \ref{fig:RN_m31_away_691kpc}, vemos que los espectros
+de absorción en la dirección \emph{away }no presentan cambios, mientras
+que en la dirección hacia M31 se observan nuevas features importantes
+en todas las líneas. Dado que a esta distancia se ubica ya M31, podemos
+entender estas diferencias como producto de la absorción del gas en
+el halo de M31. Notemos también que la velocidad espectral a la cual
+se presentan estas absorciones es negativa; esto quiere decir que
+el efecto combinado del \emph{redshift }cosmológico y Döppler por
+velocidad intrínseca resulta en un \emph{corrimiento al azul }(menor
+longitud de onda que en reposo). Puesto que el \emph{redshift }cosmológico
+siempre produce un corrimiento al rojo, podemos concluir que el efecto
+dominante aquí es el Döppler debido a la propia velocidad del gas,
+que se acerca al punto de observación. Esto es esperable ya que las
+galaxias MW y M31 se están acercando. Tendremos en cuenta este hecho
+en un posterior análisis.
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.4]{images/RN_m31_away_1000kpc}
+\par\end{centering}
+\caption{\label{fig:RN_m31_away_1000kpc}\emph{Ibid. }Figura \ref{fig:RN_m31_away_253kpc},
+a distancia de $1000$ kpc del sol.}
+
+\end{figure}
+
+Por último, en la Figura \ref{fig:RN_m31_away_1000kpc} disponemos
+los espectros de absorción para la última distancia tomada, $1000\text{ kpc}$,
+que supera ya el radio virial de M31. Nuevamente vemos aquí que para
+la dirección \emph{away} no han habido cambios respecto a la anterior
+distancia. Para la dirección hacia M31 no se presentan mayores diferencias,
+salvo una ligera absorción mayor en la línea $\text{C IV }1548$,
+lo cual nos puede indicar que este elemento se encuentra esparcido
+sobre el IGM, además de en los halos galácticos. Como en ninguna línea
+se observa una saturación total de la absorción (\emph{i.e.} que el
+flujo alcance un valor nulo), queda abierta la posibilidad de una
+absorción mayor en la dirección hacia M31, que no observamos. Esto
+nos permite concluir que la principal componente de absorción es la
+producida por el gas en los halos galácticos de MW y M31, en concordancia
+con los resultados presentados en RN17.
+
+El conjunto de estos resultados dan cuenta de la forma en la cual
+se manifiestan las variaciones en la densidad de gas en función de
+la dirección en las observaciones. Ya desde los datos directos de
+la simulación (\emph{i.e.} densidades de gas en cada celda) como desde
+los espectros sintéticos vemos diferencias apreciables entre ambas
+direcciones, que dan cuenta de la existencia del puente de gas en
+la dirección MW-M31.
+
+\subsection{Comparación con todas las direcciones ortogonales}
+
+En el análisis anterior, comparamos únicamente las dos líneas de la
+visual vistas en la Figura \ref{fig:m31_and_away}, correspondientes
+a la dirección que une MW y M31, y otra dirección ortogonal. Esta
+primera comparación tomando una única línea ortogonal nos permitió
+entender en detalle el efecto de la diferencia de densidad en los
+espectros de absorción obtenidos emulando las observaciones. No obstante,
+nos gustaría verificar si esta tendencia se mantiene al seleccionar
+cualquier otra dirección ortogonal, o es producto de una fluctuación
+estadística.
+
+Para eso, compararemos la misma línea de la visual que une MW y M31
+con un conjunto de líneas en direcciones ortogonales. Seleccionamos
+de nuestra muestra de $500$ a estas líneas como las que formen un
+ángulo de $90^{\circ}\pm10^{\circ}$ con la dirección MW-M31, como
+podemos observar en la Figura \ref{fig:all_away}. Éstas dan un total
+de $90$ direcciones \emph{away.}
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.5]{images/0_m31_away_directions}
+\par\end{centering}
+\caption{\label{fig:all_away}Dirección hacia M31 (estrella azul) y conjunto
+de direcciones \emph{away }(puntos púrpura) representadas como puntos
+sobre la esfera.}
+
+\end{figure}
+
+
+\subsubsection{Densidad de gas}
+
+Repetiremos la comparación vista en la Figura \ref{fig:rho_profiles_m31_away},
+ahora considerando a todas las direcciones ortogonales mencionadas.
+Para ésto, obtenemos la densidad en cada una de las direcciones \emph{away,
+}y calculamos su promedio y varianza para cada distancia. En la Figura
+\ref{fig:rho_profiles_m31_away_all} graficamos nuevamente la densidad
+de gas $\rho$ en función de la distancia en la dirección hacia M31;
+y ahora graficamos también el promedio de la densidades en las direcciones
+ortogonales, sombreando la región flanqueada por su primer desviación
+estándar hacia valores superiores.
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.6]{images/0_m31_all_away_density_profiles_new}
+\par\end{centering}
+\caption{\label{fig:rho_profiles_m31_away_all}Perfiles de $\rho$ en función
+de la distancia a MW, según la dirección. En magenta representamos
+la dirección hacia M31 (vista en la Figura \ref{fig:rho_profiles_m31_away}),
+y en púrpura el promedio del perfil de densidades en las direcciones
+\emph{away. }Sombreamos el intervalo de confianza superior sobre este
+promedio, a una desviación estándar.}
+\end{figure}
+
+Podemos apreciar que las curvas hacia M31 y promedio de \emph{away
+}(salvo en la región central a escalas pequeñas) toman valores similares
+hasta que comienzan a diverger en una distancia aproximadamente igual
+al radio virial de MW, $R_{\text{MW}}=222.2\text{ kpc}$. A partir
+de este valor (que corresponde al exterior del halo de MW) notamos
+que la densidad en la dirección hacia M31 se mantiene mayor al intervalo
+de confianza de las direcciones \emph{away. }Esta diferencia es consistente
+con la hipótesis del puente de gas en la región entre MW y M31. A
+partir de una distancia $\sim500$ kpc, la diferencia se hace muy
+pronunciada debido al ingreso al halo de M31, como hemos visto en
+la Figura \ref{fig:rho_profiles_m31_away}.
+
+\subsubsection{Velocidades en la línea de la visual}
+
+Como última comparación entre estas direcciones, observamos la velocidad
+del gas proyectada sobre cada línea de la visual (la $v_{\text{LOS}}$,
+según la ecuación \ref{eq:v_los}).Obtener esta magnitud directamente
+de la simulación nos permitirá comparar con la calculada mediante
+los espectros de absorción, y sumar confianza sobre esta técnica para
+su determinación observacional.
+
+Repetimos la metodología de la sección anterior: comparamos la $v_{\text{LOS}}$
+en la dirección hacia M31 con su promedio sobre todas las direcciones
+ortogonales seleccionadas. Grafiamos estas magnitudes en función de
+la distancia en la Figura \ref{fig:v_los_profiles_m31_away_all},
+nuevamente sombreando la región con una desviación estándar en torno
+al promedio sobre las direcciones \emph{away. }Graficamos también
+con una línea horizontal quebrada la $v_{\text{LOS}}$ correspondiente
+a la estructura M31, obtenida desde la salida de $\textsc{subfind}$.
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.6]{images/0_mean_vlos_vs_r_new}
+\par\end{centering}
+\caption{\label{fig:v_los_profiles_m31_away_all}Perfiles de $v_{\textsc{LOS}}$en
+función de la distancia a MW, según la dirección. En magenta representamos
+la dirección hacia M31 y en púrpura el promedio del perfil de velocidades
+en las direcciones \emph{away. }Sombreamos el intervalo de confianza
+sobre este promedio, a una desviación estándar a cada lado. En línea
+punteada, incluimos el valor de velocidad LOS del subhalo M31.}
+
+\end{figure}
+
+En principio, podemos notar que en la dirección hacia M31, la velocidad
+es siempre negativa salvo en una pequeña región a distancias muy bajas
+$\left(<100\textrm{ kpc}\right)$, correspondiente al interior del
+halo de MW. En ésta región es donde se produce la absorción con el
+espectro corrido al rojo, según vemos en la Figura \ref{fig:RN_m31_away_253kpc},
+correspondiente a la zona de mayor densidadad de gas en esta dirección,
+como se ve en la Figura \ref{fig:rho_profiles_m31_away}. El resto
+del rayo, que las velocidades sean negativas nos indica que todo el
+gas muestreado en esta dirección (MW-M31) se acerca hacia MW. Entre
+$600$ y $800$ kpc, podemos notar una región de un pico de velocidad
+hacia MW; en la figura \ref{fig:rho_profiles_m31_away} notamos que
+esta región comprende al pico de densidad dado por el halo de M31.
+Las altas velocidades se reflejan en la absorción corrida al azul
+que se observa en el espectro de la Figura \ref{fig:RN_m31_away_691kpc}.
+Podemos notar también que estas velocidades son siempre mayores a
+la del centro de M31.
+
+Por otro lado, para las direcciones \emph{away, }vemos que el promedio
+de velocidad es en general negativo y cercano a cero, de menor valor
+absoluto que en la dirección hacia M31. No obstante, notamos que la
+dispersión de velocidades es notable, adoptando valores muy altos
+a distancias cortas (esto se debe a las fuertes asimetrías del flujo
+de gas dentro del halo de MW).
+
+Considerando las diferencias entre las direcciones hacia M31 y ortogonal,
+podemos concluir que la primer dirección presenta velocidades que
+apuntan consistentemente hacia MW a lo largo de toda la línea; en
+cambio en las direcciones ortogonales estas velocidades pueden ser
+tanto positivas como negativas. Vemos también, que en la dirección
+hacia M31, a la distancia correspondiente al halo de esta galaxia
+tienen lugar valores de velocidad muy altos, que no se observan en
+las direcciones ortogonales. Podemos atribuir este hecho a la acreción
+combinada del gas hacia M31 y de M31 hacia MW.
+
+\section{Fracciones de cobertura en MW y M31}
+
+Estudiaremos ahora otra magnitud que nos permite establecer un nexo
+entre simulaciones y observaciones: la denominada \emph{fracción de
+cobertura (covering fraction).} Observacionalmente, esta magnitud
+se define como la fracción de líneas de la visual cuya densidad columnar
+en un elemento particular supere un valor dado (correspondiente a
+la sensibilidad del intrumento); dando así una noción de qué fracción
+del cielo está cubierta por gas de una dada especie química. Esta
+magnitud resume una primera aproximación a la distribución del gas
+en el halo e IGM, teniendo en cuenta la perspectiva de quien observe.
+\begin{comment}
+decir algo más de para qué miramos esto??
+\end{comment}
+
+En principio, mediante las observaciones no es posible acceder directamente
+a la distancia a la cual se ubica una nube de gas; lo cual motiva
+la definición anterior como una medida que no tenga en cuenta dicha
+distancia. En cambio, desde las simulaciones contamos con la información
+completa de esta distribución, y podemos entonces extender esta definición
+para incluir la dependencia con la distancia, como veremos más abajo.
+
+Recordemos que cada rayo representando a una línea de la visual consiste
+en una secuencia de celdas de la simulación ordenadas por distancia,
+cada una conteniendo un valor para la densidad columnar $N$ de los
+iones registrados. Para un dado valor umbral de densidad columnar
+$N_{\text{thresh}}$ y una resolución entre distancias $\Delta r$,
+definimos la fracción de cobertura $f_{c}$ a una distancia $r$ como
+la cantidad de celdas con $N>N_{\text{thresh}}$ dentro del cascarón
+esférico de radios $r$ y $r+\Delta r$, sobre el total de celdas
+en el cascarón.
+\[
+f_{c}\left(r\right)=\sum_{r_{i}\in\left[r,r+\Delta r\right]}\Theta\left(N_{i}-N_{\text{thresh}}\right)\biggr\slash\sum_{r_{i}\in\left[r,r+\Delta r\right]}1
+\]
+donde $\Theta$ es la función de Heaviside, y $r_{i}$ es la posición
+de cada celda considerada.\\
+\begin{comment}
+muy innecesario, sólo quería escribirlo cheto
+\end{comment}
+
+Con esta definición en cuenta, queremos comparar las tendencias de
+cobertura en función de la distancia desde los puntos de vista de
+MW y M31, para el gas en el halo de cada una. Utilizando un conjunto
+de $500$ líneas de la visual muestradas uniformemente desde la posición
+del sol, y otro desde el centro de M31, calculamos la cobertura en
+cada caso, para las líneas de absorción antes mencionadas y dos valores
+de $N_{\text{thresh}}$; según la definición expuesta. Presentamos
+los resultados en la Figura \ref{fig:covf_mw_m31}.
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[scale=0.65]{images/1_covfs_10_13}
+\par\end{centering}
+\caption{\label{fig:covf_mw_m31}Fracciones de cobertura en función de la distancia,
+vistas desde MW (columna izquierda) y M31 (columna derecha). En la
+primer fila el valor umbral de densidad columnar es $N_{\text{thresh}}=10^{10}\text{ cm}^{-2}$,
+y en la segunda fila es $N_{\text{thresh}}=10^{13}\text{ cm}^{-2}$.
+Las distancias representadas superan sendos radios viriales: $R_{\text{MW}}=222.2\text{ kpc}$
+y $R_{\text{M31}}=244.9\text{ kpc}$. Utilizamos $\Delta r=4.3\text{ kpc}$.}
+
+\end{figure}
+
+Podemos notar varias tendencias dentro de los resultados, comenzamos
+con el umbral menor, $N_{\text{thresh}}=10^{10}\text{ cm}^{-2}$.
+En primer lugar, en ambas galaxias las fracciones decrecen desde la
+unidad hasta un valor cercano a cero en una distancia aproximada al
+radio virial de cada una. Esto sucede en todas las líneas de absorción
+salvo $\text{C IV }1548$, en la cual se observa un decrecimiento
+mucho más lento. Para las otras líneas, en ambas galaxias notamos
+que el decrecimiento se hace menos pronunciado conforme aumenta la
+distancia. El único caso en el cual esta tendencia no tiene lugar
+corresponde a la línea $\text{C IV }1548$ desde MW: su fracción comienza
+en un valor $\sim0.1$, y en una distancia de $\sim25\text{ kpc}$
+\emph{crece} hasta un valor de $0.8$, para luego decrecer con la
+distancia. Salvo por esa excepción, notamos también que el ordenamiento
+de elementos de menor a mayor cobertura es el mismo para ambas galaxias.
+Notamos también que las dos líneas con coberturas mayores corresponden
+al carbono, y las dos menores al silicio.
+
+Por otro lado, para el umbral mayor $N_{\text{thresh}}=10^{13}\text{ cm}^{-2}$,
+notamos que el decrecimiento es mucho más pronunciado que en el caso
+anterior, de manera tal que las fracciones se anulan en $r=50\text{ kpc}$
+para MW, y $r\sim100\text{ kpc}$ para M31. Notamos también que, en
+ambas galaxias, la cobertura de la línea $\text{C IV }1548$ es casi
+nula en todas las distancias; lo cual representa un fuerte contraste
+con el umbral menor. En cuanto al ordenamiento de los elementos según
+la cobertura, vemos que nuevamente es el mismo en ambas galaxias.
+No obstante, el ordenamiento ha cambiado en comparación con el umbral
+menor, puesto que la línea de menor cobertura (exceptuando a $\text{C IV }1548$)
+es ahora $\text{Si III }1206$, en lugar de $\text{Si II }1193$.
+Con excepción de $\text{C IV }1548$, nuevamente las dos líneas de
+menor cobertura corresponden al silicio.
+
+Podemos interpretar los comportamientos anteriores teniendo en cuenta
+las consideraciones descriptas en las sección \ref{subsec:gas}, según
+los resultados de N14. Es claro que en el umbral más bajo se está
+explorando la región del halo extendido de cada galaxia, y en el más
+alto la región más interna del halo. Recordando que asumimos las abundancias
+solares para la distribución de los elementos en toda la simulación,
+es esperable que la componente de carbono domine por sobre la de silicio.
+No obstante, la distribución de iones de un dado elemento depende
+de las condiciones termodinámicas locales (que determinan la fracción
+de ionización en la ecuación \ref{eq:nx_final}) del material gaseoso.
+Se puede entender entonces, que en las escalas más grandes del halo
+(con el umbral bajo) dominen los iones más altos (C IV, Si III), ya
+que el gas en estas regiones es más caliente. De igual forma, en las
+regiones internas del halo (vistas en el corte alto) dominan los iones
+más bajos, dado que el gas frío y denso se concentra en dichas zonas.
+
+\section{Fracciones de cobertura para HVCs en MW}
+
+Realizaremos ahora una comparación con un conjunto particular de observaciones
+en RN17. Estudiaremos la fracción de cobertura bajo la definición
+observacional; \emph{i.e. }sin tener en cuenta la dependencia con
+la distancia. Para esto, en cada línea de la visual comparamos la
+suma de la densidad columnar en todas sus celdas con un valor umbral;
+y calculamos la fracción de líneas que cumplan este criterio. Nos
+interesa, en particular, esta fracción considerando únicamente el
+gas en forma de HVCs. Esto es, el gas cuya \emph{velocidad espectral}
+cumpla algún criterio para ser considerada ``alta'' (en RN17, se
+adopta que su módulo sea mayor que $100\text{ km}\slash\text{s}$).
+
+Calculamos la fracción de cobertura en función del umbral de densidad
+columnar, variando también el valor absoluto de la velocidad a partir
+del cual una celda de gas es considerada como HVC (que define si su
+$N$ contribuirá al total de la línea que se compara con $N_{\text{thresh}}$).
+Disponemos estos resultados en la Figura \ref{fig:RN3}, junto con
+las observaciones correspondientes en RN17.
+
+\begin{figure}[h]
+\begin{centering}
+\hspace*{-1cm}\includegraphics[scale=0.55]{images/2_RN_f3_with_selection}
+\par\end{centering}
+\caption{\label{fig:RN3}Fracción de cobertura según $N_{\text{thresh}}$,
+a distintos cortes de velocidad del gas, para las especies iónicas
+consideradas. Incluimos también los resultados de las observaciones
+en RN17.}
+\end{figure}
+
+Podemos observar que en todos los casos la cobertura es monótonamente
+decreciente con los umbrales de densidad y velocidad en el rango considerado.
+Exceptuando a la línea $\text{C IV }1548$, observamos un comportamiento
+cualitativamente similar a las tendencias en las observaciones. No
+obstante, podemos ver que este acuerdo aproximado se produce al seleccionar
+un velocidad mínima para los HVCs en el rango $30-45\text{ km}\slash\text{s}$,
+en contraste con el valor de $100\text{ km}\slash\text{s}$ impuesto
+en las observaciones.
+
+Teniendo en cuenta que el valor de corte para la velocidad que resulta
+en un mejor acuerdo con las observaciones en un poco menos que la
+mitad del corte observacional, consideramos que una posible causa
+para esta discrepancia es la resolución de las simulaciones. Una resolución
+insuficiente en términos de densidad espacial de partículas implicaría
+un suavizado del campo de velocidades que disminuya el valor de sus
+máximos (los cuales corresponden a HVCs).
+
+\section{Distribución del gas en subhalos}
+
+Nuestro último estudio y comparación con las observaciones de RN17
+en el presente trabajo será un análisis de la distribución de gas
+perteneciente a cada subhalo en la simulación. Recordemos que definimos
+como subhalo a cada estructura identificada por el algoritmo $\textsc{subfind}$
+(sección \ref{subsec:SUBFIND}), que puede representar tanto una galaxia
+(\emph{e.g. }M31) como un satélite menor.
+
+En particular, nos interesa estudiar la densidad de gas en función
+de la distancia al centro de cada subhalo, teniendo en cuenta la perspectiva
+particular al punto de observación (MW). Este último influye en la
+determinación de la distancia entre el centro de un subhalo y una
+fuente de radiación en el interior de su halo. Damos cuenta de este
+hecho al notar que, desde el punto de vista del sol, sólo se puede
+calcular la distancia perpendicular entre el centro y una línea de
+la visual que pase por la fuente. Esto implica que fuentes ubicadas
+a distintas profundidades de una línea de la visual sean observadas
+con la misma distancia perpendicular al centro del subhalo, la cual
+denominaremos \emph{parámetro de impacto $b$.}
+
+\subsection{Densidad en función del parámetro de impacto en la simulación}
+
+Para estimar la densidad columnar correspondiente al material gaseoso
+de un subhalo particular empleamos el siguiente procedimiento. Dada
+una línea de la visual dirigida a un punto cercano al centro de un
+subhalo, consideraremos únicamente el gas perteneciente a celdas de
+la simulación contenidas dentro de una esfera con ese mismo centro
+y de radio $2R_{\text{vir}}$, siendo $R_{\text{vir}}$ el radio virial
+correspondiente a esa estructura. Entonces, para cada línea de la
+visual podemos obtener su parámetro de impacto a un subhalo y densidad
+columnar contenida en este último, sobre la cual podemos imponer como
+condición adicional que presente absorción (tomando celdas que cumplan
+$\tau>0$, ver ecuación \ref{eq:flujo_tau}).
+
+Tomamos los datos de la siguiente manera: para cada subhalo considerado,
+muestramos $150$ líneas de la visual dirigidas hacia puntos distribuidos
+al azar en un entorno del subhalo, a distancia menor a $2R_{\text{vir}}$.
+Observamos los $12$ subhalos más masivos, exceptuando al que le corresponde
+a MW, y graficamos $N$ en función de $b$ en cada línea y en todas
+las especies iónicas para cada uno, como vemos en la Figura \ref{fig:subhalos_N_b}.
+Identificamos también a qué región de la simulación pertenece cada
+subhalo, según la posición de su centro esté contenida en los halos
+de MW o M31, o no (caso al cual catalogamos como IGM).
+
+\begin{figure}[h]
+\noindent \begin{raggedright}
+\hspace*{-1cm}\includegraphics[scale=0.4]{images/4_subhalos_N_b}
+\par\end{raggedright}
+\caption{\label{fig:subhalos_N_b}Densidad columnar $N$ contenida en cada
+subhalo versus parámetro de impacto $b$, en unidades del $R_{\text{vir}}$
+corrspondiente, para cada línea de absorción. Mantenemos la clave
+de colores para las especies iónicas, según la Figura \ref{fig:covf_mw_m31}.
+En cada subhalo, indicamos sus valores de masa, radio virial, y región
+de pertenencia. La región sombreada corresponde al rango de valores
+en el cual la muestra de RN17 exhibe \emph{completitud. }Los recuadros
+están ordenados de izquierda a derecha, y de arriba a abajo según
+la masa (ó radio virial) del subhalo de manera decreciente; siendo
+el primero el correspondiente a M31.}
+\end{figure}
+
+Graficamos también, en cada recuadro, la banda de valores de densidad
+para la cual las observaciones en RN17 son consideradas \emph{completas.
+}En el trabajo, se define la \emph{completitud} según la fracción
+de líneas de la visual en las cuales las absorciones existentes pueden
+ser correctamente detectadas. Entonces, dentro de esa banda de valores
+podemos afirmar que, si hubiera absorciones, éstas habrían sido observadas.
+
+En primer lugar, podemos notar que la densidad columnar de gas en
+las regiones internas al halo de M31 (primer recuadro, con $b<0.25R_{\text{vir}}=57\text{ kpc}$)
+es superior a las densidades vistas en el resto de los subhalos, salvo
+algunas excepciones; esto es esperable dado que M31 es el subhalo
+más masivo de la simulación. Por otro lado, en este subhalo observamos
+una marcada disminución de $N$ con la distancia, mientras que en
+el resto de los subhalos no observamos esa tendencia, sino que la
+magnitud se mantenga aproximadamente constante en muchos casos.
+
+La identificación de la región a la cual pertenece cada subhalo resulta
+clave para interpretar este comportamiento. Podemos notar que todos
+los subhalos salvo M31 poseen masas y radios viriales dentro del mismo
+orden de magnitud, pero algunos de ellos presentan valores de densidad
+columar bastante más bajos que otros, de modo tal que no estén comprendidos
+dentro de la banda de completitud. Si los discriminamos según la región
+de pertenencia, observamos que estos casos particulares corresponden
+a los subhalos que pertenecen al IGM. Esto nos indica que los valores
+altos de densidad en algunos subhalos de deben a que se está muestrando
+el gas que pertenece realmente al halo de MW ó M31, en lugar del que
+le es propio al subhalo; lo cual no ocurre en los que se ubican en
+la región IGM. Este hecho también da cuenta de la constancia de la
+densidad con la distancia en todos los casos salvo M31. En esta galaxia,
+la variación principal se observa hasta escalas de $b\sim0.75R_{\text{vir}}=173\text{ kpc}$;
+mientras que en el resto, las regiones muestradas se extienen como
+máximo hasta $\sim90\text{ kpc}$, de modo que no se aprecian variaciones
+significativas.
+
+\subsection{Interpretación según las observaciones}
+
+En el trabajo RN17, se analizan líneas de la visual que intersequen
+al medio circumgaláctico de otras galaxias pertenecientes al LG además
+de MW y sus satélites; con el fin de investigar la existencia y extensión
+de halos gaseosos en base a la absorción. En la Figura \ref{fig:RN_fig10_posta}
+disponemos sus resultados para la distribución celeste y tamaño angular
+de las galaxias del LG estudiadas.
+
+\begin{figure}
+\begin{centering}
+\hspace*{-1cm}\includegraphics[scale=0.6]{images/RN_fig10_posta}
+\par\end{centering}
+\caption{\label{fig:RN_fig10_posta}Distribución celeste de las 19 galaxias
+del LG ubicadas por fuera del radio virial de MW. Los tamaños de los
+círculos indican la extensión de sus halos a $2R_{\text{vir}}$, y
+el color indica la velocidad radial según la escala. Las cajitas indican
+la posición de las líneas de la visual con detecciones de HVCs, con
+su color dado por las velocidades medias de absorción. Extraída de
+RN17.}
+\end{figure}
+
+En la Figura, vemos que sólo para M31 y la galaxia enana Leo I se
+tienen muestras de múltiples líneas de la visual; y se tienen muestras
+individuales para galaxias enanas/satélites tales como Aquarius, Sextans
+A y NGC 3109. De todas ellas, sólo se observa una absorción contundente
+en las líneas dirigidas hacia M31. La conclusión que se extrae del
+estudio es que sólo en el caso de M31 hay evidencia observacional
+que apoye la existencia de un halo gaseoso extendido; mientras que
+en los otros casos no se observan indicios de una componente de gas
+circumgaláctico.
+
+Por nuestra parte, podemos notar que los resultados antes descriptos
+son consistentes con las observaciones. A saber: en los subhalos pertenecientes
+al IGM no hay material gaseoso dentro de la banda de completitud (\emph{i.e.
+}que se pueda identificar en observaciones); y sólo en el caso de
+M31 se observa un decrecimiento de la densidad con la distancia característico
+de un halo gaseoso. La falta de halo en las galaxias enanas/satélites
+puede interpretarse en el contexto del modelo de \emph{feedback. }En
+estas galaxias, los vientos de supernova intensos en las regiones
+centrales expulsan la componente gaseosa, dado que no cuentan con
+la suficiente masa para mantenerla ligada gravitacionalmente.
+
+\chapter{conclus}
+
+implementamos el metodo para simular espectros de absorcion del IGM
+y halos, para las sims clues. se puede aplicar a simulaciones similares,
+para obtener esto.... es relevante porque necesitamos el marco teorica
+para interpretar obs i.e. RN17 donde estudiaron, gas en halos IGM,
+hvcs
+
+resultados, vemos que (cada resultado)
+
+\appendix
+
+\chapter{Esto es un apéndice ordinario}
+
+\bibliographystyle{apalike}
+\phantomsection\addcontentsline{toc}{chapter}{\bibname}\bibliography{bibliography}
+
+\end{document}

@@ -2695,15 +2695,10 @@ noprefix "false"
 \end_inset
 
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-citep{trident}
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "trident"
+literal "false"
 
 \end_inset
 
@@ -3873,15 +3868,10 @@ redshift efectivo,
 la magnitud con la cual se modifica directamente la longitud de onda de
  una línea de absorción dentro del espectro, está definido para cada celda
  como una combinación del cosmológico y el Doppler 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-citep{z_eff}
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "z_eff"
+literal "false"
 
 \end_inset
 
@@ -4404,11 +4394,18 @@ de cada celda corregida por el efecto Doppler utilizando la correspondiente
 
 : perfiles de Voigt calculados para cada celda (en verde), junto con el
  espectro de absorción final en negro.
- Extraída de 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "trident"
-literal "false"
+ Extraída de Hummels et.
+ al.
+ (2017) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citet{trident}
+\end_layout
 
 \end_inset
 
@@ -5734,15 +5731,10 @@ puente
 
  con altas velocidades radiales hacia MW, en la dirección general de M31
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-citep{2003ApJS..146..165S}
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "2003ApJS..146..165S"
+literal "false"
 
 \end_inset
 
