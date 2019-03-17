@@ -512,9 +512,21 @@ Resumen
 \end_layout
 
 \begin_layout Standard
-Para estudiar la fase gaseosa del grupo local de galaxias, el uso de simulacione
-s numéricas hidrodinámicas en un contexto cosmológico es crucial para entender
- y guiar a las observaciones.
+Un aspecto importante de la formación de galaxias es su relación con la
+ cosmología, que se manifiesta no solamente a través de sus propiedades
+ a distintos tiempos cósmicos sino también en relación al medio ambiente
+ donde éstas se forman.
+ Debido a limitaciones observacionales, nuestro Grupo Local --cuyas galaxias
+ principales son la Vía Láctea (MW) y Andrómeda (M31)-- es el mejor candidato
+ para investigar la relación entre la formación de galaxias y escalas mayores,
+ ya que a partir de relevamientos espectroscópicos se tiene información
+ de la distribución de gas en el medio intergaláctico.
+\end_layout
+
+\begin_layout Standard
+Para estudiar la fase gaseosa del Grupo Local, el uso de simulaciones numéricas
+ hidrodinámicas en un contexto cosmológico es crucial para entender y guiar
+ a las observaciones.
  Éstas se presentan en forma de espectros de absorción que dan cuenta de
  la densidad, composición y velocidad de el material gaseoso ionizado, dentro
  de los halos de galaxias y medio intergaláctico.
@@ -522,7 +534,7 @@ s numéricas hidrodinámicas en un contexto cosmológico es crucial para entende
 
 \begin_layout Standard
 En este trabajo, implementamos un método para la generación de espectros
- de absorción sintéticos a partir de simulaciones del grupo local; y generamos
+ de absorción sintéticos a partir de simulaciones del Grupo Local; y generamos
  una muestra de observaciones simuladas desde la posición del sol.
 \end_layout
 
@@ -544,7 +556,7 @@ nubes de alta velocidad
 alta velocidad
 \emph default
  un valor mínimo entre 
-\begin_inset Formula $30-40\text{ km s}^{-1}$
+\begin_inset Formula $30-45\text{ km s}^{-1}$
 \end_inset
 
 , en contraste con el valor observacional de 
@@ -556,7 +568,7 @@ alta velocidad
 
 \begin_layout Standard
 Por último, estudiamos la distribución de gas en M31 y galaxias enanas del
- grupo local.
+ Grupo Local.
  Los resultados obtenidos están en concordancia con las observaciones: sólo
  en el caso de M31 se tiene evidencia de un halo gaseoso extendido.
 \end_layout
@@ -636,7 +648,7 @@ A quienes tuve el agrado de contar como compañeros docentes, especialmente
 \end_inset
 
 Por último, a las docentes que he tenido en la secundaria, que me motivaron
- a estudiar este carrera: Claudia, Mirta, Cristina y Valeria.
+ a estudiar esta carrera: Claudia, Mirta, Cristina y Valeria.
 \end_layout
 
 \begin_layout Standard
@@ -697,20 +709,24 @@ rtson-Walker.
 \begin_inset Formula $\Lambda$
 \end_inset
 
-), en concordancia con las observaciones realizadas hasta el presente (
+), en concordancia con las observaciones realizadas hasta el presente
 \emph on
-e.g.
  
 \emph default
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "nuza13"
-literal "false"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{nuza13}
+\end_layout
 
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -862,7 +878,7 @@ MW
 \emph default
  no se encuentra aislada sino que forma parte de un grupo, llamado el 
 \emph on
-grupo local (local group, 
+Grupo Local (local group, 
 \emph default
 LG
 \emph on
@@ -901,7 +917,7 @@ citep{LG}
 
 .
  Este par de galaxias presenta masas del orden de 
-\begin_inset Formula $10^{12}\,M_{\odot}$
+\begin_inset Formula $10^{12}\,\text{M}_{\odot}$
 \end_inset
 
 , y ambas se acercan entre sí a una velocidad de aproximadamente 
@@ -1171,7 +1187,7 @@ En consecuencia, es posible afirmar que la caracterización del CGM de las
 
 \begin_layout Standard
 En esta tesis, nuestro objetivo es modelar espectros de absorción mediante
- espectros sintéticos en simulaciones cosmológicas del grupo local para
+ espectros sintéticos en simulaciones cosmológicas del Grupo Local para
  una posterior comparación con las observaciones y, de esa forma, interpretar
  las tendencias vistas.
 \end_layout
@@ -1966,7 +1982,7 @@ producida cuando el soporte de presiones de una nube de gas no es suficiente
  frío durante este colapso.
  Las partículas de gas elegibles para la fragmentación deben presentar una
  densidad mayor a un valor crítico 
-\begin_inset Formula $\left(\rho>\rho_{\ast}=7.0\times10^{26}\text{g}\text{ cm}^{-3}\right)$
+\begin_inset Formula $\left(\rho>\rho_{\ast}=7.0\times10^{26}\text{ g}\text{ cm}^{-3}\right)$
 \end_inset
 
  y deben ubicarse dentro de un flujo convergente 
@@ -2120,7 +2136,7 @@ En astrofísica y cosmología, se denomina
 \emph on
 metales
 \emph default
- a todos los elementos de la tabla peródica posteriores al H y He.
+ a todos los elementos de la tabla periódica posteriores al H y He.
 \end_layout
 
 \end_inset
@@ -2135,7 +2151,7 @@ el cociente entre la masa de metales en una partícula y su masa total).
 \end_layout
 
 \begin_layout Section
-Simulaciones CLUES del grupo local
+Simulaciones CLUES del Grupo Local
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:CLUES"
@@ -2170,7 +2186,7 @@ literal "true"
 \end_inset
 
 .
- Éste apunta a simular de manera más realista el grupo local, incluyendo
+ Éste apunta a simular de manera más realista el Grupo Local, incluyendo
  los efectos del 
 \emph on
 environment, 
@@ -2277,11 +2293,11 @@ Wilkinson Microwave Anisotropy Probe 5
 .
  Las masas de las partículas de gas y materia oscura dentro de la región
  de alta resolución son 
-\begin_inset Formula $M_{\text{g}}=3.89\times10^{5}M_{\odot}\slash h$
+\begin_inset Formula $M_{\text{g}}=3.89\times10^{5}\text{M}_{\odot}\slash h$
 \end_inset
 
  y 
-\begin_inset Formula $M_{\text{dm}}=1.97\times10^{6}M_{\odot}\slash h$
+\begin_inset Formula $M_{\text{dm}}=1.97\times10^{6}\text{M}_{\odot}\slash h$
 \end_inset
 
  respectivamente.
@@ -2469,7 +2485,7 @@ Fuente
 \end_inset
 
  es la tasa por unidad de volumen 
-\begin_inset Formula $\left[\text{cm}^{-3}\text{s}^{-1}\right]$
+\begin_inset Formula $\left[\text{cm}^{-3}\text{ s}^{-1}\right]$
 \end_inset
 
  a la cual aparecen nuevos átomos en 
@@ -3212,7 +3228,7 @@ Para reescribir este resultado en términos de la abundancia solar
 \begin_inset Formula $\rho_{\text{H}}$
 \end_inset
 
-, según la ecuación 
+, según la Ecuación 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:ene_x"
@@ -3273,7 +3289,7 @@ Estimamos
 
 \end_inset
 
-y así, usando la ecuación 
+y así, usando la Ecuación 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:ene_x"
@@ -3378,7 +3394,7 @@ noprefix "false"
 \end_inset
 
  podemos ver un esquema del proceso de generación de densidades iónicas,
- junto con las magnitudes necesarias para este.
+ junto con las magnitudes necesarias para éste.
 \end_layout
 
 \begin_layout Standard
@@ -3460,7 +3476,7 @@ literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -4079,7 +4095,7 @@ redshift efectivo
 \emph on
 redshift 
 \emph default
-cosmológico y el efecto Doppler, según la ecuación 
+cosmológico y el efecto Doppler, según la Ecuación 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:z_eff"
@@ -4412,7 +4428,7 @@ literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -4650,7 +4666,7 @@ outputs
  que los integran y varios otros atributos.
  Entre ellos podemos destacar la masa total del subhalo, su radio virial,
  vector velocidad, y posición del mínimo local de potencial.
- En el caso de las simulaciones del grupo local que utilizamos, los dos
+ En el caso de las simulaciones del Grupo Local que utilizamos, los dos
  principales subhalos corresponden a candidatos para la MW y M31; de modo
  que podemos obtener sus posiciones con este método.
 \end_layout
@@ -5447,7 +5463,7 @@ Si bien la muestra de
 status open
 
 \begin_layout Plain Layout
-núcleos galácticos activos ubicados a distancias cosmológicas.
+Núcleos galácticos activos ubicados a distancias cosmológicas.
 \end_layout
 
 \end_inset
@@ -5711,7 +5727,7 @@ En todo el trabajo, nos concentramos en cuatro líneas de absorción utilizadas
 \begin_inset Formula $\textrm{Si}\textsc{ iii}\,1206$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -6035,7 +6051,7 @@ donde
 \emph on
 redshift efectivo, 
 \emph default
-según la ecuación 
+según la Ecuación 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:z_eff"
@@ -6669,7 +6685,7 @@ Como última comparación entre estas direcciones, observamos la velocidad
 \begin_inset Formula $v_{\text{LOS}}$
 \end_inset
 
-, según la ecuación 
+, según la Ecuación 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:v_los"
@@ -7053,7 +7069,7 @@ Fracciones de cobertura en función de la distancia, vistas desde MW (columna
 \end_inset
 
  y 
-\begin_inset Formula $R_{\text{M31}}=244.9\text{ kpc}$
+\begin_inset Formula $R_{\text{M31}}=231.4\text{ kpc}$
 \end_inset
 
 .
@@ -7134,7 +7150,7 @@ Por otro lado, para el umbral mayor
 
  para M31.
  Notamos también que, en ambas galaxias, la cobertura de la línea 
-\begin_inset Formula $\text{C}\textsc{iv}\,1548$
+\begin_inset Formula $\text{C}\textsc{ iv}\,1548$
 \end_inset
 
  es casi nula en todas las distancias; lo cual representa un fuerte contraste
@@ -7361,7 +7377,7 @@ s.
 Podemos observar que en todos los casos la cobertura es monótonamente decrecient
 e con los umbrales de densidad y velocidad en el rango considerado.
  Exceptuando a la línea 
-\begin_inset Formula $\text{C}\textsc{iv}\,1548$
+\begin_inset Formula $\text{C}\textsc{ iv}\,1548$
 \end_inset
 
 , observamos un comportamiento cualitativamente similar a las tendencias
@@ -7465,7 +7481,7 @@ Para estimar la densidad columnar correspondiente al material gaseoso de
 \begin_inset Formula $\tau>0$
 \end_inset
 
-, ver ecuación 
+, ver Ecuación 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:flujo_tau"
@@ -7819,8 +7835,8 @@ Conclusiones
 \end_layout
 
 \begin_layout Standard
-Implementamos el método para sintetizar espectros de absorción a partir
- de simulaciones hidrodinámicas en un marco cosmológico.
+En la presente tesis, implementamos un método para sintetizar espectros
+ de absorción a partir de simulaciones hidrodinámicas en un marco cosmológico.
  Lo hemos hecho, en particular, para las simulaciones CLUES, pero es extensible
  a otras clases de simulaciones.
  Completar este objetivo requirió el cumplimiento de una serie de pasos
@@ -7899,11 +7915,11 @@ Comparamos las fracciones de cobertura (sin considerar la distancia) para
  Observamos un comportamiento cualitativamente similar a las tendencias
  observadas.
  No obstante, este acuerdo aproximado se produce al seleccionar una velocidad
- mínima para las HVCs en el rango (
+ mínima para las HVCs en el rango 
 \begin_inset Formula $30-45\text{ km}\slash\text{s}$
 \end_inset
 
-), en contraste con el criterio de 
+, en contraste con el criterio de 
 \begin_inset Formula $100\text{ km}\slash\text{s}$
 \end_inset
 
